@@ -1,0 +1,41 @@
+appId: com.example.widepostermaker
+productName: Wide Poster Maker
+directories:
+  output: release
+files:
+  - dist/main/**
+  - dist/renderer/**
+  - dist/shared/**
+  - dist/workers/**
+  - package.json
+  - node_modules/**
+  - image_to_a4_tiles.py
+extraResources:
+  - from: about.jpg
+    to: about.jpg
+  - from: icon.png
+    to: icon.png
+extraMetadata:
+  main: dist/main/main.js
+mac:
+  target:
+    - dmg
+    - zip
+  hardenedRuntime: true
+win:
+  target:
+    - target: nsis
+    - target: portable
+  artifactName: "WidePosterMaker-${version}-${arch}.${ext}"
+nsis:
+  artifactName: "WidePosterMaker-${version}-Setup-${arch}.${ext}"
+portable:
+  artifactName: "WidePosterMaker-${version}-portable-${arch}.${ext}"
+linux:
+  target:
+    - AppImage
+    - deb
+  category: Graphics
+publish:
+  provider: generic
+  url: https://example.com/downloads/

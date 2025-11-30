@@ -1,0 +1,367 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: 'Semver bump type (patch, minor, major)'
+        required: false
+        default: patch
+
+permissions:
+  contents: write
+
+jobs:
+  prepare:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch tags
+        run: git fetch --tags --force
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Configure git author
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Bump version
+        id: bump
+        env:
+          RELEASE_TYPE: ${{ github.event.inputs.release_type || 'patch' }}
+        run: node scripts/bump-version.js
+
+      - name: Stage changes
+        run: git add -A
+
+      - name: Commit version bump
+        id: commit
+        env:
+          VERSION: ${{ steps.bump.outputs.version }}
+        run: |
+          set -e
+          if git diff --cached --quiet; then
+            echo "Nothing to commit"
+            echo "committed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git commit -m "chore: release v${VERSION}"
+          echo "committed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Create tag
+        if: steps.commit.outputs.committed == 'true'
+        env:
+          VERSION: ${{ steps.bump.outputs.version }}
+        run: git tag "v${VERSION}"
+
+      - name: Push changes and tag
+        if: steps.commit.outputs.committed == 'true'
+        env:
+          VERSION: ${{ steps.bump.outputs.version }}
+        run: |
+          git push origin HEAD
+          git push origin "v${VERSION}"
+
+      - name: Summary
+        env:
+          VERSION: ${{ steps.bump.outputs.version }}
+        run: |
+          echo "Prepared release v${VERSION}. A new workflow run will publish the tagged release."
+
+  build:
+    if: github.event_name == 'push'
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            platform: win
+            artifact: '*.exe'
+          - os: ubuntu-latest
+            platform: linux
+            artifact: '*.AppImage'
+    
+    runs-on: ${{ matrix.os }}
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Setup Python (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Build
+        run: npm run build
+        
+      - name: Package
+        run: npm run dist
+        
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.platform }}-installer
+          path: release/${{ matrix.artifact }}
+          if-no-files-found: error
+  
+  release:
+    if: github.event_name == 'push'
+    needs: build
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Extract version from tag
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Verify version alignment
+        run: |
+          set -euo pipefail
+          TAG_VERSION="${{ steps.get_version.outputs.VERSION }}"
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+
+          if [ "$PACKAGE_VERSION" != "$TAG_VERSION" ]; then
+            echo "::error::package.json version $PACKAGE_VERSION does not match tag $TAG_VERSION"
+            exit 1
+          fi
+
+          CHANGELOG_VERSION=$(grep -m1 -Po '^## \[\K[0-9]+\.[0-9]+\.[0-9]+' CHANGELOG.md || true)
+
+          if [ -z "$CHANGELOG_VERSION" ]; then
+            echo '::error::Unable to detect release version in CHANGELOG.md'
+            exit 1
+          fi
+
+          if [ "$CHANGELOG_VERSION" != "$TAG_VERSION" ]; then
+            echo "::error::CHANGELOG.md top release is $CHANGELOG_VERSION but tag is $TAG_VERSION"
+            exit 1
+          fi
+        
+      - name: Download Windows artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: win-installer
+          path: release/
+          
+      - name: Download Linux artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: linux-installer
+          path: release/
+      
+      - name: List release files
+        run: ls -la release/
+
+      - name: Prepare downloads environment
+        id: prepare_downloads
+        env:
+          DOWNLOADS_AWS_ACCESS_KEY_ID: ${{ secrets.DOWNLOADS_AWS_ACCESS_KEY_ID }}
+          DOWNLOADS_AWS_SECRET_ACCESS_KEY: ${{ secrets.DOWNLOADS_AWS_SECRET_ACCESS_KEY }}
+          DOWNLOADS_AWS_REGION: ${{ secrets.DOWNLOADS_AWS_REGION }}
+          DOWNLOADS_S3_BUCKET_SECRET: ${{ secrets.DOWNLOADS_S3_BUCKET }}
+          DOWNLOADS_SYNC_URL_SECRET: ${{ secrets.DOWNLOADS_SYNC_URL }}
+          DOWNLOADS_SYNC_TOKEN_SECRET: ${{ secrets.DOWNLOADS_SYNC_TOKEN }}
+        run: |
+          set -euo pipefail
+          has_creds=true
+          sync_flag=false
+
+          if [ -z "${DOWNLOADS_AWS_ACCESS_KEY_ID}" ] || [ -z "${DOWNLOADS_AWS_SECRET_ACCESS_KEY}" ] || [ -z "${DOWNLOADS_AWS_REGION}" ]; then
+            has_creds=false
+          else
+            printf '%s\n' "AWS_ACCESS_KEY_ID=${DOWNLOADS_AWS_ACCESS_KEY_ID}" >> "$GITHUB_ENV"
+            printf '%s\n' "AWS_SECRET_ACCESS_KEY=${DOWNLOADS_AWS_SECRET_ACCESS_KEY}" >> "$GITHUB_ENV"
+            printf '%s\n' "AWS_DEFAULT_REGION=${DOWNLOADS_AWS_REGION}" >> "$GITHUB_ENV"
+          fi
+
+          if [ -n "${DOWNLOADS_S3_BUCKET_SECRET}" ]; then
+            printf '%s\n' "DOWNLOADS_S3_BUCKET=${DOWNLOADS_S3_BUCKET_SECRET}" >> "$GITHUB_ENV"
+          fi
+
+          if [ -n "${DOWNLOADS_SYNC_URL_SECRET}" ]; then
+            printf '%s\n' "DOWNLOADS_SYNC_URL=${DOWNLOADS_SYNC_URL_SECRET}" >> "$GITHUB_ENV"
+            sync_flag=true
+          fi
+
+          if [ -n "${DOWNLOADS_SYNC_TOKEN_SECRET}" ]; then
+            printf '%s\n' "DOWNLOADS_SYNC_TOKEN=${DOWNLOADS_SYNC_TOKEN_SECRET}" >> "$GITHUB_ENV"
+          fi
+
+          if [ "$has_creds" = true ]; then
+            echo "has-creds=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has-creds=false" >> "$GITHUB_OUTPUT"
+          fi
+
+          if [ "$sync_flag" = true ]; then
+            echo "has-sync=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has-sync=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Upload installers to S3
+        id: upload_installers
+        if: ${{ steps.prepare_downloads.outputs.has-creds == 'true' }}
+        run: |
+          set -euo pipefail
+          if [ ! -d release ]; then
+            echo '::error::release directory not found'
+            exit 1
+          fi
+
+          S3_BUCKET="${DOWNLOADS_S3_BUCKET:-widepostermaker-downloads}"
+          if [ -z "$S3_BUCKET" ]; then
+            echo '::warning::S3 bucket not configured. Skipping upload.'
+            exit 0
+          fi
+
+          echo "Using S3 bucket: $S3_BUCKET"
+
+          WINDOWS_FILE=$(find release -maxdepth 1 -type f -name '*.exe' -print | head -n 1)
+          LINUX_FILE=$(find release -maxdepth 1 -type f -name '*.AppImage' -print | head -n 1)
+          MAC_FILE=$(find release -maxdepth 1 -type f -name '*.dmg' -print | head -n 1)
+
+          SUCCESS_UPLOADS=0
+          for FILE in "$WINDOWS_FILE" "$LINUX_FILE" "$MAC_FILE"; do
+            if [ -f "$FILE" ]; then
+              BASENAME=$(basename "$FILE")
+              echo "Uploading $FILE to s3://$S3_BUCKET/media/$BASENAME"
+              aws s3 cp "$FILE" "s3://$S3_BUCKET/media/$BASENAME"
+              SUCCESS_UPLOADS=$((SUCCESS_UPLOADS + 1))
+            fi
+          done
+
+          if [ "$SUCCESS_UPLOADS" -eq 0 ]; then
+            echo '::warning::No installer files were uploaded to S3.'
+          fi
+
+          {
+            echo "bucket=$S3_BUCKET"
+            if [ -n "$WINDOWS_FILE" ]; then
+              BASENAME=$(basename "$WINDOWS_FILE")
+              echo "windows=$BASENAME"
+            fi
+            if [ -n "$LINUX_FILE" ]; then
+              BASENAME=$(basename "$LINUX_FILE")
+              echo "linux=$BASENAME"
+            fi
+            if [ -n "$MAC_FILE" ]; then
+              BASENAME=$(basename "$MAC_FILE")
+              echo "mac=$BASENAME"
+            fi
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Generate release manifest
+        id: manifest
+        env:
+          VERSION: ${{ steps.get_version.outputs.VERSION }}
+          BUCKET: ${{ steps.upload_installers.outputs.bucket }}
+          WINDOWS: ${{ steps.upload_installers.outputs.windows }}
+          LINUX: ${{ steps.upload_installers.outputs.linux }}
+          MAC: ${{ steps.upload_installers.outputs.mac }}
+        run: |
+          set -euo pipefail
+          node scripts/publish-manifest.js
+
+      - name: Upload release manifest to S3
+        if: ${{ steps.prepare_downloads.outputs.has-creds == 'true' && steps.upload_installers.outputs.bucket != '' }}
+        env:
+          BUCKET: ${{ steps.upload_installers.outputs.bucket }}
+        run: |
+          set -euo pipefail
+          if [ ! -f release/release-manifest.json ]; then
+            echo '::warning::release-manifest.json not generated; skipping S3 upload.'
+            exit 0
+          fi
+          echo "Uploading manifest to s3://$BUCKET/releases/latest.json"
+          aws s3 cp release/release-manifest.json "s3://$BUCKET/releases/latest.json" \
+            --content-type application/json \
+            --cache-control "max-age=300"
+          echo "✅ Manifest uploaded successfully"
+      
+      - name: Notify e-commerce backend
+        if: ${{ steps.prepare_downloads.outputs.has-sync == 'true' }}
+        env:
+          SYNC_URL: ${{ secrets.DOWNLOADS_SYNC_URL }}
+          SYNC_TOKEN: ${{ secrets.DOWNLOADS_SYNC_TOKEN }}
+          VERSION: ${{ steps.get_version.outputs.VERSION }}
+        run: |
+          set -euo pipefail
+          if [ -z "$SYNC_URL" ] || [ -z "$SYNC_TOKEN" ]; then
+            echo "::warning::Sync credentials not configured; skipping backend notification"
+            exit 0
+          fi
+          echo "Notifying backend at $SYNC_URL"
+          curl -X POST "$SYNC_URL" \
+            -H "Authorization: Bearer $SYNC_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "{\"version\":\"$VERSION\",\"event\":\"release.published\"}" \
+            -f -s -S && echo "✅ Backend notified successfully" || echo "::warning::Backend notification failed (non-critical)"
+      
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: Wide Poster Maker ${{ steps.get_version.outputs.VERSION }}
+          draft: false
+          prerelease: false
+          files: release/*
+          body: |
+            ## 🎉 Wide Poster Maker v${{ steps.get_version.outputs.VERSION }}
+            
+            Desktop tool for splitting large images into printable A4/Letter tiles.
+            
+            ### 📥 Installation
+            
+            **🪟 Windows:** Download `WidePosterMaker-*-Setup-*.exe`
+            - ⚠️ **Security Warning Expected:** Click "More info" → "Run anyway"
+            - This is normal for unsigned applications
+            
+            **🐧 Linux:** Download `WidePosterMaker-*.AppImage`
+            ```bash
+            chmod +x WidePosterMaker-*.AppImage
+            ./WidePosterMaker-*.AppImage
+            ```
+            
+            **🍎 macOS:** Coming soon
+            
+            ### ✨ What's New
+            
+            See [CHANGELOG.md](https://github.com/archerby/widepostermaker/blob/main/CHANGELOG.md) for full details.
+            
+            ### 🔐 Verification
+            
+            - ✅ **Open Source:** [View source code](https://github.com/archerby/widepostermaker)
+            - ✅ **MIT Licensed:** Free and open
+            
+            ### 📚 Documentation
+            
+            - [README](https://github.com/archerby/widepostermaker/blob/main/README.md) - Quick start guide
+            - [Architecture](https://github.com/archerby/widepostermaker/blob/main/docs/architecture.md) - Technical details
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,72 @@
+{
+  "name": "wide-poster-maker",
+  "version": "0.1.1",
+  "description": "Desktop tool for splitting large images into printable tiles.",
+  "main": "src/main/main.js",
+  "author": "archerby",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/archerby/widepostermaker.git"
+  },
+  "homepage": "https://github.com/archerby/widepostermaker#readme",
+  "bugs": {
+    "url": "https://github.com/archerby/widepostermaker/issues"
+  },
+  "keywords": [
+    "electron",
+    "poster",
+    "printing",
+    "tiling",
+    "image-processing",
+    "a4",
+    "desktop-app"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm:dev:renderer\" \"npm:dev:main\"",
+    "dev:renderer": "vite",
+    "dev:main": "wait-on http://localhost:5173 && cross-env VITE_DEV_SERVER_URL=http://localhost:5173 electron .",
+    "build:main": "tsc -p tsconfig.main.json && copyfiles -u 1 \"src/shared/**/*\" dist && copyfiles -u 2 \"src/workers/**/*\" dist/workers && copyfiles image_to_a4_tiles.py dist",
+    "build": "rimraf dist && npm run build:main && vite build",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.main.json --noEmit",
+    "lint": "eslint \"src/**/*.{ts,tsx,js}\" --max-warnings=0",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "pack": "electron-builder --dir",
+    "dist": "npm run build && electron-builder",
+    "dist:portable": "npm run build && electron-builder --win portable",
+    "postinstall": "node ./scripts/postinstall.mjs"
+  },
+  "dependencies": {
+    "pdf-lib": "^1.17.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sharp": "^0.33.2",
+    "zustand": "^5.0.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^20.12.12",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@typescript-eslint/eslint-plugin": "^8.48.0",
+    "@typescript-eslint/parser": "^8.48.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/coverage-v8": "^4.0.14",
+    "concurrently": "^8.2.2",
+    "copyfiles": "^2.4.1",
+    "cross-env": "^7.0.3",
+    "electron": "^28.2.1",
+    "electron-builder": "^24.13.3",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "globals": "^16.5.0",
+    "rimraf": "^6.1.2",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.0",
+    "vitest": "^4.0.14",
+    "wait-on": "^7.2.0"
+  }
+}
