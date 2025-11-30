@@ -88,6 +88,23 @@ Enabling the “Black & white finisher” toggle in the Export panel attaches a 
 ### More documentation
 
 - [docs/architecture.md](docs/architecture.md) – layers, build commands, packaging targets, release checklist.
-- **Support** – https://buymeacoffee.com/upupa.dev (also in the app’s Help menu).
+- **Support** – https://buymeacoffee.com/upupa.dev (also in the app's Help menu).
 
 The `postinstall` script automatically runs `electron-builder install-app-deps` so native modules like `sharp` rebuild for the host platform.
+
+## License & Commercial Use
+
+Wide Poster Maker is **free software** for personal, educational, and commercial use. However:
+
+- ❌ **Selling this software is prohibited** (it must remain free)
+- ❌ **Modifications and derivative works are not allowed**
+- ✅ **Free to use** for any purpose, including commercial projects
+- ✅ **Redistribution of unmodified binaries** is permitted
+
+**Copyright © 2024-2025 Pavel Novikau, upupa.dev**
+
+For custom modifications or enterprise licensing: **contact@upupa.dev**
+
+A portion of donations supports the [35mm.of.history](https://35mm.of.history) archival project.
+
+See [LICENSE](LICENSE) for full terms.

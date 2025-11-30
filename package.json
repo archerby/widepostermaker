@@ -3,8 +3,8 @@
   "version": "0.1.1",
   "description": "Desktop tool for splitting large images into printable tiles.",
   "main": "src/main/main.js",
-  "author": "archerby",
-  "license": "MIT",
+  "author": "Pavel Novikau <contact@upupa.dev> (https://upupa.dev)",
+  "license": "SEE LICENSE IN LICENSE",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/archerby/widepostermaker.git"

@@ -1,21 +1,46 @@
-MIT License
+Wide Poster Maker License
 
-Copyright (c) 2024 archerby
+Copyright (c) 2024-2025 Pavel Novikau, upupa.dev
+All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+PERMISSIONS
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+You are free to:
+- Use this software for personal, educational, or commercial purposes
+- Distribute the unmodified compiled binaries
+- Share and recommend this software to others
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+RESTRICTIONS
+
+You may NOT:
+- Sell this software or charge money for access to it (it is free software)
+- Modify, reverse engineer, or create derivative works
+- Claim ownership or authorship of this software
+- Redistribute the source code or modified versions
+- Remove or alter copyright notices and attributions
+
+COMMERCIAL INQUIRIES
+
+For custom modifications, enterprise licensing, or commercial partnerships:
+Contact: contact@upupa.dev
+
+SOCIAL IMPACT
+
+A portion of proceeds from voluntary donations supports the 35mm.of.history 
+archival project, dedicated to recovering and preserving lost film photographs 
+and personal histories.
+
+NO WARRANTIES OR GUARANTEES
+
+This software is provided "AS IS" without warranty of any kind:
+- No warranty of any kind is provided
+- No guarantee of future updates, bug fixes, or support
+- No liability for any damages or data loss
+- You use this software at your own risk
+- Development is on a best effort basis
+- No obligation to resolve specific issues
+- No promise of particular features or timelines
+
+THE AUTHOR SHALL NOT BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF,
+OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
