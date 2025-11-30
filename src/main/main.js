@@ -249,9 +249,9 @@ const showAboutDialog = async () => {
 
   const parent = getFocusedWindow();
   aboutWindow = new BrowserWindow({
-    width: 420,
-    height: 360,
-    resizable: false,
+    width: 500,
+    height: 640,
+    resizable: true,
     minimizable: false,
     maximizable: false,
     parent: parent || undefined,
@@ -290,14 +290,25 @@ const showAboutDialog = async () => {
       <title>About Wide Poster Maker</title>
       <style>
         :root { color-scheme: dark; font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
-        body { margin: 0; background: #0f172a; color: #e2e8f0; font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; }
-        .shell { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 18px; padding: 32px 28px; text-align: center; }
+        body { margin: 0; background: #0f172a; color: #e2e8f0; font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; overflow-y: auto; }
+        .shell { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; gap: 18px; padding: 32px 28px 48px; text-align: center; }
         .artwork { width: 150px; border-radius: 18px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 18px 40px rgba(2, 6, 23, 0.6); background: #020617; }
         .artwork img { display: block; width: 150px; height: auto; }
         h1 { margin: 0; font-size: 22px; letter-spacing: 0.01em; }
+        h2 { margin: 24px 0 12px; font-size: 16px; color: #38bdf8; letter-spacing: 0.02em; }
         p { margin: 0; color: #cbd5f5; font-size: 15px; }
         .subtle { color: #94a3b8; font-size: 14px; margin-top: 6px; }
-        button { margin-top: 16px; border: none; border-radius: 999px; padding: 10px 28px; font-size: 15px; font-weight: 600; cursor: pointer; background: #38bdf8; color: #031525; font-family: inherit; transition: background 120ms ease; }
+        .license-box { margin-top: 28px; padding: 20px; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 12px; text-align: left; max-width: 420px; font-size: 13px; line-height: 1.6; }
+        .license-box h3 { margin: 0 0 12px; font-size: 14px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+        .license-box ul { margin: 8px 0; padding-left: 20px; }
+        .license-box li { margin: 4px 0; color: #cbd5f5; }
+        .license-box .section { margin-bottom: 16px; }
+        .license-box .section:last-child { margin-bottom: 0; }
+        .license-box .copyright { color: #94a3b8; font-size: 12px; margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(148, 163, 184, 0.2); }
+        .license-box .emoji { margin-right: 6px; }
+        .license-box a { color: #38bdf8; text-decoration: none; }
+        .license-box a:hover { text-decoration: underline; }
+        button { margin-top: 24px; border: none; border-radius: 999px; padding: 10px 28px; font-size: 15px; font-weight: 600; cursor: pointer; background: #38bdf8; color: #031525; font-family: inherit; transition: background 120ms ease; }
         button:hover { background: #5ad0ff; }
         button:focus-visible { outline: 2px solid #bae6fd; outline-offset: 2px; }
       </style>
@@ -310,6 +321,51 @@ const showAboutDialog = async () => {
           <p>Created by Pavel Novikau</p>
           <p class="subtle">upupa.dev</p>
         </div>
+        
+        <div class="license-box">
+          <div class="section">
+            <h3>License & Usage</h3>
+            <p><strong>Free for personal, educational, and commercial use</strong></p>
+          </div>
+          
+          <div class="section">
+            <p><span class="emoji">✅</span> You may:</p>
+            <ul>
+              <li>Use for any purpose (personal, commercial, educational)</li>
+              <li>Distribute unmodified binaries</li>
+              <li>Share and recommend</li>
+            </ul>
+          </div>
+          
+          <div class="section">
+            <p><span class="emoji">❌</span> You may NOT:</p>
+            <ul>
+              <li>Sell this software (it must remain free)</li>
+              <li>Modify or create derivative works</li>
+              <li>Claim ownership or remove attributions</li>
+            </ul>
+          </div>
+          
+          <div class="section">
+            <p><strong>Commercial Inquiries:</strong> <a href="mailto:contact@upupa.dev">contact@upupa.dev</a></p>
+          </div>
+          
+          <div class="section">
+            <p style="font-size: 12px; line-height: 1.5;">
+              <strong>No Warranties:</strong> This software is provided "AS IS" without warranty. 
+              No guarantee of updates, support, or specific features. Use at your own risk.
+            </p>
+          </div>
+          
+          <div class="section">
+            <p style="font-size: 12px; color: #38bdf8;">
+              A portion of donations supports the <strong>35mm.of.history</strong> archival project.
+            </p>
+          </div>
+          
+          <p class="copyright">Copyright © 2024-2025 Pavel Novikau, upupa.dev<br>All rights reserved.</p>
+        </div>
+        
         <button type="button" onclick="window.close()">Close</button>
       </div>
     </body>

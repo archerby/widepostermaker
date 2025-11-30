@@ -1,6 +1,6 @@
 {
   "name": "wide-poster-maker",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Desktop tool for splitting large images into printable tiles.",
   "main": "src/main/main.js",
   "author": "Pavel Novikau <contact@upupa.dev> (https://upupa.dev)",
