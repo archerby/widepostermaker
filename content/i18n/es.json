@@ -120,6 +120,8 @@
     "statusNote": "Nota: {warn}",
     "statusPopupFallback": "Ventana emergente bloqueada: PDF descargado. Imprímelo al 100% / Tamaño real.",
     "errImageDecode": "No se pudo decodificar la imagen.",
+    "errImageTooLarge": "La resolución supera el límite seguro del navegador (máx. 16384 px / 64 MP).",
+    "errFileTooLarge": "El archivo supera el límite seguro de 100 MB.",
     "errLoad": "No se pudo abrir este archivo.",
     "errExport": "Error al generar el PDF."
   }

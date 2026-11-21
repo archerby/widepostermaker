@@ -120,6 +120,8 @@
     "statusNote": "Uwaga: {warn}",
     "statusPopupFallback": "Zablokowano okno — pobrano PDF. Wydrukuj go w skali 100% / Rozmiar rzeczywisty.",
     "errImageDecode": "Nie udało się zdekodować obrazu.",
+    "errImageTooLarge": "Rozdzielczość obrazu przekracza bezpieczny limit przeglądarki (maks. 16384 px / 64 MP).",
+    "errFileTooLarge": "Plik przekracza bezpieczny limit 100 MB w przeglądarce.",
     "errLoad": "Nie udało się otworzyć pliku.",
     "errExport": "Błąd eksportu PDF."
   }

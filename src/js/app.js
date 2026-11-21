@@ -50,10 +50,26 @@ function formatBytes(bytes) {
   return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
 }
 
+const MAX_FILE_BYTES = 100 * 1024 * 1024; // 100 MB
+const MAX_IMAGE_DIM = 16384;
+const MAX_IMAGE_PIXELS = 64_000_000;
+const PREVIEW_MAX_SIDE = 2048;
+
 function sanitizeDownloadBase(filename) {
   const base = (filename || 'poster').replace(/\.[^.]+$/, '');
-  const clean = base.replace(/[^a-zA-Z0-9_-]+/g, '-').replace(/^-+|-+$/g, '');
+  const clean = base.replace(/[^a-zA-Z0-9_-]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80);
   return clean || 'poster';
+}
+
+function sniffImageMime(bytes, fallbackType, name) {
+  if (bytes.length >= 3 && bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff) {
+    return 'image/jpeg';
+  }
+  if (bytes.length >= 4 && bytes[0] === 0x89 && bytes[1] === 0x50 && bytes[2] === 0x4e && bytes[3] === 0x47) {
+    return 'image/png';
+  }
+  if (fallbackType) return fallbackType;
+  return name.toLowerCase().endsWith('.png') ? 'image/png' : 'image/webp';
 }
 
 async function decodeImageDrawable(blob) {
@@ -68,12 +84,22 @@ async function decodeImageDrawable(blob) {
     });
     const width = img.naturalWidth || img.width || 1200;
     const height = img.naturalHeight || img.height || 900;
-    // Render onto an independent canvas so Blob URL can be revoked immediately
+    if (width > MAX_IMAGE_DIM || height > MAX_IMAGE_DIM || width * height > MAX_IMAGE_PIXELS) {
+      throw new Error(msg('errImageTooLarge', 'Image resolution exceeds safe browser limit (max 16384px / 64 MP).'));
+    }
+    const longest = Math.max(width, height, 1);
+    const scale = Math.min(1, PREVIEW_MAX_SIDE / longest);
+    const prevW = Math.max(1, Math.round(width * scale));
+    const prevH = Math.max(1, Math.round(height * scale));
+    // Render bounded preview onto an independent canvas so Blob URL can be revoked immediately
     const canvas = document.createElement('canvas');
-    canvas.width = width;
-    canvas.height = height;
+    canvas.width = prevW;
+    canvas.height = prevH;
     const ctx = canvas.getContext('2d');
-    ctx.drawImage(img, 0, 0, width, height);
+    if (!ctx) {
+      throw new Error(msg('errImageDecode', 'Could not decode image file.'));
+    }
+    ctx.drawImage(img, 0, 0, prevW, prevH);
     return { drawable: canvas, width, height };
   } finally {
     URL.revokeObjectURL(url);
@@ -87,8 +113,11 @@ export function initPosterApp() {
   const ds = document.body.dataset;
   const qp = new URLSearchParams(window.location.search);
 
-  let initialPaper = ds.presetPaper && ds.presetPaper !== 'auto' ? ds.presetPaper : detectLocalePaper();
-  if (qp.has('paper') && PAPERS[qp.get('paper')]) {
+  let initialPaper =
+    ds.presetPaper && ds.presetPaper !== 'auto' && Object.hasOwn(PAPERS, ds.presetPaper)
+      ? ds.presetPaper
+      : detectLocalePaper();
+  if (qp.has('paper') && Object.hasOwn(PAPERS, qp.get('paper'))) {
     initialPaper = qp.get('paper');
   }
 
@@ -182,6 +211,7 @@ export function initPosterApp() {
   let excludedTiles = new Set();
   let busy = false;
   let lastPdfObjectUrl = null;
+  let revokeTimerId = null;
 
   const preview = new TilePreview(els.previewCanvas, (tileKey) => {
     if (excludedTiles.has(tileKey)) excludedTiles.delete(tileKey);
@@ -349,6 +379,10 @@ export function initPosterApp() {
 
   async function loadInputFile(fileOrBlob, filename) {
     if (busy) return;
+    if (typeof fileOrBlob.size === 'number' && fileOrBlob.size > MAX_FILE_BYTES) {
+      setStatus(msg('errFileTooLarge', 'File exceeds 100 MB browser safety limit.'), true);
+      return;
+    }
     busy = true;
     setStatus(msg('statusLoading', 'Loading file locally...'));
     try {
@@ -381,7 +415,7 @@ export function initPosterApp() {
         els.workspace.hidden = false;
         await renderPdfPage(1);
       } else {
-        const mimeType = fileOrBlob.type || (name.toLowerCase().endsWith('.png') ? 'image/png' : 'image/jpeg');
+        const mimeType = sniffImageMime(bytes, fileOrBlob.type, name);
         const exifOrientation = mimeType === 'image/jpeg' ? readJpegExifOrientation(bytes) : 1;
         const decoded = await decodeImageDrawable(fileOrBlob);
         currentSource = {
@@ -468,11 +502,17 @@ export function initPosterApp() {
   }
 
   function revokeLastObjectUrl() {
+    if (revokeTimerId !== null) {
+      clearTimeout(revokeTimerId);
+      revokeTimerId = null;
+    }
     if (lastPdfObjectUrl) {
       URL.revokeObjectURL(lastPdfObjectUrl);
       lastPdfObjectUrl = null;
     }
   }
+
+  window.addEventListener('pagehide', revokeLastObjectUrl);
 
   // Event listeners
   els.fileInput.addEventListener('change', () => {
@@ -581,7 +621,7 @@ export function initPosterApp() {
     document.body.appendChild(a);
     a.click();
     a.remove();
-    setTimeout(revokeLastObjectUrl, 60_000);
+    revokeTimerId = setTimeout(revokeLastObjectUrl, 60_000);
   });
 
   els.btnPrint.addEventListener('click', async () => {
@@ -590,8 +630,15 @@ export function initPosterApp() {
     revokeLastObjectUrl();
     const blob = new Blob([res.bytes], { type: 'application/pdf' });
     lastPdfObjectUrl = URL.createObjectURL(blob);
-    const win = window.open(lastPdfObjectUrl, '_blank', 'noopener');
-    if (!win) {
+    const win = window.open(lastPdfObjectUrl, '_blank');
+    if (win) {
+      try {
+        win.opener = null;
+      } catch {
+        // ignore cross-context property lock
+      }
+      revokeTimerId = setTimeout(revokeLastObjectUrl, 120_000);
+    } else {
       // Clean fallback if popup blocker blocked opening PDF tab
       const a = document.createElement('a');
       a.href = lastPdfObjectUrl;
@@ -599,6 +646,7 @@ export function initPosterApp() {
       document.body.appendChild(a);
       a.click();
       a.remove();
+      revokeTimerId = setTimeout(revokeLastObjectUrl, 60_000);
       setStatus(
         msg(
           'statusPopupFallback',

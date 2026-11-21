@@ -120,6 +120,8 @@
     "statusNote": "Note: {warn}",
     "statusPopupFallback": "Pop-up blocked — downloaded PDF instead. Open it and print at 100% / Actual Size.",
     "errImageDecode": "Could not decode image file.",
+    "errImageTooLarge": "Image resolution exceeds safe browser limit (max 16384px / 64 MP).",
+    "errFileTooLarge": "File exceeds 100 MB browser safety limit.",
     "errLoad": "Could not open this file.",
     "errExport": "PDF export failed."
   }

@@ -6,7 +6,9 @@ from __future__ import annotations
 import datetime
 import html
 import json
+import os
 import pathlib
+import re
 import shutil
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -16,6 +18,8 @@ TEMPLATES = ROOT / "templates"
 DIST = ROOT / "dist"
 
 LOCALES = ["en", "ru", "de", "es", "pl"]
+SLUG_RE = re.compile(r"^[a-z0-9-]*$")
+TOKEN_RE = re.compile(r"\{\{([A-Z0-9_]+)\}\}")
 
 
 def esc(val: object) -> str:
@@ -23,10 +27,18 @@ def esc(val: object) -> str:
 
 
 def safe_json_for_script(obj: object) -> str:
-    return json.dumps(obj, ensure_ascii=False, indent=2).replace("</", "<\\/")
+    return json.dumps(obj, ensure_ascii=False, indent=2).replace("<", "\\u003c")
+
+
+def validate_href(href: str) -> str:
+    if not isinstance(href, str) or not (href.startswith("/") or href.startswith("https://")):
+        raise ValueError(f"Disallowed href scheme or relative path: {href!r}")
+    return href
 
 
 def route_for(locale: str, slug: str) -> str:
+    if not isinstance(slug, str) or not SLUG_RE.fullmatch(slug):
+        raise ValueError(f"Invalid slug {slug!r}: must match {SLUG_RE.pattern}")
     if locale == "en":
         return "/" if not slug else f"/{slug}/"
     return f"/{locale}/" if not slug else f"/{locale}/{slug}/"
@@ -34,7 +46,12 @@ def route_for(locale: str, slug: str) -> str:
 
 def out_path_for(route: str) -> pathlib.Path:
     rel = route.strip("/")
-    return DIST / "index.html" if not rel else DIST / rel / "index.html"
+    target = DIST / "index.html" if not rel else DIST / rel / "index.html"
+    dist_root = DIST.resolve()
+    resolved = target.resolve()
+    if not resolved.is_relative_to(dist_root):
+        raise ValueError(f"Path traversal blocked for route {route!r}")
+    return target
 
 
 def render_sections(sections: list[dict]) -> str:
@@ -195,17 +212,15 @@ def build_json_ld(page: dict, i18n: dict) -> str:
 
 
 def apply_tokens(template: str, mapping: dict[str, str]) -> str:
-    out = template
-    for key, val in mapping.items():
-        out = out.replace(f"{{{{{key}}}}}", val)
-    return out
+    return TOKEN_RE.sub(lambda m: mapping.get(m.group(1), m.group(0)), template)
 
 
 def render_nav(nav_items: list[dict], active_route: str) -> str:
     links: list[str] = []
     for item in nav_items:
-        current = ' aria-current="page"' if item["href"] == active_route else ""
-        links.append(f'        <a href="{esc(item["href"])}"{current}>{esc(item["label"])}</a>')
+        href = validate_href(item["href"])
+        current = ' aria-current="page"' if href == active_route else ""
+        links.append(f'        <a href="{esc(href)}"{current}>{esc(item["label"])}</a>')
     return "\n".join(links)
 
 
@@ -240,7 +255,7 @@ def render_og_alternates(i18n_map: dict[str, dict], current_locale: str) -> str:
 def render_footer_links(items: list[dict]) -> str:
     rows: list[str] = []
     for item in items:
-        href = item["href"]
+        href = validate_href(item["href"])
         attrs = ' target="_blank" rel="noopener noreferrer"' if href.startswith("https://") else ""
         rows.append(f'            <li><a href="{esc(href)}"{attrs}>{esc(item["label"])}</a></li>')
     return "\n".join(rows)
@@ -452,7 +467,11 @@ def main() -> None:
 
     # Multilingual sitemap.xml with xhtml:link hreflang alternates
     domain = i18n_map["en"]["domain"].rstrip("/")
-    today = datetime.date.today().isoformat()
+    epoch = os.environ.get("SOURCE_DATE_EPOCH")
+    if epoch and epoch.isdigit():
+        today = datetime.datetime.fromtimestamp(int(epoch), tz=datetime.timezone.utc).date().isoformat()
+    else:
+        today = datetime.datetime.now(datetime.timezone.utc).date().isoformat()
     sitemap_lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
@@ -480,6 +499,22 @@ def main() -> None:
     # robots.txt
     (DIST / "robots.txt").write_text(
         f"User-agent: *\nAllow: /\n\nSitemap: {domain}/sitemap.xml\n",
+        encoding="utf-8",
+    )
+
+    # .well-known/security.txt (RFC 9116)
+    well_known = DIST / ".well-known"
+    well_known.mkdir(parents=True, exist_ok=True)
+    (well_known / "security.txt").write_text(
+        "\n".join(
+            [
+                "Contact: mailto:security@novikau.me",
+                f"Canonical: {domain}/.well-known/security.txt",
+                "Preferred-Languages: en, ru, de, es, pl",
+                "Expires: 2027-11-21T00:00:00.000Z",
+                "",
+            ]
+        ),
         encoding="utf-8",
     )
 

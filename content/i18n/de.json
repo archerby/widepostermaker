@@ -120,6 +120,8 @@
     "statusNote": "Hinweis: {warn}",
     "statusPopupFallback": "Pop-up blockiert — PDF heruntergeladen. Bitte in 100%-Größe drucken.",
     "errImageDecode": "Bilddatei konnte nicht dekodiert werden.",
+    "errImageTooLarge": "Die Bildauflösung überschreitet das sichere Browser-Limit (max. 16384 px / 64 MP).",
+    "errFileTooLarge": "Datei überschreitet das sichere 100-MB-Limit im Browser.",
     "errLoad": "Datei konnte nicht geöffnet werden.",
     "errExport": "PDF-Export fehlgeschlagen."
   }

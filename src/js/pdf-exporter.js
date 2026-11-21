@@ -47,6 +47,26 @@ export function toWinAnsiSafe(str) {
   return mapped.replace(/\s+/g, ' ').trim();
 }
 
+const MAX_EXPORT_SIDE = 8192;
+const MAX_EXPORT_PIXELS = 36_000_000;
+
+function fitExportDimensions(rawW, rawH) {
+  let w = Math.max(1, rawW);
+  let h = Math.max(1, rawH);
+  const longest = Math.max(w, h);
+  if (longest > MAX_EXPORT_SIDE) {
+    const s = MAX_EXPORT_SIDE / longest;
+    w = Math.max(1, Math.round(w * s));
+    h = Math.max(1, Math.round(h * s));
+  }
+  if (w * h > MAX_EXPORT_PIXELS) {
+    const s = Math.sqrt(MAX_EXPORT_PIXELS / (w * h));
+    w = Math.max(1, Math.round(w * s));
+    h = Math.max(1, Math.round(h * s));
+  }
+  return { w, h };
+}
+
 async function rasterizeImageBlobForPdf(blob, width, height) {
   let w = Math.max(1, width || 1200);
   let h = Math.max(1, height || 900);
@@ -54,15 +74,20 @@ async function rasterizeImageBlobForPdf(blob, width, height) {
 
   try {
     const bitmap = await createImageBitmap(blob, { imageOrientation: 'from-image' });
-    w = Math.max(1, bitmap.width || w);
-    h = Math.max(1, bitmap.height || h);
-    canvas.width = w;
-    canvas.height = h;
-    const ctx = canvas.getContext('2d', { alpha: false });
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(0, 0, w, h);
-    ctx.drawImage(bitmap, 0, 0, w, h);
-    bitmap.close();
+    try {
+      const fitted = fitExportDimensions(bitmap.width || w, bitmap.height || h);
+      w = fitted.w;
+      h = fitted.h;
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext('2d', { alpha: false });
+      if (!ctx) throw new Error('Canvas 2D context unavailable');
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, w, h);
+      ctx.drawImage(bitmap, 0, 0, w, h);
+    } finally {
+      bitmap.close();
+    }
   } catch {
     const url = URL.createObjectURL(blob);
     try {
@@ -72,11 +97,13 @@ async function rasterizeImageBlobForPdf(blob, width, height) {
         img.onerror = () => reject(new Error('Image decode failed'));
         img.src = url;
       });
-      w = Math.max(1, img.naturalWidth || w);
-      h = Math.max(1, img.naturalHeight || h);
+      const fitted = fitExportDimensions(img.naturalWidth || w, img.naturalHeight || h);
+      w = fitted.w;
+      h = fitted.h;
       canvas.width = w;
       canvas.height = h;
       const ctx = canvas.getContext('2d', { alpha: false });
+      if (!ctx) throw new Error('Canvas 2D context unavailable');
       ctx.fillStyle = '#ffffff';
       ctx.fillRect(0, 0, w, h);
       ctx.drawImage(img, 0, 0, w, h);
@@ -280,6 +307,7 @@ export async function generateTiledPdf({ source, layout, options = {}, onProgres
   const pdfLib = await getPdfLib();
   const {
     PDFDocument,
+    PDFName,
     StandardFonts,
     rgb,
     degrees,
@@ -315,10 +343,18 @@ export async function generateTiledPdf({ source, layout, options = {}, onProgres
     try {
       const srcDoc = await PDFDocument.load(source.bytes, { ignoreEncryption: false });
       const srcPage = srcDoc.getPage(source.pageIndex || 0);
+      // Strip non-rendering dictionaries so annotations, actions, and hidden metadata never leak into exported PDFs
+      for (const key of ['Annots', 'AA', 'Metadata', 'PieceInfo', 'StructParents', 'B', 'Thumb', 'Tabs', 'Trans', 'Dur', 'VP']) {
+        srcPage.node.delete(PDFName.of(key));
+      }
       const crop = srcPage.getCropBox() || srcPage.getMediaBox();
       const rot = ((srcPage.getRotation().angle % 360) + 360) % 360;
       const visWpt = rot === 90 || rot === 270 ? crop.height : crop.width;
-      const scale = mmToPt(layout.posterW) / visWpt;
+      const visHpt = rot === 90 || rot === 270 ? crop.width : crop.height;
+      const scale = visWpt > 0 ? mmToPt(layout.posterW) / visWpt : NaN;
+      if (!(visWpt > 0) || !(visHpt > 0) || !Number.isFinite(scale) || scale <= 0) {
+        throw new Error('Invalid PDF page dimensions');
+      }
 
       embeddedPage = await outDoc.embedPage(srcPage, {
         left: crop.x,

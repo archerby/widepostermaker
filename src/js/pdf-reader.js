@@ -29,18 +29,24 @@ export async function loadPdfDocument(uint8Array) {
     data: dataCopy,
     useSystemFonts: true,
     isEvalSupported: false,
+    enableXfa: false,
+    maxImageSize: 33_554_432,
+    canvasMaxAreaInBytes: 67_108_864,
   });
   const pdfDoc = await loadingTask.promise;
 
-  async function renderPageToCanvas(pageNum, scale) {
+  async function renderPageToCanvas(pageNum, scale, maxCap = 4096) {
     const page = await pdfDoc.getPage(pageNum);
     const viewport = page.getViewport({ scale });
-    const width = Math.max(1, Math.round(viewport.width));
-    const height = Math.max(1, Math.round(viewport.height));
+    const width = Math.min(maxCap, Math.max(1, Math.round(viewport.width)));
+    const height = Math.min(maxCap, Math.max(1, Math.round(viewport.height)));
     const canvas = document.createElement('canvas');
     canvas.width = width;
     canvas.height = height;
     const ctx = canvas.getContext('2d', { alpha: false });
+    if (!ctx) {
+      throw new Error('Canvas 2D context unavailable');
+    }
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, width, height);
     await page.render({ canvasContext: ctx, viewport }).promise;
@@ -67,8 +73,8 @@ export async function loadPdfDocument(uint8Array) {
       const page = await pdfDoc.getPage(pageNum);
       const base = page.getViewport({ scale: 1 });
       const longest = Math.max(base.width, base.height, 1);
-      const scale = Math.min(4, Math.max(0.1, maxSidePx / longest));
-      return renderPageToCanvas(pageNum, scale);
+      const scale = Math.min(4, Math.max(1e-4, maxSidePx / longest));
+      return renderPageToCanvas(pageNum, scale, maxSidePx);
     },
 
     async renderForRasterFallback(pageNum, targetWidthPx, targetHeightPx) {
@@ -76,8 +82,9 @@ export async function loadPdfDocument(uint8Array) {
       const base = page.getViewport({ scale: 1 });
       const maxDim = 4096;
       const desiredLongest = Math.max(1200, Math.min(maxDim, Math.max(targetWidthPx, targetHeightPx)));
-      const scale = Math.min(8, Math.max(0.25, desiredLongest / Math.max(base.width, base.height, 1)));
-      const { canvas, width, height } = await renderPageToCanvas(pageNum, scale);
+      const longest = Math.max(base.width, base.height, 1);
+      const scale = Math.min(8, Math.max(1e-4, desiredLongest / longest));
+      const { canvas, width, height } = await renderPageToCanvas(pageNum, scale, maxDim);
       const blob = await new Promise((resolve, reject) => {
         canvas.toBlob((b) => (b ? resolve(b) : reject(new Error('Raster fallback encode failed'))), 'image/png');
       });
@@ -86,7 +93,11 @@ export async function loadPdfDocument(uint8Array) {
     },
 
     async destroy() {
-      await pdfDoc.destroy();
+      if (typeof pdfDoc.destroy === 'function') {
+        await pdfDoc.destroy();
+      } else {
+        await loadingTask.destroy();
+      }
     },
   };
 }

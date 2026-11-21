@@ -65,6 +65,8 @@ def create_rotated_cropbox_vector_pdf(path: pathlib.Path) -> dict[str, tuple[int
     p1.draw_rect(fitz.Rect(350, 240, 650, 440), fill=(0.95, 0.78, 0.08), color=None) # unrotated BR
     p1.set_cropbox(fitz.Rect(50, 40, 650, 440))
     p1.set_rotation(90)
+    # Inject a URI link annotation to verify pdf-exporter strips /Annots and /URI before embedding
+    p1.insert_link({"kind": fitz.LINK_URI, "from": fitz.Rect(60, 50, 200, 120), "uri": "https://evil.example/leak"})
 
     doc.save(path)
     doc.close()
@@ -131,10 +133,14 @@ function bytesToBase64(u8) {
 }
 
 async function runTests() {
-  // 1. layout.js unit checks
+  // 1. layout.js unit & hardening checks
   assert(rowLabel(0) === 'A' && rowLabel(25) === 'Z' && rowLabel(26) === 'AA', 'rowLabel multi-letter');
+  assert(rowLabel(NaN) === 'A' && rowLabel(Infinity) === 'A' && rowLabel(-3) === 'A', 'rowLabel non-finite safe');
   assert(tileLabel(1, 2) === 'B3', 'tileLabel');
   assert(PAPERS.a4.widthMm === 210 && PAPERS.letter.widthMm === 215.9, 'paper constants');
+  assert(Object.getPrototypeOf(PAPERS) === null, 'PAPERS null-prototype');
+  const protoLayout = computeLayout({ srcWidth: 100, srcHeight: 100, paper: 'constructor' });
+  assert(protoLayout.paperId === 'a4' && Number.isFinite(protoLayout.totalCount), 'prototype paper fallback safe');
 
   const l1 = computeLayout({
     srcWidth: 1200,
@@ -522,6 +528,13 @@ def test_e2e_headless_chrome_and_pdf_inspection() -> None:
         vec_xobjs = count_xobject_subtypes(vec_pdf_bytes)
         assert vec_xobjs.get("/Form", 0) >= 1, f"Expected vector /Form XObject in vector PDF, got {vec_xobjs}"
         assert vec_xobjs.get("/Image", 0) == 0, f"Unexpected raster /Image in vector PDF: {vec_xobjs}"
+        # Verify stripped annotations/URIs never leak into exported PDF bytes (M2)
+        assert b"evil.example" not in vec_pdf_bytes, "Leaked URI annotation text into exported PDF"
+        import io
+        vec_reader = pypdf.PdfReader(io.BytesIO(vec_pdf_bytes))
+        for page in vec_reader.pages:
+            assert not page.get("/Annots"), "Exported PDF page must have empty/no /Annots"
+            assert "/AA" not in page, "Exported PDF page must not retain /AA"
 
         vec_doc = fitz.open(stream=vec_pdf_bytes, filetype="pdf")
         cols = rep["vecLayout"]["cols"]

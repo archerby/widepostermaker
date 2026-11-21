@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import pathlib
 import subprocess
@@ -10,6 +11,7 @@ import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from urllib.parse import urlparse
 
+import pytest
 from PIL import Image, ImageStat
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -140,6 +142,7 @@ def test_build_script_runs_and_emits_required_files() -> None:
         "robots.txt",
         "llms.txt",
         "manifest.webmanifest",
+        ".well-known/security.txt",
         "CNAME",
         ".nojekyll",
         "css/style.css",
@@ -185,6 +188,8 @@ def test_all_30_pages_seo_hreflang_csp_and_links() -> None:
         # CSP & Security hygiene
         csp_values = [m.get("content") for m in parser.meta if m.get("http-equiv", "").lower() == "content-security-policy"]
         assert csp_values == [EXPECTED_CSP], f"Unexpected CSP in {rel}: {csp_values}"
+        referrers = [m.get("content") for m in parser.meta if m.get("name", "").lower() == "referrer"]
+        assert referrers == ["no-referrer"], f"Missing no-referrer meta in {rel}: {referrers}"
         assert not parser.inline_style_attrs, f"Disallowed inline style attrs in {rel}: {parser.inline_style_attrs}"
         assert not parser.event_handler_attrs, f"Disallowed inline on* attrs in {rel}: {parser.event_handler_attrs}"
 
@@ -213,6 +218,7 @@ def test_all_30_pages_seo_hreflang_csp_and_links() -> None:
                 assert target is not None and target.is_file(), f"Broken <link> in {rel}: {href}"
 
         for href in parser.anchors:
+            assert href.startswith(("/", "https://")), f"Disallowed anchor scheme/path in {rel}: {href}"
             if href.startswith("/"):
                 target = resolve_dist_target(href)
                 assert target is not None and target.is_file(), f"Broken <a href> in {rel}: {href}"
@@ -274,7 +280,42 @@ def test_sitemap_30_urls_and_og_image() -> None:
     robots = (DIST / "robots.txt").read_text(encoding="utf-8")
     assert f"Sitemap: {DOMAIN}/sitemap.xml" in robots
 
+    sec_txt = (DIST / ".well-known/security.txt").read_text(encoding="utf-8")
+    assert "Contact: mailto:security@novikau.me" in sec_txt
+    assert f"Canonical: {DOMAIN}/.well-known/security.txt" in sec_txt
+
     with Image.open(DIST / "assets/og-image.png") as im:
         assert im.size == (1200, 630)
         stat = ImageStat.Stat(im.convert("RGB"))
         assert sum(stat.stddev) > 30, "og-image.png looks blank or uniform"
+
+
+def test_vendor_sha256_integrity() -> None:
+    vmd = (ROOT / "VENDOR.md").read_text(encoding="utf-8")
+    checked = 0
+    for line in vmd.splitlines():
+        if "src/vendor/" in line:
+            cols = [c.strip().strip("`") for c in line.split("|")[1:-1]]
+            rel_src, expected_sha = cols[3], cols[5]
+            rel_dist = rel_src.replace("src/vendor/", "vendor/", 1)
+            assert hashlib.sha256((ROOT / rel_src).read_bytes()).hexdigest() == expected_sha, f"Mismatch in {rel_src}"
+            assert hashlib.sha256((DIST / rel_dist).read_bytes()).hexdigest() == expected_sha, f"Mismatch in dist/{rel_dist}"
+            checked += 1
+    assert checked == 5, f"Expected 5 vendored entries in VENDOR.md, checked {checked}"
+
+
+def test_ssg_hardening_guards() -> None:
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import build as ssg
+
+    with pytest.raises(ValueError):
+        ssg.route_for("en", "../escape")
+    with pytest.raises(ValueError):
+        ssg.out_path_for("/../../escape/")
+    with pytest.raises(ValueError):
+        ssg.validate_href("javascript:alert(1)")
+    with pytest.raises(ValueError):
+        ssg.validate_href("http://widepostermaker.com/")
+
+    rendered = ssg.apply_tokens("A={{ONE}} B={{TWO}}", {"ONE": "{{TWO}}", "TWO": "safe"})
+    assert rendered == "A={{TWO}} B=safe"

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fetch and pin self-hosted vendor libraries from npm tarballs."""
+"""Fetch and pin self-hosted vendor libraries from npm tarballs with SHA-256 verification."""
 
 from __future__ import annotations
 
@@ -18,6 +18,7 @@ PACKAGES = [
         "version": "1.17.1",
         "license": "MIT",
         "url": "https://registry.npmjs.org/pdf-lib/-/pdf-lib-1.17.1.tgz",
+        "tarball_sha256": "a7cc1eaf12e41e612a7be581162a63b18118aefc01e90f6a1f35347b1f324a1c",
         "files": {
             "package/dist/pdf-lib.esm.min.js": ROOT / "src/vendor/pdf-lib/pdf-lib.esm.min.js",
             "package/LICENSE.md": ROOT / "src/vendor/pdf-lib/LICENSE.md",
@@ -25,9 +26,10 @@ PACKAGES = [
     },
     {
         "name": "pdfjs-dist",
-        "version": "4.10.38",
+        "version": "6.5.438",
         "license": "Apache-2.0",
-        "url": "https://registry.npmjs.org/pdfjs-dist/-/pdfjs-dist-4.10.38.tgz",
+        "url": "https://registry.npmjs.org/pdfjs-dist/-/pdfjs-dist-6.5.438.tgz",
+        "tarball_sha256": "7461aefcd27c4ef0dd76f9ca5760f09466eb6b3f934432670c12132e7b3d6faa",
         "files": {
             "package/legacy/build/pdf.min.mjs": ROOT / "src/vendor/pdfjs/pdf.min.mjs",
             "package/legacy/build/pdf.worker.min.mjs": ROOT / "src/vendor/pdfjs/pdf.worker.min.mjs",
@@ -50,6 +52,13 @@ def main() -> None:
         print(f"Fetching {pkg['name']}@{pkg['version']} ...")
         with urllib.request.urlopen(pkg["url"], timeout=60) as resp:
             tgz_bytes = resp.read()
+
+        actual_tgz_sha = sha256_bytes(tgz_bytes)
+        if actual_tgz_sha != pkg["tarball_sha256"]:
+            raise ValueError(
+                f"Tarball SHA-256 mismatch for {pkg['name']}@{pkg['version']}: "
+                f"expected {pkg['tarball_sha256']}, got {actual_tgz_sha}"
+            )
 
         with tarfile.open(fileobj=io.BytesIO(tgz_bytes), mode="r:gz") as tf:
             for member_name, out_path in pkg["files"].items():
@@ -83,7 +92,7 @@ def main() -> None:
         "# Vendored Third-Party Libraries",
         "",
         "All browser dependencies are self-hosted inside the repository with no runtime CDN requests.",
-        "Re-generate and verify checksums with `python scripts/fetch_vendor.py`.",
+        "Re-generate and verify tarball + extracted checksums with `python scripts/fetch_vendor.py`.",
         "",
         "| Package | Version | License | File | Size (bytes) | SHA-256 |",
         "| --- | --- | --- | --- | ---: | --- |",
@@ -93,7 +102,7 @@ def main() -> None:
 
     lines.extend(["", "## Source Tarballs", ""])
     for pkg in PACKAGES:
-        lines.append(f"- `{pkg['name']}@{pkg['version']}`: {pkg['url']}")
+        lines.append(f"- `{pkg['name']}@{pkg['version']}`: {pkg['url']} (`sha256:{pkg['tarball_sha256']}`)")
     lines.append("")
 
     vendor_md = ROOT / "VENDOR.md"

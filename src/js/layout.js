@@ -6,36 +6,36 @@ export const PT_PER_MM = 72 / 25.4;
 export const MM_PER_INCH = 25.4;
 export const MAX_SHEETS = 400;
 
-export const PAPERS = Object.freeze({
-  a4: Object.freeze({
-    id: 'a4',
-    name: 'A4',
-    widthMm: 210,
-    heightMm: 297,
-    defaultUnits: 'mm',
-  }),
-  letter: Object.freeze({
-    id: 'letter',
-    name: 'US Letter',
-    widthMm: 215.9,
-    heightMm: 279.4,
-    defaultUnits: 'in',
-  }),
-  a3: Object.freeze({
-    id: 'a3',
-    name: 'A3',
-    widthMm: 297,
-    heightMm: 420,
-    defaultUnits: 'mm',
-  }),
-  legal: Object.freeze({
-    id: 'legal',
-    name: 'US Legal',
-    widthMm: 215.9,
-    heightMm: 355.6,
-    defaultUnits: 'in',
-  }),
+const PAPER_MAP = Object.create(null);
+PAPER_MAP.a4 = Object.freeze({
+  id: 'a4',
+  name: 'A4',
+  widthMm: 210,
+  heightMm: 297,
+  defaultUnits: 'mm',
 });
+PAPER_MAP.letter = Object.freeze({
+  id: 'letter',
+  name: 'US Letter',
+  widthMm: 215.9,
+  heightMm: 279.4,
+  defaultUnits: 'in',
+});
+PAPER_MAP.a3 = Object.freeze({
+  id: 'a3',
+  name: 'A3',
+  widthMm: 297,
+  heightMm: 420,
+  defaultUnits: 'mm',
+});
+PAPER_MAP.legal = Object.freeze({
+  id: 'legal',
+  name: 'US Legal',
+  widthMm: 215.9,
+  heightMm: 355.6,
+  defaultUnits: 'in',
+});
+export const PAPERS = Object.freeze(PAPER_MAP);
 
 export function clamp(val, min, max) {
   const n = Number(val);
@@ -71,7 +71,8 @@ export function inToMm(inches) {
  * Convert 0-based row index to Excel-style letters: 0 -> A, 25 -> Z, 26 -> AA.
  */
 export function rowLabel(rowIndex) {
-  let n = Math.max(0, Math.floor(rowIndex));
+  if (!Number.isFinite(rowIndex) || rowIndex < 0) return 'A';
+  let n = Math.floor(rowIndex);
   let out = '';
   while (true) {
     out = String.fromCharCode(65 + (n % 26)) + out;
@@ -180,14 +181,14 @@ export function computeLayout(params) {
     excludedTiles = null,
   } = params;
 
-  if (!(srcWidth > 0) || !(srcHeight > 0)) {
-    throw new Error('Source dimensions must be positive');
+  if (!Number.isFinite(srcWidth) || srcWidth <= 0 || !Number.isFinite(srcHeight) || srcHeight <= 0) {
+    throw new Error('Source dimensions must be positive finite numbers');
   }
 
-  const paperObj = PAPERS[paper] || PAPERS.a4;
+  const paperObj = Object.hasOwn(PAPERS, paper) ? PAPERS[paper] : PAPERS.a4;
   const aspectH = srcHeight / srcWidth;
-  const physWmm = srcPhysWmm > 0 ? srcPhysWmm : (srcWidth / 96) * MM_PER_INCH;
-  const physHmm = srcPhysHmm > 0 ? srcPhysHmm : physWmm * aspectH;
+  const physWmm = Number.isFinite(srcPhysWmm) && srcPhysWmm > 0 ? srcPhysWmm : (srcWidth / 96) * MM_PER_INCH;
+  const physHmm = Number.isFinite(srcPhysHmm) && srcPhysHmm > 0 ? srcPhysHmm : physWmm * aspectH;
 
   let chosen;
   if (orientation === 'auto') {
