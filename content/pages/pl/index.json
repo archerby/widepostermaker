@@ -1,0 +1,63 @@
+{
+  "slug": "",
+  "route": "/pl/",
+  "template": "tool",
+  "navLabel": "Plakat A4",
+  "breadcrumbTitle": "Plakat na A4",
+  "title": "Podziel zdjęcie lub PDF na kartki A4 — duży plakat w domu",
+  "description": "Wydrukuj duży plakat lub PDF na zwykłej drukarce A4/Letter. Znaczniki cięcia, zakładki do klejenia, mapa montażu i 100% prywatności w przeglądarce.",
+  "h1": "Podziel obraz lub PDF na arkusze A4",
+  "lead": "Zamień dowolne zdjęcie, mapę albo duży plik PDF w gotowy do druku wielostronicowy PDF na A4 lub US Letter — ze znacznikami cięcia i zero wysyłania na serwer.",
+  "presets": {
+    "paper": "a4",
+    "units": "cm",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "sections": [
+    {
+      "heading": "Duże plakaty z domowej drukarki A4 bez plotera",
+      "paragraphs": [
+        "Zwykła drukarka obsługuje kartki A4, a wydruk wielkoformatowy w drukarni bywa drogi. WidePosterMaker dzieli obrazy i dokumenty PDF na równą siatkę arkuszy z zakładkami do szybkiego sklejenia w domu.",
+        "Wszystko odbywa się lokalnie w Twojej przeglądarce — pliki PDF zachowują ostrość wektorową przez przycinanie pojedynczego obiektu XObject, a zdjęcia osadzane są w pliku wynikowym tylko raz."
+      ],
+      "listHeading": "Jak to działa w trzech krokach",
+      "listType": "ol",
+      "list": [
+        "Przeciągnij lub wklej ze schowka plik PNG, JPEG, WebP, SVG lub PDF.",
+        "Wybierz papier A4 lub Letter, automatyczną orientację, liczbę kartek lub szerokość w cm.",
+        "Pobierz gotowy PDF, wydrukuj w skali 100%, odetnij górny i lewy margines i sklej według krzyżyków (+)."
+      ]
+    },
+    {
+      "heading": "Ile kartek A4 potrzeba na popularne formaty plakatów",
+      "paragraphs": [
+        "Orientacyjna liczba arkuszy przy marginesie drukarki 5 mm i zakładce klejenia 10 mm:"
+      ],
+      "table": {
+        "headers": ["Format plakatu", "Wymiary (cm)", "Kartki A4 (pion)", "Kartki A4 (poziom)"],
+        "rows": [
+          ["Plakat A2", "42,0 × 59,4 cm", "2×2 (4 kartki)", "2×3 (6 kartek)"],
+          ["Plakat A1", "59,4 × 84,1 cm", "3×3 (9 kartek)", "3×4 (12 kartek)"],
+          ["Plakat kinowy 60 × 90 cm", "60,0 × 90,0 cm", "4×4 (16 kartek)", "3×5 (15 kartek)"],
+          ["Plan / Wykrój A0", "84,1 × 118,9 cm", "5×5 (25 kartek)", "4×6 (24 kartki)"]
+        ]
+      }
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Czy moje zdjęcia lub pliki PDF są wysyłane na serwer?",
+      "a": "Nie. Całe przetwarzanie zachodzi lokalnie w pamięci przeglądarki bez wysyłania danych, ciasteczek ani śledzenia."
+    },
+    {
+      "q": "Dlaczego lepiej pobrać wygenerowany PDF niż drukować stronę WWW?",
+      "a": "Przeglądarki różnie skalują wydruki HTML. Plik PDF zachowuje dokładne wymiary w milimetrach oraz linijkę 50 mm na stronie 1."
+    },
+    {
+      "q": "Czy mogę pominąć puste kartki w narożnikach?",
+      "a": "Tak — kliknij dowolną komórkę bezpośrednio na podglądzie siatki, aby wykluczyć ją z wydruku."
+    }
+  ]
+}

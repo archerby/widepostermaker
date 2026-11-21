@@ -1,0 +1,44 @@
+{
+  "slug": "how-to-glue-a-tiled-poster",
+  "route": "/de/how-to-glue-a-tiled-poster/",
+  "template": "guide",
+  "navLabel": "Klebeanleitung",
+  "breadcrumbTitle": "Poster kleben & schneiden",
+  "title": "Mehrseitige Poster & Schnittmuster sauber schneiden und kleben",
+  "description": "Bebilderte Schritt-für-Schritt-Anleitung: Kontrolllineal prüfen, nur oben & links schneiden und A4-Blätter nahtlos an Passkreuzen kleben.",
+  "h1": "Poster aus DIN-A4-Blättern sauber schneiden und kleben",
+  "lead": "Mit dieser einfachen Technik vermeiden Sie Versatz, Papierwellen und unnötige Schnittarbeit bei mehrseitigen Postern und Schnittmustern.",
+  "presets": {
+    "paper": "a4",
+    "units": "cm",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "sections": [
+    {
+      "heading": "Schritt 1: Seite 1 drucken und 50-mm-Lineal prüfen",
+      "paragraphs": [
+        "Messen Sie vor dem Komplettdruck mit einem Lineal die 50-mm-Skala auf Seite 1 nach. Ist sie kürzer als 50 mm, wählen Sie im Druckdialog „Tatsächliche Größe / 100%“ statt „An Seite anpassen“."
+      ]
+    },
+    {
+      "heading": "Schritt 2: Nur den oberen und linken Rand abschneiden",
+      "paragraphs": [
+        "Lassen Sie die rechten und unteren gestrichelten Klebelaschen unbedingt stehen und schneiden Sie bei Anschlussblättern nur oben und links exakt durch die Schnittmarken."
+      ]
+    },
+    {
+      "heading": "Schritt 3: Reihenweise an den (+)-Marken kleben",
+      "paragraphs": [
+        "Kleben Sie zuerst jede waagerechte Reihe (A1 + A2 + A3) zusammen und fügen Sie danach die fertigen Reihen vertikal aneinander. Ein trockener Klebestift verhindert Wellen im Papier."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Klebestift, Klebeband oder Flüssigkleber?",
+      "a": "Ein fester Klebestift oder dünnes doppelseitiges Klebeband hält Papier faltenfrei und glatt."
+    }
+  ]
+}

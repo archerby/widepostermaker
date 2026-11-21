@@ -283,6 +283,43 @@ async function runTests() {
   const mobileClientW = mDoc.documentElement.clientWidth;
   assert(mobileScrollW <= mobileClientW, `Mobile 390px horizontal overflow: scrollWidth=${mobileScrollW} > clientWidth=${mobileClientW}`);
 
+  // 6. Real localized UI check on /ru/?sample=1 at 390x844 mobile width
+  const ruFrame = document.createElement('iframe');
+  ruFrame.width = '390';
+  ruFrame.height = '844';
+  ruFrame.src = '/ru/?sample=1';
+  document.body.appendChild(ruFrame);
+  await new Promise((resolve, reject) => {
+    const t0 = performance.now();
+    function pollRu() {
+      try {
+        const doc = ruFrame.contentDocument;
+        const ws = doc && doc.getElementById('workspace');
+        const sheets = doc && doc.getElementById('summary-sheets');
+        const cap = doc && doc.getElementById('preview-caption');
+        if (ws && !ws.hidden && sheets && sheets.textContent !== '—' && cap && cap.textContent.includes('Итог:')) {
+          resolve();
+          return;
+        }
+      } catch (e) {
+        reject(e);
+        return;
+      }
+      if (performance.now() - t0 > 10000) {
+        reject(new Error('Timed out waiting for /ru/?sample=1 workspace'));
+        return;
+      }
+      setTimeout(pollRu, 80);
+    }
+    pollRu();
+  });
+  const ruDoc = ruFrame.contentDocument;
+  const ruScrollW = ruDoc.documentElement.scrollWidth;
+  const ruClientW = ruDoc.documentElement.clientWidth;
+  assert(ruScrollW <= ruClientW, `Mobile /ru/ 390px horizontal overflow: ${ruScrollW} > ${ruClientW}`);
+  const ruSummaryText = ruDoc.getElementById('summary-sheets').textContent + ' ' + ruDoc.getElementById('preview-caption').textContent;
+  assert(!ruSummaryText.includes('{') && !ruSummaryText.includes('}'), `Unreplaced i18n token in RU UI: ${ruSummaryText}`);
+
   return {
     ok: true,
     mobileMetrics: { mobileScrollW, mobileClientW },

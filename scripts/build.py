@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static site generator for WidePosterMaker (i18n-ready, Python stdlib only)."""
+"""Multilingual static site generator for WidePosterMaker (Python stdlib only)."""
 
 from __future__ import annotations
 
@@ -15,6 +15,8 @@ CONTENT = ROOT / "content"
 TEMPLATES = ROOT / "templates"
 DIST = ROOT / "dist"
 
+LOCALES = ["en", "ru", "de", "es", "pl"]
+
 
 def esc(val: object) -> str:
     return html.escape(str(val), quote=True)
@@ -22,6 +24,17 @@ def esc(val: object) -> str:
 
 def safe_json_for_script(obj: object) -> str:
     return json.dumps(obj, ensure_ascii=False, indent=2).replace("</", "<\\/")
+
+
+def route_for(locale: str, slug: str) -> str:
+    if locale == "en":
+        return "/" if not slug else f"/{slug}/"
+    return f"/{locale}/" if not slug else f"/{locale}/{slug}/"
+
+
+def out_path_for(route: str) -> pathlib.Path:
+    rel = route.strip("/")
+    return DIST / "index.html" if not rel else DIST / rel / "index.html"
 
 
 def render_sections(sections: list[dict]) -> str:
@@ -90,6 +103,7 @@ def render_trust_cards(trust: list[dict]) -> str:
 def build_json_ld(page: dict, i18n: dict) -> str:
     domain = i18n["domain"].rstrip("/")
     canonical = f"{domain}{page['route']}"
+    lang = i18n["lang"]
     schemas: list[dict] = []
 
     if page["template"] == "tool":
@@ -99,6 +113,7 @@ def build_json_ld(page: dict, i18n: dict) -> str:
                 "@type": "WebApplication",
                 "name": page["h1"],
                 "url": canonical,
+                "inLanguage": lang,
                 "description": page["description"],
                 "applicationCategory": "UtilitiesApplication",
                 "operatingSystem": "Any (Web Browser)",
@@ -117,6 +132,7 @@ def build_json_ld(page: dict, i18n: dict) -> str:
                 "@context": "https://schema.org",
                 "@type": "HowTo",
                 "name": page["h1"],
+                "inLanguage": lang,
                 "description": page["description"],
                 "step": [
                     {
@@ -134,6 +150,7 @@ def build_json_ld(page: dict, i18n: dict) -> str:
             {
                 "@context": "https://schema.org",
                 "@type": "FAQPage",
+                "inLanguage": lang,
                 "mainEntity": [
                     {
                         "@type": "Question",
@@ -148,7 +165,8 @@ def build_json_ld(page: dict, i18n: dict) -> str:
             }
         )
 
-    if page["route"] != "/":
+    home_route = i18n["homeHref"]
+    if page["route"] != home_route:
         schemas.append(
             {
                 "@context": "https://schema.org",
@@ -158,7 +176,7 @@ def build_json_ld(page: dict, i18n: dict) -> str:
                         "@type": "ListItem",
                         "position": 1,
                         "name": i18n["siteName"],
-                        "item": f"{domain}/",
+                        "item": f"{domain}{home_route}",
                     },
                     {
                         "@type": "ListItem",
@@ -191,6 +209,34 @@ def render_nav(nav_items: list[dict], active_route: str) -> str:
     return "\n".join(links)
 
 
+def render_lang_links(i18n_map: dict[str, dict], current_locale: str, slug: str) -> str:
+    links: list[str] = []
+    for loc in LOCALES:
+        href = route_for(loc, slug)
+        label = i18n_map[loc]["codeLabel"]
+        current = ' aria-current="page"' if loc == current_locale else ""
+        links.append(f'        <a href="{esc(href)}" hreflang="{esc(loc)}" lang="{esc(loc)}"{current}>{esc(label)}</a>')
+    return "\n".join(links)
+
+
+def render_hreflang_links(domain: str, slug: str) -> str:
+    lines: list[str] = []
+    for loc in LOCALES:
+        href = f"{domain}{route_for(loc, slug)}"
+        lines.append(f'  <link rel="alternate" hreflang="{esc(loc)}" href="{esc(href)}">')
+    xdef = f"{domain}{route_for('en', slug)}"
+    lines.append(f'  <link rel="alternate" hreflang="x-default" href="{esc(xdef)}">')
+    return "\n".join(lines)
+
+
+def render_og_alternates(i18n_map: dict[str, dict], current_locale: str) -> str:
+    lines: list[str] = []
+    for loc in LOCALES:
+        if loc != current_locale:
+            lines.append(f'  <meta property="og:locale:alternate" content="{esc(i18n_map[loc]["ogLocale"])}">')
+    return "\n".join(lines)
+
+
 def render_footer_links(items: list[dict]) -> str:
     rows: list[str] = []
     for item in items:
@@ -200,7 +246,8 @@ def render_footer_links(items: list[dict]) -> str:
     return "\n".join(rows)
 
 
-def build_404_page(base_tpl: str, i18n: dict) -> str:
+def build_404_page(base_tpl: str, i18n_map: dict[str, dict]) -> str:
+    i18n = i18n_map["en"]
     domain = i18n["domain"].rstrip("/")
     main_html = (
         '<section class="hero">\n'
@@ -209,18 +256,21 @@ def build_404_page(base_tpl: str, i18n: dict) -> str:
         '  <p class="hero-lead">The page you requested does not exist on WidePosterMaker.</p>\n'
         "</section>\n"
         '<section class="content-section">\n'
-        "  <p>Jump back to the interactive poster tiler or pick one of the preset tools below.</p>\n"
+        "  <p>Jump back to the interactive poster tiler or switch language from the header.</p>\n"
         '  <p><a class="btn btn-primary" href="/">Open WidePosterMaker</a></p>\n'
         "</section>\n"
     )
-    tool_links = [n for n in i18n["nav"] if n["href"] != "/how-to-glue-a-tiled-poster/"]
+    tool_links = [n for n in i18n["nav"] if n.get("slug") != "how-to-glue-a-tiled-poster"]
     return apply_tokens(
         base_tpl,
         {
-            "LANG": esc(i18n["lang"]),
+            "LANG": "en",
+            "OG_LOCALE": esc(i18n["ogLocale"]),
+            "OG_LOCALE_ALTERNATES": render_og_alternates(i18n_map, "en"),
             "TITLE": "Page Not Found — WidePosterMaker",
             "DESCRIPTION": "Return to WidePosterMaker to split images and PDFs into printable A4 and US Letter posters.",
             "CANONICAL": f"{domain}/",
+            "HREFLANG_LINKS": "",
             "SITE_NAME": esc(i18n["siteName"]),
             "DOMAIN": esc(domain),
             "JSON_LD_BLOCKS": "",
@@ -229,7 +279,11 @@ def build_404_page(base_tpl: str, i18n: dict) -> str:
             "PRESET_MODE": "sheets-width",
             "PRESET_VALUE": "3",
             "PRESET_MAP": "true",
+            "HOME_HREF": "/",
+            "NAV_LABEL": esc(i18n["navLabel"]),
+            "LANG_SWITCH_LABEL": esc(i18n["langSwitchLabel"]),
             "NAV_LINKS": render_nav(i18n["nav"], ""),
+            "LANG_LINKS": render_lang_links(i18n_map, "en", ""),
             "MAIN_CONTENT": main_html,
             "FOOTER_ABOUT_TITLE": esc(i18n["footer"]["aboutTitle"]),
             "FOOTER_ABOUT_TEXT": esc(i18n["footer"]["aboutText"]),
@@ -238,13 +292,17 @@ def build_404_page(base_tpl: str, i18n: dict) -> str:
             "FOOTER_RESOURCES_TITLE": esc(i18n["footer"]["resourcesTitle"]),
             "FOOTER_RESOURCE_LINKS": render_footer_links(i18n["footer"]["resourcesLinks"]),
             "FOOTER_COPYRIGHT": esc(i18n["footer"]["copyright"]),
+            "FOOTER_TAGLINE": esc(i18n["footer"]["tagline"]),
             "EXTRA_SCRIPTS": "",
         },
     )
 
 
 def main() -> None:
-    i18n = json.loads((CONTENT / "i18n/en.json").read_text(encoding="utf-8"))
+    i18n_map = {
+        loc: json.loads((CONTENT / "i18n" / f"{loc}.json").read_text(encoding="utf-8"))
+        for loc in LOCALES
+    }
     base_tpl = (TEMPLATES / "base.html").read_text(encoding="utf-8")
     tool_tpl = (TEMPLATES / "tool.html").read_text(encoding="utf-8")
     guide_tpl = (TEMPLATES / "guide.html").read_text(encoding="utf-8")
@@ -253,35 +311,42 @@ def main() -> None:
         shutil.rmtree(DIST)
     DIST.mkdir(parents=True, exist_ok=True)
 
-    # Copy runtime static directories
     for folder in ("css", "js", "assets", "vendor"):
         shutil.copytree(SRC / folder, DIST / folder)
 
-    # Copy CNAME & create .nojekyll
     shutil.copyfile(ROOT / "CNAME", DIST / "CNAME")
     (DIST / ".nojekyll").write_text("", encoding="utf-8")
 
-    ui = i18n["ui"]
-    domain = i18n["domain"].rstrip("/")
-    tool_footer_links = [n for n in i18n["nav"] if n["href"] != "/how-to-glue-a-tiled-poster/"]
+    all_pages: list[tuple[str, dict]] = []
+    for loc in LOCALES:
+        for pfile in sorted((CONTENT / "pages" / loc).glob("*.json")):
+            page = json.loads(pfile.read_text(encoding="utf-8"))
+            expected_route = route_for(loc, page["slug"])
+            if page["route"] != expected_route:
+                raise ValueError(f"Route mismatch in {pfile}: {page['route']} != {expected_route}")
+            all_pages.append((loc, page))
 
-    pages: list[dict] = []
-    for pfile in sorted((CONTENT / "pages").glob("*.json")):
-        pages.append(json.loads(pfile.read_text(encoding="utf-8")))
+    all_pages.sort(key=lambda item: (LOCALES.index(item[0]), 0 if item[1]["slug"] == "" else 1, item[1]["slug"]))
 
-    # Sort pages with homepage first for deterministic sitemap ordering
-    pages.sort(key=lambda p: (0 if p["route"] == "/" else 1, p["route"]))
-
-    for page in pages:
+    for loc, page in all_pages:
+        i18n = i18n_map[loc]
+        ui = i18n["ui"]
+        guide = i18n["guide"]
+        domain = i18n["domain"].rstrip("/")
         tpl = tool_tpl if page["template"] == "tool" else guide_tpl
         presets = page["presets"]
+        tool_footer_links = [n for n in i18n["nav"] if n.get("slug") != "how-to-glue-a-tiled-poster"]
+
         main_html = apply_tokens(
             tpl,
             {
+                "HOME_HREF": esc(i18n["homeHref"]),
                 "EYEBROW": esc(ui["eyebrow"]),
                 "BREADCRUMB_TITLE": esc(page["breadcrumbTitle"]),
                 "H1": esc(page["h1"]),
                 "LEAD": esc(page["lead"]),
+                "UI_WORKSPACE_ARIA": esc(ui["workspaceAria"]),
+                "UI_TRUST_ARIA": esc(ui["trustAria"]),
                 "UI_DROP_TITLE": esc(ui["dropTitle"]),
                 "UI_DROP_SUB": esc(ui["dropSub"]),
                 "UI_CHOOSE_FILE": esc(ui["chooseFile"]),
@@ -289,6 +354,7 @@ def main() -> None:
                 "UI_CHANGE_FILE": esc(ui["changeFile"]),
                 "UI_PREV_PAGE": esc(ui["prevPage"]),
                 "UI_NEXT_PAGE": esc(ui["nextPage"]),
+                "UI_PAGE_INIT": esc(ui["pageInit"]),
                 "UI_PAPER_LABEL": esc(ui["paperLabel"]),
                 "UI_ORI_LABEL": esc(ui["oriLabel"]),
                 "UI_ORI_AUTO": esc(ui["oriAuto"]),
@@ -301,6 +367,10 @@ def main() -> None:
                 "UI_MODE_SIZE_H": esc(ui["modeSizeH"]),
                 "UI_MODE_SCALE": esc(ui["modeScale"]),
                 "UI_UNITS_LABEL": esc(ui["unitsLabel"]),
+                "UI_UNIT_CM": esc(ui["unitCm"]),
+                "UI_UNIT_MM": esc(ui["unitMm"]),
+                "UI_UNIT_IN": esc(ui["unitIn"]),
+                "UI_DEFAULT_UNIT_TAG": esc(ui["defaultUnitTag"]),
                 "UI_VALUE_LABEL": esc(ui["valueLabel"]),
                 "UI_MARGIN_LABEL": esc(ui["marginLabel"]),
                 "UI_OVERLAP_LABEL": esc(ui["overlapLabel"]),
@@ -310,12 +380,22 @@ def main() -> None:
                 "UI_SUMMARY_SHEETS": esc(ui["summarySheets"]),
                 "UI_SUMMARY_SIZE": esc(ui["summarySize"]),
                 "UI_SUMMARY_QUALITY": esc(ui["summaryQuality"]),
+                "UI_EXCLUDED_NOTICE": esc(ui["excludedNotice"]),
+                "UI_RESTORE_BTN": esc(ui["restoreBtn"]),
                 "UI_DOWNLOAD_PDF": esc(ui["downloadPdf"]),
                 "UI_PRINT_DIRECT": esc(ui["printDirect"]),
                 "TRUST_CARDS": render_trust_cards(ui["trust"]),
                 "BODY_SECTIONS": render_sections(page.get("sections", [])),
                 "UI_FAQ_HEADING": esc(ui["faqHeading"]),
                 "FAQ_ITEMS": render_faqs(page.get("faqs", [])),
+                "GUIDE_VISUAL_HEADING": esc(guide["visualHeading"]),
+                "GUIDE_SVG1_ARIA": esc(guide["svg1Aria"]),
+                "GUIDE_SVG2_ARIA": esc(guide["svg2Aria"]),
+                "GUIDE_SVG3_ARIA": esc(guide["svg3Aria"]),
+                "GUIDE_CAP_1": esc(guide["cap1"]),
+                "GUIDE_CAP_2": esc(guide["cap2"]),
+                "GUIDE_CAP_3": esc(guide["cap3"]),
+                "GUIDE_OPEN_TOOL": esc(guide["openTool"]),
             },
         )
 
@@ -331,9 +411,12 @@ def main() -> None:
             base_tpl,
             {
                 "LANG": esc(i18n["lang"]),
+                "OG_LOCALE": esc(i18n["ogLocale"]),
+                "OG_LOCALE_ALTERNATES": render_og_alternates(i18n_map, loc),
                 "TITLE": esc(page["title"]),
                 "DESCRIPTION": esc(page["description"]),
                 "CANONICAL": esc(canonical),
+                "HREFLANG_LINKS": render_hreflang_links(domain, page["slug"]),
                 "SITE_NAME": esc(i18n["siteName"]),
                 "DOMAIN": esc(domain),
                 "JSON_LD_BLOCKS": build_json_ld(page, i18n),
@@ -342,7 +425,11 @@ def main() -> None:
                 "PRESET_MODE": esc(presets["mode"]),
                 "PRESET_VALUE": esc(presets["value"]),
                 "PRESET_MAP": "true" if presets["map"] else "false",
+                "HOME_HREF": esc(i18n["homeHref"]),
+                "NAV_LABEL": esc(i18n["navLabel"]),
+                "LANG_SWITCH_LABEL": esc(i18n["langSwitchLabel"]),
                 "NAV_LINKS": render_nav(i18n["nav"], page["route"]),
+                "LANG_LINKS": render_lang_links(i18n_map, loc, page["slug"]),
                 "MAIN_CONTENT": main_html,
                 "FOOTER_ABOUT_TITLE": esc(i18n["footer"]["aboutTitle"]),
                 "FOOTER_ABOUT_TEXT": esc(i18n["footer"]["aboutText"]),
@@ -351,36 +438,42 @@ def main() -> None:
                 "FOOTER_RESOURCES_TITLE": esc(i18n["footer"]["resourcesTitle"]),
                 "FOOTER_RESOURCE_LINKS": render_footer_links(i18n["footer"]["resourcesLinks"]),
                 "FOOTER_COPYRIGHT": esc(i18n["footer"]["copyright"]),
+                "FOOTER_TAGLINE": esc(i18n["footer"]["tagline"]),
                 "EXTRA_SCRIPTS": extra_scripts,
             },
         )
 
-        out_path = DIST / "index.html" if page["route"] == "/" else DIST / page["slug"] / "index.html"
+        out_path = out_path_for(page["route"])
         out_path.parent.mkdir(parents=True, exist_ok=True)
         out_path.write_text(full_html, encoding="utf-8")
-        print(f"Built {out_path.relative_to(ROOT)}")
 
     # 404.html
-    (DIST / "404.html").write_text(build_404_page(base_tpl, i18n), encoding="utf-8")
+    (DIST / "404.html").write_text(build_404_page(base_tpl, i18n_map), encoding="utf-8")
 
-    # sitemap.xml
+    # Multilingual sitemap.xml with xhtml:link hreflang alternates
+    domain = i18n_map["en"]["domain"].rstrip("/")
     today = datetime.date.today().isoformat()
     sitemap_lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
     ]
-    for page in pages:
-        loc = f"{domain}{page['route']}"
-        priority = "1.0" if page["route"] == "/" else "0.8"
+    for _loc, page in all_pages:
+        loc_url = f"{domain}{page['route']}"
+        priority = "1.0" if page["slug"] == "" and page["route"] == "/" else ("0.9" if page["slug"] == "" else "0.8")
         sitemap_lines.extend(
             [
                 "  <url>",
-                f"    <loc>{esc(loc)}</loc>",
+                f"    <loc>{esc(loc_url)}</loc>",
                 f"    <lastmod>{today}</lastmod>",
                 f"    <priority>{priority}</priority>",
-                "  </url>",
             ]
         )
+        for alt_loc in LOCALES:
+            alt_url = f"{domain}{route_for(alt_loc, page['slug'])}"
+            sitemap_lines.append(f'    <xhtml:link rel="alternate" hreflang="{esc(alt_loc)}" href="{esc(alt_url)}"/>')
+        xdef_url = f"{domain}{route_for('en', page['slug'])}"
+        sitemap_lines.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{esc(xdef_url)}"/>')
+        sitemap_lines.append("  </url>")
     sitemap_lines.append("</urlset>")
     (DIST / "sitemap.xml").write_text("\n".join(sitemap_lines) + "\n", encoding="utf-8")
 
@@ -396,11 +489,16 @@ def main() -> None:
         "",
         "> Free, open-source, 100% client-side web utility to split images (PNG, JPEG, WebP, SVG, GIF) and vector PDFs into printable multi-page A4, US Letter, A3, and Legal PDFs with crop marks, alignment crosshairs, glue overlap tabs, and a calibration assembly map.",
         "",
-        "## Key Pages",
+        "## Languages",
     ]
-    for page in pages:
-        llms_lines.append(f"- [{page['h1']}]({domain}{page['route']}): {page['description']}")
-    llms_lines.extend(["", f"Source code: {i18n['repoUrl']}"])
+    for loc in LOCALES:
+        home_page = next(p for l, p in all_pages if l == loc and p["slug"] == "")
+        llms_lines.append(f"- {loc.upper()}: [{home_page['h1']}]({domain}{home_page['route']}) — {home_page['description']}")
+    llms_lines.extend(["", "## English Tools & Guides"])
+    for loc, page in all_pages:
+        if loc == "en":
+            llms_lines.append(f"- [{page['h1']}]({domain}{page['route']}): {page['description']}")
+    llms_lines.extend(["", f"Source code: {i18n_map['en']['repoUrl']}"])
     (DIST / "llms.txt").write_text("\n".join(llms_lines) + "\n", encoding="utf-8")
 
     # manifest.webmanifest
@@ -418,7 +516,7 @@ def main() -> None:
         ],
     }
     (DIST / "manifest.webmanifest").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
-    print(f"Build complete -> {DIST.relative_to(ROOT)} ({len(pages)} pages + SEO metadata)")
+    print(f"Build complete -> {DIST.relative_to(ROOT)} ({len(all_pages)} pages across {len(LOCALES)} locales)")
 
 
 if __name__ == "__main__":

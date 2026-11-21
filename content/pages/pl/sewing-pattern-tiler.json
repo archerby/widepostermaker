@@ -1,0 +1,36 @@
+{
+  "slug": "sewing-pattern-tiler",
+  "route": "/pl/sewing-pattern-tiler/",
+  "template": "tool",
+  "navLabel": "Wykroje 100%",
+  "breadcrumbTitle": "Wykroje A0 na A4 (100%)",
+  "title": "Wykrój krawiecki A0 na A4 w skali 1:1 (100%) — PDF",
+  "description": "Podziel wykroje krawieckie A0 i szablony PDF na arkusze A4 lub Letter w dokładnej skali 100%. Linijka kontrolna 50 mm i pomijanie pustych stron.",
+  "h1": "Wykroje A0 na kartki A4 w skali 100% (1:1)",
+  "lead": "Preset ustawiony na Skala 1:1 (100%) i wektorowe cięcie PDF, aby wykroje krawieckie A0 i szablony stolarskie zachowały dokładne wymiary.",
+  "presets": {
+    "paper": "a4",
+    "units": "mm",
+    "mode": "scale",
+    "value": 100,
+    "map": true
+  },
+  "sections": [
+    {
+      "heading": "Dlaczego dokładna skala 100% jest kluczowa dla wykrojów A0",
+      "paragraphs": [
+        "Włączenie dopasowania do strony w drukarce potrafi zmniejszyć wykrój o kilka procent i zepsuć rozmiar ubrania. WidePosterMaker czyta fizyczne wymiary PDF A0 w punktach (72 pt = 25,4 mm) i drukuje je bez skalowania z paskiem kontrolnym 50 mm na stronie 1."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Czy wykrój A0 zachowa dokładny rozmiar 1:1 na A4?",
+      "a": "Tak — pod warunkiem wybrania 'Rozmiar rzeczywisty / 100%' w oknie drukowania i sprawdzenia paska 50 mm na stronie 1."
+    },
+    {
+      "q": "Jak pominąć puste kartki w narożnikach wykroju?",
+      "a": "Kliknij puste kafelki na podglądzie przed kliknięciem Pobierz PDF."
+    }
+  ]
+}

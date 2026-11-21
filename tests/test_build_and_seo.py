@@ -1,4 +1,4 @@
-"""Verification suite for static site build, SEO metadata, strict CSP, and link integrity."""
+"""Verification suite for multilingual static build, SEO metadata, hreflang, strict CSP, and link integrity."""
 
 from __future__ import annotations
 
@@ -15,6 +15,15 @@ from PIL import Image, ImageStat
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DIST = ROOT / "dist"
 DOMAIN = "https://widepostermaker.com"
+LOCALES = ("en", "ru", "de", "es", "pl")
+SLUGS = (
+    "",
+    "pdf-poster-splitter",
+    "a4-poster-maker",
+    "letter-poster-maker",
+    "sewing-pattern-tiler",
+    "how-to-glue-a-tiled-poster",
+)
 EXPECTED_CSP = (
     "default-src 'self'; script-src 'self'; style-src 'self'; "
     "img-src 'self' blob: data:; worker-src 'self' blob:; "
@@ -23,9 +32,21 @@ EXPECTED_CSP = (
 )
 
 
+def route_for(loc: str, slug: str) -> str:
+    if loc == "en":
+        return "/" if not slug else f"/{slug}/"
+    return f"/{loc}/" if not slug else f"/{loc}/{slug}/"
+
+
+def rel_file_for(route: str) -> str:
+    clean = route.strip("/")
+    return "index.html" if not clean else f"{clean}/index.html"
+
+
 class PageInspector(HTMLParser):
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
+        self.html_lang: str = ""
         self.title: str = ""
         self._in_title = False
         self.h1s: list[str] = []
@@ -50,7 +71,9 @@ class PageInspector(HTMLParser):
             if k.startswith("on"):
                 self.event_handler_attrs.append(f"{tag}.{k}")
 
-        if tag == "title":
+        if tag == "html":
+            self.html_lang = attr_map.get("lang", "")
+        elif tag == "title":
             self._in_title = True
         elif tag == "h1":
             self._in_h1 = True
@@ -108,12 +131,10 @@ def test_build_script_runs_and_emits_required_files() -> None:
     assert proc.returncode == 0, f"build.py failed:\n{proc.stdout}\n{proc.stderr}"
 
     required = [
-        "index.html",
-        "pdf-poster-splitter/index.html",
-        "a4-poster-maker/index.html",
-        "letter-poster-maker/index.html",
-        "sewing-pattern-tiler/index.html",
-        "how-to-glue-a-tiled-poster/index.html",
+        rel_file_for(route_for(loc, slug))
+        for loc in LOCALES
+        for slug in SLUGS
+    ] + [
         "404.html",
         "sitemap.xml",
         "robots.txt",
@@ -143,25 +164,23 @@ def test_build_script_runs_and_emits_required_files() -> None:
     assert (DIST / "CNAME").read_text(encoding="utf-8") == "widepostermaker.com\n"
 
 
-def test_all_html_pages_seo_csp_and_links() -> None:
-    canonical_routes = [
-        ("index.html", f"{DOMAIN}/"),
-        ("pdf-poster-splitter/index.html", f"{DOMAIN}/pdf-poster-splitter/"),
-        ("a4-poster-maker/index.html", f"{DOMAIN}/a4-poster-maker/"),
-        ("letter-poster-maker/index.html", f"{DOMAIN}/letter-poster-maker/"),
-        ("sewing-pattern-tiler/index.html", f"{DOMAIN}/sewing-pattern-tiler/"),
-        ("how-to-glue-a-tiled-poster/index.html", f"{DOMAIN}/how-to-glue-a-tiled-poster/"),
-    ]
-
+def test_all_30_pages_seo_hreflang_csp_and_links() -> None:
     titles: set[str] = set()
     descriptions: set[str] = set()
 
-    for rel, expected_canonical in canonical_routes + [("404.html", f"{DOMAIN}/")]:
+    entries = [
+        (loc, slug, rel_file_for(route_for(loc, slug)), f"{DOMAIN}{route_for(loc, slug)}")
+        for loc in LOCALES
+        for slug in SLUGS
+    ]
+
+    for loc, slug, rel, expected_canonical in entries + [("en", "", "404.html", f"{DOMAIN}/")]:
         html_text = (DIST / rel).read_text(encoding="utf-8")
         assert "{{" not in html_text and "}}" not in html_text, f"Unreplaced template token in {rel}"
 
         parser = PageInspector()
         parser.feed(html_text)
+        assert parser.html_lang == loc, f"Wrong html lang in {rel}: {parser.html_lang}"
 
         # CSP & Security hygiene
         csp_values = [m.get("content") for m in parser.meta if m.get("http-equiv", "").lower() == "content-security-policy"]
@@ -182,6 +201,8 @@ def test_all_html_pages_seo_csp_and_links() -> None:
                 if stype == "application/ld+json":
                     assert parsed_json.get("@context") == "https://schema.org"
                     assert parsed_json.get("@type")
+                    if parsed_json.get("@type") in {"WebApplication", "HowTo", "FAQPage"}:
+                        assert parsed_json.get("inLanguage") == loc
 
         for link in parser.links:
             href = link.get("href", "")
@@ -202,7 +223,6 @@ def test_all_html_pages_seo_csp_and_links() -> None:
                 target = resolve_dist_target(src)
                 assert target is not None and target.is_file(), f"Broken <img src> in {rel}: {src}"
 
-        # SEO assertions for canonical indexable pages
         if rel != "404.html":
             title = parser.title.strip()
             assert 15 <= len(title) <= 65, f"Title length out of range ({len(title)}) in {rel}: {title}"
@@ -221,21 +241,35 @@ def test_all_html_pages_seo_csp_and_links() -> None:
             canonicals = [l["href"] for l in parser.links if l.get("rel") == "canonical"]
             assert canonicals == [expected_canonical], f"Wrong canonical in {rel}: {canonicals}"
 
+            # Bidirectional hreflang checks
+            alt_map = {
+                l["hreflang"]: l["href"]
+                for l in parser.links
+                if l.get("rel") == "alternate" and "hreflang" in l
+            }
+            expected_alts = {l: f"{DOMAIN}{route_for(l, slug)}" for l in LOCALES}
+            expected_alts["x-default"] = f"{DOMAIN}{route_for('en', slug)}"
+            assert alt_map == expected_alts, f"Hreflang mismatch in {rel}: {alt_map}"
 
-def test_sitemap_robots_and_og_image() -> None:
+
+def test_sitemap_30_urls_and_og_image() -> None:
     tree = ET.parse(DIST / "sitemap.xml")
     root = tree.getroot()
-    ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
-    locs = {el.text for el in root.findall("sm:url/sm:loc", ns)}
-    expected_locs = {
-        f"{DOMAIN}/",
-        f"{DOMAIN}/pdf-poster-splitter/",
-        f"{DOMAIN}/a4-poster-maker/",
-        f"{DOMAIN}/letter-poster-maker/",
-        f"{DOMAIN}/sewing-pattern-tiler/",
-        f"{DOMAIN}/how-to-glue-a-tiled-poster/",
+    ns = {
+        "sm": "http://www.sitemaps.org/schemas/sitemap/0.9",
+        "xhtml": "http://www.w3.org/1999/xhtml",
     }
-    assert locs == expected_locs
+    url_nodes = root.findall("sm:url", ns)
+    assert len(url_nodes) == len(LOCALES) * len(SLUGS)
+
+    expected_locs = {f"{DOMAIN}{route_for(loc, slug)}" for loc in LOCALES for slug in SLUGS}
+    found_locs = set()
+    for node in url_nodes:
+        loc_text = node.findtext("sm:loc", default="", namespaces=ns)
+        found_locs.add(loc_text)
+        links = node.findall("xhtml:link", ns)
+        assert len(links) == len(LOCALES) + 1
+    assert found_locs == expected_locs
 
     robots = (DIST / "robots.txt").read_text(encoding="utf-8")
     assert f"Sitemap: {DOMAIN}/sitemap.xml" in robots

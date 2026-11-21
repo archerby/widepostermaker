@@ -1,0 +1,44 @@
+{
+  "slug": "how-to-glue-a-tiled-poster",
+  "route": "/es/how-to-glue-a-tiled-poster/",
+  "template": "guide",
+  "navLabel": "Guía de pegado",
+  "breadcrumbTitle": "Cómo recortar y pegar",
+  "title": "Cómo imprimir, cortar y pegar un póster en varias hojas A4",
+  "description": "Guía ilustrada paso a paso para verificar el 100% con la regla de 50 mm, recortar solo dos bordes y pegar láminas sin arrugas.",
+  "h1": "Cómo cortar y pegar un póster multipágina limpiamente",
+  "lead": "Sigue estos tres pasos sencillos para unir hojas A4 o Carta sin escalones visibles ni ondulaciones en el papel.",
+  "presets": {
+    "paper": "a4",
+    "units": "cm",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "sections": [
+    {
+      "heading": "Paso 1: Imprime la página 1 y mide la barra de 50 mm",
+      "paragraphs": [
+        "Comprueba con una regla física que los 50 mm impresos miden exactamente 50 mm antes de imprimir todas las hojas. Si mide menos, desactiva 'Ajustar a página' y usa 'Tamaño real (100%)'."
+      ]
+    },
+    {
+      "heading": "Paso 2: Recorta solo los márgenes superior e izquierdo",
+      "paragraphs": [
+        "Conserva intactas las pestañas punteadas derecha e inferior de cada hoja y recorta únicamente arriba y a la izquierda sobre las marcas de corte."
+      ]
+    },
+    {
+      "heading": "Paso 3: Pega fila por fila usando las cruces (+)",
+      "paragraphs": [
+        "Une primero cada fila horizontal (A1 + A2 + A3) con pegamento en barra seco o cinta de doble cara y después une las filas entre sí."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿Qué pegamento evita que el papel se arrugue?",
+      "a": "El pegamento en barra sólido o la cinta de doble cara fina, ya que no aportan humedad al papel."
+    }
+  ]
+}

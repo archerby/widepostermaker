@@ -29,6 +29,13 @@ function readI18nStrings() {
 
 const I18N = readI18nStrings();
 const msg = (key, fallback) => (I18N[key] !== undefined ? I18N[key] : fallback);
+const fmt = (key, fallback, vars = {}) => {
+  let out = msg(key, fallback);
+  for (const [k, v] of Object.entries(vars)) {
+    out = out.split(`{${k}}`).join(String(v));
+  }
+  return out;
+};
 
 function detectLocalePaper() {
   const langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
@@ -244,7 +251,11 @@ export function initPosterApp() {
     preview.update(currentSource.drawable, layout);
 
     const units = els.unitsSelect.value;
-    const totalSheetsText = `${layout.cols}×${layout.rows} (${layout.activeCount} ${layout.paperName} ${layout.orientation})`;
+    const oriLabel =
+      layout.orientation === 'portrait'
+        ? msg('oriPortraitShort', 'portrait')
+        : msg('oriLandscapeShort', 'landscape');
+    const totalSheetsText = `${layout.cols}×${layout.rows} (${layout.activeCount} ${layout.paperName} ${oriLabel})`;
     els.summarySheets.textContent = totalSheetsText;
     els.summarySize.textContent = `${formatDimensions(layout.posterW, layout.posterH, units)} · ${layout.scalePct}%`;
 
@@ -264,16 +275,23 @@ export function initPosterApp() {
     const excludedCount = excludedTiles.size;
     els.summaryExcluded.hidden = excludedCount === 0;
     if (excludedCount > 0) {
-      els.btnResetExcluded.textContent = `Restore ${excludedCount} skipped`;
+      els.btnResetExcluded.textContent = fmt('restoreSkipped', 'Restore {n} skipped', { n: excludedCount });
     }
 
     if (layout.tooManySheets) {
-      els.summaryWarnings.textContent = `Grid exceeds 400 sheets (${layout.totalCount}). Reduce poster size or sheet count.`;
+      els.summaryWarnings.textContent = fmt(
+        'warnTooMany',
+        'Grid exceeds 400 sheets ({n}). Reduce poster size or sheet count.',
+        { n: layout.totalCount },
+      );
       els.summaryWarnings.hidden = false;
       els.btnDownload.disabled = true;
       els.btnPrint.disabled = true;
     } else if (layout.activeCount === 0) {
-      els.summaryWarnings.textContent = 'All sheets are currently skipped. Click a tile on the preview to re-enable it.';
+      els.summaryWarnings.textContent = msg(
+        'warnAllSkipped',
+        'All sheets are currently skipped. Click a tile on the preview to re-enable it.',
+      );
       els.summaryWarnings.hidden = false;
       els.btnDownload.disabled = true;
       els.btnPrint.disabled = true;
@@ -283,8 +301,13 @@ export function initPosterApp() {
       els.btnPrint.disabled = busy;
     }
 
-    const mapNote = optsIncludeMap() && layout.activeCount > 1 ? ' + 1 assembly map page' : '';
-    els.previewCaption.textContent = `${currentSource.filename} · Click any sheet to skip/include · Output: ${layout.activeCount} tile${layout.activeCount === 1 ? '' : 's'}${mapNote}`;
+    const mapNote =
+      optsIncludeMap() && layout.activeCount > 1 ? ` ${msg('captionMap', '+ 1 assembly map page')}` : '';
+    const tilePart =
+      layout.activeCount === 1
+        ? fmt('captionTileSingle', 'Output: {n} tile', { n: layout.activeCount })
+        : fmt('captionTilePlural', 'Output: {n} tiles', { n: layout.activeCount });
+    els.previewCaption.textContent = `${currentSource.filename} · ${msg('captionHint', 'Click any sheet to skip/include')} · ${tilePart}${mapNote}`;
   }
 
   function optsIncludeMap() {
@@ -316,7 +339,7 @@ export function initPosterApp() {
 
     const total = currentSource.pdfReader.numPages;
     els.pdfPageControls.hidden = total <= 1;
-    els.pdfPageLabel.textContent = `Page ${pageNum} / ${total}`;
+    els.pdfPageLabel.textContent = fmt('pageOf', 'Page {cur} / {total}', { cur: pageNum, total });
     els.btnPrevPage.disabled = pageNum <= 1;
     els.btnNextPage.disabled = pageNum >= total;
     excludedTiles.clear();
@@ -416,9 +439,20 @@ export function initPosterApp() {
       });
       const elapsed = Math.round(performance.now() - t0);
       const modeTag = result.mode === 'vector' ? 'Vector PDF' : 'PDF';
-      const warnText = result.warnings.length ? ` · Note: ${result.warnings[0]}` : '';
+      const warnText = result.warnings.length
+        ? ` · ${fmt('statusNote', 'Note: {warn}', { warn: result.warnings[0] })}`
+        : '';
       setStatus(
-        `${modeTag} ready (${result.pageCount} pages, ${formatBytes(result.bytes.byteLength)}, ${elapsed} ms). Remember: print at 100% / Actual Size.${warnText}`,
+        fmt(
+          'statusReady',
+          '{mode} ready ({pages} pages, {size}, {ms} ms). Remember: print at 100% / Actual Size.',
+          {
+            mode: modeTag,
+            pages: result.pageCount,
+            size: formatBytes(result.bytes.byteLength),
+            ms: elapsed,
+          },
+        ) + warnText,
       );
       return result;
     } catch (err) {
@@ -565,7 +599,12 @@ export function initPosterApp() {
       document.body.appendChild(a);
       a.click();
       a.remove();
-      setStatus('Pop-up blocked — downloaded PDF instead. Open it and print at 100% / Actual Size.');
+      setStatus(
+        msg(
+          'statusPopupFallback',
+          'Pop-up blocked — downloaded PDF instead. Open it and print at 100% / Actual Size.',
+        ),
+      );
     }
   });
 

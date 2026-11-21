@@ -7,10 +7,13 @@
   <title>{{TITLE}}</title>
   <meta name="description" content="{{DESCRIPTION}}">
   <link rel="canonical" href="{{CANONICAL}}">
+{{HREFLANG_LINKS}}
   <meta name="theme-color" content="#1d4ed8">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="{{SITE_NAME}}">
+  <meta property="og:locale" content="{{OG_LOCALE}}">
+{{OG_LOCALE_ALTERNATES}}
   <meta property="og:title" content="{{TITLE}}">
   <meta property="og:description" content="{{DESCRIPTION}}">
   <meta property="og:url" content="{{CANONICAL}}">
@@ -32,12 +35,15 @@
 <body data-preset-paper="{{PRESET_PAPER}}" data-preset-units="{{PRESET_UNITS}}" data-preset-mode="{{PRESET_MODE}}" data-preset-value="{{PRESET_VALUE}}" data-preset-map="{{PRESET_MAP}}">
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="/">
+      <a class="brand" href="{{HOME_HREF}}">
         <img src="/assets/favicon.svg" alt="" width="28" height="28">
         <span>WidePosterMaker</span>
       </a>
-      <nav class="main-nav" aria-label="Primary navigation">
+      <nav class="main-nav" aria-label="{{NAV_LABEL}}">
 {{NAV_LINKS}}
+      </nav>
+      <nav class="lang-switch" aria-label="{{LANG_SWITCH_LABEL}}">
+{{LANG_LINKS}}
       </nav>
     </div>
   </header>
@@ -68,7 +74,7 @@
       </div>
       <div class="footer-bottom">
         <span>{{FOOTER_COPYRIGHT}}</span>
-        <span>Zero uploads · Offline-capable ES modules</span>
+        <span>{{FOOTER_TAGLINE}}</span>
       </div>
     </div>
   </footer>

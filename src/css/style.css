@@ -139,6 +139,38 @@ a:hover {
   font-weight: 600;
 }
 
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 3px;
+  background: var(--surface-alt);
+  flex-wrap: wrap;
+}
+
+.lang-switch a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 4px 7px;
+  border-radius: 5px;
+  line-height: 1.1;
+}
+
+.lang-switch a:hover {
+  color: var(--ink);
+  background: var(--surface);
+}
+
+.lang-switch a[aria-current="page"] {
+  background: var(--accent);
+  color: #ffffff;
+}
+
 /* Hero */
 .hero {
   padding: 28px 0 18px;
@@ -146,8 +178,10 @@ a:hover {
 
 .eyebrow {
   display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 8px;
+  max-width: 100%;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.05em;

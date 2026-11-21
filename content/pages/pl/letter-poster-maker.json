@@ -1,0 +1,32 @@
+{
+  "slug": "letter-poster-maker",
+  "route": "/pl/letter-poster-maker/",
+  "template": "tool",
+  "navLabel": "US Letter",
+  "breadcrumbTitle": "Plakat US Letter",
+  "title": "Dzielenie plakatu na arkusze US Letter (8.5×11 cali)",
+  "description": "Podziel obrazy i PDF na arkusze US Letter (8.5×11 in) lub Legal. Wymiary w calach, znaczniki cięcia i linijka 2-calowa.",
+  "h1": "Generator plakatów na papier US Letter (8,5 × 11 in)",
+  "lead": "Ustawienia pod amerykański papier US Letter (215,9 × 279,4 mm) i cale — idealne do plakatów 18×24 oraz 24×36 cali.",
+  "presets": {
+    "paper": "letter",
+    "units": "in",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "sections": [
+    {
+      "heading": "Wydrukuj plakaty 18×24 i 24×36 cali na zwykłym Letter",
+      "paragraphs": [
+        "Wybierz tryb Szerokość plakatu i jednostkę cale (in), aby bezpośrednio ustawić wymiary amerykańskich plakatów i wykrojów."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Czy Mapa montażu ma także podziałkę w calach?",
+      "a": "Tak, strona 1 zawiera zarówno linijkę 50 mm, jak i dokładną skalę 2,0 cale."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "slug": "letter-poster-maker",
+  "route": "/de/letter-poster-maker/",
+  "template": "tool",
+  "navLabel": "US Letter",
+  "breadcrumbTitle": "US Letter Poster",
+  "title": "Poster auf US Letter (8.5×11 Zoll) drucken — WidePosterMaker",
+  "description": "Bilder und PDFs auf US Letter (8.5×11 in) oder Legal aufteilen. Direkte Zoll-Eingabe, Schnittmarken, Kleberand und 2-Zoll-Kontrolllineal.",
+  "h1": "US Letter Poster-Druck (8,5 × 11 Zoll)",
+  "lead": "Voreinstellung für US-Letter-Papier (215,9 × 279,4 mm) und Zoll-Maße (in) — ideal für amerikanische Schnittmuster, Banner und Poster.",
+  "presets": {
+    "paper": "letter",
+    "units": "in",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "sections": [
+    {
+      "heading": "US-Formate 18×24 und 24×36 Zoll exakt drucken",
+      "paragraphs": [
+        "Stellen Sie die Größenermittlung auf Poster-Breite und Einheit Zoll (in), um amerikanische Postergrößen wie 18×24 oder 24×36 in direkt ohne Millimeter-Umrechnung vorzubereiten."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Enthält die Übersichtskarte auch ein Zoll-Lineal?",
+      "a": "Ja, Seite 1 druckt sowohl eine exakte 50-mm-Skala als auch ein exaktes 2,0-Zoll-Lineal zur Kontrolle."
+    }
+  ]
+}

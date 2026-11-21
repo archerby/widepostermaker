@@ -1,0 +1,36 @@
+{
+  "slug": "pdf-poster-splitter",
+  "route": "/es/pdf-poster-splitter/",
+  "template": "tool",
+  "navLabel": "Dividir PDF",
+  "breadcrumbTitle": "Divisor de PDF",
+  "title": "Dividir PDF grande en hojas A4 sin perder calidad vectorial",
+  "description": "Divide archivos PDF A0 y A1 en múltiples páginas A4 o Carta conservando líneas y textos vectoriales nítidos. Gratis y 100% privado.",
+  "h1": "Divisor de PDF en póster (vectorial)",
+  "lead": "Divide planos A0, carteles y documentos PDF multipágina en hojas A4 o US Letter manteniendo líneas técnicas y fuentes totalmente nítidas.",
+  "presets": {
+    "paper": "a4",
+    "units": "mm",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "sections": [
+    {
+      "heading": "Recorte PDF vectorial en lugar de capturas borrosas",
+      "paragraphs": [
+        "Muchas webs convierten el PDF en una imagen rasterizada antes de cortarlo, pixelando planos y textos pequeños. WidePosterMaker incrusta la página PDF una sola vez como Form XObject y aplica recortes vectoriales exactos para cada hoja."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿Se conserva la nitidez vectorial de líneas y textos?",
+      "a": "Sí. Los PDF estándar sin contraseña se recortan de forma nativa a nivel vectorial sin pixelarse."
+    },
+    {
+      "q": "¿Funciona con PDFs de varias páginas?",
+      "a": "Sí, verás botones Anterior y Siguiente sobre la vista previa para elegir la página exacta que deseas ampliar."
+    }
+  ]
+}

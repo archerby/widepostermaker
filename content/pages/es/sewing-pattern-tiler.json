@@ -1,0 +1,36 @@
+{
+  "slug": "sewing-pattern-tiler",
+  "route": "/es/sewing-pattern-tiler/",
+  "template": "tool",
+  "navLabel": "Patrones 100%",
+  "breadcrumbTitle": "Patrones A0 a A4 (100%)",
+  "title": "Pasar patrones de costura A0 a A4 o Carta (Escala 100%)",
+  "description": "Imprime patrones de costura A0 y plantillas PDF en hojas A4 o Carta a escala exacta 1:1 (100%). Incluye regla de 50 mm / 2 in y omisión de vacías.",
+  "h1": "Dividir patrones de costura A0 a A4 (Escala 100%)",
+  "lead": "Preconfigurado en Escala real (100%) y PDF vectorial para imprimir patrones A0 de costura, cosplay o carpintería a medida exacta 1:1.",
+  "presets": {
+    "paper": "a4",
+    "units": "mm",
+    "mode": "scale",
+    "value": 100,
+    "map": true
+  },
+  "sections": [
+    {
+      "heading": "Por qué la escala 1:1 exacta es vital en patrones de costura",
+      "paragraphs": [
+        "Una reducción automática del 3% al imprimir arruina tallas y márgenes de costura. En modo Escala 100%, WidePosterMaker lee las dimensiones reales en puntos del PDF A0 y genera los mosaicos A4/Carta sin deformación, con barra de calibración de 50 mm y 2 pulgadas en la página 1."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿Mi patrón A0 saldrá exactamente al 100% en hojas A4?",
+      "a": "Sí. Solo asegúrate de marcar 'Tamaño real / 100%' en tu visor PDF y comprobar los 50 mm de la primera página con una regla."
+    },
+    {
+      "q": "¿Puedo saltar páginas en blanco de las esquinas?",
+      "a": "Sí, haz clic en las casillas vacías de la vista previa para excluirlas del PDF descargado."
+    }
+  ]
+}

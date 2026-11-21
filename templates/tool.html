@@ -4,7 +4,7 @@
   <p class="hero-lead">{{LEAD}}</p>
 </section>
 
-<section id="poster-app" class="tool-card" aria-label="Poster tiling workspace">
+<section id="poster-app" class="tool-card" aria-label="{{UI_WORKSPACE_ARIA}}">
   <div id="empty-state">
     <div id="dropzone" class="dropzone">
       <p class="dropzone-title">{{UI_DROP_TITLE}}</p>
@@ -24,7 +24,7 @@
           <button id="btn-change-file" class="btn btn-secondary btn-sm" type="button">{{UI_CHANGE_FILE}}</button>
           <div id="pdf-page-controls" class="pdf-page-controls" hidden>
             <button id="btn-prev-page" class="btn btn-secondary btn-sm" type="button">{{UI_PREV_PAGE}}</button>
-            <span id="pdf-page-label">Page 1 / 1</span>
+            <span id="pdf-page-label">{{UI_PAGE_INIT}}</span>
             <button id="btn-next-page" class="btn btn-secondary btn-sm" type="button">{{UI_NEXT_PAGE}}</button>
           </div>
         </div>
@@ -69,9 +69,9 @@
           <div class="field">
             <label for="units-select">{{UI_UNITS_LABEL}}</label>
             <select id="units-select">
-              <option value="cm">Centimeters (cm)</option>
-              <option value="mm">Millimeters (mm)</option>
-              <option value="in">Inches (in)</option>
+              <option value="cm">{{UI_UNIT_CM}}</option>
+              <option value="mm">{{UI_UNIT_MM}}</option>
+              <option value="in">{{UI_UNIT_IN}}</option>
             </select>
           </div>
         </div>
@@ -80,7 +80,7 @@
           <label for="size-value">{{UI_VALUE_LABEL}}</label>
           <div class="input-with-unit">
             <input id="size-value" type="number" value="3" min="1" max="20000" step="1">
-            <span id="size-unit-label" class="unit-tag">sheets</span>
+            <span id="size-unit-label" class="unit-tag">{{UI_DEFAULT_UNIT_TAG}}</span>
           </div>
         </div>
 
@@ -126,8 +126,8 @@
         </div>
 
         <div id="summary-excluded" class="excluded-bar" hidden>
-          <span>Some blank/edge tiles skipped</span>
-          <button id="btn-reset-excluded" class="btn btn-secondary btn-sm" type="button">Restore</button>
+          <span>{{UI_EXCLUDED_NOTICE}}</span>
+          <button id="btn-reset-excluded" class="btn btn-secondary btn-sm" type="button">{{UI_RESTORE_BTN}}</button>
         </div>
 
         <div id="summary-warnings" class="alert-warn" hidden></div>
@@ -143,7 +143,7 @@
   </div>
 </section>
 
-<section class="trust-strip" aria-label="Core guarantees">
+<section class="trust-strip" aria-label="{{UI_TRUST_ARIA}}">
 {{TRUST_CARDS}}
 </section>
 

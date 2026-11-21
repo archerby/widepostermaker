@@ -1,0 +1,63 @@
+{
+  "slug": "",
+  "route": "/de/",
+  "template": "tool",
+  "navLabel": "Poster-Raster",
+  "breadcrumbTitle": "Poster-Raster",
+  "title": "Riesenposter auf DIN A4 drucken — Bilder & PDF teilen",
+  "description": "Bilder und PDFs in mehrere A4- oder US-Letter-Seiten aufteilen — mit Schnittmarken, Kleberand und Übersichtskarte. Kostenlos & 100% lokal im Browser.",
+  "h1": "Große Poster auf DIN A4 drucken",
+  "lead": "Teilen Sie Fotos, Plakate oder große Vektor-PDFs in ein druckfertiges DIN-A4- oder US-Letter-PDF auf — mit Schnittmarken, Klebelaschen und ohne Server-Upload.",
+  "presets": {
+    "paper": "a4",
+    "units": "cm",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "sections": [
+    {
+      "heading": "Wandgroße Poster am eigenen A4-Drucker erstellen",
+      "paragraphs": [
+        "Normale Tintenstrahl- und Laserdrucker drucken maximal DIN A4, während Großformatdrucke im Copyshop schnell teuer werden. WidePosterMaker zerlegt hochauflösende Fotos, Landkarten, Baupläne und PDF-Plakate in ein exaktes Seitenraster für zu Hause.",
+        "Alles bleibt privat auf Ihrem Gerät: Bilder werden nur ein einziges Mal im PDF eingebettet und PDF-Vorlagen als gestochen scharfe Vektoren beschnitten."
+      ],
+      "listHeading": "So funktioniert es in drei Schritten",
+      "listType": "ol",
+      "list": [
+        "PNG, JPEG, WebP, SVG oder PDF per Drag-and-drop laden oder aus der Zwischenablage einfügen.",
+        "Papierformat (A4, A3, Letter), automatische Ausrichtung, Blattanzahl oder Wunschmaße in cm festlegen.",
+        "Druckfertiges PDF herunterladen, bei 100% Originalgröße drucken, Ränder schneiden und an den (+)-Kreuzen kleben."
+      ]
+    },
+    {
+      "heading": "Wie viele DIN-A4-Blätter braucht ein großes Poster?",
+      "paragraphs": [
+        "Richtwerte bei 5 mm Druckrand und 10 mm Klebelasche (Ausrichtung auf Auto optimiert den Papierverbrauch):"
+      ],
+      "table": {
+        "headers": ["Posterformat", "Maße (cm)", "DIN A4 Hochformat", "DIN A4 Querformat"],
+        "rows": [
+          ["DIN A2 Poster", "42,0 × 59,4 cm", "2×2 (4 Blätter)", "2×3 (6 Blätter)"],
+          ["DIN A1 Poster", "59,4 × 84,1 cm", "3×3 (9 Blätter)", "3×4 (12 Blätter)"],
+          ["60 × 90 cm Kino-Poster", "60,0 × 90,0 cm", "4×4 (16 Blätter)", "3×5 (15 Blätter)"],
+          ["DIN A0 Plan / Schnittmuster", "84,1 × 118,9 cm", "5×5 (25 Blätter)", "4×6 (24 Blätter)"]
+        ]
+      }
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Werden meine Fotos oder PDF-Dateien auf einen Server hochgeladen?",
+      "a": "Nein. Die gesamte Verarbeitung läuft vollständig offline-fähig im Browser. Keine Uploads, keine Cookies, kein Tracking."
+    },
+    {
+      "q": "Warum ein PDF herunterladen statt direkt die Webseite zu drucken?",
+      "a": "Browser skalieren HTML-Druckansichten oft ungenau. Ein echtes Millimeter-PDF enthält exakte Seitenmaße und ein 50-mm-Kontrolllineal auf Seite 1."
+    },
+    {
+      "q": "Kann ich leere Randblätter vom Druck ausschließen?",
+      "a": "Ja. Klicken Sie in der Vorschau einfach auf ein beliebiges Blatt (z. B. A3 oder C1), um es beim PDF-Export zu überspringen."
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "slug": "",
+  "route": "/es/",
+  "template": "tool",
+  "navLabel": "Crear Póster",
+  "breadcrumbTitle": "Crear Póster en A4",
+  "title": "Imprimir póster grande en varias hojas A4 o Letter gratis",
+  "description": "Divide cualquier imagen o PDF en varias páginas A4 o Carta con marcas de corte, pestañas de pegado y mapa guía. 100% privado en tu navegador.",
+  "h1": "Imprimir pósters grandes en hojas A4",
+  "lead": "Divide fotos, carteles o archivos PDF grandes en un PDF listo para impresora doméstica A4 o US Letter — con marcas de corte, solapes y cero subidas.",
+  "presets": {
+    "paper": "a4",
+    "units": "cm",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "sections": [
+    {
+      "heading": "Carteles gigantes en casa sin ir a la imprenta",
+      "paragraphs": [
+        "La mayoría de las impresoras domésticas imprimen como máximo en A4 o Carta (US Letter). WidePosterMaker divide tus imágenes de alta resolución, mapas o planos PDF en una cuadrícula exacta fácil de recortar y unir en pocos minutos.",
+        "Ningún archivo sale de tu ordenador: las imágenes se incrustan una sola vez y los PDF se recortan manteniendo los trazos vectoriales en memoria local."
+      ],
+      "listHeading": "Cómo funciona en tres pasos",
+      "listType": "ol",
+      "list": [
+        "Arrastra o pega cualquier archivo PNG, JPEG, WebP, SVG o PDF.",
+        "Elige papel A4 o US Letter, orientación automática, número de hojas o ancho exacto en cm.",
+        "Descarga el PDF, imprime al 100% (Tamaño real), recorta los bordes superior e izquierdo y une las cruces (+)."
+      ]
+    },
+    {
+      "heading": "Cuántas hojas A4 necesita cada tamaño de póster",
+      "paragraphs": [
+        "Estimación práctica con 5 mm de margen de impresora y 10 mm de solape para pegado:"
+      ],
+      "table": {
+        "headers": ["Tamaño de póster", "Medidas (cm)", "Hojas A4 (Vertical)", "Hojas A4 (Horizontal)"],
+        "rows": [
+          ["Póster A2", "42,0 × 59,4 cm", "2×2 (4 hojas)", "2×3 (6 hojas)"],
+          ["Póster A1", "59,4 × 84,1 cm", "3×3 (9 hojas)", "3×4 (12 hojas)"],
+          ["Cartel cine 60 × 90 cm", "60,0 × 90,0 cm", "4×4 (16 hojas)", "3×5 (15 hojas)"],
+          ["Plano / Patrón A0", "84,1 × 118,9 cm", "5×5 (25 hojas)", "4×6 (24 hojas)"]
+        ]
+      }
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿Se suben mis imágenes o archivos PDF a algún servidor?",
+      "a": "No. Todo se procesa al 100% dentro de tu propio navegador sin servidores, cookies ni rastreadores."
+    },
+    {
+      "q": "¿Por qué descargar el PDF en vez de imprimir directamente desde la web?",
+      "a": "Los navegadores cambian la escala de impresión de forma impredecible. Un PDF calibrado garantiza milímetros exactos y una regla de 50 mm en la página 1."
+    },
+    {
+      "q": "¿Puedo omitir las hojas blancas que no necesito imprimir?",
+      "a": "Sí, haz clic directamente sobre cualquier hoja en la vista previa para excluirla antes de descargar el PDF."
+    }
+  ]
+}

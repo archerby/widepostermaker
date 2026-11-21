@@ -1,0 +1,37 @@
+{
+  "slug": "pdf-poster-splitter",
+  "route": "/de/pdf-poster-splitter/",
+  "template": "tool",
+  "navLabel": "PDF teilen",
+  "breadcrumbTitle": "PDF-Poster-Teiler",
+  "title": "Große PDF in DIN A4 teilen (Vektor-Erhalt) | WidePosterMaker",
+  "description": "Große A0- und A1-PDFs verlustfrei in mehrere DIN-A4-Seiten aufteilen. Linien und Schriften bleiben echte Vektoren. Kostenlos & ohne Upload.",
+  "h1": "PDF-Poster-Teiler (mit Vektor-Erhalt)",
+  "lead": "Teilen Sie übergroße A0- und A1-Pläne oder mehrseitige PDF-Dokumente auf DIN A4 auf, ohne Vektorlinien und Schriftarten zu verpixeln.",
+  "presets": {
+    "paper": "a4",
+    "units": "mm",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "sections": [
+    {
+      "heading": "Echtes PDF-Clipping statt unscharfer Rasterbilder",
+      "paragraphs": [
+        "Viele Online-Tools wandeln Ihr PDF zuerst in ein niedrig aufgelöstes Bild um — feine Linien werden treppenstufig und Dateigrößen explodieren.",
+        "WidePosterMaker bettet Ihre PDF-Seite genau einmal als Vektor-Form-XObject ein und setzt pro A4-Blatt einen exakten PDF-Clip-Rahmen. CropBox und Seitenrotation (/Rotate) werden automatisch berücksichtigt."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Bleiben Texte und CAD-Linien beim Teilen scharf?",
+      "a": "Ja, unverschlüsselte PDFs werden nativ per Vektor-Clipping geteilt und bleiben bei jedem Vergrößerungsfaktor gestochen scharf."
+    },
+    {
+      "q": "Wie wähle ich bei mehrseitigen PDFs eine bestimmte Seite aus?",
+      "a": "Über die Schaltflächen Zurück/Weiter direkt über der Vorschau wählen Sie die gewünschte Seite vor dem Export aus."
+    }
+  ]
+}

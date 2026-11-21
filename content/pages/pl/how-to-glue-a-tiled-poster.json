@@ -1,0 +1,44 @@
+{
+  "slug": "how-to-glue-a-tiled-poster",
+  "route": "/pl/how-to-glue-a-tiled-poster/",
+  "template": "guide",
+  "navLabel": "Jak skleić",
+  "breadcrumbTitle": "Jak przyciąć i skleić plakat",
+  "title": "Jak równo wyciąć i skleić plakat z arkuszy A4 — poradnik",
+  "description": "Ilustrowany poradnik w 3 krokach: test skali 50 mm, przycinanie tylko dwóch krawędzi oraz równe klejenie kartek A4 po krzyżykach (+).",
+  "h1": "Jak przyciąć i skleić plakat z arkuszy A4",
+  "lead": "Prosty schemat krok po kroku, dzięki któremu linie między kartkami zejdą się co do milimetra bez pofalowanego papieru.",
+  "presets": {
+    "paper": "a4",
+    "units": "cm",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "sections": [
+    {
+      "heading": "Krok 1: Wydrukuj stronę 1 i zmierz pasek 50 mm",
+      "paragraphs": [
+        "Zanim wydrukujesz wszystkie arkusze, wydrukuj tylko pierwszą stronę i zmierz linijką odcinek 50 mm. Jeśli jest krótszy, w oknie druku zmień skalę z 'Dopasuj' na 'Rozmiar rzeczywisty (100%)'."
+      ]
+    },
+    {
+      "heading": "Krok 2: Odetnij tylko górny i lewy margines",
+      "paragraphs": [
+        "Nie obcinaj wszystkich czterech boków — zostaw prawe i dolne przerywane zakładki, a na sąsiednich kartkach zetnij wyłącznie górny oraz lewy biały margines po znacznikach cięcia."
+      ]
+    },
+    {
+      "heading": "Krok 3: Klej rzędami po krzyżykach (+)",
+      "paragraphs": [
+        "Najpierw sklej całe poziome rzędy (A1 + A2 + A3), a potem połącz gotowe rzędy w pionie. Zwykły klej w sztyfcie lub cienka taśma dwustronna nie marszczą papieru."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Jaki klej najlepiej sprawdza się do łączenia kartek A4?",
+      "a": "Suchy klej w sztyfcie albo cienka taśma dwustronna — nie moczą papieru i nie powodują falowania na złączach."
+    }
+  ]
+}

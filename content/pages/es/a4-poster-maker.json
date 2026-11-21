@@ -1,0 +1,32 @@
+{
+  "slug": "a4-poster-maker",
+  "route": "/es/a4-poster-maker/",
+  "template": "tool",
+  "navLabel": "Póster A4",
+  "breadcrumbTitle": "Póster en hojas A4",
+  "title": "Hacer póster gigante en varias hojas A4 (210×297 mm)",
+  "description": "Preconfigurado para papel A4 (210×297 mm) en centímetros: convierte fotos o PDF en pósters 2×2, 3×3 o tamaño A1 con marcas y solapes.",
+  "h1": "Crear póster en hojas A4 (210 × 297 mm)",
+  "lead": "Ajustado de serie para papel métrico A4 y centímetros. Calcula automáticamente si conviene A4 vertical u horizontal para gastar menos hojas.",
+  "presets": {
+    "paper": "a4",
+    "units": "cm",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "sections": [
+    {
+      "heading": "Cómo lograr carteles A2, A1 y A0 con papel A4",
+      "paragraphs": [
+        "Con el estándar de margen de 5 mm y solape de pegado de 10 mm, cada hoja A4 cubre 190 × 277 mm útiles, evitando cortes blancos en las uniones de la mayoría de impresoras domésticas."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿Qué tamaño tiene un póster de 3×3 hojas A4?",
+      "a": "Con 5 mm de margen y 10 mm de solape obtienes aproximadamente 58 × 85 cm, muy cercano al formato A1."
+    }
+  ]
+}

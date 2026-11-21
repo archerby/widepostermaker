@@ -1,0 +1,32 @@
+{
+  "slug": "a4-poster-maker",
+  "route": "/pl/a4-poster-maker/",
+  "template": "tool",
+  "navLabel": "Format A4",
+  "breadcrumbTitle": "Plakat w formacie A4",
+  "title": "Drukowanie dużego plakatu na kilku kartkach A4 (210×297 mm)",
+  "description": "Ustawione domyślnie pod papier A4 (210×297 mm) i centymetry: dziel zdjęcia i PDF-y na siatki 2×2, 3×3 lub wymiary A2/A1/A0.",
+  "h1": "Tworzenie plakatu na kartkach A4 (210 × 297 mm)",
+  "lead": "Preset dla metrycznego formatu A4 i centymetrów. Automatycznie dobiera orientację pionową lub poziomą, by zużyć jak najmniej papieru.",
+  "presets": {
+    "paper": "a4",
+    "units": "cm",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "sections": [
+    {
+      "heading": "Idealne formaty A2, A1 i A0 ze zwykłego papieru A4",
+      "paragraphs": [
+        "Domyślny margines 5 mm oraz zakładka klejenia 10 mm dają 190 × 277 mm użytecznego kroku na każdym arkuszu A4 i chronią przed ucięciem obrazu na brzegach drukarki."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Jak duży jest plakat z siatki 3×3 kartek A4?",
+      "a": "Przy marginesie 5 mm i zakładce 10 mm daje około 58 × 85 cm — czyli niemal format A1."
+    }
+  ]
+}

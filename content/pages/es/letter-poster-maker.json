@@ -1,0 +1,32 @@
+{
+  "slug": "letter-poster-maker",
+  "route": "/es/letter-poster-maker/",
+  "template": "tool",
+  "navLabel": "US Letter",
+  "breadcrumbTitle": "Póster US Letter",
+  "title": "Imprimir póster en hojas tamaño Carta (US Letter 8.5×11)",
+  "description": "Divide imágenes y PDF en hojas tamaño Carta / US Letter (8.5×11 in) o Legal. Medidas en pulgadas, marcas de corte y regla de 2 pulgadas.",
+  "h1": "Divisor de póster tamaño Carta (US Letter 8,5 × 11 in)",
+  "lead": "Configurado para papel tamaño Carta (215,9 × 279,4 mm) y pulgadas (in) — perfecto para carteles 18×24 y 24×36 pulgadas.",
+  "presets": {
+    "paper": "letter",
+    "units": "in",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "sections": [
+    {
+      "heading": "Imprime carteles 18×24 y 24×36 pulgadas en papel Carta",
+      "paragraphs": [
+        "Selecciona Ancho del póster y pulgadas (in) para fijar dimensiones exactas sin conversiones manuales a milímetros."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿Cuántas hojas Carta lleva un póster de 24×36 pulgadas?",
+      "a": "Con margen de 6 mm y solape de 12 mm, un cartel de 24×36 pulgadas usa entre 12 (3×4) y 16 (4×4) hojas tamaño Carta."
+    }
+  ]
+}

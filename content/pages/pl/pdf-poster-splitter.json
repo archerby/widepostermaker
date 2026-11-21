@@ -1,0 +1,36 @@
+{
+  "slug": "pdf-poster-splitter",
+  "route": "/pl/pdf-poster-splitter/",
+  "template": "tool",
+  "navLabel": "Podziel PDF",
+  "breadcrumbTitle": "Podział PDF na A4",
+  "title": "Podziel duży PDF na strony A4 bez utraty wektorów",
+  "description": "Dzielenie dużych PDF-ów A0 i A1 na wiele kartek A4 lub Letter z zachowaniem ostrości wektorów i czcionek. Darmowe i w 100% lokalne.",
+  "h1": "Podziel PDF na arkusze A4 (wektorowo)",
+  "lead": "Kafelkuj rysunki A0, mapy i wielostronicowe pliki PDF na papier A4 lub US Letter bez konwersji wektorów na piksele.",
+  "presets": {
+    "paper": "a4",
+    "units": "mm",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "sections": [
+    {
+      "heading": "Natywne przycinanie wektorowe zamiast zrzutów ekranu",
+      "paragraphs": [
+        "WidePosterMaker osadza stronę PDF jeden raz jako wektorowy Form XObject i wycina osobne okna dla każdej kartki A4, uwzględniając CropBox oraz obrót strony (/Rotate)."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Czy linie techniczne i tekst w PDF pozostają ostre?",
+      "a": "Tak. Niezaszyfrowane dokumenty PDF są dzielone na poziomie obiektów wektorowych bez utraty jakości."
+    },
+    {
+      "q": "Jak wybrać konkretną stronę z wielostronicowego PDF?",
+      "a": "Po wczytaniu pliku nad podglądem pojawią się przyciski Poprzednia i Następna do przełączania stron."
+    }
+  ]
+}

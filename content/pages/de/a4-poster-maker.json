@@ -1,0 +1,36 @@
+{
+  "slug": "a4-poster-maker",
+  "route": "/de/a4-poster-maker/",
+  "template": "tool",
+  "navLabel": "A4 Druck",
+  "breadcrumbTitle": "DIN A4 Poster-Maker",
+  "title": "Poster auf mehreren DIN-A4-Blättern drucken (210×297 mm)",
+  "description": "Vorkonfiguriert für DIN A4 (210×297 mm): Große Bilder und PDFs exakt in cm oder Blattanzahl auf A4 aufteilen mit Klebelaschen und DPI-Check.",
+  "h1": "DIN A4 Poster-Maker (210 × 297 mm)",
+  "lead": "Speziell voreingestellt auf deutsches DIN-A4-Papier und Zentimeter. Erstellen Sie im Handumdrehen A2-, A1- oder A0-Poster für Zuhause.",
+  "presets": {
+    "paper": "a4",
+    "units": "cm",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "sections": [
+    {
+      "heading": "A2, A1 und A0 sauber auf DIN A4 aufteilen",
+      "paragraphs": [
+        "Da alle DIN-Formate dem Seitenverhältnis 1:√2 folgen, lässt sich jedes Großformat harmonisch in DIN-A4-Kacheln zerlegen. Mit 5 mm Druckrand und 10 mm Kleberand bleibt genug Platz für unbedruckbare Druckerränder und präzise Verklebung."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Wie groß ist ein 3×3 DIN-A4-Poster?",
+      "a": "Mit 5 mm Rand und 10 mm Überlappung deckt jede A4-Seite 190 × 277 mm netto ab — ein 3×3-Raster ergibt rund 58 × 85 cm (etwa DIN A1)."
+    },
+    {
+      "q": "Welches Papier eignet sich am besten?",
+      "a": "Normales 80-g-Papier funktioniert problemlos; für besonders glatte Nähte an der Wand empfiehlt sich 100–120 g/m² Mattpapier."
+    }
+  ]
+}
