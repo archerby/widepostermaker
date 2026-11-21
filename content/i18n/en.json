@@ -1,0 +1,87 @@
+{
+  "lang": "en",
+  "siteName": "WidePosterMaker",
+  "domain": "https://widepostermaker.com",
+  "repoUrl": "https://github.com/archerby/widepostermaker",
+  "nav": [
+    { "label": "Poster Maker", "href": "/" },
+    { "label": "PDF Splitter", "href": "/pdf-poster-splitter/" },
+    { "label": "A4 Maker", "href": "/a4-poster-maker/" },
+    { "label": "US Letter", "href": "/letter-poster-maker/" },
+    { "label": "100% Patterns", "href": "/sewing-pattern-tiler/" },
+    { "label": "Assembly Guide", "href": "/how-to-glue-a-tiled-poster/" }
+  ],
+  "ui": {
+    "eyebrow": "100% Local · Zero Uploads · Free & Open Source",
+    "dropTitle": "Drop an image or PDF here",
+    "dropSub": "PNG, JPEG, WebP, SVG, GIF, or PDF (single & multi-page). Processed completely inside your browser.",
+    "chooseFile": "Choose Image or PDF",
+    "trySample": "Try Sample Poster",
+    "changeFile": "Load Another File",
+    "prevPage": "Prev",
+    "nextPage": "Next",
+    "paperLabel": "Paper Size",
+    "oriLabel": "Orientation",
+    "oriAuto": "Auto (Fewest Sheets)",
+    "oriPortrait": "Portrait",
+    "oriLandscape": "Landscape",
+    "modeLabel": "Size By",
+    "modeSheetsW": "Sheets Wide",
+    "modeSheetsH": "Sheets Tall",
+    "modeSizeW": "Poster Width",
+    "modeSizeH": "Poster Height",
+    "modeScale": "True Scale (%)",
+    "unitsLabel": "Units",
+    "valueLabel": "Target Value",
+    "marginLabel": "Printer Margin (mm)",
+    "overlapLabel": "Glue Overlap (mm)",
+    "optCropMarks": "Crop marks & alignment (+) crosshairs",
+    "optTileLabels": "Sheet coordinates (A1, A2...) & glue hints",
+    "optAssemblyMap": "Include Page 1 Assembly Map + 50mm/2\" ruler",
+    "summarySheets": "Tile Grid",
+    "summarySize": "Finished Poster",
+    "summaryQuality": "Print Quality",
+    "downloadPdf": "Download Print-Ready PDF",
+    "printDirect": "Print PDF",
+    "trust": [
+      {
+        "title": "Nothing Leaves Your Device",
+        "body": "Zero server uploads, cookies, or trackers. Open your browser DevTools Network tab to verify."
+      },
+      {
+        "title": "Vector PDF Preservation",
+        "body": "PDF inputs stay sharp vectors via single-XObject PDF clipping instead of blurry raster screenshots."
+      },
+      {
+        "title": "Exact Seam Alignment",
+        "body": "Includes glue overlap tabs, corner (+) crosshairs, an assembly map, and a 50 mm / 2 in scale check."
+      }
+    ],
+    "faqHeading": "Frequently Asked Questions"
+  },
+  "footer": {
+    "aboutTitle": "WidePosterMaker",
+    "aboutText": "A single-purpose, open-source web utility for printing large posters, blueprints, maps, and sewing patterns on a regular home printer.",
+    "toolsTitle": "Tools & Presets",
+    "resourcesTitle": "Project & Guides",
+    "resourcesLinks": [
+      { "label": "How to Trim & Glue a Poster", "href": "/how-to-glue-a-tiled-poster/" },
+      { "label": "Source Code (GitHub)", "href": "https://github.com/archerby/widepostermaker" },
+      { "label": "MIT License", "href": "https://github.com/archerby/widepostermaker/blob/main/LICENSE" }
+    ],
+    "copyright": "MIT Licensed Open Source · WidePosterMaker.com"
+  },
+  "js": {
+    "unitSheets": "sheets",
+    "qualityVector": "Vector (infinite sharpness)",
+    "qualityCrisp": "crisp print",
+    "qualityGood": "good for wall viewing",
+    "qualityLow": "low resolution — consider fewer sheets",
+    "statusLoading": "Loading file locally...",
+    "statusRenderingPdf": "Rendering PDF preview...",
+    "statusBuilding": "Building print-ready PDF locally...",
+    "errImageDecode": "Could not decode image file.",
+    "errLoad": "Could not open this file.",
+    "errExport": "PDF export failed."
+  }
+}

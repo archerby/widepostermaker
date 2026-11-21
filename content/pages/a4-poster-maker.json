@@ -1,0 +1,60 @@
+{
+  "slug": "a4-poster-maker",
+  "route": "/a4-poster-maker/",
+  "template": "tool",
+  "navLabel": "A4 Maker",
+  "breadcrumbTitle": "A4 Poster Maker",
+  "title": "A4 Poster Maker — Print Giant Posters on Multiple A4 Sheets",
+  "description": "Turn any photo or PDF into a multi-sheet A4 wall poster at home. Choose sheets wide or exact cm/mm size with crop marks and overlap tabs.",
+  "h1": "A4 Poster Maker (210 × 297 mm)",
+  "lead": "Preset for metric A4 paper (210 × 297 mm). Tile large photos, maps, and PDF posters across 2×2, 3×3, or custom A4 grids with exact millimeter alignment.",
+  "presets": {
+    "paper": "a4",
+    "units": "cm",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "sections": [
+    {
+      "heading": "Getting Full-Size A2, A1, and A0 Posters from A4 Paper",
+      "paragraphs": [
+        "Standard ISO 216 paper shares a 1:√2 aspect ratio, which means A4 sheets tile cleanly into A2, A1, and A0 posters without awkward wasted strips when Auto orientation picks the best sheet alignment.",
+        "Note that most home inkjet and laser printers require a 4–6 mm unprintable hardware margin around every edge. Setting Printer Margin to 5 mm and Glue Overlap to 10 mm guarantees zero clipped pixels at sheet borders."
+      ],
+      "table": {
+        "headers": ["Target Format", "Metric Size", "Usable A4 Area (5 mm margin, 10 mm overlap)", "Typical Grid"],
+        "rows": [
+          ["2×2 Wall Grid", "39.0 × 56.4 cm", "190 × 277 mm net step", "4 A4 sheets"],
+          ["A2 (42.0 × 59.4 cm)", "42.0 × 59.4 cm", "Auto picks Landscape/Portrait", "4–6 A4 sheets"],
+          ["A1 (59.4 × 84.1 cm)", "59.4 × 84.1 cm", "3×3 to 4×4 depending on overlap", "9–12 A4 sheets"],
+          ["Panorama Banner", "110 × 40 cm", "Landscape A4 recommended", "6×2 A4 sheets"]
+        ]
+      }
+    },
+    {
+      "heading": "Metric DPI & Photo Sharpness Tips",
+      "paragraphs": [
+        "WidePosterMaker estimates print DPI live as you adjust sheet count. Aim for 150 DPI or higher for posters inspected up close, and at least 90–120 DPI for large wall prints viewed from 1–2 meters away."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How big is a 3×3 A4 poster with margins and overlap?",
+      "a": "With a 5 mm printer margin and 10 mm glue overlap, each A4 sheet advances by 190 mm horizontally and 277 mm vertically, yielding roughly 58 × 85 cm — right around A1 poster size."
+    },
+    {
+      "q": "Should I pick Portrait or Landscape A4?",
+      "a": "Leave Orientation on Auto (Fewest Sheets). WidePosterMaker calculates both Portrait and Landscape A4 grids and picks whichever uses fewer sheets with minimal waste."
+    },
+    {
+      "q": "Can I print borderless A4 posters with 0 mm margins?",
+      "a": "Yes — set Printer Margin to 0 mm if your printer explicitly supports borderless A4 printing, though keeping 5–10 mm glue overlap is still recommended for sturdy assembly."
+    },
+    {
+      "q": "What paper weight works best for A4 tiled posters?",
+      "a": "Standard 80 gsm copy paper works fine, while 100–120 gsm matte presentation paper lies flatter along glued seams with less glue ripple."
+    }
+  ]
+}

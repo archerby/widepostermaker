@@ -1,0 +1,59 @@
+{
+  "slug": "sewing-pattern-tiler",
+  "route": "/sewing-pattern-tiler/",
+  "template": "tool",
+  "navLabel": "100% Patterns",
+  "breadcrumbTitle": "A0 Sewing Pattern Tiler",
+  "title": "A0 to A4 / Letter Sewing Pattern Tiler — True 100% Scale",
+  "description": "Convert A0 PDF sewing patterns, woodworking templates, and 1:1 blueprints to A4 or US Letter sheets at exact 100% scale with calibration rulers.",
+  "h1": "A0 to A4 / Letter Pattern Tiler (100% True Scale)",
+  "lead": "Preset to True Scale (100%) and Vector PDF clipping so A0 sewing patterns, cosplay templates, and woodworking plans print at exact 1:1 dimensions.",
+  "presets": {
+    "paper": "auto",
+    "units": "mm",
+    "mode": "scale",
+    "value": 100,
+    "map": true
+  },
+  "sections": [
+    {
+      "heading": "Why Exact 1:1 Scale Is Critical for Patterns & Templates",
+      "paragraphs": [
+        "When printing an A0 sewing pattern, guitar template, or woodworking jig, a 3% 'Fit to Page' shrink from a PDF reader ruins every seam allowance across the garment. WidePosterMaker defaults this tool page to True Scale = 100%, reading the physical page size directly from your A0/A1 PDF.",
+        "Every multi-page export starts with Page 1 containing an Assembly Map plus exact vector 50 mm and 2 inch test bars. Print Page 1 first, lay a ruler against the bar, and confirm 100% accuracy before printing the full pattern."
+      ],
+      "listHeading": "Pattern Printing Checklist",
+      "listType": "ol",
+      "list": [
+        "Load your A0 PDF pattern (use Prev/Next if your file includes multiple garment sheets).",
+        "Confirm Size By stays on True Scale (%) = 100 and select A4 or US Letter paper.",
+        "Click any completely blank corner tiles on the preview to skip printing empty sheets.",
+        "In Adobe Reader, Chrome, or Preview, select 'Actual Size' (100%) and verify the 50 mm / 2 in calibration ruler on Page 1."
+      ]
+    },
+    {
+      "heading": "Preserving Multi-Layer & Fine Pattern Markings",
+      "paragraphs": [
+        "Because WidePosterMaker embeds and clips the original PDF page as a vector Form XObject, fine notch marks, dashed seam lines, grain arrows, and tiny size labels remain crisp at full printer DPI."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Will an A0 PDF sewing pattern keep exact 1:1 dimensions on A4 or Letter?",
+      "a": "Yes. In True Scale (100%) mode, WidePosterMaker reads the PDF's physical point dimensions (1 inch = 72 pt) and maps them 1:1 onto A4 or US Letter tiles without rescaling."
+    },
+    {
+      "q": "How do I avoid printing blank sheets in an irregularly shaped pattern?",
+      "a": "Click any empty tile cell on the interactive grid preview to toggle it off before downloading the PDF. Skipped tiles also appear crossed out on your Assembly Map."
+    },
+    {
+      "q": "Can I also scale a pattern up or down by percentage (e.g. 95% or 105%)?",
+      "a": "Yes — change the Target Value in True Scale (%) mode from 100 to any percentage between 5% and 2000%."
+    },
+    {
+      "q": "What glue overlap works best for taping sewing patterns?",
+      "a": "10 mm (about 3/8 inch) is ideal for overlapping A4/Letter sheets with a glue stick or removable tape without adding bulk."
+    }
+  ]
+}

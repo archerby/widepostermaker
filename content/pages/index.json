@@ -1,0 +1,67 @@
+{
+  "slug": "",
+  "route": "/",
+  "template": "tool",
+  "navLabel": "Poster Maker",
+  "breadcrumbTitle": "Wide Poster Maker",
+  "title": "Wide Poster Maker — Print Big Posters on A4 & Letter",
+  "description": "Split any image or PDF across multiple A4 or US Letter sheets with crop marks, glue overlap tabs, and an assembly map. 100% private in your browser.",
+  "h1": "Wide Poster Maker",
+  "lead": "Split any image or PDF into a multi-page printable PDF for A4, US Letter, A3, or Legal home printers — with crop marks, glue tabs, and zero uploads.",
+  "presets": {
+    "paper": "auto",
+    "units": "auto",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "sections": [
+    {
+      "heading": "Print Wall-Sized Posters Without a Plotter",
+      "paragraphs": [
+        "Most home printers stop at A4 or US Letter, while copy shops charge extra for wide-format plotting. WidePosterMaker slices high-resolution photos, illustrations, CAD drawings, maps, and oversized PDFs into an exact tile grid you can print on standard office paper and assemble cleanly in minutes.",
+        "Unlike cloud converters, your files never leave your computer. Images are embedded once and PDFs are clipped as sharp vector XObjects directly in browser memory."
+      ],
+      "listHeading": "How It Works in Three Steps",
+      "listType": "ol",
+      "list": [
+        "Drop or paste any PNG, JPEG, WebP, SVG, or PDF file (multi-page PDFs let you pick any page).",
+        "Choose A4 or US Letter paper, Auto orientation, target poster size or sheet count, printer margin, and glue overlap.",
+        "Download the tiled PDF, print at 100% / Actual Size, trim the white borders, and glue along the overlap crosshairs."
+      ]
+    },
+    {
+      "heading": "Standard Poster Sizes & Home Printer Sheet Counts",
+      "paragraphs": [
+        "Use this quick reference table when planning wall art, classroom charts, or event banners with a 5 mm printer margin and 10 mm glue overlap."
+      ],
+      "table": {
+        "headers": ["Poster Size", "Dimensions (cm / in)", "A4 Sheets (Portrait)", "US Letter Sheets (Portrait)"],
+        "rows": [
+          ["A2 Poster", "42.0 × 59.4 cm (16.5 × 23.4 in)", "2×2 (4 sheets)", "2×3 (6 sheets)"],
+          ["A1 Poster", "59.4 × 84.1 cm (23.4 × 33.1 in)", "3×3 (9 sheets)", "3×4 (12 sheets)"],
+          ["24 × 36 in Movie Poster", "61.0 × 91.4 cm (24 × 36 in)", "4×4 (16 sheets)", "3×4 (12 sheets)"],
+          ["A0 Blueprint / Pattern", "84.1 × 118.9 cm (33.1 × 46.8 in)", "5×5 (25 sheets)", "5×5 (25 sheets)"]
+        ]
+      }
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Are my images or PDFs uploaded to a server?",
+      "a": "No. WidePosterMaker runs 100% locally inside your browser using JavaScript ES modules. Even after the page loads, zero file data leaves your computer."
+    },
+    {
+      "q": "Why should I download the PDF instead of printing directly from a web page?",
+      "a": "Browsers frequently apply inconsistent CSS print scaling across Chrome, Firefox, and Safari. Generating a true millimeter-accurate PDF lets you verify the 50 mm / 2 in calibration ruler and print at 100% Actual Size from any PDF viewer."
+    },
+    {
+      "q": "How do glue overlap tabs and alignment crosshairs work?",
+      "a": "Each interior sheet retains an overlap strip along its right and bottom edges marked with dashed guide lines and corner (+) crosshairs. Trim the top and left margins of the next sheet and align its clean edge right onto the crosshairs."
+    },
+    {
+      "q": "Can I skip completely blank outer sheets to save ink and paper?",
+      "a": "Yes. Click any tile cell directly in the interactive preview grid to mark it as skipped before generating your final PDF."
+    }
+  ]
+}

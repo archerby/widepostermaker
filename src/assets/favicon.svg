@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="12" fill="#18181b"/>
+  <!-- 2x2 tiled poster sheets -->
+  <rect x="10" y="10" width="20" height="20" rx="2" fill="#ffffff"/>
+  <rect x="34" y="10" width="20" height="20" rx="2" fill="#ffffff"/>
+  <rect x="10" y="34" width="20" height="20" rx="2" fill="#ffffff"/>
+  <rect x="34" y="34" width="20" height="20" rx="2" fill="#ffffff"/>
+  <!-- Cobalt poster graphic spanned across tiles -->
+  <rect x="13" y="13" width="14" height="14" rx="1" fill="#1d4ed8"/>
+  <rect x="37" y="13" width="14" height="14" rx="1" fill="#1d4ed8" fill-opacity="0.82"/>
+  <rect x="13" y="37" width="14" height="14" rx="1" fill="#1d4ed8" fill-opacity="0.82"/>
+  <rect x="37" y="37" width="14" height="14" rx="1" fill="#1d4ed8" fill-opacity="0.64"/>
+  <!-- Vermilion corner crop marks -->
+  <path d="M7 14V7h7M50 7h7v7M7 50v7h7M57 50v7h-7" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Center alignment crosshair -->
+  <path d="M32 27v10M27 32h10" stroke="#ef4444" stroke-width="2.2" stroke-linecap="round"/>
+</svg>

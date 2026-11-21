@@ -1,0 +1,60 @@
+{
+  "slug": "letter-poster-maker",
+  "route": "/letter-poster-maker/",
+  "template": "tool",
+  "navLabel": "US Letter",
+  "breadcrumbTitle": "US Letter Poster Maker",
+  "title": "US Letter Poster Maker — Print Big Posters on 8.5×11",
+  "description": "Split big photos, banners, and PDFs across standard 8.5×11 US Letter sheets. Live inch dimensions, crop marks, glue tabs, and 100% local export.",
+  "h1": "US Letter Poster Maker (8.5 × 11 in)",
+  "lead": "Pre-configured for North American 8.5 × 11 inch US Letter paper and inch measurements. Print 18×24, 24×36, or giant wall banners at home.",
+  "presets": {
+    "paper": "letter",
+    "units": "in",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "sections": [
+    {
+      "heading": "Print 18×24 and 24×36 Inch Posters on Standard 8.5×11 Paper",
+      "paragraphs": [
+        "Most US home printers take 8.5 × 11 inch Letter paper (215.9 × 279.4 mm). By setting Size By to Poster Width and choosing inches, you can dial in exact 18, 24, or 36 inch dimensions without doing millimeter math.",
+        "WidePosterMaker also supports US Legal (8.5 × 14 in) in the paper selector if you want fewer horizontal seam joints on tall portraits or banners."
+      ],
+      "table": {
+        "headers": ["Classic US Poster Size", "Width × Height (in)", "Approx. Letter Sheets (with margin & overlap)"],
+        "rows": [
+          ["16 × 20 in Print", "16.0 × 20.0 in", "2×2 (4 Letter sheets)"],
+          ["18 × 24 in Medium Poster", "18.0 × 24.0 in", "3×3 (9 Letter sheets)"],
+          ["24 × 36 in Movie Poster", "24.0 × 36.0 in", "3×4 or 4×4 (12–16 Letter sheets)"],
+          ["36 × 48 in Presentation Board", "36.0 × 48.0 in", "5×5 (25 Letter sheets)"]
+        ]
+      }
+    },
+    {
+      "heading": "Check Your Printer Margin Before Printing",
+      "paragraphs": [
+        "Most US inkjet and laser printers clip 0.2 to 0.25 inches (5–6 mm) around each edge. Keeping Printer Margin at 6 mm and Glue Overlap at 12 mm (~0.5 in) gives generous overlap tabs and prevents missing artwork at seams."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How many 8.5×11 sheets does a 24×36 poster take?",
+      "a": "Accounting for a 6 mm (~0.24 in) printer margin and 12 mm (~0.47 in) glue overlap, a 24 × 36 inch poster takes 3×4 (12 sheets) or 4×4 (16 sheets) depending on orientation."
+    },
+    {
+      "q": "Does the Assembly Map include an inch ruler too?",
+      "a": "Yes. Page 1 prints both an exact 50 mm metric bar and an exact 2.0 inch calibration ruler with half-inch ticks so you can verify scale with any standard ruler."
+    },
+    {
+      "q": "Can I switch between US Letter and US Legal?",
+      "a": "Yes. Open the Paper Size dropdown and choose US Letter (8.5 × 11 in) or US Legal (8.5 × 14 in) at any time."
+    },
+    {
+      "q": "Is there any limit on image file size?",
+      "a": "Because everything processes locally on your machine and images are embedded only once without re-slicing into dozens of JPEGs, large high-resolution files export quickly with low memory use."
+    }
+  ]
+}

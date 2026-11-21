@@ -1,0 +1,59 @@
+{
+  "slug": "pdf-poster-splitter",
+  "route": "/pdf-poster-splitter/",
+  "template": "tool",
+  "navLabel": "PDF Splitter",
+  "breadcrumbTitle": "PDF Poster Splitter",
+  "title": "PDF Poster Splitter — Split Vector PDFs to A4 & Letter",
+  "description": "Split large A0, A1, or architectural PDFs across multiple A4 or Letter pages without losing vector sharpness. Free, private, no watermarks.",
+  "h1": "PDF Poster Splitter (Vector-Preserving)",
+  "lead": "Tile oversized A0, A1, and multi-page PDFs onto A4 or US Letter sheets while keeping vector lines, CAD text, and curves razor-sharp.",
+  "presets": {
+    "paper": "a4",
+    "units": "mm",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "sections": [
+    {
+      "heading": "Why Vector PDF Clipping Matters for Blueprints & Charts",
+      "paragraphs": [
+        "Most online PDF poster splitters convert your PDF into a low-resolution PNG first, turning crisp technical lines, floor plans, and small labels into fuzzy jagged pixels — and inflating a 500 KB drawing into a 40 MB download.",
+        "WidePosterMaker embeds your original PDF page once as a single PDF Form XObject and applies exact PDF clipping rectangles per sheet. Fonts, Bezier curves, and CAD vectors stay mathematically sharp at any enlargement."
+      ],
+      "listHeading": "Supported PDF Workflows",
+      "listType": "ul",
+      "list": [
+        "Multi-page PDF page picker: choose the exact sheet you want to enlarge.",
+        "Honors source PDF CropBox and /Rotate (0°, 90°, 180°, 270°) automatically.",
+        "True Scale (100%) mode reads the PDF's real physical point dimensions for 1:1 architectural or pattern output.",
+        "Automatic high-DPI raster fallback if an encrypted or non-standard PDF prevents direct XObject embedding."
+      ]
+    },
+    {
+      "heading": "Best Settings for Splitting Large PDFs",
+      "paragraphs": [
+        "If you want exact 1:1 physical dimensions from an A0 or A1 PDF, switch Size By to True Scale (%) and enter 100. Keep Printer Margin at 5 mm (or your printer's minimum border) and Glue Overlap at 10 mm so seams never drift across rows."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Does splitting a PDF keep text and linework as vectors?",
+      "a": "Yes. Standard unencrypted PDFs are split using native PDF Form XObject clipping, so all paths and embedded fonts remain true vectors."
+    },
+    {
+      "q": "What if my PDF has multiple pages?",
+      "a": "Once loaded, Prev and Next page buttons appear right above the preview so you can select and tile the exact page you need."
+    },
+    {
+      "q": "Why does my tiled PDF print slightly smaller than expected?",
+      "a": "In your PDF viewer's print dialog, turn off 'Fit to page' or 'Shrink oversized pages' and choose 'Actual Size' or '100% Scale'. You can double-check with the 50 mm / 2 in ruler on Page 1."
+    },
+    {
+      "q": "Does it work with password-protected PDFs?",
+      "a": "Unencrypted PDFs work directly in vector mode. If a PDF restricts modification, WidePosterMaker automatically falls back to high-resolution local rendering when readable."
+    }
+  ]
+}
