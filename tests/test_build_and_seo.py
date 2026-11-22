@@ -36,6 +36,15 @@ EXPECTED_CSP = (
 )
 
 
+SITE_TOKEN = json.loads((ROOT / "content" / "site.json").read_text(encoding="utf-8")).get("cfBeaconToken", "")
+SITE_CSP = (
+    EXPECTED_CSP.replace("script-src 'self';", "script-src 'self' https://static.cloudflareinsights.com;")
+    .replace("connect-src 'self' blob:;", "connect-src 'self' blob: https://cloudflareinsights.com;")
+    if SITE_TOKEN
+    else EXPECTED_CSP
+)
+
+
 def route_for(loc: str, slug: str) -> str:
     if loc == "en":
         return "/" if not slug else f"/{slug}/"
@@ -189,7 +198,13 @@ def test_all_30_pages_seo_hreflang_csp_and_links() -> None:
 
         # CSP & Security hygiene
         csp_values = [m.get("content") for m in parser.meta if m.get("http-equiv", "").lower() == "content-security-policy"]
-        assert csp_values == [EXPECTED_CSP], f"Unexpected CSP in {rel}: {csp_values}"
+        assert csp_values == [SITE_CSP], f"Unexpected CSP in {rel}: {csp_values}"
+        raw_html = (DIST / rel).read_text(encoding="utf-8")
+        if SITE_TOKEN:
+            assert raw_html.count("static.cloudflareinsights.com/beacon.min.js") == 1, f"Beacon missing in {rel}"
+            assert f'"token": "{SITE_TOKEN}"' in raw_html
+        else:
+            assert "cloudflareinsights" not in raw_html, f"Unexpected beacon in {rel}"
         referrers = [m.get("content") for m in parser.meta if m.get("name", "").lower() == "referrer"]
         assert referrers == ["no-referrer"], f"Missing no-referrer meta in {rel}: {referrers}"
         assert not parser.inline_style_attrs, f"Disallowed inline style attrs in {rel}: {parser.inline_style_attrs}"
@@ -199,6 +214,9 @@ def test_all_30_pages_seo_hreflang_csp_and_links() -> None:
             stype = attrs.get("type", "")
             if "src" in attrs:
                 src = attrs["src"]
+                if SITE_TOKEN and src == "https://static.cloudflareinsights.com/beacon.min.js":
+                    assert "defer" in attrs and not body.strip(), f"Beacon must be deferred and empty in {rel}"
+                    continue
                 assert not src.startswith(("http://", "https://")), f"External script banned in {rel}: {src}"
                 target = resolve_dist_target(src)
                 assert target is not None and target.is_file(), f"Broken script src in {rel}: {src}"
