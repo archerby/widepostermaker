@@ -20,6 +20,9 @@ DIST = ROOT / "dist"
 LOCALES = ["en", "ru", "de", "es", "pl"]
 SLUG_RE = re.compile(r"^[a-z0-9-]*$")
 TOKEN_RE = re.compile(r"\{\{([A-Z0-9_]+)\}\}")
+BEACON_TOKEN_RE = re.compile(r"^[0-9a-f]{32}$")
+CF_SCRIPT_ORIGIN = "https://static.cloudflareinsights.com"
+CF_CONNECT_ORIGIN = "https://cloudflareinsights.com"
 
 
 def esc(val: object) -> str:
@@ -234,6 +237,74 @@ def render_lang_links(i18n_map: dict[str, dict], current_locale: str, slug: str)
     return "\n".join(links)
 
 
+def render_mobile_nav(nav_items: list[dict], active_route: str) -> str:
+    links: list[str] = []
+    for item in nav_items:
+        href = validate_href(item["href"])
+        current = ' aria-current="page"' if href == active_route else ""
+        links.append(f'          <a href="{esc(href)}"{current}>{esc(item["label"])}</a>')
+    return "\n".join(links)
+
+
+def render_mobile_lang(i18n_map: dict[str, dict], current_locale: str, slug: str) -> str:
+    links: list[str] = []
+    for loc in LOCALES:
+        href = route_for(loc, slug)
+        current = ' aria-current="page"' if loc == current_locale else ""
+        links.append(
+            f'          <a href="{esc(href)}" hreflang="{esc(loc)}" lang="{esc(loc)}"{current}>'
+            f'{esc(i18n_map[loc]["codeLabel"])}</a>'
+        )
+    return "\n".join(links)
+
+
+def _check_beacon_token(token: str) -> str:
+    if token and not BEACON_TOKEN_RE.match(token):
+        raise ValueError("content/site.json: cfBeaconToken must be 32 lowercase hex characters")
+    return token
+
+
+def build_csp(token: str = "") -> str:
+    """Strict CSP; a Cloudflare Web Analytics token adds exactly its two origins."""
+    _check_beacon_token(token)
+    script_src = "'self'" + (f" {CF_SCRIPT_ORIGIN}" if token else "")
+    connect_src = "'self' blob:" + (f" {CF_CONNECT_ORIGIN}" if token else "")
+    return (
+        f"default-src 'self'; script-src {script_src}; style-src 'self'; "
+        "img-src 'self' blob: data:; worker-src 'self' blob:; "
+        f"connect-src {connect_src}; font-src 'self'; object-src 'none'; "
+        "base-uri 'self'; form-action 'none'"
+    )
+
+
+def analytics_snippet(token: str = "") -> str:
+    """Cookieless Cloudflare Web Analytics beacon, or nothing when no token is configured."""
+    if not _check_beacon_token(token):
+        return ""
+    return (
+        f'  <script defer src="{CF_SCRIPT_ORIGIN}/beacon.min.js" '
+        f"data-cf-beacon='{{\"token\": \"{token}\"}}'></script>"
+    )
+
+
+def load_site_config() -> dict:
+    path = CONTENT / "site.json"
+    site = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+    token = site.get("cfBeaconToken", "") or ""
+    return {"csp": build_csp(token), "analytics": analytics_snippet(token)}
+
+
+def common_header_tokens(i18n: dict, i18n_map: dict[str, dict], loc: str, slug: str, route: str, site: dict) -> dict[str, str]:
+    return {
+        "CSP": site["csp"],
+        "ANALYTICS": site["analytics"],
+        "MENU_LABEL": esc(i18n["menuLabel"]),
+        "CURRENT_LANG_LABEL": esc(i18n["codeLabel"]),
+        "MOBILE_NAV_LINKS": render_mobile_nav(i18n["nav"], route),
+        "MOBILE_LANG_LINKS": render_mobile_lang(i18n_map, loc, slug),
+    }
+
+
 def render_hreflang_links(domain: str, slug: str) -> str:
     lines: list[str] = []
     for loc in LOCALES:
@@ -261,7 +332,7 @@ def render_footer_links(items: list[dict]) -> str:
     return "\n".join(rows)
 
 
-def build_404_page(base_tpl: str, i18n_map: dict[str, dict]) -> str:
+def build_404_page(base_tpl: str, i18n_map: dict[str, dict], site: dict) -> str:
     i18n = i18n_map["en"]
     domain = i18n["domain"].rstrip("/")
     main_html = (
@@ -309,6 +380,7 @@ def build_404_page(base_tpl: str, i18n_map: dict[str, dict]) -> str:
             "FOOTER_COPYRIGHT": esc(i18n["footer"]["copyright"]),
             "FOOTER_TAGLINE": esc(i18n["footer"]["tagline"]),
             "EXTRA_SCRIPTS": "",
+            **common_header_tokens(i18n, i18n_map, "en", "", "", site),
         },
     )
 
@@ -318,6 +390,7 @@ def main() -> None:
         loc: json.loads((CONTENT / "i18n" / f"{loc}.json").read_text(encoding="utf-8"))
         for loc in LOCALES
     }
+    site = load_site_config()
     base_tpl = (TEMPLATES / "base.html").read_text(encoding="utf-8")
     tool_tpl = (TEMPLATES / "tool.html").read_text(encoding="utf-8")
     guide_tpl = (TEMPLATES / "guide.html").read_text(encoding="utf-8")
@@ -455,6 +528,7 @@ def main() -> None:
                 "FOOTER_COPYRIGHT": esc(i18n["footer"]["copyright"]),
                 "FOOTER_TAGLINE": esc(i18n["footer"]["tagline"]),
                 "EXTRA_SCRIPTS": extra_scripts,
+                **common_header_tokens(i18n, i18n_map, loc, page["slug"], page["route"], site),
             },
         )
 
@@ -463,7 +537,7 @@ def main() -> None:
         out_path.write_text(full_html, encoding="utf-8")
 
     # 404.html
-    (DIST / "404.html").write_text(build_404_page(base_tpl, i18n_map), encoding="utf-8")
+    (DIST / "404.html").write_text(build_404_page(base_tpl, i18n_map, site), encoding="utf-8")
 
     # Multilingual sitemap.xml with xhtml:link hreflang alternates
     domain = i18n_map["en"]["domain"].rstrip("/")

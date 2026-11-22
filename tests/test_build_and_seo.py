@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 import hashlib
+import importlib.util
 import json
 import pathlib
+import re
 import subprocess
 import sys
 import xml.etree.ElementTree as ET
@@ -319,3 +321,52 @@ def test_ssg_hardening_guards() -> None:
 
     rendered = ssg.apply_tokens("A={{ONE}} B={{TWO}}", {"ONE": "{{TWO}}", "TWO": "safe"})
     assert rendered == "A={{TWO}} B=safe"
+
+
+def _load_build():
+    spec = importlib.util.spec_from_file_location("wpm_build", ROOT / "scripts" / "build.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def test_build_csp_without_token_is_unchanged() -> None:
+    b = _load_build()
+    assert b.build_csp("") == EXPECTED_CSP
+    assert b.analytics_snippet("") == ""
+
+
+def test_build_csp_with_token_adds_only_cloudflare_origins() -> None:
+    b = _load_build()
+    tok = "0123456789abcdef0123456789abcdef"
+    csp = b.build_csp(tok)
+    assert "script-src 'self' https://static.cloudflareinsights.com;" in csp
+    assert "connect-src 'self' blob: https://cloudflareinsights.com;" in csp
+    stripped = csp.replace(" https://static.cloudflareinsights.com", "").replace(" https://cloudflareinsights.com", "")
+    assert stripped == EXPECTED_CSP
+    snip = b.analytics_snippet(tok)
+    assert 'src="https://static.cloudflareinsights.com/beacon.min.js"' in snip
+    assert tok in snip and " defer " in snip
+
+
+def test_build_csp_rejects_bad_token() -> None:
+    b = _load_build()
+    with pytest.raises(ValueError):
+        b.build_csp('not-a-token"><script>')
+    with pytest.raises(ValueError):
+        b.analytics_snippet("ABCDEF0123456789ABCDEF0123456789")
+
+
+def test_mobile_menus_mirror_desktop_nav() -> None:
+    hrefs = lambda s: re.findall(r'href="([^"]+)"', s)  # noqa: E731
+    for loc in LOCALES:
+        for slug in SLUGS:
+            text = (DIST / rel_file_for(route_for(loc, slug))).read_text(encoding="utf-8")
+            assert text.count('<details class="nav-menu">') == 1, (loc, slug)
+            assert text.count('<details class="lang-menu">') == 1, (loc, slug)
+            desktop = re.search(r'<nav class="main-nav"[^>]*>(.*?)</nav>', text, re.S).group(1)
+            mobile = re.search(r'<details class="nav-menu">(.*?)</details>', text, re.S).group(1)
+            assert hrefs(desktop) == hrefs(mobile)
+            pills = re.search(r'<nav class="lang-switch"[^>]*>(.*?)</nav>', text, re.S).group(1)
+            lang_menu = re.search(r'<details class="lang-menu">(.*?)</details>', text, re.S).group(1)
+            assert hrefs(pills) == hrefs(lang_menu)
