@@ -57,7 +57,7 @@
     },
     {
       "q": "Is there any limit on image file size?",
-      "a": "Because everything processes locally on your machine and images are embedded only once without re-slicing into dozens of JPEGs, large high-resolution files export quickly with low memory use."
+      "a": "Files can be up to 100 MB, and images up to 16,384 px per side (about 64 MP). Because everything is processed locally and each image is embedded only once instead of being re-sliced into dozens of JPEGs, large high-resolution files export quickly."
     }
   ],
   "related": [

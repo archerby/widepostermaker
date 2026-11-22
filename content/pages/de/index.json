@@ -4,10 +4,10 @@
   "template": "tool",
   "navLabel": "Poster-Raster",
   "breadcrumbTitle": "Poster-Raster",
-  "title": "Riesenposter auf DIN A4 drucken — Bilder & PDF teilen",
-  "description": "Bilder und PDFs in mehrere A4- oder US-Letter-Seiten aufteilen — mit Schnittmarken, Kleberand und Übersichtskarte. Kostenlos & 100% lokal im Browser.",
+  "title": "Riesenposter auf DIN A4 drucken – Bilder & PDF teilen",
+  "description": "Bilder und PDFs in mehrere A4- oder US-Letter-Seiten aufteilen – mit Schnittmarken, Kleberand und Übersichtskarte. Kostenlos & 100 % lokal im Browser.",
   "h1": "Große Poster auf DIN A4 drucken",
-  "lead": "Teilen Sie Fotos, Plakate oder große Vektor-PDFs in ein druckfertiges DIN-A4- oder US-Letter-PDF auf — mit Schnittmarken, Klebelaschen und ohne Server-Upload.",
+  "lead": "Teilen Sie Fotos, Plakate oder große Vektor-PDFs in ein druckfertiges DIN-A4- oder US-Letter-PDF auf – mit Schnittmarken, Kleberand und ohne Server-Upload.",
   "presets": {
     "paper": "a4",
     "units": "cm",
@@ -26,8 +26,8 @@
       "listType": "ol",
       "list": [
         "PNG, JPEG, WebP, SVG, GIF, BMP oder PDF per Drag-and-drop laden oder aus der Zwischenablage einfügen.",
-        "Papierformat (A4, A3, Letter), automatische Ausrichtung, Blattanzahl oder Wunschmaße in cm festlegen.",
-        "Druckfertiges PDF herunterladen, bei 100% Originalgröße drucken, Ränder schneiden und an den (+)-Kreuzen kleben."
+        "Papierformat (A4, A3, US Letter, US Legal), automatische Ausrichtung, Blattanzahl oder Wunschmaße in cm festlegen.",
+        "Druckfertiges PDF herunterladen, bei 100 % Originalgröße drucken, Ränder schneiden und an den (+)-Kreuzen kleben."
       ]
     },
     {
@@ -54,7 +54,7 @@
         "„An Seite anpassen“ im Druckdialog: Jedes Blatt schrumpft um einige Prozent, die Kacheln passen nicht mehr. Immer „Tatsächliche Größe“ bzw. 100 % wählen.",
         "Zu kleine Bilddatei: Ein Screenshot mit 1920 Pixeln Breite wirkt über drei Blätter verteilt grob. Achten Sie auf die Anzeige „Druckqualität“.",
         "Druckertreiber auf US Letter statt A4: Dann verschieben sich die Schnittmarken. Papierformat im Treiber und im Tool abgleichen.",
-        "Kleberand abgeschnitten: Nur den oberen und linken Rand entfernen, rechts und unten bleibt die Klebelasche stehen.",
+        "Kleberand abgeschnitten: Nur den oberen und linken Rand entfernen, rechts und unten bleibt der Kleberand stehen.",
         "Sofort alles drucken: Erst Seite 1 drucken und das 50-mm-Lineal nachmessen, dann den Rest."
       ]
     }

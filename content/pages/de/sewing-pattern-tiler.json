@@ -2,12 +2,12 @@
   "slug": "sewing-pattern-tiler",
   "route": "/de/sewing-pattern-tiler/",
   "template": "tool",
-  "navLabel": "100% Schnittmuster",
+  "navLabel": "100 % Schnittmuster",
   "breadcrumbTitle": "A0 Schnittmuster auf A4",
-  "title": "A0 Schnittmuster auf DIN A4 drucken (100% Maßstab)",
-  "description": "A0-PDF-Schnittmuster und Bastelschablonen exakt im Maßstab 1:1 (100%) auf DIN A4 aufteilen. Mit Kontrollquadrat/Lineal 50 mm & Leerseiten-Skip.",
-  "h1": "A0-Schnittmuster auf DIN A4 teilen (100% Maßstab)",
-  "lead": "Direkt auf Originalmaßstab (100%) und Vektor-PDF-Schnitt eingestellt — damit Näh- und Werkstattschablonen maßgenau 1:1 aus dem Heimdrucker kommen.",
+  "title": "A0-Schnittmuster auf DIN A4 drucken (100 % Maßstab)",
+  "description": "A0-PDF-Schnittmuster und Bastelschablonen exakt im Maßstab 1:1 (100 %) auf DIN A4 aufteilen. Mit 50-mm-Kontrolllineal; leere Seiten lassen sich weglassen.",
+  "h1": "A0-Schnittmuster auf DIN A4 teilen (100 % Maßstab)",
+  "lead": "Direkt auf Originalmaßstab (100 %) und Vektor-PDF-Schnitt eingestellt – damit Näh- und Werkstattschablonen maßgenau 1:1 aus dem Heimdrucker kommen.",
   "presets": {
     "paper": "a4",
     "units": "mm",
@@ -19,14 +19,14 @@
     {
       "heading": "Maßhaltige 1:1-Schnittmuster ohne Plotter drucken",
       "paragraphs": [
-        "Bei A0-Schnittmustern darf der PDF-Reader keinesfalls verkleinern. WidePosterMaker liest die physische Punktgröße der A0-Datei direkt aus und übernimmt sie 1:1 bei 100% auf DIN-A4-Blätter.",
+        "Bei A0-Schnittmustern darf der PDF-Reader keinesfalls verkleinern. WidePosterMaker liest die physische Punktgröße der A0-Datei direkt aus und übernimmt sie 1:1 bei 100 % auf DIN-A4-Blätter.",
         "Drucken Sie zuerst nur Seite 1 (Übersichtskarte) und messen Sie das 50-mm-Lineal nach. Erst wenn es exakt 50 mm misst, drucken Sie die übrigen Seiten."
       ]
     },
     {
       "heading": "Schnittmuster A0 auf A4 drucken und zusammenkleben",
       "paragraphs": [
-        "Ein A0-Schnittmuster (84,1 × 118,9 cm) ergibt bei 100 % auf DIN A4 ein Raster von 3 × 7 = 21 Blättern, auf A3 sind es 3 × 3 = 9. Da Schnittteile die Fläche selten ganz ausfüllen, können Sie leere Kacheln in der Vorschau anklicken und weglassen – sie erscheinen auf der Übersichtskarte schraffiert.",
+        "Ein A0-Schnittmuster (84,1 × 118,9 cm) ergibt bei 100 % auf DIN A4 ein Raster von 3 × 7 = 21 Blättern, auf A3 sind es 3 × 3 = 9. Da Schnittteile die Fläche selten ganz ausfüllen, können Sie leere Kacheln in der Vorschau anklicken und weglassen – sie erscheinen auf der Übersichtskarte grau hinterlegt.",
         "Zum Zusammenkleben schneiden Sie bei jedem Blatt nur den oberen und linken Rand ab, legen es auf den Kleberand des Nachbarblatts und richten es an den Passkreuzen (+) aus. Kleben Sie zuerst die Reihen, dann die Reihen untereinander."
       ]
     },

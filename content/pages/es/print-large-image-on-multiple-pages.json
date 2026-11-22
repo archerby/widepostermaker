@@ -47,17 +47,17 @@
       "listHeading": "De la foto al póster en cinco pasos",
       "listType": "ol",
       "list": [
-        "Elige la imagen (JPEG, PNG, WebP, SVG o GIF) o un PDF.",
+        "Elige la imagen (JPEG, PNG, WebP, SVG, GIF o BMP) o un PDF.",
         "En «Calcular por», indica las hojas de ancho o un ancho exacto en centímetros.",
         "Revisa la cuadrícula en la vista previa y toca las hojas en blanco que quieras omitir.",
         "Descarga el PDF e imprímelo al 100 % o en «Tamaño real», nunca con «Ajustar a página».",
-        "Recorta los márgenes superior e izquierdo, pega sobre las franjas de solape y haz coincidir las cruces."
+        "Recorta los márgenes superior e izquierdo, pega sobre las franjas de pegado y haz coincidir las cruces."
       ]
     },
     {
       "heading": "Ejemplo real: una foto de móvil de 12 megapíxeles",
       "paragraphs": [
-        "Una foto típica de móvil mide 4032 × 3024 píxeles. Si la imprimes con 3 hojas A4 de ancho, la herramienta coloca las hojas en horizontal y genera una cuadrícula de 3 × 4 = 12 hojas. El póster mide unos 84 × 63 cm y conserva alrededor de 122 DPI: nitidez de sobra para una foto que se mira desde un metro.",
+        "Una foto típica de móvil mide 4032 × 3024 píxeles. Si la imprimes con 3 hojas A4 de ancho, la herramienta coloca las hojas en horizontal y genera una cuadrícula de 3 × 4 = 12 hojas. El póster mide unos 84 × 63 cm y conserva alrededor de 122 DPI: nitidez suficiente para una foto que se mira desde un metro.",
         "Con 4 hojas de ancho pasas a 20 hojas y unos 112 × 84 cm, pero la resolución baja a unos 92 DPI. En tamaño Carta, 3 hojas de ancho dan una cuadrícula de 3 × 3 = 9 hojas y unos 78 × 58 cm. La vista previa y el resumen (Cuadrícula, Tamaño final, Calidad) se actualizan al instante, así que ves el número de hojas y los DPI antes de gastar tinta."
       ]
     },
@@ -70,9 +70,6 @@
     },
     {
       "heading": "Errores frecuentes al imprimir una foto en varias hojas",
-      "paragraphs": [
-        "Casi todos los pósters que no encajan se deben a uno de estos fallos:"
-      ],
       "list": [
         "Imprimir con «Ajustar a página»: cada hoja sale un poco reducida y las piezas ya no coinciden.",
         "Recortar los cuatro bordes de cada hoja: la franja derecha e inferior es justo la zona donde va el pegamento.",
@@ -100,7 +97,7 @@
     },
     {
       "q": "¿Puedo imprimir solo una parte de la cuadrícula?",
-      "a": "Sí. Toca o haz clic en una hoja de la vista previa para omitirla, algo útil en zonas de cielo o de fondo liso. Las hojas omitidas no entran en el PDF y aparecen rayadas en el mapa de montaje."
+      "a": "Sí. Toca o haz clic en una hoja de la vista previa para omitirla, algo útil en zonas de cielo o de fondo liso. Las hojas omitidas no entran en el PDF y aparecen en gris en el mapa de montaje."
     },
     {
       "q": "¿Puedo hacerlo desde el móvil?",

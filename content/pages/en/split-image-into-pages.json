@@ -4,10 +4,10 @@
   "template": "tool",
   "navLabel": "Split Image",
   "breadcrumbTitle": "Split Image into A4 Pages",
-  "title": "Split an Image into A4 or Letter Pages for Printing",
+  "title": "Split an Image into A4 Pages for Printing — Free, No Upload",
   "description": "Split any image into 4, 9, 16 or more A4 or Letter pages and print it as one big poster. Free online tool, no upload, crop marks and glue tabs included.",
   "h1": "Split an Image into A4 Pages",
-  "lead": "Cut a picture into a grid of A4 or US Letter pages — 2 × 2, 3 × 3, 4 × 4 or any size — and get a single print-ready PDF. Pick the number of columns; the rows follow from the shape of your image.",
+  "lead": "Split an image into A4 pages (or US Letter) in a 2 × 2, 3 × 3, 4 × 4 or any other grid, and get a single print-ready PDF. Pick the number of columns; the rows follow from the shape of your image.",
   "presets": {
     "paper": "auto",
     "units": "auto",
@@ -39,7 +39,7 @@
   ],
   "sections": [
     {
-      "heading": "Columns, rows, and how many pages you get",
+      "heading": "Split an image into A4 pages: columns, rows, and sheet count",
       "paragraphs": [
         "You choose how many pages wide the image should be. The number of rows is then calculated from the image's proportions, so the picture is never stretched. Prefer to control the height instead? Switch \"Size by\" to Sheets tall.",
         "Orientation is picked for you: a landscape picture is printed on landscape sheets, a portrait picture on portrait sheets. That is why the same \"2 columns\" can mean 4 sheets for one image and 6 for another."

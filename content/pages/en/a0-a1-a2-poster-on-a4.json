@@ -58,7 +58,7 @@
       }
     },
     {
-      "heading": "Worked example: an A1 poster on A4",
+      "heading": "Worked example: printing an A1 poster on A4 sheets",
       "paragraphs": [
         "An A1 poster is 594 × 841 mm. With a 5 mm printer margin, each portrait A4 sheet can print 200 × 287 mm; after the 10 mm glue overlap it advances 190 mm across and 277 mm down. Four columns (4 × 190 + 10 = 770 mm) cover the 594 mm width and three rows (3 × 277 + 10 = 841 mm) cover the height: a 4 × 3 grid of 12 sheets. The same poster in landscape orientation would need 15, so Auto picks portrait.",
         "An A2 poster needs 8 A4 sheets, an A0 needs 21. If you have an A3 printer, the numbers drop to 4, 6 and 9 sheets for A2, A1 and A0."

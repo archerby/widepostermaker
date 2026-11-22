@@ -15,7 +15,9 @@
     "paperHeader": "Kartki {paper}",
     "cell": "{cols} × {rows} = {n}",
     "caption": "Liczba kartek przy skali 100%, orientacja dobierana automatycznie. A4/A3: margines drukarki 5 mm + zakładka do klejenia 10 mm; US Letter: 6 mm + 12 mm.",
-    "decimal": ","
+    "decimal": ",",
+    "cm": "cm",
+    "in": "cala"
   },
   "siteName": "WidePosterMaker",
   "domain": "https://widepostermaker.com",

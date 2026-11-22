@@ -15,7 +15,9 @@
     "paperHeader": "{paper} sheets",
     "cell": "{cols} × {rows} = {n}",
     "caption": "Sheets needed at 100% scale, orientation chosen automatically. A4/A3: 5 mm printer margin + 10 mm glue overlap; US Letter: 6 mm + 12 mm.",
-    "decimal": "."
+    "decimal": ".",
+    "cm": "cm",
+    "in": "in"
   },
   "siteName": "WidePosterMaker",
   "domain": "https://widepostermaker.com",

@@ -19,7 +19,7 @@
     {
       "heading": "Why Vector PDF Clipping Matters for Blueprints & Charts",
       "paragraphs": [
-        "Most online PDF poster splitters convert your PDF into a low-resolution PNG first, turning crisp technical lines, floor plans, and small labels into fuzzy jagged pixels — and inflating a 500 KB drawing into a 40 MB download.",
+        "Many online PDF poster splitters convert your PDF into a low-resolution PNG first, turning crisp technical lines, floor plans, and small labels into fuzzy jagged pixels — and a 500 KB drawing can turn into a 40 MB download.",
         "WidePosterMaker embeds your original PDF page once as a single PDF Form XObject and applies exact PDF clipping rectangles per sheet. Fonts, Bezier curves, and CAD vectors stay mathematically sharp at any enlargement."
       ],
       "listHeading": "Supported PDF Workflows",

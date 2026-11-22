@@ -15,7 +15,9 @@
     "paperHeader": "Hojas {paper}",
     "cell": "{cols} × {rows} = {n}",
     "caption": "Hojas necesarias a escala 100 %, orientación automática. A4/A3: margen de impresora 5 mm + solapamiento para pegar 10 mm; Carta: 6 mm + 12 mm.",
-    "decimal": ","
+    "decimal": ",",
+    "cm": "cm",
+    "in": "pulg."
   },
   "siteName": "WidePosterMaker",
   "domain": "https://widepostermaker.com",

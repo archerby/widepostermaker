@@ -5,9 +5,9 @@
   "navLabel": "Guía de pegado",
   "breadcrumbTitle": "Cómo recortar y pegar",
   "title": "Cómo imprimir, cortar y pegar un póster en varias hojas A4",
-  "description": "Guía ilustrada paso a paso para verificar el 100% con la regla de 50 mm, recortar solo dos bordes y pegar láminas sin arrugas.",
+  "description": "Guía ilustrada paso a paso para verificar el 100 % con la regla de 50 mm, recortar solo dos bordes y pegar láminas sin arrugas.",
   "h1": "Cómo cortar y pegar un póster multipágina limpiamente",
-  "lead": "Sigue estos tres pasos sencillos para unir hojas A4 o Carta sin escalones visibles ni ondulaciones en el papel.",
+  "lead": "Sigue estos cuatro pasos sencillos para unir hojas A4 o Carta sin escalones visibles ni ondulaciones en el papel.",
   "presets": {
     "paper": "a4",
     "units": "cm",
@@ -25,22 +25,22 @@
     {
       "heading": "Paso 1: Imprime la página 1 y mide la barra de 50 mm",
       "paragraphs": [
-        "Comprueba con una regla física que los 50 mm impresos miden exactamente 50 mm antes de imprimir todas las hojas. Si mide menos, desactiva 'Ajustar a página' y usa 'Tamaño real (100%)'.",
+        "Comprueba con una regla física que los 50 mm impresos miden exactamente 50 mm antes de imprimir todas las hojas. Si mide menos, desactiva «Ajustar a página» y usa «Tamaño real (100 %)».",
         "Esta comprobación tarda un minuto y evita reimprimir el póster entero. En tamaño Carta puedes medir también la regla de 2 pulgadas."
       ]
     },
     {
       "heading": "Paso 2: Recorta solo los márgenes superior e izquierdo",
       "paragraphs": [
-        "Conserva intactas las pestañas punteadas derecha e inferior de cada hoja y recorta únicamente arriba y a la izquierda sobre las marcas de corte.",
+        "Conserva intactas las franjas de pegado (de línea discontinua) de los bordes derecho e inferior de cada hoja y recorta únicamente arriba y a la izquierda sobre las marcas de corte.",
         "Usa la regla metálica para que el corte sea recto: un borde ondulado se nota en la unión."
       ]
     },
     {
       "heading": "Paso 3: Pega fila por fila usando las cruces (+)",
       "paragraphs": [
-        "Une primero cada fila horizontal (A1 + A2 + A3) con pegamento en barra seco o cinta de doble cara y después une las filas entre sí.",
-        "Aplica el pegamento sobre la franja de solape de la hoja de la izquierda, apoya encima el borde recortado de la siguiente y desliza hasta que las cruces (+) coincidan. Presiona del centro hacia los extremos para que no queden burbujas."
+        "Une primero cada fila horizontal (A1 + A2 + A3) con pegamento en barra seco o cinta de doble cara.",
+        "Aplica el pegamento sobre la franja de pegado de la hoja de la izquierda, apoya encima el borde recortado de la siguiente y desliza hasta que las cruces (+) coincidan. Presiona del centro hacia los extremos para que no queden burbujas."
       ]
     },
     {

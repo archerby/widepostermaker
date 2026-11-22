@@ -44,7 +44,7 @@
     {
       "heading": "Opcja „Plakat” w Adobe Readerze a to narzędzie",
       "paragraphs": [
-        "Adobe Acrobat Reader ma w oknie drukowania tryb „Plakat” (w sekcji „Rozmiar i obsługa stron”) i działa, jeśli masz zainstalowanego Readera, a sterownik drukarki współpracuje. Drukuje jednak od razu, więc nie dostajesz pliku do sprawdzenia ani ponownego użycia, a pomoc przy składaniu ogranicza się do drobnych znaczników cięcia i etykiet.",
+        "Adobe Acrobat Reader ma w oknie drukowania tryb „Plakat” i działa, jeśli masz zainstalowanego Readera, a sterownik drukarki współpracuje. Drukuje jednak od razu, więc nie dostajesz pliku do sprawdzenia ani ponownego użycia, a pomoc przy składaniu ogranicza się do drobnych znaczników cięcia i etykiet.",
         "Tutaj dostajesz zwykły PDF, który możesz obejrzeć, wysłać komuś albo wydrukować z dowolnego urządzenia — także z telefonu czy z Maca, gdzie Podgląd nie ma opcji kafelkowania. Treść wektorowa trafia do pliku jako wektory, a nie jako obrazek, więc tekst i cienkie linie pozostają ostre."
       ],
       "listHeading": "Co dostajesz",
@@ -65,7 +65,7 @@
     {
       "heading": "Najczęstsze błędy przy druku podzielonego PDF-u",
       "list": [
-        "„Dopasuj” albo „Zmniejsz zbyt duże strony” w oknie drukowania — kafelki wychodzą o kilka procent za małe i nie schodzą się na łączeniach.",
+        "„Dopasuj” albo zmniejszanie zbyt dużych stron w oknie drukowania — kafelki wychodzą o kilka procent za małe i nie schodzą się na łączeniach.",
         "Włączony druk dwustronny — każdą kartkę drukuj jednostronnie, inaczej kolejny kafelek trafi na odwrót poprzedniego.",
         "W narzędziu wybrany inny papier niż ten w podajniku (A4 zamiast Letter lub odwrotnie) — sterownik wtedy przeskalowuje strony.",
         "Druk wszystkich kartek bez sprawdzenia strony 1 — jedna próbna kartka z linijką 50 mm oszczędza całą ryzę papieru."

@@ -7,7 +7,7 @@
   "title": "Print a Large Image on Multiple Pages — Free, No Upload",
   "description": "Print a big photo or picture across several A4 or Letter pages on your home printer. Free, no upload, no watermark — with crop marks and glue tabs.",
   "h1": "Print a Large Image on Multiple Pages",
-  "lead": "Load a photo, drawing, or screenshot, choose how many pages wide it should be, and download one PDF that prints the picture across several A4 or US Letter sheets. Everything runs in your browser — the image is never uploaded.",
+  "lead": "To print a large image on multiple pages, load a photo, drawing, or screenshot, choose how many pages wide it should be, and download one PDF that prints the picture across several A4 or US Letter sheets. Everything runs in your browser — the image is never uploaded.",
   "presets": {
     "paper": "auto",
     "units": "auto",
@@ -39,7 +39,7 @@
   ],
   "sections": [
     {
-      "heading": "How to print a big picture on several sheets of paper",
+      "heading": "How to print a large image on multiple pages",
       "paragraphs": [
         "Office printers stop at A4 or US Letter, but a print shop is not the only way to get a large picture on the wall. The trick is tiling: the image is enlarged and cut into a grid of page-sized pieces, each printed on its own sheet, then trimmed and glued back together.",
         "Word, Paint, and most printer drivers can do a rough version of this, but they rarely add an overlap for glue or marks that tell you which sheet goes where. WidePosterMaker builds the whole grid for you: every page gets crop marks, a glue strip along the right and bottom edge, alignment crosshairs, and a label such as A1, A2, B1 that matches the assembly map on page one."
@@ -88,7 +88,7 @@
     },
     {
       "q": "Can I print only part of the grid?",
-      "a": "Yes. Tap or click a sheet in the preview to skip it — handy for empty sky or background areas. Skipped sheets are left out of the PDF and shown as hatched on the assembly map."
+      "a": "Yes. Tap or click a sheet in the preview to skip it — handy for empty sky or background areas. Skipped sheets are left out of the PDF and shown greyed out on the assembly map."
     }
   ],
   "related": [

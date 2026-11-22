@@ -82,22 +82,19 @@
     {
       "heading": "Dividir una imagen en 4 hojas o en 9 hojas",
       "paragraphs": [
-        "Para una cuadrícula de 2 × 2 elige 2 columnas; para 3 × 3, 3 columnas. Con una imagen vertical de proporción 3:4 en A4 salen exactamente esas cuadrículas, como ves en la tabla. Si la imagen tiene otra forma, cambia el número de filas: una foto apaisada 4:3 con 2 columnas se imprime en hojas horizontales y necesita 2 × 3 = 6 hojas para unos 56 × 42 cm.",
+        "Para una cuadrícula de 2 × 2 elige 2 columnas; para 3 × 3, 3 columnas. Con una imagen vertical de proporción 3:4 en A4 salen exactamente esas cuadrículas, como ves en la tabla. Si la imagen tiene otra forma, el número de filas cambia: una foto apaisada 4:3 con 2 columnas se imprime en hojas horizontales y necesita 2 × 3 = 6 hojas para unos 56 × 42 cm.",
         "La razón es que cada hoja pierde unos milímetros por el margen de impresora y las hojas vecinas se solapan 10 mm para poder pegarlas. Si necesitas exactamente 3 × 3, recorta antes la imagen a la proporción adecuada o prueba «Hojas de alto» y compara ambos resultados en el resumen."
       ]
     },
     {
       "heading": "Cómo volver a juntar las hojas",
       "paragraphs": [
-        "Cada hoja lleva en el margen su etiqueta de la cuadrícula (A1, A2 … B1, B2) y pequeñas flechas que indican sus vecinas. La página 1 del PDF es un mapa de montaje con toda la cuadrícula y una regla de 50 mm / 2 pulgadas para comprobar que la impresora no ha reducido nada.",
+        "Cada hoja lleva en el margen su etiqueta de la cuadrícula (A1, A2 … B1, B2) y pequeñas flechas que indican sus vecinas. Por defecto, la página 1 del PDF es un mapa de montaje con toda la cuadrícula y una regla de 50 mm / 2 pulgadas para comprobar que la impresora no ha reducido nada.",
         "Recorta los bordes superior e izquierdo de cada hoja, deja las franjas de pegado derecha e inferior y avanza fila a fila desde A1. En nuestra guía de pegado tienes cada paso con diagramas."
       ]
     },
     {
       "heading": "Consejos antes de imprimir",
-      "paragraphs": [
-        "Unos minutos de comprobación te ahorran hojas y tinta:"
-      ],
       "list": [
         "Imprime primero solo la página 1 y mide la regla de 50 mm con una regla de verdad.",
         "Si la imagen tiene mucho fondo blanco o transparente, toca en la vista previa las hojas que quedarían vacías para omitirlas.",

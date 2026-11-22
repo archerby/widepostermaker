@@ -97,7 +97,7 @@
     },
     {
       "q": "Czy mogę wydrukować tylko część siatki?",
-      "a": "Tak. Kliknij lub dotknij kartkę na podglądzie, żeby ją pominąć — przydaje się przy jednolitym niebie albo tle. Pominięte kartki nie trafiają do PDF-u, a na mapie montażu są zakreskowane."
+      "a": "Tak. Kliknij lub dotknij kartkę na podglądzie, żeby ją pominąć — przydaje się przy jednolitym niebie albo tle. Pominięte kartki nie trafiają do PDF-u, a na mapie montażu są wyszarzone."
     }
   ],
   "related": [

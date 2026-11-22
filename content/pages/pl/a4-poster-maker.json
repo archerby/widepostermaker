@@ -4,7 +4,7 @@
   "template": "tool",
   "navLabel": "Format A4",
   "breadcrumbTitle": "Plakat w formacie A4",
-  "title": "Drukowanie dużego plakatu na kilku kartkach A4 (210×297 mm)",
+  "title": "Plakat z kartek A4 (210×297 mm): siatki 2×2, 3×3 i formaty A2–A0",
   "description": "Ustawione domyślnie pod papier A4 (210×297 mm) i centymetry: dziel zdjęcia i PDF-y na siatki 2×2, 3×3 lub wymiary A2/A1/A0.",
   "h1": "Tworzenie plakatu na kartkach A4 (210 × 297 mm)",
   "lead": "Ustawienia gotowe pod papier A4 i centymetry — do drukowania plakatu na kilku kartkach A4 ze zdjęcia, rysunku albo PDF-u. Orientację pionową lub poziomą narzędzie dobiera samo, tak by zużyć jak najmniej kartek.",

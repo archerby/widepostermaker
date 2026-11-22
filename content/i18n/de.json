@@ -15,7 +15,9 @@
     "paperHeader": "{paper}-Blätter",
     "cell": "{cols} × {rows} = {n}",
     "caption": "Benötigte Blätter bei 100 % Maßstab, Ausrichtung automatisch. A4/A3: 5 mm Druckerrand + 10 mm Kleberand; US Letter: 6 mm + 12 mm.",
-    "decimal": ","
+    "decimal": ",",
+    "cm": "cm",
+    "in": "Zoll"
   },
   "siteName": "WidePosterMaker",
   "domain": "https://widepostermaker.com",

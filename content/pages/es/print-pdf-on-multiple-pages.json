@@ -38,7 +38,7 @@
       "heading": "Imprimir un PDF grande en una impresora pequeña",
       "paragraphs": [
         "Una página PDF tiene un tamaño físico: un póster A1 mide 594 × 841 mm y un plano de arquitectura puede ser A0. Al mandarlo a una impresora A4, lo normal es que toda la página se reduzca a una sola hoja. Para conservar el tamaño real hay que repartirla en varias hojas: es lo que se llama impresión en mosaico o en póster.",
-        "WidePosterMaker toma la página del PDF, la coloca al 100 % (o a la escala que elijas en «Escala real (%)») y la corta en una cuadrícula de hojas A4, US Letter (Carta), A3 o Legal. Cada hoja lleva marcas de corte, solape de pegado, cruces de alineación y su posición en la cuadrícula; la página 1 es un mapa de montaje con regla de calibración."
+        "WidePosterMaker toma la página del PDF, la coloca al 100 % (o a la escala que elijas en «Escala real (%)») y la corta en una cuadrícula de hojas A4, US Letter (Carta), A3 o Legal. Cada hoja lleva marcas de corte, solape de pegado, cruces de alineación y su posición en la cuadrícula; por defecto, la página 1 es un mapa de montaje con regla de calibración."
       ]
     },
     {

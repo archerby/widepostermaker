@@ -5,7 +5,7 @@
   "navLabel": "Dividir PDF",
   "breadcrumbTitle": "Divisor de PDF",
   "title": "Dividir PDF grande en hojas A4 sin perder calidad vectorial",
-  "description": "Divide archivos PDF A0 y A1 en múltiples páginas A4 o Carta conservando líneas y textos vectoriales nítidos. Gratis y 100% privado.",
+  "description": "Divide archivos PDF A0 y A1 en múltiples páginas A4 o Carta conservando líneas y textos vectoriales nítidos. Gratis y 100 % privado.",
   "h1": "Divisor de PDF en póster (vectorial)",
   "lead": "Divide planos A0, carteles y documentos PDF multipágina en hojas A4 o US Letter manteniendo líneas técnicas y fuentes totalmente nítidas.",
   "presets": {
@@ -32,9 +32,6 @@
     },
     {
       "heading": "Errores frecuentes al dividir un PDF",
-      "paragraphs": [
-        "Antes de imprimir decenas de hojas, revisa estos puntos:"
-      ],
       "list": [
         "Exportar el plano a JPG antes de dividirlo: pierdes la nitidez vectorial.",
         "Imprimir con «Ajustar a página»: la escala del plano deja de ser correcta.",

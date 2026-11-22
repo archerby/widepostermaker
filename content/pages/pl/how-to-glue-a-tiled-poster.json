@@ -19,7 +19,7 @@
     {
       "heading": "Krok 1: Wydrukuj stronę 1 i zmierz pasek 50 mm",
       "paragraphs": [
-        "Każdy PDF z WidePosterMaker zaczyna się od mapy montażu z miniaturą siatki (A1, A2, B1…) oraz paskami kontrolnymi 50 mm i 2 cale.",
+        "Domyślnie każdy PDF z WidePosterMaker zaczyna się od mapy montażu z miniaturą siatki (A1, A2, B1…) oraz paskami kontrolnymi 50 mm i 2 cale.",
         "Zanim zużyjesz 12 czy 20 kartek, wydrukuj tylko pierwszą stronę i zmierz linijką odcinek 50 mm. Jeśli wychodzi krótszy, np. 47 mm, przeglądarka PDF zastosowała dopasowanie do obszaru drukowania — w oknie druku zmień skalę na „Rzeczywisty rozmiar” (100%)."
       ]
     },
@@ -41,7 +41,7 @@
       ],
       "listHeading": "Przydatne triki",
       "list": [
-        "Tnij metalową linijką i nożykiem (albo gilotyną), a nie nożyczkami — łączenia będą idealnie proste.",
+        "Tnij metalową linijką i nożykiem (albo gilotyną), a nie nożyczkami — łączenia będą równe.",
         "Przy ciemnych grafikach przyłóż dwie kartki do okna lub lampy — krzyżyki (+) od razu pokażą, czy leżą równo.",
         "Sklejone łączenia dociśnij ciężką książką na ok. 10 minut przed powieszeniem lub oprawieniem."
       ]

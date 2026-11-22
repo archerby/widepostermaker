@@ -4,10 +4,10 @@
   "template": "tool",
   "navLabel": "Crear Póster",
   "breadcrumbTitle": "Crear Póster en A4",
-  "title": "Imprimir póster grande en varias hojas A4 o Letter gratis",
-  "description": "Divide cualquier imagen o PDF en varias páginas A4 o Carta con marcas de corte, pestañas de pegado y mapa guía. 100% privado en tu navegador.",
+  "title": "Imprimir póster grande en varias hojas A4 o Carta, gratis",
+  "description": "Divide cualquier imagen o PDF en varias páginas A4 o Carta con marcas de corte, solapes de pegado y mapa de montaje. 100 % privado en tu navegador.",
   "h1": "Imprimir pósters grandes en hojas A4",
-  "lead": "Divide fotos, carteles o archivos PDF grandes en un PDF listo para impresora doméstica A4 o US Letter — con marcas de corte, solapes y cero subidas.",
+  "lead": "Divide fotos, carteles o archivos PDF grandes en un PDF listo para impresora doméstica A4 o US Letter, con marcas de corte y solapes de pegado, sin subir nada.",
   "presets": {
     "paper": "a4",
     "units": "cm",
@@ -20,14 +20,14 @@
       "heading": "Carteles gigantes en casa sin ir a la imprenta",
       "paragraphs": [
         "La mayoría de las impresoras domésticas imprimen como máximo en A4 o Carta (US Letter). WidePosterMaker divide tus imágenes de alta resolución, mapas o planos PDF en una cuadrícula exacta fácil de recortar y unir en pocos minutos.",
-        "Ningún archivo sale de tu ordenador: las imágenes se incrustan una sola vez y los PDF se recortan manteniendo los trazos vectoriales en memoria local."
+        "Ningún archivo sale de tu ordenador: las imágenes se incrustan una sola vez y los PDF se recortan conservando los trazos vectoriales."
       ],
       "listHeading": "Cómo funciona en tres pasos",
       "listType": "ol",
       "list": [
         "Arrastra o pega cualquier archivo PNG, JPEG, WebP, SVG o PDF.",
-        "Elige papel A4 o US Letter, orientación automática, número de hojas o ancho exacto en cm.",
-        "Descarga el PDF, imprime al 100% (Tamaño real), recorta los bordes superior e izquierdo y une las cruces (+)."
+        "Elige papel (A4, US Letter, A3 o US Legal), orientación automática, número de hojas o ancho exacto en cm.",
+        "Descarga el PDF, imprime al 100 % (Tamaño real), recorta los bordes superior e izquierdo y une las cruces (+)."
       ]
     },
     {
@@ -63,7 +63,7 @@
       "list": [
         "Imprimir con «Ajustar a página» en lugar de 100 % / «Tamaño real»: cada hoja sale algo reducida.",
         "Elegir en la herramienta A4 y cargar papel Carta en la impresora (o al revés).",
-        "Recortar los cuatro bordes: las franjas derecha e inferior son la zona de pegado.",
+        "Recortar los cuatro bordes: las franjas derecha e inferior son las que se pegan.",
         "No medir la regla de 50 mm de la página 1 antes de imprimir el resto."
       ]
     }

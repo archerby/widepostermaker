@@ -85,7 +85,7 @@
             "4032 px (Handyfoto)",
             "171 DPI",
             "122 DPI",
-            "92 DPI"
+            "91 DPI"
           ],
           [
             "3000 px",
@@ -131,11 +131,11 @@
     },
     {
       "q": "Kann ich nur einen Teil des Rasters drucken?",
-      "a": "Ja. Klicken oder tippen Sie in der Vorschau auf ein Blatt, um es zu überspringen – praktisch bei leerem Himmel oder einfarbigem Hintergrund. Übersprungene Blätter fehlen im PDF und sind auf der Übersichtskarte schraffiert."
+      "a": "Ja. Klicken oder tippen Sie in der Vorschau auf ein Blatt, um es zu überspringen – praktisch bei leerem Himmel oder einfarbigem Hintergrund. Übersprungene Blätter fehlen im PDF und sind auf der Übersichtskarte grau hinterlegt."
     },
     {
       "q": "Geht das nicht auch mit Word oder dem Druckertreiber?",
-      "a": "Manche Druckertreiber haben eine Option „Poster“ (meist 2 × 2, 3 × 3 oder 4 × 4 Blätter). Sie druckt aber direkt, oft ohne Klebelaschen und ohne frei wählbare Größe in Zentimetern. Hier bekommen Sie ein PDF, das Sie vorher prüfen und auf jedem Gerät drucken können."
+      "a": "Manche Druckertreiber haben eine Option „Poster“ (meist 2 × 2, 3 × 3 oder 4 × 4 Blätter). Sie druckt aber direkt, oft ohne Kleberand und ohne frei wählbare Größe in Zentimetern. Hier bekommen Sie ein PDF, das Sie vorher prüfen und auf jedem Gerät drucken können."
     }
   ],
   "related": [

@@ -87,7 +87,8 @@ def render_auto_table(spec: dict, i18n: dict) -> str:
     parts.append("    <tbody>")
     for po in posters:
         w, h = sheetcalc.POSTERS[po]
-        size = f"{_num(w / 10, dec)} × {_num(h / 10, dec)} cm · {_num(w / 25.4, dec)} × {_num(h / 25.4, dec)} in"
+        cm, inch = t.get("cm", "cm"), t.get("in", "in")
+        size = f"{_num(w / 10, dec)} × {_num(h / 10, dec)} {cm} · {_num(w / 25.4, dec)} × {_num(h / 25.4, dec)} {inch}"
         cells = [sheetcalc.POSTER_NAMES[po], size]
         for pa in papers:
             cols, rows = sheetcalc.grid_for(po, pa)

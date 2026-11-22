@@ -49,7 +49,7 @@
     },
     {
       "q": "Dlaczego podzielony PDF drukuje się trochę mniejszy?",
-      "a": "W oknie drukowania wyłącz „Dopasuj” albo „Zmniejsz zbyt duże strony” i wybierz „Rzeczywisty rozmiar” lub skalę 100%. Wynik sprawdzisz linijką 50 mm / 2 cale na stronie 1."
+      "a": "W oknie drukowania wyłącz „Dopasuj” i zmniejszanie zbyt dużych stron, a potem wybierz „Rzeczywisty rozmiar” lub skalę 100%. Wynik sprawdzisz linijką 50 mm / 2 cale na stronie 1."
     },
     {
       "q": "Co z zaszyfrowanymi PDF-ami?",

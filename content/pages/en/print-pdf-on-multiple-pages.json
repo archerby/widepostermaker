@@ -7,7 +7,7 @@
   "title": "Print a PDF on Multiple Pages (Poster Tiling) — Free Online",
   "description": "Print one large PDF page across several A4 or Letter sheets at 100% scale. Free, works in the browser, keeps vectors sharp, adds crop marks and glue tabs.",
   "h1": "Print a PDF on Multiple Pages",
-  "lead": "Have an A1 poster, a plan, or a map as a PDF but only an A4 or Letter printer? Load the PDF, keep it at 100%, and download a tiled PDF that prints the page across as many sheets as it needs — no upload, no Adobe Acrobat required.",
+  "lead": "Need to print a PDF on multiple pages because the poster, plan, or map is bigger than your A4 or Letter printer? Load the PDF, keep it at 100%, and download a tiled PDF that prints the page across as many sheets as it needs — no upload, no Adobe Acrobat required.",
   "presets": {
     "paper": "auto",
     "units": "auto",
@@ -35,7 +35,7 @@
   ],
   "sections": [
     {
-      "heading": "Printing a big PDF on a small printer",
+      "heading": "How to print a PDF on multiple pages with a small printer",
       "paragraphs": [
         "A PDF page has a physical size: an A1 poster is 594 × 841 mm, an architectural plan might be A0. Printing it to an A4 printer normally shrinks the whole page onto one sheet. To keep the real size, the page has to be split across several sheets — this is called poster or tile printing.",
         "WidePosterMaker takes the PDF page, places it at 100% (or any scale you choose), and cuts it into a grid of A4, US Letter, A3 or Legal sheets. Each sheet gets crop marks, a glue overlap, alignment crosshairs, and its grid position, and page one is an assembly map with a calibration ruler."

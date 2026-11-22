@@ -90,7 +90,7 @@
       "heading": "Welches Raster für welchen Zweck?",
       "list": [
         "2 Spalten (etwa 39 × 52 cm): für Bürotür, Kinderzimmer oder ein Geburtstagsplakat – kommt mit fast jedem Foto aus.",
-        "3 Spalten (etwa 58 × 77 cm): das klassische Wandposter, ungefähr so groß wie ein A1-Plakat.",
+        "3 Spalten (etwa 58 × 77 cm): das klassische Wandposter, etwas kleiner als ein A1-Plakat (59,4 × 84,1 cm).",
         "4 Spalten (etwa 77 × 103 cm): für große Wände; das Bild sollte mindestens 3000 Pixel breit sein.",
         "5 Spalten und mehr: nur mit sehr hochauflösenden Fotos oder Vektorgrafiken, sonst werden Pixel sichtbar.",
         "A3 statt A4: Haben Sie einen A3-Drucker, stellen Sie das „Papierformat“ um – es werden weniger Blätter und weniger Nähte."
@@ -99,7 +99,7 @@
     {
       "heading": "Die Teile wieder zusammensetzen",
       "paragraphs": [
-        "Jedes Blatt trägt im Rand seine Koordinate (A1, A2 … B1, B2) und kleine Pfeile, die seine Nachbarn nennen. Seite 1 des PDFs ist eine Übersichtskarte mit dem ganzen Raster und einem 50-mm-/2-Zoll-Lineal, mit dem Sie prüfen, dass der Drucker nichts verkleinert hat.",
+        "Jedes Blatt trägt im Rand seine Koordinate (A1, A2 … B1, B2) und kleine Pfeile, die seine Nachbarn nennen. Standardmäßig ist Seite 1 des PDFs eine Übersichtskarte mit dem ganzen Raster und einem 50-mm-/2-Zoll-Lineal, mit dem Sie prüfen, dass der Drucker nichts verkleinert hat.",
         "Schneiden Sie bei jedem Blatt den oberen und linken Rand ab, lassen Sie die Kleberänder rechts und unten stehen und arbeiten Sie sich Reihe für Reihe ab A1 vor. Unsere Klebeanleitung zeigt jeden Schritt mit Skizzen."
       ]
     }
@@ -111,7 +111,7 @@
     },
     {
       "q": "Wie teile ich ein Bild in 9 Teile (3 × 3)?",
-      "a": "Wählen Sie 3 Spalten. Bei einem Hochformat-Foto im Verhältnis 3:4 entsteht auf A4 ein 3 × 3-Raster. Hat Ihr Bild andere Proportionen, schneiden Sie es vorher passend zu oder stellen Sie zusätzlich „3 Reihen“ ein und vergleichen Sie."
+      "a": "Wählen Sie 3 Spalten. Bei einem Hochformat-Foto im Verhältnis 3:4 entsteht auf A4 ein 3 × 3-Raster. Hat Ihr Bild andere Proportionen, schneiden Sie es vorher passend zu oder stellen Sie stattdessen „3 Reihen“ ein und vergleichen Sie."
     },
     {
       "q": "Verliert das Bild beim Aufteilen an Qualität?",

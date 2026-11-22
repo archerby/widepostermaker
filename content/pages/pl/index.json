@@ -4,10 +4,10 @@
   "template": "tool",
   "navLabel": "Plakat A4",
   "breadcrumbTitle": "Plakat na A4",
-  "title": "Podziel zdjęcie lub PDF na kartki A4 — duży plakat w domu",
+  "title": "WidePosterMaker — generator plakatów do druku na A4 i Letter",
   "description": "Wydrukuj duży plakat lub PDF na zwykłej drukarce A4/Letter. Znaczniki cięcia, zakładki do klejenia, mapa montażu i 100% prywatności w przeglądarce.",
   "h1": "Podziel obraz lub PDF na arkusze A4",
-  "lead": "Zamień dowolne zdjęcie, mapę albo duży plik PDF w gotowy do druku wielostronicowy PDF na A4 lub US Letter — ze znacznikami cięcia i zero wysyłania na serwer.",
+  "lead": "Zamień dowolne zdjęcie, mapę albo duży plik PDF w gotowy do druku wielostronicowy PDF na A4 lub US Letter — ze znacznikami cięcia i bez wysyłania plików na serwer.",
   "presets": {
     "paper": "a4",
     "units": "cm",

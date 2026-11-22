@@ -20,7 +20,7 @@
       "heading": "Why Exact 1:1 Scale Is Critical for Patterns & Templates",
       "paragraphs": [
         "When printing an A0 sewing pattern, guitar template, or woodworking jig, a 3% 'Fit to Page' shrink from a PDF reader ruins every seam allowance across the garment. WidePosterMaker defaults this tool page to True Scale = 100%, reading the physical page size directly from your A0/A1 PDF.",
-        "Every multi-page export starts with Page 1 containing an Assembly Map plus exact vector 50 mm and 2 inch test bars. Print Page 1 first, lay a ruler against the bar, and confirm 100% accuracy before printing the full pattern."
+        "With the assembly map option on (the default), every multi-page export starts with Page 1 containing an Assembly Map plus exact vector 50 mm and 2 inch test bars. Print Page 1 first, lay a ruler against the bar, and confirm 100% accuracy before printing the full pattern."
       ],
       "listHeading": "Pattern Printing Checklist",
       "listType": "ol",
@@ -45,7 +45,7 @@
     },
     {
       "q": "How do I avoid printing blank sheets in an irregularly shaped pattern?",
-      "a": "Click any empty tile cell on the interactive grid preview to toggle it off before downloading the PDF. Skipped tiles also appear crossed out on your Assembly Map."
+      "a": "Click any empty tile cell on the interactive grid preview to toggle it off before downloading the PDF. Skipped tiles are also greyed out on your Assembly Map."
     },
     {
       "q": "Can I also scale a pattern up or down by percentage (e.g. 95% or 105%)?",

@@ -19,8 +19,8 @@
     {
       "heading": "Getting Full-Size A2, A1, and A0 Posters from A4 Paper",
       "paragraphs": [
-        "Standard ISO 216 paper shares a 1:√2 aspect ratio, which means A4 sheets tile cleanly into A2, A1, and A0 posters without awkward wasted strips when Auto orientation picks the best sheet alignment.",
-        "Note that most home inkjet and laser printers require a 4–6 mm unprintable hardware margin around every edge. Setting Printer Margin to 5 mm and Glue Overlap to 10 mm guarantees zero clipped pixels at sheet borders."
+        "Standard ISO 216 paper shares a 1:√2 aspect ratio, so A2, A1, and A0 posters have the same shape as your A4 sheets, and Auto orientation picks the sheet direction that needs the fewest sheets. Because of the printer margin and the glue overlap, you need more sheets than the paper arithmetic suggests — the table shows the real counts.",
+        "Note that most home inkjet and laser printers require a 4–6 mm unprintable hardware margin around every edge. The defaults of 5 mm Printer Margin and 10 mm Glue Overlap keep your artwork from being clipped at the sheet borders."
       ],
       "autoTable": {
         "posters": [

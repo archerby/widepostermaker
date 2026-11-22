@@ -38,7 +38,7 @@
       "heading": "Großes PDF, kleiner Drucker",
       "paragraphs": [
         "Eine PDF-Seite hat eine physische Größe: Ein A1-Poster misst 594 × 841 mm, ein Architekturplan oft A0. Schickt man so eine Datei an einen A4-Drucker, wird normalerweise die ganze Seite auf ein Blatt verkleinert. Soll die echte Größe erhalten bleiben, muss die Seite auf mehrere Blätter verteilt werden – das nennt man Poster- oder Kacheldruck.",
-        "WidePosterMaker nimmt die PDF-Seite, setzt sie auf 100 % (oder einen beliebigen anderen Maßstab) und zerlegt sie in ein Raster aus A4-, A3-, US-Letter- oder Legal-Blättern. Jedes Blatt bekommt Schnittmarken, einen Kleberand, Passkreuze und seine Rasterposition, und Seite 1 ist eine Übersichtskarte mit Kontrolllineal."
+        "WidePosterMaker nimmt die PDF-Seite, setzt sie auf 100 % (oder einen beliebigen anderen Maßstab) und zerlegt sie in ein Raster aus A4-, A3-, US-Letter- oder Legal-Blättern. Jedes Blatt bekommt Schnittmarken, einen Kleberand, Passkreuze und seine Rasterposition, und standardmäßig ist Seite 1 eine Übersichtskarte mit Kontrolllineal."
       ]
     },
     {
