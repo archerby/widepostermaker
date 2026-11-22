@@ -1092,3 +1092,102 @@ th {
 .breadcrumbs a {
   color: var(--muted);
 }
+
+/* Preset chips under the hero */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.chip[aria-current] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+}
+
+@media (pointer: coarse) {
+  .chip {
+    min-height: 44px;
+  }
+}
+
+/* Computed tables */
+.auto-table caption {
+  caption-side: bottom;
+  text-align: left;
+  font-size: 0.82rem;
+  color: var(--muted);
+  padding-top: 8px;
+}
+
+.auto-table td:first-child {
+  font-weight: 700;
+}
+
+.auto-table td {
+  white-space: nowrap;
+}
+
+/* Related tools */
+.related {
+  margin-bottom: 24px;
+}
+
+.related h2 {
+  font-size: 1.2rem;
+  margin: 0 0 12px;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.related-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+.related-card:hover {
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+.related-card strong {
+  color: var(--accent);
+}
+
+.related-card span {
+  font-size: 0.88rem;
+  color: var(--muted);
+}

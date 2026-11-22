@@ -7,6 +7,16 @@
   "navLabel": "Основная навигация",
   "langSwitchLabel": "Язык",
   "menuLabel": "Меню",
+  "chipsLabel": "Быстрые пресеты",
+  "relatedHeading": "Похожие инструменты",
+  "tables": {
+    "poster": "Плакат",
+    "size": "Размер",
+    "paperHeader": "Листов {paper}",
+    "cell": "{cols} × {rows} = {n}",
+    "caption": "Сколько листов нужно при масштабе 100%, ориентация подбирается автоматически. A4/A3: поле принтера 5 мм + нахлёст под клей 10 мм; US Letter: 6 мм + 12 мм.",
+    "decimal": ","
+  },
   "siteName": "WidePosterMaker",
   "domain": "https://widepostermaker.com",
   "repoUrl": "https://github.com/archerby/widepostermaker",

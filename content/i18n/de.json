@@ -7,6 +7,16 @@
   "navLabel": "Hauptnavigation",
   "langSwitchLabel": "Sprache",
   "menuLabel": "Menü",
+  "chipsLabel": "Schnellvorlagen",
+  "relatedHeading": "Ähnliche Werkzeuge",
+  "tables": {
+    "poster": "Poster",
+    "size": "Größe",
+    "paperHeader": "{paper}-Blätter",
+    "cell": "{cols} × {rows} = {n}",
+    "caption": "Benötigte Blätter bei 100 % Maßstab, Ausrichtung automatisch. A4/A3: 5 mm Druckerrand + 10 mm Kleberand; US Letter: 6 mm + 12 mm.",
+    "decimal": ","
+  },
   "siteName": "WidePosterMaker",
   "domain": "https://widepostermaker.com",
   "repoUrl": "https://github.com/archerby/widepostermaker",

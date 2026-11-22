@@ -7,6 +7,16 @@
   "navLabel": "Nawigacja główna",
   "langSwitchLabel": "Język",
   "menuLabel": "Menu",
+  "chipsLabel": "Szybkie ustawienia",
+  "relatedHeading": "Podobne narzędzia",
+  "tables": {
+    "poster": "Plakat",
+    "size": "Rozmiar",
+    "paperHeader": "Kartki {paper}",
+    "cell": "{cols} × {rows} = {n}",
+    "caption": "Liczba kartek przy skali 100%, orientacja dobierana automatycznie. A4/A3: margines drukarki 5 mm + zakładka do klejenia 10 mm; US Letter: 6 mm + 12 mm.",
+    "decimal": ","
+  },
   "siteName": "WidePosterMaker",
   "domain": "https://widepostermaker.com",
   "repoUrl": "https://github.com/archerby/widepostermaker",

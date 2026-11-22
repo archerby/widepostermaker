@@ -7,6 +7,16 @@
   "navLabel": "Primary navigation",
   "langSwitchLabel": "Language",
   "menuLabel": "Menu",
+  "chipsLabel": "Quick presets",
+  "relatedHeading": "Related tools",
+  "tables": {
+    "poster": "Poster",
+    "size": "Size",
+    "paperHeader": "{paper} sheets",
+    "cell": "{cols} × {rows} = {n}",
+    "caption": "Sheets needed at 100% scale, orientation chosen automatically. A4/A3: 5 mm printer margin + 10 mm glue overlap; US Letter: 6 mm + 12 mm.",
+    "decimal": "."
+  },
   "siteName": "WidePosterMaker",
   "domain": "https://widepostermaker.com",
   "repoUrl": "https://github.com/archerby/widepostermaker",

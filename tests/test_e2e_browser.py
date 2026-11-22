@@ -7,10 +7,12 @@ import functools
 import http.server
 import json
 import pathlib
+import re
 import shutil
 import socketserver
 import subprocess
 import tempfile
+import sys
 import threading
 
 import fitz
@@ -326,6 +328,20 @@ async function runTests() {
   const ruSummaryText = ruDoc.getElementById('summary-sheets').textContent + ' ' + ruDoc.getElementById('preview-caption').textContent;
   assert(!ruSummaryText.includes('{') && !ruSummaryText.includes('}'), `Unreplaced i18n token in RU UI: ${ruSummaryText}`);
 
+  // 8. Sheet-count parity: build-time tables (scripts/sheetcalc.py) must match computeLayout()
+  const PARITY_MARGINS = { a4: [5, 10], a3: [5, 10], letter: [6, 12], legal: [6, 12] };
+  const PARITY_POSTERS = { a0: [841, 1189], a1: [594, 841], a2: [420, 594], a3: [297, 420] };
+  const sheetParity = {};
+  for (const [po, [pw, ph]] of Object.entries(PARITY_POSTERS)) {
+    for (const [pa, [mg, ov]] of Object.entries(PARITY_MARGINS)) {
+      const L = computeLayout({
+        srcWidth: pw * 10, srcHeight: ph * 10, srcPhysWmm: pw, srcPhysHmm: ph, isVector: true,
+        paper: pa, orientation: 'auto', mode: 'scale', value: 100, marginMm: mg, overlapMm: ov,
+      });
+      sheetParity[`${po}:${pa}`] = [L.cols, L.rows];
+    }
+  }
+
   // 7. Phone metrics at 375x812 on /?sample=1 (sticky download bar, compact header, touch sizes)
   const phone = document.createElement('iframe');
   phone.width = '375';
@@ -404,6 +420,7 @@ async function runTests() {
   return {
     ok: true,
     phoneMetrics,
+    sheetParity,
     mobileMetrics: { mobileScrollW, mobileClientW },
     imgLayout: { cols: imgLayout2x2.cols, rows: imgLayout2x2.rows, activeCount: imgLayout2x2.activeCount },
     vecLayout: { cols: vecLayout.cols, rows: vecLayout.rows, activeCount: vecLayout.activeCount },
@@ -454,6 +471,23 @@ def make_handler(dist_dir: pathlib.Path, fixtures_dir: pathlib.Path, report_box:
                 body = RUNNER_JS.encode("utf-8")
                 self.send_response(200)
                 self.send_header("Content-Type", "application/javascript; charset=utf-8")
+                self.send_header("Content-Length", str(len(body)))
+                self.end_headers()
+                self.wfile.write(body)
+                return
+            # Serve site pages without the third-party analytics beacon: tests must not depend on the network.
+            route = self.path.split("?", 1)[0]
+            page_path = dist_dir / route.lstrip("/")
+            if route.endswith("/"):
+                page_path = page_path / "index.html"
+            if page_path.suffix == ".html" and page_path.is_file():
+                body = re.sub(
+                    r'\s*<script defer src="https://static\.cloudflareinsights\.com/[^>]*></script>',
+                    "",
+                    page_path.read_text(encoding="utf-8"),
+                ).encode("utf-8")
+                self.send_response(200)
+                self.send_header("Content-Type", "text/html; charset=utf-8")
                 self.send_header("Content-Length", str(len(body)))
                 self.end_headers()
                 self.wfile.write(body)
@@ -576,6 +610,14 @@ def test_e2e_headless_chrome_and_pdf_inspection() -> None:
         assert not rep.get("errors"), f"Unhandled browser errors: {rep.get('errors')}"
         assert not rep.get("cspViolations"), f"CSP violations detected: {rep.get('cspViolations')}"
         assert rep.get("phoneMetrics"), f"Phone metrics missing: {rep}"
+
+        # Build-time sheet tables must agree with the real browser geometry
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import sheetcalc
+
+        parity = rep.get("sheetParity") or {}
+        expected = {k: list(v) for k, v in sheetcalc.matrix(list(sheetcalc.POSTERS), list(sheetcalc.PAPERS)).items()}
+        assert parity == expected, f"sheetcalc drifted from layout.js: js={parity} py={expected}"
 
         # 1. Inspect Image PDF output (A4 2x2 with 1 skipped tile + 1 assembly map = 4 pages)
         img_pdf_bytes = base64.b64decode(rep["imgPdfB64"])

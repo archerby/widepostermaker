@@ -9,13 +9,18 @@ import json
 import os
 import pathlib
 import re
+import hashlib
 import shutil
+import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "src"
 CONTENT = ROOT / "content"
 TEMPLATES = ROOT / "templates"
 DIST = ROOT / "dist"
+
+sys.path.insert(0, str(ROOT / "scripts"))
+import sheetcalc  # noqa: E402
 
 LOCALES = ["en", "ru", "de", "es", "pl"]
 SLUG_RE = re.compile(r"^[a-z0-9-]*$")
@@ -57,7 +62,98 @@ def out_path_for(route: str) -> pathlib.Path:
     return target
 
 
-def render_sections(sections: list[dict]) -> str:
+CHIP_QUERY_RE = re.compile(r"^[a-z]+=[a-z0-9.]+(?:&[a-z]+=[a-z0-9.]+)*$")
+CHIP_KEYS = {"paper", "units", "cols", "rows", "width", "scale", "mode", "ori"}
+
+
+def _num(val: float, decimal: str) -> str:
+    return f"{val:.1f}".replace(".", decimal)
+
+
+def render_auto_table(spec: dict, i18n: dict) -> str:
+    """Sheet-count table computed with sheetcalc (same geometry as layout.js)."""
+    t = i18n["tables"]
+    dec = t.get("decimal", ".")
+    posters, papers = spec["posters"], spec["papers"]
+    for po in posters:
+        if po not in sheetcalc.POSTERS:
+            raise ValueError(f"autoTable: unknown poster {po!r}")
+    for pa in papers:
+        if pa not in sheetcalc.PAPERS:
+            raise ValueError(f"autoTable: unknown paper {pa!r}")
+    headers = [t["poster"], t["size"]] + [t["paperHeader"].replace("{paper}", sheetcalc.PAPER_NAMES[pa]) for pa in papers]
+    parts = ['  <div class="table-wrap"><table class="auto-table">', f"    <caption>{esc(t['caption'])}</caption>"]
+    parts.append("    <thead><tr>" + "".join(f"<th>{esc(h)}</th>" for h in headers) + "</tr></thead>")
+    parts.append("    <tbody>")
+    for po in posters:
+        w, h = sheetcalc.POSTERS[po]
+        size = f"{_num(w / 10, dec)} × {_num(h / 10, dec)} cm · {_num(w / 25.4, dec)} × {_num(h / 25.4, dec)} in"
+        cells = [po.upper(), size]
+        for pa in papers:
+            cols, rows = sheetcalc.grid_for(po, pa)
+            cells.append(t["cell"].replace("{cols}", str(cols)).replace("{rows}", str(rows)).replace("{n}", str(cols * rows)))
+        parts.append("      <tr>" + "".join(f"<td>{esc(c)}</td>" for c in cells) + "</tr>")
+    parts.append("    </tbody>")
+    parts.append("  </table></div>")
+    return "\n".join(parts)
+
+
+def render_chips(chips: list[dict], i18n: dict) -> str:
+    if not chips:
+        return ""
+    links: list[str] = []
+    for chip in chips:
+        query = chip["query"]
+        if not CHIP_QUERY_RE.match(query) or any(kv.split("=")[0] not in CHIP_KEYS for kv in query.split("&")):
+            raise ValueError(f"Invalid chip query: {query!r}")
+        links.append(f'    <a class="chip" href="?{esc(query)}" data-preset="{esc(query)}">{esc(chip["label"])}</a>')
+    return f'  <div class="chips" aria-label="{esc(i18n["chipsLabel"])}">\n' + "\n".join(links) + "\n  </div>"
+
+
+def render_related(slugs: list[str], loc_pages: dict[str, dict], i18n: dict) -> str:
+    if not slugs:
+        return ""
+    cards: list[str] = []
+    for slug in slugs:
+        if slug not in loc_pages:
+            raise ValueError(f"Unknown related slug {slug!r} for locale {i18n['lang']}")
+        target = loc_pages[slug]
+        cards.append(
+            f'    <a class="related-card" href="{esc(target["route"])}">'
+            f'<strong>{esc(target["h1"])}</strong><span>{esc(target["description"])}</span></a>'
+        )
+    heading = esc(i18n["relatedHeading"])
+    return (
+        f'<nav class="related" aria-label="{heading}">\n  <h2>{heading}</h2>\n  <div class="related-grid">\n'
+        + "\n".join(cards)
+        + "\n  </div>\n</nav>"
+    )
+
+
+ASSET_IMPORT_RE = re.compile(r"""(from\s*|import\s*\(\s*)(['"])(\./[a-z0-9-]+\.js)\2""")
+
+
+def cache_bust(dist: pathlib.Path) -> str:
+    """Version app CSS/JS URLs by content hash so a deploy never mixes old assets with new HTML."""
+    digest = hashlib.sha256()
+    assets = sorted([*dist.glob("css/*.css"), *dist.glob("js/*.js")])
+    for asset in assets:
+        digest.update(asset.relative_to(dist).as_posix().encode())
+        digest.update(asset.read_bytes())
+    ver = digest.hexdigest()[:10]
+    for js in dist.glob("js/*.js"):
+        src = js.read_text(encoding="utf-8")
+        out = ASSET_IMPORT_RE.sub(lambda m: f"{m.group(1)}{m.group(2)}{m.group(3)}?v={ver}{m.group(2)}", src)
+        js.write_text(out, encoding="utf-8", newline="\n")
+    for page in dist.rglob("*.html"):
+        html_text = page.read_text(encoding="utf-8")
+        html_text = html_text.replace('href="/css/style.css"', f'href="/css/style.css?v={ver}"')
+        html_text = html_text.replace('src="/js/app.js"', f'src="/js/app.js?v={ver}"')
+        page.write_text(html_text, encoding="utf-8", newline="\n")
+    return ver
+
+
+def render_sections(sections: list[dict], i18n: dict | None = None) -> str:
     blocks: list[str] = []
     for sec in sections:
         parts = ['<section class="content-section">', f"  <h2>{esc(sec['heading'])}</h2>"]
@@ -72,6 +168,11 @@ def render_sections(sections: list[dict]) -> str:
             for item in sec["list"]:
                 parts.append(f"    <li>{esc(item)}</li>")
             parts.append(f"  </{tag}>")
+
+        if sec.get("autoTable"):
+            if i18n is None:
+                raise ValueError("autoTable needs i18n")
+            parts.append(render_auto_table(sec["autoTable"], i18n))
 
         table = sec.get("table")
         if table:
@@ -415,6 +516,9 @@ def main() -> None:
             all_pages.append((loc, page))
 
     all_pages.sort(key=lambda item: (LOCALES.index(item[0]), 0 if item[1]["slug"] == "" else 1, item[1]["slug"]))
+    pages_by_loc: dict[str, dict[str, dict]] = {loc: {} for loc in LOCALES}
+    for loc, page in all_pages:
+        pages_by_loc[loc][page["slug"]] = page
 
     for loc, page in all_pages:
         i18n = i18n_map[loc]
@@ -423,7 +527,11 @@ def main() -> None:
         domain = i18n["domain"].rstrip("/")
         tpl = tool_tpl if page["template"] == "tool" else guide_tpl
         presets = page["presets"]
-        tool_footer_links = [n for n in i18n["nav"] if n.get("slug") != "how-to-glue-a-tiled-poster"]
+        tool_footer_links = [
+            {"label": p.get("navLabel") or p["breadcrumbTitle"], "href": p["route"]}
+            for p in pages_by_loc[loc].values()
+            if p["template"] == "tool"
+        ]
 
         main_html = apply_tokens(
             tpl,
@@ -477,7 +585,9 @@ def main() -> None:
                 "UI_DOWNLOAD_PDF": esc(ui["downloadPdf"]),
                 "UI_PRINT_DIRECT": esc(ui["printDirect"]),
                 "TRUST_CARDS": render_trust_cards(ui["trust"]),
-                "BODY_SECTIONS": render_sections(page.get("sections", [])),
+                "BODY_SECTIONS": render_sections(page.get("sections", []), i18n),
+                "CHIPS": render_chips(page.get("chips", []), i18n),
+                "RELATED": render_related(page.get("related", []), pages_by_loc[loc], i18n),
                 "UI_FAQ_HEADING": esc(ui["faqHeading"]),
                 "FAQ_ITEMS": render_faqs(page.get("faqs", [])),
                 "GUIDE_VISUAL_HEADING": esc(guide["visualHeading"]),
@@ -629,7 +739,8 @@ def main() -> None:
         ],
     }
     (DIST / "manifest.webmanifest").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
-    print(f"Build complete -> {DIST.relative_to(ROOT)} ({len(all_pages)} pages across {len(LOCALES)} locales)")
+    ver = cache_bust(DIST)
+    print(f"Build complete -> {DIST.relative_to(ROOT)} ({len(all_pages)} pages across {len(LOCALES)} locales, assets v={ver})")
 
 
 if __name__ == "__main__":

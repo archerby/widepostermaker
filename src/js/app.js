@@ -638,6 +638,37 @@ export function initPosterApp() {
   els.btnStepDec.addEventListener('click', () => stepValue(-1));
   els.btnStepInc.addEventListener('click', () => stepValue(1));
 
+  // Preset chips are plain links (?cols=3 …) for crawlers and no-JS; with a file
+  // already loaded we apply them in place so the user does not lose the file.
+  function applyChipParams(query) {
+    const p = new URLSearchParams(query);
+    if (p.has('paper') && Object.hasOwn(PAPERS, p.get('paper'))) els.paperSelect.value = p.get('paper');
+    if (p.has('units') && ['cm', 'mm', 'in'].includes(p.get('units'))) {
+      els.unitsSelect.value = p.get('units');
+      currentUnits = els.unitsSelect.value;
+    }
+    if (p.has('ori') && ['auto', 'portrait', 'landscape'].includes(p.get('ori'))) els.oriSelect.value = p.get('ori');
+    const setMode = (mode, raw, fallback) => {
+      els.modeSelect.value = mode;
+      const n = Number(raw);
+      els.sizeValue.value = String(Number.isFinite(n) && n > 0 ? n : fallback);
+    };
+    if (p.has('cols')) setMode('sheets-width', p.get('cols'), 3);
+    else if (p.has('rows')) setMode('sheets-height', p.get('rows'), 3);
+    else if (p.has('scale')) setMode('scale', p.get('scale'), 100);
+    else if (p.has('width')) setMode('size-width', p.get('width'), 60);
+    recompute();
+  }
+  document.querySelectorAll('.chip[data-preset]').forEach((chip) => {
+    chip.addEventListener('click', (e) => {
+      if (!currentSource) return;
+      e.preventDefault();
+      applyChipParams(chip.dataset.preset);
+      document.querySelectorAll('.chip[aria-current]').forEach((c) => c.removeAttribute('aria-current'));
+      chip.setAttribute('aria-current', 'true');
+    });
+  });
+
   els.btnResetExcluded.addEventListener('click', () => {
     excludedTiles.clear();
     recompute();
