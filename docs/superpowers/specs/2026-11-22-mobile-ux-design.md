@@ -55,7 +55,8 @@ DOM order inside `.workspace-grid` (one grid, three children):
 Desktop (≥ 941 px): grid areas `"preview controls" "preview bar"`; the action bar sits under the controls in the right column, styled like today's export block. `#advanced-settings` is opened by `app.js` on load when `matchMedia('(min-width: 941px)')` matches, so desktop users see every field as now.
 
 Mobile (≤ 940 px): single column; `.action-bar` is `position: sticky; bottom: 0` with a top border/shadow and `env(safe-area-inset-bottom)` padding. Its containing block is the whole workspace grid, so the bar sticks to the bottom of the screen while any part of the tool is on screen and scrolls away with it once the user reads the content below. On mobile:
-- `.summary-box` is hidden; `#bar-summary` shows `"{activeCount} × {paperName} · {W×H units}"`, coloured `--warn` when the quality tier is `low`.
+- `#bar-summary` shows two lines, `"{activeCount} × {paperName}"` / `"{W×H units}"`, coloured `--warn` when the quality tier is `low`.
+- `.summary-box` stays visible at the end of the controls (changed during implementation: it carries the DPI / low-resolution explanation that the compact bar cannot fit).
 - `Print PDF` is hidden (printing a multi-page PDF from a phone browser is unreliable; Download → open → print works).
 - `#export-status` renders as a small line inside the bar (single line, ellipsis).
 

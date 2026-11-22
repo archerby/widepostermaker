@@ -182,7 +182,17 @@ export function initPosterApp() {
     btnDownload: $('btn-download'),
     btnPrint: $('btn-print'),
     exportStatus: $('export-status'),
+    btnStepDec: $('btn-step-dec'),
+    btnStepInc: $('btn-step-inc'),
+    advanced: $('advanced-settings'),
+    barSummary: $('bar-summary'),
   };
+
+  // Desktop shows every setting; phones keep secondary settings collapsed.
+  if (els.advanced && window.matchMedia('(min-width: 941px)').matches) {
+    els.advanced.open = true;
+  }
+  const isTouch = window.matchMedia('(pointer: coarse)').matches;
 
   // Apply initial presets to DOM inputs
   els.paperSelect.value = initialPaper;
@@ -302,6 +312,13 @@ export function initPosterApp() {
       els.summaryDpi.dataset.tier = layout.qualityTier;
     }
 
+    const barSheets = document.createElement('span');
+    barSheets.textContent = `${layout.activeCount} × ${layout.paperName}`;
+    const barSize = document.createElement('span');
+    barSize.textContent = formatDimensions(layout.posterW, layout.posterH, units);
+    els.barSummary.replaceChildren(barSheets, barSize);
+    els.barSummary.dataset.tier = layout.isVector ? 'vector' : layout.qualityTier;
+
     const excludedCount = excludedTiles.size;
     els.summaryExcluded.hidden = excludedCount === 0;
     if (excludedCount > 0) {
@@ -337,7 +354,10 @@ export function initPosterApp() {
       layout.activeCount === 1
         ? fmt('captionTileSingle', 'Output: {n} tile', { n: layout.activeCount })
         : fmt('captionTilePlural', 'Output: {n} tiles', { n: layout.activeCount });
-    els.previewCaption.textContent = `${currentSource.filename} · ${msg('captionHint', 'Click any sheet to skip/include')} · ${tilePart}${mapNote}`;
+    const hint = isTouch
+      ? msg('captionHintTouch', 'Tap a sheet to skip/include')
+      : msg('captionHint', 'Click any sheet to skip/include');
+    els.previewCaption.textContent = `${currentSource.filename} · ${hint} · ${tilePart}${mapNote}`;
   }
 
   function optsIncludeMap() {
@@ -602,6 +622,21 @@ export function initPosterApp() {
     el.addEventListener('input', recompute);
     el.addEventListener('change', recompute);
   });
+
+  function stepValue(dir) {
+    const step = Number(els.sizeValue.step) || 1;
+    const min = Number(els.sizeValue.min);
+    const max = Number(els.sizeValue.max);
+    const cur = Number(els.sizeValue.value);
+    const base = Number.isFinite(cur) ? cur : min;
+    let next = Math.round((base + dir * step) / step) * step;
+    if (Number.isFinite(min)) next = Math.max(min, next);
+    if (Number.isFinite(max)) next = Math.min(max, next);
+    els.sizeValue.value = String(Number(next.toFixed(2)));
+    els.sizeValue.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+  els.btnStepDec.addEventListener('click', () => stepValue(-1));
+  els.btnStepInc.addEventListener('click', () => stepValue(1));
 
   els.btnResetExcluded.addEventListener('click', () => {
     excludedTiles.clear();

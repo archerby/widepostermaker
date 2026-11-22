@@ -7,7 +7,7 @@
 <section id="poster-app" class="tool-card" aria-label="{{UI_WORKSPACE_ARIA}}">
   <div id="empty-state">
     <div id="dropzone" class="dropzone">
-      <p class="dropzone-title">{{UI_DROP_TITLE}}</p>
+      <p class="dropzone-title"><span class="drop-title-mouse">{{UI_DROP_TITLE}}</span><span class="drop-title-touch">{{UI_DROP_TITLE_TOUCH}}</span></p>
       <p class="dropzone-sub">{{UI_DROP_SUB}}</p>
       <div class="dropzone-actions">
         <label class="btn btn-primary" for="file-input">{{UI_CHOOSE_FILE}}</label>
@@ -35,27 +35,17 @@
       </div>
 
       <div class="controls-pane">
-        <div class="control-row">
-          <div class="field">
-            <label for="paper-select">{{UI_PAPER_LABEL}}</label>
-            <select id="paper-select">
-              <option value="a4">A4 (210 × 297 mm)</option>
-              <option value="letter">US Letter (8.5 × 11 in)</option>
-              <option value="a3">A3 (297 × 420 mm)</option>
-              <option value="legal">US Legal (8.5 × 14 in)</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="ori-select">{{UI_ORI_LABEL}}</label>
-            <select id="ori-select">
-              <option value="auto">{{UI_ORI_AUTO}}</option>
-              <option value="portrait">{{UI_ORI_PORTRAIT}}</option>
-              <option value="landscape">{{UI_ORI_LANDSCAPE}}</option>
-            </select>
-          </div>
+        <div class="field">
+          <label for="paper-select">{{UI_PAPER_LABEL}}</label>
+          <select id="paper-select">
+            <option value="a4">A4 (210 × 297 mm)</option>
+            <option value="letter">US Letter (8.5 × 11 in)</option>
+            <option value="a3">A3 (297 × 420 mm)</option>
+            <option value="legal">US Legal (8.5 × 14 in)</option>
+          </select>
         </div>
 
-        <div class="control-row">
+        <div class="control-row primary-row">
           <div class="field">
             <label for="mode-select">{{UI_MODE_LABEL}}</label>
             <select id="mode-select">
@@ -67,48 +57,65 @@
             </select>
           </div>
           <div class="field">
-            <label for="units-select">{{UI_UNITS_LABEL}}</label>
-            <select id="units-select">
-              <option value="cm">{{UI_UNIT_CM}}</option>
-              <option value="mm">{{UI_UNIT_MM}}</option>
-              <option value="in">{{UI_UNIT_IN}}</option>
-            </select>
+            <label for="size-value">{{UI_VALUE_LABEL}}</label>
+            <div class="stepper">
+              <button id="btn-step-dec" class="step-btn" type="button" aria-label="{{UI_STEP_DEC}}">−</button>
+              <input id="size-value" type="number" inputmode="decimal" value="3" min="1" max="20000" step="1">
+              <button id="btn-step-inc" class="step-btn" type="button" aria-label="{{UI_STEP_INC}}">+</button>
+              <span id="size-unit-label" class="unit-tag">{{UI_DEFAULT_UNIT_TAG}}</span>
+            </div>
           </div>
         </div>
 
-        <div class="field">
-          <label for="size-value">{{UI_VALUE_LABEL}}</label>
-          <div class="input-with-unit">
-            <input id="size-value" type="number" value="3" min="1" max="20000" step="1">
-            <span id="size-unit-label" class="unit-tag">{{UI_DEFAULT_UNIT_TAG}}</span>
-          </div>
-        </div>
+        <details id="advanced-settings" class="advanced">
+          <summary>{{UI_ADVANCED_LABEL}}</summary>
+          <div class="advanced-body">
+            <div class="control-row">
+              <div class="field">
+                <label for="ori-select">{{UI_ORI_LABEL}}</label>
+                <select id="ori-select">
+                  <option value="auto">{{UI_ORI_AUTO}}</option>
+                  <option value="portrait">{{UI_ORI_PORTRAIT}}</option>
+                  <option value="landscape">{{UI_ORI_LANDSCAPE}}</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="units-select">{{UI_UNITS_LABEL}}</label>
+                <select id="units-select">
+                  <option value="cm">{{UI_UNIT_CM}}</option>
+                  <option value="mm">{{UI_UNIT_MM}}</option>
+                  <option value="in">{{UI_UNIT_IN}}</option>
+                </select>
+              </div>
+            </div>
 
-        <div class="control-row">
-          <div class="field">
-            <label for="margin-input">{{UI_MARGIN_LABEL}}</label>
-            <input id="margin-input" type="number" value="5" min="0" max="40" step="1">
-          </div>
-          <div class="field">
-            <label for="overlap-input">{{UI_OVERLAP_LABEL}}</label>
-            <input id="overlap-input" type="number" value="10" min="0" max="60" step="1">
-          </div>
-        </div>
+            <div class="control-row">
+              <div class="field">
+                <label for="margin-input">{{UI_MARGIN_LABEL}}</label>
+                <input id="margin-input" type="number" inputmode="decimal" value="5" min="0" max="40" step="1">
+              </div>
+              <div class="field">
+                <label for="overlap-input">{{UI_OVERLAP_LABEL}}</label>
+                <input id="overlap-input" type="number" inputmode="decimal" value="10" min="0" max="60" step="1">
+              </div>
+            </div>
 
-        <div class="checks-group">
-          <label class="check-label">
-            <input id="opt-crop-marks" type="checkbox" checked>
-            <span>{{UI_OPT_CROP}}</span>
-          </label>
-          <label class="check-label">
-            <input id="opt-tile-labels" type="checkbox" checked>
-            <span>{{UI_OPT_LABELS}}</span>
-          </label>
-          <label class="check-label">
-            <input id="opt-assembly-map" type="checkbox" checked>
-            <span>{{UI_OPT_MAP}}</span>
-          </label>
-        </div>
+            <div class="checks-group">
+              <label class="check-label">
+                <input id="opt-crop-marks" type="checkbox" checked>
+                <span>{{UI_OPT_CROP}}</span>
+              </label>
+              <label class="check-label">
+                <input id="opt-tile-labels" type="checkbox" checked>
+                <span>{{UI_OPT_LABELS}}</span>
+              </label>
+              <label class="check-label">
+                <input id="opt-assembly-map" type="checkbox" checked>
+                <span>{{UI_OPT_MAP}}</span>
+              </label>
+            </div>
+          </div>
+        </details>
 
         <div class="summary-box">
           <div class="summary-line">
@@ -131,12 +138,14 @@
         </div>
 
         <div id="summary-warnings" class="alert-warn" hidden></div>
+      </div>
 
+      <div class="action-bar">
+        <p id="bar-summary" class="bar-summary"></p>
         <div class="export-actions">
           <button id="btn-download" class="btn btn-primary" type="button" disabled>{{UI_DOWNLOAD_PDF}}</button>
-          <button id="btn-print" class="btn btn-secondary" type="button" disabled>{{UI_PRINT_DIRECT}}</button>
+          <button id="btn-print" class="btn btn-secondary btn-print" type="button" disabled>{{UI_PRINT_DIRECT}}</button>
         </div>
-
         <p id="export-status" class="export-status" role="status" aria-live="polite"></p>
       </div>
     </div>

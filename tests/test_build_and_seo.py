@@ -370,3 +370,17 @@ def test_mobile_menus_mirror_desktop_nav() -> None:
             pills = re.search(r'<nav class="lang-switch"[^>]*>(.*?)</nav>', text, re.S).group(1)
             lang_menu = re.search(r'<details class="lang-menu">(.*?)</details>', text, re.S).group(1)
             assert hrefs(pills) == hrefs(lang_menu)
+
+
+def test_tool_pages_have_mobile_workspace_structure() -> None:
+    for loc in LOCALES:
+        for slug in SLUGS:
+            if slug == "how-to-glue-a-tiled-poster":
+                continue
+            t = (DIST / rel_file_for(route_for(loc, slug))).read_text(encoding="utf-8")
+            assert '<details id="advanced-settings" class="advanced">' in t, (loc, slug)
+            assert 'class="action-bar"' in t and 'id="bar-summary"' in t
+            assert re.search(r'id="btn-step-dec"[^>]*aria-label="[^"{]+"', t)
+            assert re.search(r'id="btn-step-inc"[^>]*aria-label="[^"{]+"', t)
+            assert 'class="drop-title-touch"' in t
+            assert 'id="size-value" type="number" inputmode="decimal"' in t
