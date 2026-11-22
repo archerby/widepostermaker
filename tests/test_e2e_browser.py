@@ -328,9 +328,51 @@ async function runTests() {
   const ruSummaryText = ruDoc.getElementById('summary-sheets').textContent + ' ' + ruDoc.getElementById('preview-caption').textContent;
   assert(!ruSummaryText.includes('{') && !ruSummaryText.includes('}'), `Unreplaced i18n token in RU UI: ${ruSummaryText}`);
 
+  // 9. Preset chips apply in place once a file is loaded (no navigation, file kept)
+  const chipFrame = document.createElement('iframe');
+  chipFrame.width = '1200';
+  chipFrame.height = '900';
+  chipFrame.src = '/split-image-into-pages/?sample=1';
+  document.body.appendChild(chipFrame);
+  await new Promise((resolve, reject) => {
+    const t0 = performance.now();
+    (function pollChip() {
+      try {
+        const d = chipFrame.contentDocument;
+        const b = d && d.getElementById('btn-download');
+        if (b && !b.disabled && d.querySelector('.chip[data-preset]')) {
+          resolve();
+          return;
+        }
+      } catch (e) {
+        reject(e);
+        return;
+      }
+      if (performance.now() - t0 > 10000) {
+        reject(new Error('Timed out waiting for chip page workspace'));
+        return;
+      }
+      setTimeout(pollChip, 80);
+    })();
+  });
+  const cDoc = chipFrame.contentDocument;
+  const cUrlBefore = chipFrame.contentWindow.location.href;
+  const chip4 = cDoc.querySelector('.chip[data-preset="cols=4"]');
+  assert(chip4, 'cols=4 chip missing on split-image page');
+  chip4.click();
+  await new Promise((r) => setTimeout(r, 80));
+  assert(chipFrame.contentWindow.location.href === cUrlBefore, 'Chip click navigated away instead of applying in place');
+  assert(cDoc.getElementById('mode-select').value === 'sheets-width', 'Chip did not set mode');
+  assert(cDoc.getElementById('size-value').value === '4', `Chip did not set value: ${cDoc.getElementById('size-value').value}`);
+  assert(!cDoc.getElementById('workspace').hidden, 'Chip click lost the loaded file');
+  assert(chip4.getAttribute('aria-current') === 'true', 'Active chip not marked');
+
   // 8. Sheet-count parity: build-time tables (scripts/sheetcalc.py) must match computeLayout()
   const PARITY_MARGINS = { a4: [5, 10], a3: [5, 10], letter: [6, 12], legal: [6, 12] };
-  const PARITY_POSTERS = { a0: [841, 1189], a1: [594, 841], a2: [420, 594], a3: [297, 420] };
+  const PARITY_POSTERS = {
+    a0: [841, 1189], a1: [594, 841], a2: [420, 594], a3: [297, 420],
+    in16x20: [406.4, 508], in18x24: [457.2, 609.6], in24x36: [609.6, 914.4], in36x48: [914.4, 1219.2],
+  };
   const sheetParity = {};
   for (const [po, [pw, ph]] of Object.entries(PARITY_POSTERS)) {
     for (const [pa, [mg, ov]] of Object.entries(PARITY_MARGINS)) {

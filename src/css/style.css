@@ -1191,3 +1191,22 @@ th {
   font-size: 0.88rem;
   color: var(--muted);
 }
+
+@media (max-width: 520px) {
+  /* One swipeable row of chips so the tool stays near the top on phones */
+  .chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-left: -14px;
+    margin-right: -14px;
+    padding: 0 14px 4px;
+    scrollbar-width: none;
+  }
+  .chips::-webkit-scrollbar {
+    display: none;
+  }
+  .chip {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+}

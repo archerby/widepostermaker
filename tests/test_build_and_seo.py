@@ -27,7 +27,12 @@ SLUGS = (
     "letter-poster-maker",
     "sewing-pattern-tiler",
     "how-to-glue-a-tiled-poster",
+    "print-large-image-on-multiple-pages",
+    "split-image-into-pages",
+    "a0-a1-a2-poster-on-a4",
+    "print-pdf-on-multiple-pages",
 )
+NEW_SLUGS = SLUGS[-4:]
 EXPECTED_CSP = (
     "default-src 'self'; script-src 'self'; style-src 'self'; "
     "img-src 'self' blob: data:; worker-src 'self' blob:; "
@@ -402,3 +407,64 @@ def test_tool_pages_have_mobile_workspace_structure() -> None:
             assert re.search(r'id="btn-step-inc"[^>]*aria-label="[^"{]+"', t)
             assert 'class="drop-title-touch"' in t
             assert 'id="size-value" type="number" inputmode="decimal"' in t
+
+
+
+def _main_words(html_text: str) -> int:
+    main = re.search(r"<main.*?</main>", html_text, re.S).group(0)
+    main = re.sub(r"<script.*?</script>|<svg.*?</svg>", " ", main, flags=re.S)
+    return len(re.sub(r"<[^>]+>", " ", main).split())
+
+
+def test_main_content_word_counts() -> None:
+    for loc in LOCALES:
+        for slug in SLUGS:
+            text = (DIST / rel_file_for(route_for(loc, slug))).read_text(encoding="utf-8")
+            n = _main_words(text)
+            need = 500 if slug in NEW_SLUGS else 400
+            assert n >= need, f"{loc}/{slug or 'home'}: {n} words < {need}"
+
+
+def test_new_pages_are_linked_and_related_resolves() -> None:
+    for loc in LOCALES:
+        pages = {slug: (DIST / rel_file_for(route_for(loc, slug))).read_text(encoding="utf-8") for slug in SLUGS}
+        for slug, text in pages.items():
+            if slug in NEW_SLUGS:
+                assert '<nav class="related"' in text, f"{loc}/{slug}: no related block"
+            for href in re.findall(r'class="related-card" href="([^"]+)"', text):
+                assert resolve_dist_target(href) is not None and resolve_dist_target(href).is_file(), href
+        for slug in NEW_SLUGS:
+            route = route_for(loc, slug)
+            inbound = [s for s, text in pages.items() if s != slug and f'class="related-card" href="{route}"' in text]
+            assert len(inbound) >= 2, f"{loc}/{slug}: only {len(inbound)} related links point here"
+
+
+def test_assets_are_cache_busted_consistently() -> None:
+    versions: set[str] = set()
+    for page in DIST.rglob("*.html"):
+        text = page.read_text(encoding="utf-8")
+        assert 'href="/css/style.css"' not in text, f"Unversioned CSS in {page}"
+        assert 'src="/js/app.js"' not in text, f"Unversioned app.js in {page}"
+        versions.update(re.findall(r'/css/style\.css\?v=([0-9a-f]{10})"', text))
+        versions.update(re.findall(r'/js/app\.js\?v=([0-9a-f]{10})"', text))
+    assert len(versions) == 1, f"Mixed asset versions: {versions}"
+    ver = versions.pop()
+    for js in (DIST / "js").glob("*.js"):
+        src = js.read_text(encoding="utf-8")
+        for spec in re.findall(r"""(?:from\s*|import\s*\(\s*)['"](\./[^'"]+)['"]""", src):
+            assert spec.endswith(f"?v={ver}"), f"{js.name}: unversioned import {spec}"
+            assert (DIST / "js" / spec[2:].split("?")[0]).is_file(), f"{js.name}: missing {spec}"
+
+
+def test_auto_tables_render_computed_counts() -> None:
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import sheetcalc
+
+    text = (DIST / rel_file_for(route_for("en", "a0-a1-a2-poster-on-a4"))).read_text(encoding="utf-8")
+    cols, rows = sheetcalc.grid_for("a1", "a4")
+    assert (cols, rows) == (4, 3)
+    assert "<td>A1</td>" in text and f"<td>{cols} × {rows} = {cols * rows}</td>" in text
+    for loc in LOCALES:
+        for slug in ("", "a4-poster-maker", "letter-poster-maker", "a0-a1-a2-poster-on-a4"):
+            page = (DIST / rel_file_for(route_for(loc, slug))).read_text(encoding="utf-8")
+            assert 'class="auto-table"' in page, f"{loc}/{slug or 'home'}: size table is not computed"
