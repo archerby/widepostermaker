@@ -326,8 +326,84 @@ async function runTests() {
   const ruSummaryText = ruDoc.getElementById('summary-sheets').textContent + ' ' + ruDoc.getElementById('preview-caption').textContent;
   assert(!ruSummaryText.includes('{') && !ruSummaryText.includes('}'), `Unreplaced i18n token in RU UI: ${ruSummaryText}`);
 
+  // 7. Phone metrics at 375x812 on /?sample=1 (sticky download bar, compact header, touch sizes)
+  const phone = document.createElement('iframe');
+  phone.width = '375';
+  phone.height = '812';
+  phone.src = '/?sample=1';
+  document.body.appendChild(phone);
+  await new Promise((resolve, reject) => {
+    const t0 = performance.now();
+    (function pollPhone() {
+      try {
+        const d = phone.contentDocument;
+        const b = d && d.getElementById('btn-download');
+        const s = d && d.getElementById('bar-summary');
+        if (b && !b.disabled && s && s.textContent) {
+          resolve();
+          return;
+        }
+      } catch (e) {
+        reject(e);
+        return;
+      }
+      if (performance.now() - t0 > 10000) {
+        reject(new Error('Timed out waiting for phone workspace'));
+        return;
+      }
+      setTimeout(pollPhone, 80);
+    })();
+  });
+  const pDoc = phone.contentDocument;
+  const pWin = phone.contentWindow;
+  pWin.scrollTo(0, 0);
+  assert(pDoc.documentElement.scrollWidth <= pDoc.documentElement.clientWidth,
+    `Phone horizontal overflow: ${pDoc.documentElement.scrollWidth} > ${pDoc.documentElement.clientWidth}`);
+  const pHeader = pDoc.querySelector('.site-header');
+  const pHeaderH = pHeader.getBoundingClientRect().height;
+  assert(pHeaderH <= 64, `Phone header too tall: ${pHeaderH}`);
+  assert(pWin.getComputedStyle(pHeader).position !== 'sticky', 'Phone header must not be sticky');
+  const dlRect = pDoc.getElementById('btn-download').getBoundingClientRect();
+  assert(dlRect.top >= 0 && dlRect.bottom <= pWin.innerHeight,
+    `Download button not in first phone screen: top=${dlRect.top} bottom=${dlRect.bottom} vh=${pWin.innerHeight}`);
+  const isShown = (el) => {
+    const r = el.getBoundingClientRect();
+    return r.width > 0 && r.height > 0;
+  };
+  const pApp = pDoc.getElementById('poster-app');
+  for (const el of pApp.querySelectorAll('input:not([type=checkbox]):not([type=file]), select')) {
+    const fs = parseFloat(pWin.getComputedStyle(el).fontSize);
+    assert(fs >= 16, `Phone font-size < 16px on #${el.id}: ${fs}`);
+  }
+  const pAdvanced = pDoc.getElementById('advanced-settings');
+  assert(!pAdvanced.open, 'More settings must start collapsed on phones');
+  pAdvanced.open = true;
+  const tapTargets = [
+    ...pApp.querySelectorAll('button, select, input:not([type=checkbox]):not([type=file]), summary'),
+    ...pDoc.querySelectorAll('.site-header summary'),
+  ].filter(isShown);
+  assert(tapTargets.length >= 10, `Too few tap targets found: ${tapTargets.length}`);
+  for (const el of tapTargets) {
+    const h = el.getBoundingClientRect().height;
+    assert(h >= 43.5, `Tap target < 44px: ${el.id || el.className || el.tagName} = ${h}`);
+  }
+  for (const el of [...pApp.querySelectorAll('input[type=checkbox]')].filter(isShown)) {
+    assert(el.getBoundingClientRect().height >= 21.5, `Checkbox < 22px: #${el.id}`);
+  }
+  pAdvanced.open = false;
+  const barBefore = pDoc.getElementById('bar-summary').textContent;
+  const valBefore = pDoc.getElementById('size-value').value;
+  pDoc.getElementById('btn-step-inc').click();
+  await new Promise((r) => setTimeout(r, 50));
+  const barAfter = pDoc.getElementById('bar-summary').textContent;
+  const valAfter = pDoc.getElementById('size-value').value;
+  assert(Number(valAfter) === Number(valBefore) + 1, `Stepper + did not increment: ${valBefore} -> ${valAfter}`);
+  assert(barBefore !== barAfter, `Stepper did not change bar summary: ${barBefore}`);
+  const phoneMetrics = { headerH: pHeaderH, dlTop: dlRect.top, dlBottom: dlRect.bottom, barBefore, barAfter };
+
   return {
     ok: true,
+    phoneMetrics,
     mobileMetrics: { mobileScrollW, mobileClientW },
     imgLayout: { cols: imgLayout2x2.cols, rows: imgLayout2x2.rows, activeCount: imgLayout2x2.activeCount },
     vecLayout: { cols: vecLayout.cols, rows: vecLayout.rows, activeCount: vecLayout.activeCount },
@@ -499,6 +575,7 @@ def test_e2e_headless_chrome_and_pdf_inspection() -> None:
         assert rep.get("ok"), f"Browser test runner failed: {rep}"
         assert not rep.get("errors"), f"Unhandled browser errors: {rep.get('errors')}"
         assert not rep.get("cspViolations"), f"CSP violations detected: {rep.get('cspViolations')}"
+        assert rep.get("phoneMetrics"), f"Phone metrics missing: {rep}"
 
         # 1. Inspect Image PDF output (A4 2x2 with 1 skipped tile + 1 assembly map = 4 pages)
         img_pdf_bytes = base64.b64decode(rep["imgPdfB64"])

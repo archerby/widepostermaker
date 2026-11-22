@@ -11,7 +11,7 @@ Live site: [widepostermaker.com](https://widepostermaker.com)
 ## Core Principles
 
 - **Do One Thing Well (Unix + KISS)**: Load an image or PDF, set your paper size and layout, and download a calibrated, print-ready multi-page PDF.
-- **100% Client-Side & Private**: Zero uploads, zero cookies, zero trackers, zero external CDN requests. Open your browser DevTools **Network** tab after loading the page — zero bytes leave your computer when processing files.
+- **100% Client-Side & Private**: your files are never uploaded, no cookies, no external CDNs. Open your browser DevTools **Network** tab while processing a file — zero file bytes leave your computer. The only optional third party is Cloudflare's cookieless Web Analytics beacon (see *Analytics* below).
 - **Vector-Preserving & Memory-Lean**:
   - **PDF inputs** are embedded once via `pdf-lib` (`embedPage`) as a single Form XObject and clipped cleanly per tile, keeping vector paths and fonts infinitely sharp. Automatically falls back to high-resolution local rendering via `pdf.js` for encrypted or unsupported PDFs.
   - **Image inputs** (PNG, JPEG with EXIF orientation support, WebP, SVG, GIF, BMP) are embedded **once** in the output PDF and clipped across tiles — keeping file sizes small and memory usage low.
@@ -23,6 +23,7 @@ Live site: [widepostermaker.com](https://widepostermaker.com)
 - **5 Sizing Modes**: Sheets Wide, Sheets Tall, Poster Width (`cm`/`mm`/`in`), Poster Height, and **True Scale (`100%`)** for A0 → A4/Letter sewing patterns and CAD drawings.
 - **Assembly Marks**: Corner crop marks, registration `+` crosshairs, dashed right/bottom glue overlap tabs with neighbor hints (`-> A2`, `v B1`), interactive click-to-skip blank tiles, and a Page 1 **Assembly Map + 50 mm / 2.0 in Calibration Ruler**.
 - **Strict CSP**: `default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; form-action 'none'`.
+- **Mobile-first workspace**: one-row header with menu/language dropdowns, sticky bottom “Download PDF” bar, collapsible *More settings*, value stepper, 16 px inputs and 44 px tap targets.
 
 ## Architecture
 
@@ -61,6 +62,18 @@ python -m http.server 8080 -d dist
 # Run full verification suite (requires pytest, pillow, pypdf, pymupdf, Chrome)
 pytest -v
 ```
+
+## Analytics (optional, cookieless)
+
+Visitor counting uses [Cloudflare Web Analytics](https://www.cloudflare.com/web-analytics/), which sets no cookies.
+It is off until a token is configured:
+
+1. Cloudflare dashboard → *Analytics & Logs → Web Analytics* → add `widepostermaker.com`, choose the manual JS snippet.
+2. Copy the 32-character token into `content/site.json` → `"cfBeaconToken"`.
+3. Push. `scripts/build.py` then adds the beacon to every page and allows exactly
+   `https://static.cloudflareinsights.com` (script) and `https://cloudflareinsights.com` (connect) in the CSP.
+
+With an empty token the build output contains no third-party origin at all.
 
 ## Vendored Dependencies & Licenses
 
