@@ -55,5 +55,10 @@
       "q": "Does it work with password-protected PDFs?",
       "a": "Unencrypted PDFs work directly in vector mode. If a PDF restricts modification, WidePosterMaker automatically falls back to high-resolution local rendering when readable."
     }
+  ],
+  "related": [
+    "print-pdf-on-multiple-pages",
+    "a0-a1-a2-poster-on-a4",
+    "sewing-pattern-tiler"
   ]
 }

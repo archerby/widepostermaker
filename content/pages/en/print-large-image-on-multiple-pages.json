@@ -1,0 +1,99 @@
+{
+  "slug": "print-large-image-on-multiple-pages",
+  "route": "/print-large-image-on-multiple-pages/",
+  "template": "tool",
+  "navLabel": "Large Image",
+  "breadcrumbTitle": "Print Large Image on Multiple Pages",
+  "title": "Print a Large Image on Multiple Pages — Free, No Upload",
+  "description": "Print a big photo or picture across several A4 or Letter pages on your home printer. Free, no upload, no watermark — with crop marks and glue tabs.",
+  "h1": "Print a Large Image on Multiple Pages",
+  "lead": "Load a photo, drawing, or screenshot, choose how many pages wide it should be, and download one PDF that prints the picture across several A4 or US Letter sheets. Everything runs in your browser — the image is never uploaded.",
+  "presets": {
+    "paper": "auto",
+    "units": "auto",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "chips": [
+    {
+      "label": "2 pages wide",
+      "query": "cols=2"
+    },
+    {
+      "label": "3 pages wide",
+      "query": "cols=3"
+    },
+    {
+      "label": "4 pages wide",
+      "query": "cols=4"
+    },
+    {
+      "label": "60 cm wide",
+      "query": "units=cm&width=60"
+    },
+    {
+      "label": "36 in wide",
+      "query": "units=in&width=36"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "How to print a big picture on several sheets of paper",
+      "paragraphs": [
+        "Office printers stop at A4 or US Letter, but a print shop is not the only way to get a large picture on the wall. The trick is tiling: the image is enlarged and cut into a grid of page-sized pieces, each printed on its own sheet, then trimmed and glued back together.",
+        "Word, Paint, and most printer drivers can do a rough version of this, but they rarely add an overlap for glue or marks that tell you which sheet goes where. WidePosterMaker builds the whole grid for you: every page gets crop marks, a glue strip along the right and bottom edge, alignment crosshairs, and a label such as A1, A2, B1 that matches the assembly map on page one."
+      ],
+      "list": [
+        "Choose your image (JPEG, PNG, WebP, SVG, GIF, or a PDF).",
+        "Set the size: number of pages wide, or an exact width in cm or inches.",
+        "Check the grid in the preview and tap any blank sheet to skip it.",
+        "Download the PDF and print it at 100% / Actual size, not \"Fit to page\".",
+        "Trim the top and left margins, glue along the overlap strips, and match the crosshairs."
+      ],
+      "listHeading": "Five steps from photo to wall poster",
+      "listType": "ol"
+    },
+    {
+      "heading": "Worked example: a 12-megapixel phone photo",
+      "paragraphs": [
+        "A typical phone photo is 4032 × 3024 pixels. Printed 3 A4 pages wide, the tool uses landscape sheets and produces a 3 × 4 grid of 12 sheets. The finished picture measures about 84 × 63 cm (33 × 25 in) and keeps roughly 122 DPI — sharp enough for a wall photo viewed from a metre away.",
+        "Go to 4 pages wide and you get 20 sheets, about 112 × 84 cm, but the resolution drops to around 92 DPI. On US Letter, 3 pages wide gives a 3 × 3 grid of 9 sheets and about 78 × 58 cm. The preview and the summary update live as you change the numbers, so you can see the sheet count and DPI before printing anything."
+      ]
+    },
+    {
+      "heading": "How big can the picture be before it looks blurry?",
+      "paragraphs": [
+        "The limit is the number of pixels in the image, not the number of sheets. Divide the width in pixels by the poster width in inches to get DPI. Around 150 DPI looks crisp even up close, 90–150 DPI is fine on a wall, and below about 90 DPI individual pixels start to show. WidePosterMaker shows this estimate for every size you try and warns you when it gets low.",
+        "Screenshots and web images are the usual trap: a 1920 × 1080 image printed 3 A4 pages wide drops to about 58 DPI. Either keep it smaller or use the original, full-resolution file. Vector files (SVG, or PDF exported from a design app) have no such limit and stay sharp at any size."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Is it really free and without a watermark?",
+      "a": "Yes. There is no account, no watermark, and no paid export. The PDF is generated on your own device, so the full-resolution result is yours."
+    },
+    {
+      "q": "Is my photo uploaded anywhere?",
+      "a": "No. The image is read and processed inside your browser tab and the PDF is built on your device. Open your browser's Network tab while you export: no file data is sent anywhere."
+    },
+    {
+      "q": "Why do the printed pages have white borders?",
+      "a": "Most home printers cannot print to the very edge of the paper. The tool keeps a printer margin (5 mm on A4, 6 mm on Letter) and repeats a strip of the picture as glue overlap, so after trimming the borders nothing is missing at the seams."
+    },
+    {
+      "q": "Which printer setting matters most?",
+      "a": "Scale. Choose 100% or Actual size in the print dialog. \"Fit to page\" shrinks every sheet slightly, and the tiles will no longer line up."
+    },
+    {
+      "q": "Can I print only part of the grid?",
+      "a": "Yes. Tap or click a sheet in the preview to skip it — handy for empty sky or background areas. Skipped sheets are left out of the PDF and shown as hatched on the assembly map."
+    }
+  ],
+  "related": [
+    "split-image-into-pages",
+    "a0-a1-a2-poster-on-a4",
+    "how-to-glue-a-tiled-poster"
+  ]
+}

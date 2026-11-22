@@ -1,0 +1,120 @@
+{
+  "slug": "split-image-into-pages",
+  "route": "/split-image-into-pages/",
+  "template": "tool",
+  "navLabel": "Split Image",
+  "breadcrumbTitle": "Split Image into A4 Pages",
+  "title": "Split an Image into A4 or Letter Pages for Printing",
+  "description": "Split any image into 4, 9, 16 or more A4 or Letter pages and print it as one big poster. Free online tool, no upload, crop marks and glue tabs included.",
+  "h1": "Split an Image into A4 Pages",
+  "lead": "Cut a picture into a grid of A4 or US Letter pages — 2 × 2, 3 × 3, 4 × 4 or any size — and get a single print-ready PDF. Pick the number of columns; the rows follow from the shape of your image.",
+  "presets": {
+    "paper": "auto",
+    "units": "auto",
+    "mode": "sheets-width",
+    "value": 2,
+    "map": true
+  },
+  "chips": [
+    {
+      "label": "2 columns",
+      "query": "cols=2"
+    },
+    {
+      "label": "3 columns",
+      "query": "cols=3"
+    },
+    {
+      "label": "4 columns",
+      "query": "cols=4"
+    },
+    {
+      "label": "5 columns",
+      "query": "cols=5"
+    },
+    {
+      "label": "3 rows",
+      "query": "rows=3"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Columns, rows, and how many pages you get",
+      "paragraphs": [
+        "You choose how many pages wide the image should be. The number of rows is then calculated from the image's proportions, so the picture is never stretched. Prefer to control the height instead? Switch \"Size by\" to Sheets tall.",
+        "Orientation is picked for you: a landscape picture is printed on landscape sheets, a portrait picture on portrait sheets. That is why the same \"2 columns\" can mean 4 sheets for one image and 6 for another."
+      ],
+      "table": {
+        "headers": [
+          "Columns",
+          "Portrait image 3000 × 4000 px on A4",
+          "Finished size",
+          "Approx. DPI"
+        ],
+        "rows": [
+          [
+            "2",
+            "2 × 2 = 4 sheets",
+            "39 × 52 cm",
+            "195"
+          ],
+          [
+            "3",
+            "3 × 3 = 9 sheets",
+            "58 × 77 cm",
+            "131"
+          ],
+          [
+            "4",
+            "4 × 4 = 16 sheets",
+            "77 × 103 cm",
+            "99"
+          ],
+          [
+            "5",
+            "5 × 5 = 25 sheets",
+            "96 × 128 cm",
+            "79"
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Why a 2-column split is not always 2 × 2",
+      "paragraphs": [
+        "Each sheet loses a few millimetres to the printer margin, and neighbouring sheets overlap by 10 mm so there is something to glue. A 3:4 portrait photo split 2 columns wide on A4 comes out at 2 × 2. A 4:3 landscape photo split 2 columns wide is printed on landscape sheets and needs 2 × 3 = 6 sheets for about 56 × 42 cm.",
+        "If you need an exact grid such as 3 × 3, crop the image to the matching shape first, or use Sheets tall and compare both results in the summary panel."
+      ]
+    },
+    {
+      "heading": "Getting the split pages back together",
+      "paragraphs": [
+        "Every page carries its grid label (A1, A2 … B1, B2) in the margin and small arrows that name its neighbours. Page one of the PDF is an assembly map with the whole grid and a 50 mm / 2 inch ruler to confirm that your printer did not shrink the output.",
+        "Trim the top and left edges of each sheet, leave the right and bottom glue strips, and work row by row from A1. Our assembly guide shows each step with diagrams."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can I split an image into exactly 4 pages?",
+      "a": "Choose 2 columns. A portrait image gives a 2 × 2 grid of 4 pages; a landscape image may need 6 because it uses landscape sheets. The preview shows the exact grid before you download."
+    },
+    {
+      "q": "Does splitting reduce the image quality?",
+      "a": "No. The original image is embedded once in the PDF at full resolution and each page shows its own section of it. The only limit is the pixel count of your file, shown as DPI in the summary."
+    },
+    {
+      "q": "Can I split a PNG with a transparent background?",
+      "a": "Yes. Transparent areas print as white paper. You can also skip pages that would be completely empty by tapping them in the preview."
+    },
+    {
+      "q": "Does it work on a phone?",
+      "a": "Yes. Pick a photo from your gallery, set the columns, and save the PDF. Print it later from a computer or send it to a print shop."
+    }
+  ],
+  "related": [
+    "print-large-image-on-multiple-pages",
+    "a4-poster-maker",
+    "how-to-glue-a-tiled-poster"
+  ]
+}

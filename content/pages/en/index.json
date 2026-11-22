@@ -33,15 +33,18 @@
     {
       "heading": "Standard Poster Sizes & Home Printer Sheet Counts",
       "paragraphs": [
-        "Use this quick reference table when planning wall art, classroom charts, or event banners with a 5 mm printer margin and 10 mm glue overlap."
+        "Use this reference when planning wall art, classroom charts, or event banners. The counts are calculated with the same geometry the tool uses, including the printer margin and the glue overlap, so they are what you will actually print."
       ],
-      "table": {
-        "headers": ["Poster Size", "Dimensions (cm / in)", "A4 Sheets (Portrait)", "US Letter Sheets (Portrait)"],
-        "rows": [
-          ["A2 Poster", "42.0 × 59.4 cm (16.5 × 23.4 in)", "2×2 (4 sheets)", "2×3 (6 sheets)"],
-          ["A1 Poster", "59.4 × 84.1 cm (23.4 × 33.1 in)", "3×3 (9 sheets)", "3×4 (12 sheets)"],
-          ["24 × 36 in Movie Poster", "61.0 × 91.4 cm (24 × 36 in)", "4×4 (16 sheets)", "3×4 (12 sheets)"],
-          ["A0 Blueprint / Pattern", "84.1 × 118.9 cm (33.1 × 46.8 in)", "5×5 (25 sheets)", "5×5 (25 sheets)"]
+      "autoTable": {
+        "posters": [
+          "a2",
+          "a1",
+          "in24x36",
+          "a0"
+        ],
+        "papers": [
+          "a4",
+          "letter"
         ]
       }
     }
@@ -63,5 +66,10 @@
       "q": "Can I skip completely blank outer sheets to save ink and paper?",
       "a": "Yes. Click any tile cell directly in the interactive preview grid to mark it as skipped before generating your final PDF."
     }
+  ],
+  "related": [
+    "print-large-image-on-multiple-pages",
+    "split-image-into-pages",
+    "a0-a1-a2-poster-on-a4"
   ]
 }

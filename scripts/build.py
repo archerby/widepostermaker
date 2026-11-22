@@ -88,7 +88,7 @@ def render_auto_table(spec: dict, i18n: dict) -> str:
     for po in posters:
         w, h = sheetcalc.POSTERS[po]
         size = f"{_num(w / 10, dec)} × {_num(h / 10, dec)} cm · {_num(w / 25.4, dec)} × {_num(h / 25.4, dec)} in"
-        cells = [po.upper(), size]
+        cells = [sheetcalc.POSTER_NAMES[po], size]
         for pa in papers:
             cols, rows = sheetcalc.grid_for(po, pa)
             cells.append(t["cell"].replace("{cols}", str(cols)).replace("{rows}", str(rows)).replace("{n}", str(cols * rows)))

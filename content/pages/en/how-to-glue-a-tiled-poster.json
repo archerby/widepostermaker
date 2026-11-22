@@ -63,5 +63,10 @@
       "q": "How wide should I set the glue overlap?",
       "a": "10 mm (about 3/8 inch) works well for most posters and patterns. Use 15 mm for very large wall banners or 5 mm if maximizing usable print width per sheet."
     }
+  ],
+  "related": [
+    "print-large-image-on-multiple-pages",
+    "split-image-into-pages",
+    "a0-a1-a2-poster-on-a4"
   ]
 }

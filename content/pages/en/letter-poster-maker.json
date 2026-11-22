@@ -22,13 +22,16 @@
         "Most US home printers take 8.5 × 11 inch Letter paper (215.9 × 279.4 mm). By setting Size By to Poster Width and choosing inches, you can dial in exact 18, 24, or 36 inch dimensions without doing millimeter math.",
         "WidePosterMaker also supports US Legal (8.5 × 14 in) in the paper selector if you want fewer horizontal seam joints on tall portraits or banners."
       ],
-      "table": {
-        "headers": ["Classic US Poster Size", "Width × Height (in)", "Approx. Letter Sheets (with margin & overlap)"],
-        "rows": [
-          ["16 × 20 in Print", "16.0 × 20.0 in", "2×2 (4 Letter sheets)"],
-          ["18 × 24 in Medium Poster", "18.0 × 24.0 in", "3×3 (9 Letter sheets)"],
-          ["24 × 36 in Movie Poster", "24.0 × 36.0 in", "3×4 or 4×4 (12–16 Letter sheets)"],
-          ["36 × 48 in Presentation Board", "36.0 × 48.0 in", "5×5 (25 Letter sheets)"]
+      "autoTable": {
+        "posters": [
+          "in16x20",
+          "in18x24",
+          "in24x36",
+          "in36x48"
+        ],
+        "papers": [
+          "letter",
+          "legal"
         ]
       }
     },
@@ -56,5 +59,10 @@
       "q": "Is there any limit on image file size?",
       "a": "Because everything processes locally on your machine and images are embedded only once without re-slicing into dozens of JPEGs, large high-resolution files export quickly with low memory use."
     }
+  ],
+  "related": [
+    "print-large-image-on-multiple-pages",
+    "split-image-into-pages",
+    "print-pdf-on-multiple-pages"
   ]
 }

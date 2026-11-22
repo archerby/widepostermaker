@@ -1,0 +1,89 @@
+{
+  "slug": "print-pdf-on-multiple-pages",
+  "route": "/print-pdf-on-multiple-pages/",
+  "template": "tool",
+  "navLabel": "PDF Printing",
+  "breadcrumbTitle": "Print PDF on Multiple Pages",
+  "title": "Print a PDF on Multiple Pages (Poster Tiling) — Free Online",
+  "description": "Print one large PDF page across several A4 or Letter sheets at 100% scale. Free, works in the browser, keeps vectors sharp, adds crop marks and glue tabs.",
+  "h1": "Print a PDF on Multiple Pages",
+  "lead": "Have an A1 poster, a plan, or a map as a PDF but only an A4 or Letter printer? Load the PDF, keep it at 100%, and download a tiled PDF that prints the page across as many sheets as it needs — no upload, no Adobe Acrobat required.",
+  "presets": {
+    "paper": "auto",
+    "units": "auto",
+    "mode": "scale",
+    "value": 100,
+    "map": true
+  },
+  "chips": [
+    {
+      "label": "Real size (100%)",
+      "query": "scale=100"
+    },
+    {
+      "label": "Half size (50%)",
+      "query": "scale=50"
+    },
+    {
+      "label": "2 pages wide",
+      "query": "cols=2"
+    },
+    {
+      "label": "On US Letter",
+      "query": "paper=letter&scale=100"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Printing a big PDF on a small printer",
+      "paragraphs": [
+        "A PDF page has a physical size: an A1 poster is 594 × 841 mm, an architectural plan might be A0. Printing it to an A4 printer normally shrinks the whole page onto one sheet. To keep the real size, the page has to be split across several sheets — this is called poster or tile printing.",
+        "WidePosterMaker takes the PDF page, places it at 100% (or any scale you choose), and cuts it into a grid of A4, US Letter, A3 or Legal sheets. Each sheet gets crop marks, a glue overlap, alignment crosshairs, and its grid position, and page one is an assembly map with a calibration ruler."
+      ]
+    },
+    {
+      "heading": "Adobe Reader's Poster option vs. this tool",
+      "paragraphs": [
+        "Adobe Acrobat Reader has a Poster mode in its print dialog, and it works if you have Reader installed and your printer driver cooperates. It prints directly, though, so you get no file to check or reuse, and the assembly help is limited to small cut marks and labels.",
+        "Here you get a normal PDF that you can preview, send to someone else, or print from any device — including a phone or a Mac where Preview has no tiling option. Vector content is copied into the output as vectors rather than turned into a picture, so text and thin lines stay sharp."
+      ],
+      "list": [
+        "Works in any modern browser on Windows, macOS, Linux, Android, and iOS.",
+        "Multi-page PDFs: pick the page you want to tile with the page buttons.",
+        "Encrypted or unusual PDFs fall back to a high-resolution render, with a notice.",
+        "Nothing is uploaded — the PDF never leaves your device."
+      ],
+      "listHeading": "What you get"
+    },
+    {
+      "heading": "Worked example: an A1 PDF poster",
+      "paragraphs": [
+        "Load an A1 PDF at 100% on A4 paper and the summary shows a 4 × 3 grid of 12 sheets; on US Letter it is 15 sheets. Switch to 50% and the same poster becomes a 2 × 2 grid of 4 A4 sheets — useful for a quick proof before printing the full size.",
+        "When the printer dialog opens, choose 100% or Actual size. After printing, measure the 50 mm ruler on page one: if it is 50 mm, the whole poster is at true scale."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How do I print a PDF on multiple pages without Adobe?",
+      "a": "Load the PDF here, leave the size at 100%, and download the tiled PDF. Print it with any PDF viewer at Actual size — every sheet is already a separate page."
+    },
+    {
+      "q": "Can I choose which page of a multi-page PDF to tile?",
+      "a": "Yes. Use the Prev and Next buttons above the preview to pick the page; the grid and sheet count update for that page."
+    },
+    {
+      "q": "Will text and lines in my PDF stay sharp?",
+      "a": "Yes for normal vector PDFs: the page is embedded as vector content and clipped per sheet, not converted to an image. Encrypted files are rendered at high resolution instead, and the tool tells you when that happens."
+    },
+    {
+      "q": "What is the difference from the PDF Poster Splitter page?",
+      "a": "It is the same engine. This page is set up for printing a PDF at its real size; the PDF Poster Splitter page explains vector splitting of large drawings in more detail."
+    }
+  ],
+  "related": [
+    "pdf-poster-splitter",
+    "a0-a1-a2-poster-on-a4",
+    "sewing-pattern-tiler"
+  ]
+}

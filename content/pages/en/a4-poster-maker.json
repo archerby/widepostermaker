@@ -22,13 +22,16 @@
         "Standard ISO 216 paper shares a 1:√2 aspect ratio, which means A4 sheets tile cleanly into A2, A1, and A0 posters without awkward wasted strips when Auto orientation picks the best sheet alignment.",
         "Note that most home inkjet and laser printers require a 4–6 mm unprintable hardware margin around every edge. Setting Printer Margin to 5 mm and Glue Overlap to 10 mm guarantees zero clipped pixels at sheet borders."
       ],
-      "table": {
-        "headers": ["Target Format", "Metric Size", "Usable A4 Area (5 mm margin, 10 mm overlap)", "Typical Grid"],
-        "rows": [
-          ["2×2 Wall Grid", "39.0 × 56.4 cm", "190 × 277 mm net step", "4 A4 sheets"],
-          ["A2 (42.0 × 59.4 cm)", "42.0 × 59.4 cm", "Auto picks Landscape/Portrait", "4–6 A4 sheets"],
-          ["A1 (59.4 × 84.1 cm)", "59.4 × 84.1 cm", "3×3 to 4×4 depending on overlap", "9–12 A4 sheets"],
-          ["Panorama Banner", "110 × 40 cm", "Landscape A4 recommended", "6×2 A4 sheets"]
+      "autoTable": {
+        "posters": [
+          "a3",
+          "a2",
+          "a1",
+          "a0"
+        ],
+        "papers": [
+          "a4",
+          "a3"
         ]
       }
     },
@@ -42,7 +45,7 @@
   "faqs": [
     {
       "q": "How big is a 3×3 A4 poster with margins and overlap?",
-      "a": "With a 5 mm printer margin and 10 mm glue overlap, each A4 sheet advances by 190 mm horizontally and 277 mm vertically, yielding roughly 58 × 85 cm — right around A1 poster size."
+      "a": "With a 5 mm printer margin and 10 mm glue overlap, each A4 sheet advances by 190 mm horizontally and 277 mm vertically, so a 3 × 3 grid of portrait sheets gives 58 × 84 cm — almost exactly A1 (59.4 × 84.1 cm)."
     },
     {
       "q": "Should I pick Portrait or Landscape A4?",
@@ -56,5 +59,10 @@
       "q": "What paper weight works best for A4 tiled posters?",
       "a": "Standard 80 gsm copy paper works fine, while 100–120 gsm matte presentation paper lies flatter along glued seams with less glue ripple."
     }
+  ],
+  "related": [
+    "a0-a1-a2-poster-on-a4",
+    "split-image-into-pages",
+    "print-large-image-on-multiple-pages"
   ]
 }

@@ -1,0 +1,98 @@
+{
+  "slug": "a0-a1-a2-poster-on-a4",
+  "route": "/a0-a1-a2-poster-on-a4/",
+  "template": "tool",
+  "navLabel": "A0–A2 on A4",
+  "breadcrumbTitle": "A0, A1, A2 Poster on A4",
+  "title": "Print an A1, A0 or A2 Poster on A4 Sheets — How Many Pages?",
+  "description": "How many A4 or Letter sheets does an A0, A1, A2 or A3 poster need? Exact sheet counts, plus a free tool that tiles your poster at full size.",
+  "h1": "Print an A0, A1 or A2 Poster on A4 Sheets",
+  "lead": "Print a full-size A1 (59.4 × 84.1 cm), A0 or A2 poster on an ordinary A4 or US Letter printer. Load your image or PDF, pick the poster size, and the tool calculates the grid with margins and glue overlap included.",
+  "presets": {
+    "paper": "a4",
+    "units": "mm",
+    "mode": "size-width",
+    "value": 594,
+    "map": true
+  },
+  "chips": [
+    {
+      "label": "A0 width (84.1 cm)",
+      "query": "units=mm&width=841"
+    },
+    {
+      "label": "A1 width (59.4 cm)",
+      "query": "units=mm&width=594"
+    },
+    {
+      "label": "A2 width (42 cm)",
+      "query": "units=mm&width=420"
+    },
+    {
+      "label": "A3 width (29.7 cm)",
+      "query": "units=mm&width=297"
+    },
+    {
+      "label": "PDF at 100%",
+      "query": "scale=100"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "How many A4 sheets for an A0, A1, A2 or A3 poster?",
+      "paragraphs": [
+        "On paper, the arithmetic looks simple: A1 is four A2s, which is eight A4s. In practice a home printer cannot print to the edge, and the sheets need an overlap to be glued, so each A4 covers only about 19 × 27.7 cm of the poster. The table below is calculated with exactly the same geometry the tool uses."
+      ],
+      "autoTable": {
+        "posters": [
+          "a0",
+          "a1",
+          "a2",
+          "a3"
+        ],
+        "papers": [
+          "a4",
+          "letter",
+          "a3"
+        ]
+      }
+    },
+    {
+      "heading": "Worked example: an A1 poster on A4",
+      "paragraphs": [
+        "An A1 poster is 594 × 841 mm. With a 5 mm printer margin, each portrait A4 sheet can print 200 × 287 mm; after the 10 mm glue overlap it advances 190 mm across and 277 mm down. Four columns (4 × 190 + 10 = 770 mm) cover the 594 mm width and three rows (3 × 277 + 10 = 841 mm) cover the height: a 4 × 3 grid of 12 sheets. The same poster in landscape orientation would need 15, so Auto picks portrait.",
+        "An A2 poster needs 8 A4 sheets, an A0 needs 21. If you have an A3 printer, the numbers drop to 4, 6 and 9 sheets for A2, A1 and A0."
+      ]
+    },
+    {
+      "heading": "Exact A-size or \"about that big\"?",
+      "paragraphs": [
+        "For a PDF that already is A1 or A0 — a scientific poster, a plan, a map — use \"PDF at 100%\": the page is printed at its real physical size and the vector graphics stay sharp. For a photo or an image with a different shape, the A-size buttons set the poster width; the height follows the image proportions, so the result is A1-wide rather than exactly A1.",
+        "Print a test page first and measure the 50 mm ruler on the assembly map. If it measures 50 mm, every sheet is at true scale."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "How many A4 sheets make an A1 poster?",
+      "a": "In theory 8, but with printer margins and a 10 mm glue overlap you need 12 sheets in a 4 × 3 grid. On US Letter it is 15."
+    },
+    {
+      "q": "How many A4 sheets make an A0 poster?",
+      "a": "21 sheets (a 3 × 7 grid in landscape orientation) with 5 mm margins and 10 mm overlap. With an A3 printer, 9 sheets."
+    },
+    {
+      "q": "Can I reduce the number of sheets?",
+      "a": "Lower the glue overlap or the printer margin if your printer supports it, or let the tool skip blank sheets. Do not use \"Fit to page\" in the print dialog — that changes the scale."
+    },
+    {
+      "q": "Is the printed poster exactly A1 size?",
+      "a": "For a PDF printed at 100%, yes — the tiles are placed to the millimetre. Check the 50 mm calibration ruler after printing; printers that silently shrink pages will show it immediately."
+    }
+  ],
+  "related": [
+    "print-pdf-on-multiple-pages",
+    "sewing-pattern-tiler",
+    "a4-poster-maker"
+  ]
+}
