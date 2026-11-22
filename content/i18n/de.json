@@ -6,6 +6,7 @@
   "homeHref": "/de/",
   "navLabel": "Hauptnavigation",
   "langSwitchLabel": "Sprache",
+  "menuLabel": "Menü",
   "siteName": "WidePosterMaker",
   "domain": "https://widepostermaker.com",
   "repoUrl": "https://github.com/archerby/widepostermaker",
@@ -22,6 +23,7 @@
     "workspaceAria": "Poster-Arbeitsbereich",
     "trustAria": "Kernfunktionen",
     "dropTitle": "Bild oder PDF hier ablegen",
+    "dropTitleTouch": "Foto oder PDF auswählen",
     "dropSub": "PNG, JPEG, WebP, SVG, GIF oder PDF (ein- & mehrseitig). Läuft komplett lokal in Ihrem Browser.",
     "chooseFile": "Bild oder PDF wählen",
     "trySample": "Beispiel-Poster testen",
@@ -46,6 +48,9 @@
     "unitIn": "Zoll (in)",
     "defaultUnitTag": "Blätter",
     "valueLabel": "Zielwert",
+    "advancedLabel": "Weitere Einstellungen",
+    "stepDec": "Verringern",
+    "stepInc": "Erhöhen",
     "marginLabel": "Druckrand (mm)",
     "overlapLabel": "Kleberand (mm)",
     "optCropMarks": "Schnittmarken & Passkreuze (+)",
@@ -61,7 +66,7 @@
     "trust": [
       {
         "title": "Nichts verlässt Ihr Gerät",
-        "body": "Keine Server-Uploads, keine Cookies, kein Tracking. Prüfen Sie es jederzeit im Netzwerk-Tab Ihres Browsers."
+        "body": "Ihre Dateien werden im Browser verarbeitet und nie hochgeladen. Keine Cookies. Prüfen Sie es im Netzwerk-Tab."
       },
       {
         "title": "Echte Vektor-PDFs",
@@ -95,7 +100,7 @@
       { "label": "MIT-Lizenz", "href": "https://github.com/archerby/widepostermaker/blob/main/LICENSE" }
     ],
     "copyright": "MIT Open Source · WidePosterMaker.com",
-    "tagline": "Kein Upload · Lokale ES-Module"
+    "tagline": "Kein Upload · Keine Cookies"
   },
   "js": {
     "unitSheets": "Blätter",
@@ -109,6 +114,7 @@
     "warnTooMany": "Raster überschreitet 400 Blätter ({n}). Größe reduzieren.",
     "warnAllSkipped": "Alle Blätter sind deaktiviert. Klicken Sie ein Feld in der Vorschau an.",
     "captionHint": "Klick auf Blatt = überspringen/einschließen",
+    "captionHintTouch": "Blatt antippen = überspringen/einschließen",
     "captionTileSingle": "Ausgabe: {n} Blatt",
     "captionTilePlural": "Ausgabe: {n} Blätter",
     "captionMap": "+ 1 Übersichtskarte",

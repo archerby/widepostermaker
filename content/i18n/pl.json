@@ -6,6 +6,7 @@
   "homeHref": "/pl/",
   "navLabel": "Nawigacja główna",
   "langSwitchLabel": "Język",
+  "menuLabel": "Menu",
   "siteName": "WidePosterMaker",
   "domain": "https://widepostermaker.com",
   "repoUrl": "https://github.com/archerby/widepostermaker",
@@ -22,6 +23,7 @@
     "workspaceAria": "Obszar dzielenia plakatu",
     "trustAria": "Najważniejsze zalety",
     "dropTitle": "Upuść obraz lub PDF tutaj",
+    "dropTitleTouch": "Wybierz zdjęcie lub PDF",
     "dropSub": "PNG, JPEG, WebP, SVG, GIF lub PDF (jedno- i wielostronicowy). Wszystko działa lokalnie w przeglądarce.",
     "chooseFile": "Wybierz obraz lub PDF",
     "trySample": "Przykładowy plakat",
@@ -46,6 +48,9 @@
     "unitIn": "Cale (in)",
     "defaultUnitTag": "kartek",
     "valueLabel": "Wartość docelowa",
+    "advancedLabel": "Więcej ustawień",
+    "stepDec": "Zmniejsz",
+    "stepInc": "Zwiększ",
     "marginLabel": "Margines drukarki (mm)",
     "overlapLabel": "Zakładka klejenia (mm)",
     "optCropMarks": "Znaczniki cięcia i krzyżyki (+) pasowania",
@@ -61,7 +66,7 @@
     "trust": [
       {
         "title": "Pliki zostają u Ciebie",
-        "body": "Zero wysyłki na serwer, zero plików cookie i śledzenia. Możesz to sprawdzić w zakładce Network."
+        "body": "Pliki są przetwarzane w przeglądarce i nigdy nie są wysyłane. Bez cookies. Sprawdź w zakładce Network."
       },
       {
         "title": "Wektorowy podział PDF",
@@ -95,7 +100,7 @@
       { "label": "Licencja MIT", "href": "https://github.com/archerby/widepostermaker/blob/main/LICENSE" }
     ],
     "copyright": "Open Source MIT · WidePosterMaker.com",
-    "tagline": "Bez wysyłki · Lokalne moduły ES"
+    "tagline": "Bez wysyłki · Bez cookies"
   },
   "js": {
     "unitSheets": "kartek",
@@ -109,6 +114,7 @@
     "warnTooMany": "Siatka przekracza 400 kartek ({n}). Zmniejsz plakat.",
     "warnAllSkipped": "Wszystkie arkusze są pominięte. Kliknij kafelek na podglądzie, aby go przywrócić.",
     "captionHint": "Kliknij arkusz, aby pominąć/włączyć",
+    "captionHintTouch": "Dotknij arkusza, aby pominąć/włączyć",
     "captionTileSingle": "Wynik: {n} arkusz",
     "captionTilePlural": "Wynik: {n} ark.",
     "captionMap": "+ 1 mapa montażu",

@@ -6,6 +6,7 @@
   "homeHref": "/",
   "navLabel": "Primary navigation",
   "langSwitchLabel": "Language",
+  "menuLabel": "Menu",
   "siteName": "WidePosterMaker",
   "domain": "https://widepostermaker.com",
   "repoUrl": "https://github.com/archerby/widepostermaker",
@@ -22,6 +23,7 @@
     "workspaceAria": "Poster tiling workspace",
     "trustAria": "Core guarantees",
     "dropTitle": "Drop an image or PDF here",
+    "dropTitleTouch": "Pick a photo or PDF",
     "dropSub": "PNG, JPEG, WebP, SVG, GIF, or PDF (single & multi-page). Processed completely inside your browser.",
     "chooseFile": "Choose Image or PDF",
     "trySample": "Try Sample Poster",
@@ -46,6 +48,9 @@
     "unitIn": "Inches (in)",
     "defaultUnitTag": "sheets",
     "valueLabel": "Target Value",
+    "advancedLabel": "More settings",
+    "stepDec": "Decrease",
+    "stepInc": "Increase",
     "marginLabel": "Printer Margin (mm)",
     "overlapLabel": "Glue Overlap (mm)",
     "optCropMarks": "Crop marks & alignment (+) crosshairs",
@@ -61,7 +66,7 @@
     "trust": [
       {
         "title": "Nothing Leaves Your Device",
-        "body": "Zero server uploads, cookies, or trackers. Open your browser DevTools Network tab to verify."
+        "body": "Your files are processed in the browser and never uploaded. No cookies. Check the DevTools Network tab yourself."
       },
       {
         "title": "Vector PDF Preservation",
@@ -95,7 +100,7 @@
       { "label": "MIT License", "href": "https://github.com/archerby/widepostermaker/blob/main/LICENSE" }
     ],
     "copyright": "MIT Licensed Open Source · WidePosterMaker.com",
-    "tagline": "Zero uploads · Offline-capable ES modules"
+    "tagline": "Zero uploads · No cookies"
   },
   "js": {
     "unitSheets": "sheets",
@@ -109,6 +114,7 @@
     "warnTooMany": "Grid exceeds 400 sheets ({n}). Reduce poster size or sheet count.",
     "warnAllSkipped": "All sheets are currently skipped. Click a tile on the preview to re-enable it.",
     "captionHint": "Click any sheet to skip/include",
+    "captionHintTouch": "Tap a sheet to skip/include",
     "captionTileSingle": "Output: {n} tile",
     "captionTilePlural": "Output: {n} tiles",
     "captionMap": "+ 1 assembly map page",

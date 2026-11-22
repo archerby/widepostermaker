@@ -49,7 +49,7 @@
   "faqs": [
     {
       "q": "Czy moje zdjęcia lub pliki PDF są wysyłane na serwer?",
-      "a": "Nie. Całe przetwarzanie zachodzi lokalnie w pamięci przeglądarki bez wysyłania danych, ciasteczek ani śledzenia."
+      "a": "Nie. Pliki są przetwarzane lokalnie w przeglądarce i nigdy nie są wysyłane. Bez cookies; liczone są tylko anonimowe odwiedziny bez cookies."
     },
     {
       "q": "Dlaczego lepiej pobrać wygenerowany PDF niż drukować stronę WWW?",

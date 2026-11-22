@@ -6,6 +6,7 @@
   "homeHref": "/es/",
   "navLabel": "Navegación principal",
   "langSwitchLabel": "Idioma",
+  "menuLabel": "Menú",
   "siteName": "WidePosterMaker",
   "domain": "https://widepostermaker.com",
   "repoUrl": "https://github.com/archerby/widepostermaker",
@@ -22,6 +23,7 @@
     "workspaceAria": "Área de división de póster",
     "trustAria": "Garantías principales",
     "dropTitle": "Suelta aquí tu imagen o PDF",
+    "dropTitleTouch": "Elige una foto o un PDF",
     "dropSub": "PNG, JPEG, WebP, SVG, GIF o PDF (una o varias páginas). Procesado íntegramente en tu navegador.",
     "chooseFile": "Elegir imagen o PDF",
     "trySample": "Probar póster de muestra",
@@ -46,6 +48,9 @@
     "unitIn": "Pulgadas (in)",
     "defaultUnitTag": "hojas",
     "valueLabel": "Valor objetivo",
+    "advancedLabel": "Más ajustes",
+    "stepDec": "Reducir",
+    "stepInc": "Aumentar",
     "marginLabel": "Margen impresora (mm)",
     "overlapLabel": "Solape de pegado (mm)",
     "optCropMarks": "Marcas de corte y cruces (+) de alineación",
@@ -61,7 +66,7 @@
     "trust": [
       {
         "title": "Nada sale de tu equipo",
-        "body": "Cero subidas a servidores, cero cookies y cero rastreo. Verifícalo en la pestaña Red de tu navegador."
+        "body": "Tus archivos se procesan en el navegador y nunca se suben. Sin cookies. Compruébalo en la pestaña Red."
       },
       {
         "title": "PDF vectorial intacto",
@@ -95,7 +100,7 @@
       { "label": "Licencia MIT", "href": "https://github.com/archerby/widepostermaker/blob/main/LICENSE" }
     ],
     "copyright": "Código abierto MIT · WidePosterMaker.com",
-    "tagline": "Sin subidas · Módulos ES locales"
+    "tagline": "Sin subidas · Sin cookies"
   },
   "js": {
     "unitSheets": "hojas",
@@ -109,6 +114,7 @@
     "warnTooMany": "La cuadrícula supera 400 hojas ({n}). Reduce el tamaño.",
     "warnAllSkipped": "Todas las hojas están omitidas. Haz clic en una casilla para activarla.",
     "captionHint": "Clic en una hoja para omitir/incluir",
+    "captionHintTouch": "Toca una hoja para omitir/incluir",
     "captionTileSingle": "Salida: {n} hoja",
     "captionTilePlural": "Salida: {n} hojas",
     "captionMap": "+ 1 mapa de montaje",

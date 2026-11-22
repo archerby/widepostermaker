@@ -49,7 +49,7 @@
   "faqs": [
     {
       "q": "¿Se suben mis imágenes o archivos PDF a algún servidor?",
-      "a": "No. Todo se procesa al 100% dentro de tu propio navegador sin servidores, cookies ni rastreadores."
+      "a": "No. Tus archivos se procesan localmente en tu navegador y nunca se suben. Sin cookies; solo se cuentan visitas anónimas sin cookies."
     },
     {
       "q": "¿Por qué descargar el PDF en vez de imprimir directamente desde la web?",

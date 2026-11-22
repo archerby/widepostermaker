@@ -49,7 +49,7 @@
   "faqs": [
     {
       "q": "Werden meine Fotos oder PDF-Dateien auf einen Server hochgeladen?",
-      "a": "Nein. Die gesamte Verarbeitung läuft vollständig offline-fähig im Browser. Keine Uploads, keine Cookies, kein Tracking."
+      "a": "Nein. Ihre Dateien werden lokal im Browser verarbeitet und nie hochgeladen. Keine Cookies; gezählt werden nur anonyme Seitenaufrufe ohne Cookies."
     },
     {
       "q": "Warum ein PDF herunterladen statt direkt die Webseite zu drucken?",

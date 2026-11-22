@@ -6,6 +6,7 @@
   "homeHref": "/ru/",
   "navLabel": "Основная навигация",
   "langSwitchLabel": "Язык",
+  "menuLabel": "Меню",
   "siteName": "WidePosterMaker",
   "domain": "https://widepostermaker.com",
   "repoUrl": "https://github.com/archerby/widepostermaker",
@@ -22,6 +23,7 @@
     "workspaceAria": "Рабочая область нарезки постера",
     "trustAria": "Ключевые гарантии",
     "dropTitle": "Перетащите картинку или PDF сюда",
+    "dropTitleTouch": "Выберите фото или PDF",
     "dropSub": "PNG, JPEG, WebP, SVG, GIF или PDF (одно- и многостраничный). Всё обрабатывается локально на вашем устройстве.",
     "chooseFile": "Выбрать картинку или PDF",
     "trySample": "Тестовый постер",
@@ -46,6 +48,9 @@
     "unitIn": "Дюймы (in)",
     "defaultUnitTag": "листов",
     "valueLabel": "Значение",
+    "advancedLabel": "Ещё настройки",
+    "stepDec": "Уменьшить",
+    "stepInc": "Увеличить",
     "marginLabel": "Поле принтера (мм)",
     "overlapLabel": "Нахлёст склейки (мм)",
     "optCropMarks": "Метки реза и крестики (+) совмещения",
@@ -61,7 +66,7 @@
     "trust": [
       {
         "title": "Ничего не уходит в сеть",
-        "body": "Ноль загрузок на сервер, без куки и трекеров. Откройте вкладку Network в DevTools и проверьте сами."
+        "body": "Файлы обрабатываются в браузере и никуда не загружаются. Без куки. Проверьте сами во вкладке Network в DevTools."
       },
       {
         "title": "Векторная нарезка PDF",
@@ -95,7 +100,7 @@
       { "label": "Лицензия MIT", "href": "https://github.com/archerby/widepostermaker/blob/main/LICENSE" }
     ],
     "copyright": "Open Source · Лицензия MIT · WidePosterMaker.com",
-    "tagline": "Без загрузок на сервер · Локальные ES-модули"
+    "tagline": "Без загрузок на сервер · Без куки"
   },
   "js": {
     "unitSheets": "листов",
@@ -109,6 +114,7 @@
     "warnTooMany": "Слишком большая сетка ({n} листов > 400). Уменьшите постер.",
     "warnAllSkipped": "Все листы пропущены. Нажмите на лист на превью, чтобы вернуть его.",
     "captionHint": "Клик по листу — пропустить/вернуть",
+    "captionHintTouch": "Нажмите на лист — пропустить/вернуть",
     "captionTileSingle": "Итог: {n} лист",
     "captionTilePlural": "Итог: {n} л.",
     "captionMap": "+ 1 стр. карта сборки",
