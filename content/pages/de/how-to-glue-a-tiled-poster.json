@@ -19,19 +19,40 @@
     {
       "heading": "Schritt 1: Seite 1 drucken und 50-mm-Lineal prüfen",
       "paragraphs": [
-        "Messen Sie vor dem Komplettdruck mit einem Lineal die 50-mm-Skala auf Seite 1 nach. Ist sie kürzer als 50 mm, wählen Sie im Druckdialog „Tatsächliche Größe / 100%“ statt „An Seite anpassen“."
+        "Messen Sie vor dem Komplettdruck mit einem Lineal die 50-mm-Skala auf Seite 1 nach. Ist sie kürzer als 50 mm, wählen Sie im Druckdialog „Tatsächliche Größe / 100%“ statt „An Seite anpassen“.",
+        "Druckt der Drucker richtig, erscheint auf jedem Blatt außerdem die Koordinate (A1, A2 … B1) im Rand. Legen Sie die Blätter nach dem Druck in der Reihenfolge der Übersichtskarte auf den Tisch, bevor Sie zur Schere greifen."
       ]
     },
     {
       "heading": "Schritt 2: Nur den oberen und linken Rand abschneiden",
       "paragraphs": [
-        "Lassen Sie die rechten und unteren gestrichelten Klebelaschen unbedingt stehen und schneiden Sie bei Anschlussblättern nur oben und links exakt durch die Schnittmarken."
+        "Lassen Sie die rechten und unteren gestrichelten Klebelaschen unbedingt stehen und schneiden Sie bei Anschlussblättern nur oben und links exakt durch die Schnittmarken.",
+        "Am saubersten gelingt der Schnitt mit Cutter, Metalllineal und Schneidematte. Blätter am oberen Rand des Posters (Reihe A) und in der linken Spalte haben außen keinen Nachbarn – dort können Sie den weißen Rand auch stehen lassen und erst am Schluss gerade beschneiden."
       ]
     },
     {
       "heading": "Schritt 3: Reihenweise an den (+)-Marken kleben",
       "paragraphs": [
-        "Kleben Sie zuerst jede waagerechte Reihe (A1 + A2 + A3) zusammen und fügen Sie danach die fertigen Reihen vertikal aneinander. Ein trockener Klebestift verhindert Wellen im Papier."
+        "Kleben Sie zuerst jede waagerechte Reihe (A1 + A2 + A3) zusammen und fügen Sie danach die fertigen Reihen vertikal aneinander. Ein trockener Klebestift verhindert Wellen im Papier.",
+        "Arbeiten Sie auf einer großen, ebenen Fläche, etwa dem Boden oder einem ausgezogenen Esstisch. Kleber nur auf den Kleberand auftragen, nicht auf das ganze Blatt, und jede Naht kurz mit der flachen Hand andrücken."
+      ]
+    },
+    {
+      "heading": "Das brauchen Sie",
+      "list": [
+        "Cutter oder scharfe Schere, Metalllineal und eine Schneideunterlage.",
+        "Klebestift oder dünnes doppelseitiges Klebeband.",
+        "Eine große, ebene Arbeitsfläche.",
+        "Für die Wand: Malerkrepp, Posterstrips oder einen Bilderrahmen in passender Größe."
+      ]
+    },
+    {
+      "heading": "Häufige Fehler beim Zusammenkleben",
+      "list": [
+        "Alle vier Ränder abgeschnitten: Dann fehlt die Klebelasche, und an den Nähten entstehen Lücken.",
+        "Mit Flüssigkleber gearbeitet: Das Papier wellt sich und trocknet uneben.",
+        "Spalten statt Reihen geklebt: Kleine Fehler summieren sich – erst Reihen bilden, dann die Reihen verbinden.",
+        "Lineal nicht geprüft: Hat der Drucker verkleinert, passen die Kacheln nie exakt aneinander."
       ]
     }
   ],
@@ -39,6 +60,19 @@
     {
       "q": "Klebestift, Klebeband oder Flüssigkleber?",
       "a": "Ein fester Klebestift oder dünnes doppelseitiges Klebeband hält Papier faltenfrei und glatt."
+    },
+    {
+      "q": "Was tun, wenn die Kanten nicht genau aneinanderpassen?",
+      "a": "Prüfen Sie zuerst das 50-mm-Lineal auf Seite 1. Ist es kürzer, wurde verkleinert gedruckt – drucken Sie erneut mit „Tatsächliche Größe“. Ist es korrekt, richten Sie die Blätter an den Passkreuzen (+) aus, nicht an den Papierkanten."
+    },
+    {
+      "q": "Wie hänge ich das fertige Poster auf?",
+      "a": "Leichte Poster halten mit Posterstrips oder Malerkrepp an den Ecken. Für längere Haltbarkeit kleben Sie das Poster auf eine dünne Schaumstoff- oder Kartonplatte oder rahmen es ein."
     }
+  ],
+  "related": [
+    "print-large-image-on-multiple-pages",
+    "split-image-into-pages",
+    "a0-a1-a2-poster-on-a4"
   ]
 }

@@ -19,14 +19,59 @@
     {
       "heading": "Cómo lograr carteles A2, A1 y A0 con papel A4",
       "paragraphs": [
-        "Con el estándar de margen de 5 mm y solape de pegado de 10 mm, cada hoja A4 cubre 190 × 277 mm útiles, evitando cortes blancos en las uniones de la mayoría de impresoras domésticas."
+        "Con el estándar de margen de 5 mm y solape de pegado de 10 mm, cada hoja A4 cubre 190 × 277 mm útiles, evitando cortes blancos en las uniones de la mayoría de impresoras domésticas.",
+        "Así, un póster A3 ocupa 4 hojas A4, un A2 8, un A1 12 y un A0 21. Si tu impresora admite A3, las cifras bajan a 2, 4, 6 y 9 hojas. La tabla está calculada con la misma geometría que la herramienta:"
+      ],
+      "autoTable": {
+        "posters": [
+          "a3",
+          "a2",
+          "a1",
+          "a0"
+        ],
+        "papers": [
+          "a4",
+          "a3"
+        ]
+      }
+    },
+    {
+      "heading": "¿A4 vertical u horizontal?",
+      "paragraphs": [
+        "Con «Orientación» en «Auto (Menos hojas)», la herramienta prueba las dos orientaciones y se queda con la que necesita menos hojas; si empatan, con la que desperdicia menos papel. En un póster A1 vertical, las hojas verticales dan 12 hojas frente a 15 en horizontal.",
+        "Puedes forzar Vertical u Horizontal si prefieres que las uniones vayan en una dirección concreta, por ejemplo para que no crucen una cara en un retrato. El resumen te muestra al momento la nueva Cuadrícula y el Tamaño final."
+      ]
+    },
+    {
+      "heading": "Ajustes de impresora para hojas A4",
+      "paragraphs": [
+        "La herramienta deja el PDF preparado; en el cuadro de impresión solo tienes que revisar esto:"
+      ],
+      "list": [
+        "Escala: 100 % o «Tamaño real», nunca «Ajustar a página».",
+        "Impresión sin bordes: desactívala; amplía ligeramente cada hoja y descuadra las uniones.",
+        "Papel: el mismo tipo y gramaje en todas las hojas, para que el color y el grosor coincidan.",
+        "Margen: 5 mm sirve para casi todas las impresoras; si la tuya corta más, súbelo en «Más ajustes»."
       ]
     }
   ],
   "faqs": [
     {
       "q": "¿Qué tamaño tiene un póster de 3×3 hojas A4?",
-      "a": "Con 5 mm de margen y 10 mm de solape obtienes aproximadamente 58 × 85 cm, muy cercano al formato A1."
+      "a": "Con 5 mm de margen y 10 mm de solape, 3 × 3 hojas A4 verticales cubren hasta unos 58 × 84 cm: casi un A1, pero 1,4 cm más estrecho. Por eso un A1 completo necesita 4 × 3 = 12 hojas."
+    },
+    {
+      "q": "¿Cuántas hojas A4 necesita un póster A2?",
+      "a": "8 hojas (2 × 4) a tamaño real. En teoría bastarían 4, pero los márgenes de impresora y los solapes de pegado ocupan parte de cada hoja."
+    },
+    {
+      "q": "¿Puedo indicar la medida exacta en centímetros?",
+      "a": "Sí. En «Calcular por» elige «Ancho del póster» o «Alto del póster» y escribe la medida en cm; la otra dimensión sigue la proporción de la imagen."
     }
+  ],
+  "related": [
+    "a0-a1-a2-poster-on-a4",
+    "split-image-into-pages",
+    "print-large-image-on-multiple-pages"
   ]
 }

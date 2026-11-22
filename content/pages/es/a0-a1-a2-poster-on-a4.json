@@ -1,0 +1,114 @@
+{
+  "slug": "a0-a1-a2-poster-on-a4",
+  "route": "/es/a0-a1-a2-poster-on-a4/",
+  "template": "tool",
+  "navLabel": "A0–A2 en A4",
+  "breadcrumbTitle": "Póster A0, A1, A2 en A4",
+  "title": "Imprimir póster A1 en hojas A4: cuántas hojas (A0, A2, A3)",
+  "description": "¿Cuántas hojas A4 o tamaño Carta necesita un póster A0, A1, A2 o A3? Cifras exactas y una herramienta gratis que lo divide a tamaño real.",
+  "h1": "Imprimir un póster A1, A0 o A2 en hojas A4",
+  "lead": "Imprimir un póster A1 en hojas A4 (59,4 × 84,1 cm a tamaño real), o un A0 o un A2, es posible con una impresora normal de A4 o tamaño Carta. Carga tu imagen o PDF, elige el formato y la herramienta calcula la cuadrícula con márgenes y solapes ya incluidos.",
+  "presets": {
+    "paper": "a4",
+    "units": "mm",
+    "mode": "size-width",
+    "value": 594,
+    "map": true
+  },
+  "chips": [
+    {
+      "label": "Ancho A0 (84,1 cm)",
+      "query": "units=mm&width=841"
+    },
+    {
+      "label": "Ancho A1 (59,4 cm)",
+      "query": "units=mm&width=594"
+    },
+    {
+      "label": "Ancho A2 (42 cm)",
+      "query": "units=mm&width=420"
+    },
+    {
+      "label": "Ancho A3 (29,7 cm)",
+      "query": "units=mm&width=297"
+    },
+    {
+      "label": "PDF al 100 %",
+      "query": "scale=100"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "¿Cuántas hojas A4 lleva un póster A0, A1, A2 o A3?",
+      "paragraphs": [
+        "Sobre el papel la cuenta parece sencilla: un A1 equivale a dos A2, cuatro A3 u ocho A4. En la práctica, la impresora de casa no imprime hasta el borde y las hojas necesitan un solape para pegarlas, de modo que cada A4 cubre solo unos 19 × 27,7 cm del póster. La tabla está calculada con exactamente la misma geometría que usa la herramienta."
+      ],
+      "autoTable": {
+        "posters": [
+          "a0",
+          "a1",
+          "a2",
+          "a3"
+        ],
+        "papers": [
+          "a4",
+          "letter",
+          "a3"
+        ]
+      }
+    },
+    {
+      "heading": "Ejemplo práctico: imprimir póster A1 en hojas A4",
+      "paragraphs": [
+        "Un póster A1 mide 594 × 841 mm. Con 5 mm de margen de impresora, cada A4 vertical imprime 200 × 287 mm; tras restar los 10 mm de solape, avanza 190 mm en horizontal y 277 mm en vertical. Cuatro columnas (4 × 190 + 10 = 770 mm) cubren los 594 mm de ancho y tres filas (3 × 277 + 10 = 841 mm) cubren el alto: una cuadrícula de 4 × 3 = 12 hojas. El mismo póster con hojas horizontales necesitaría 15, por eso «Auto (Menos hojas)» elige vertical.",
+        "Un póster A2 necesita 8 hojas A4 y un A0, 21. Si tienes impresora A3, las cifras bajan a 4, 6 y 9 hojas para A2, A1 y A0. En tamaño Carta, el habitual en México y en gran parte de Latinoamérica, el A1 sale en 15 hojas y el A0 en 25."
+      ]
+    },
+    {
+      "heading": "¿Tamaño A exacto o «más o menos así de grande»?",
+      "paragraphs": [
+        "Si tu PDF ya es A1 o A0 —un póster científico, un plano, un mapa—, usa «PDF al 100 %»: la página se imprime a su tamaño físico real y los gráficos vectoriales siguen nítidos. Para una foto o una imagen con otra proporción, los botones de formato A fijan el ancho del póster; el alto sigue las proporciones de la imagen, así que el resultado tiene el ancho de un A1, pero no necesariamente su alto.",
+        "Imprime primero una página de prueba y mide la regla de 50 mm del mapa de montaje. Si mide 50 mm, todas las hojas están a escala real."
+      ]
+    },
+    {
+      "heading": "Cómo gastar menos hojas",
+      "paragraphs": [
+        "El número de la tabla es el máximo; a menudo puedes bajarlo:"
+      ],
+      "list": [
+        "Omite las hojas en blanco tocándolas en la vista previa: no entran en el PDF.",
+        "Si tu impresora imprime más cerca del borde, reduce el «Margen impresora (mm)» en «Más ajustes».",
+        "Un «Solape de pegado (mm)» menor también ahorra papel, aunque deja menos superficie para el pegamento.",
+        "Con impresora A3, cambia «Tamaño de papel» a A3: un A1 baja de 12 a 6 hojas."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿Cuántas hojas A4 hacen falta para un póster A1?",
+      "a": "En teoría 8, pero con los márgenes de impresora y 10 mm de solape necesitas 12 hojas en una cuadrícula de 4 × 3. En tamaño Carta son 15."
+    },
+    {
+      "q": "¿Cuántas hojas A4 lleva un póster A0?",
+      "a": "21 hojas (una cuadrícula de 3 × 7 con las hojas en horizontal), con 5 mm de margen y 10 mm de solape. Con impresora A3, 9 hojas."
+    },
+    {
+      "q": "¿Y un póster A2?",
+      "a": "8 hojas A4 en una cuadrícula de 2 × 4, y también 8 en tamaño Carta. En A3 bastan 4."
+    },
+    {
+      "q": "¿Puedo reducir el número de hojas?",
+      "a": "Baja el solape de pegado o el margen de impresora si tu impresora lo admite, u omite las hojas vacías. No uses «Ajustar a página» en el cuadro de impresión: eso cambia la escala."
+    },
+    {
+      "q": "¿El póster impreso mide exactamente A1?",
+      "a": "Si es un PDF impreso al 100 %, sí: las hojas se colocan al milímetro. Comprueba la regla de calibración de 50 mm al imprimir; si la impresora reduce las páginas sin avisar, lo verás enseguida."
+    }
+  ],
+  "related": [
+    "print-pdf-on-multiple-pages",
+    "sewing-pattern-tiler",
+    "a4-poster-maker"
+  ]
+}

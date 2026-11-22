@@ -1,0 +1,146 @@
+{
+  "slug": "print-large-image-on-multiple-pages",
+  "route": "/de/print-large-image-on-multiple-pages/",
+  "template": "tool",
+  "navLabel": "Großes Bild",
+  "breadcrumbTitle": "Großes Bild auf mehrere Seiten drucken",
+  "title": "Großes Bild auf mehrere Seiten drucken – kostenlos, ohne Upload",
+  "description": "Foto oder Grafik als großes Poster auf mehreren DIN-A4-Blättern drucken – mit Schnittmarken und Kleberand. Kostenlos, ohne Wasserzeichen, ohne Upload.",
+  "h1": "Großes Bild auf mehrere Seiten drucken",
+  "lead": "Sie möchten ein großes Bild auf mehrere Seiten drucken, haben aber nur einen A4-Drucker? Laden Sie ein Foto, eine Zeichnung oder einen Screenshot, legen Sie fest, wie viele Blätter breit das Poster werden soll, und laden Sie ein einziges PDF herunter, das das Motiv auf mehrere DIN-A4- oder US-Letter-Blätter verteilt. Alles läuft in Ihrem Browser – das Bild wird nicht hochgeladen.",
+  "presets": {
+    "paper": "auto",
+    "units": "auto",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "chips": [
+    {
+      "label": "2 Blätter breit",
+      "query": "cols=2"
+    },
+    {
+      "label": "3 Blätter breit",
+      "query": "cols=3"
+    },
+    {
+      "label": "4 Blätter breit",
+      "query": "cols=4"
+    },
+    {
+      "label": "60 cm breit",
+      "query": "units=cm&width=60"
+    },
+    {
+      "label": "90 cm breit",
+      "query": "units=cm&width=90"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "So drucken Sie ein großes Bild auf mehrere Seiten",
+      "paragraphs": [
+        "Der Bürodrucker schafft höchstens DIN A4, und für ein einzelnes Wandbild lohnt sich der Copyshop oft nicht. Die Lösung heißt Kacheln: Das Bild wird vergrößert und in ein Raster aus blattgroßen Stücken zerlegt. Jedes Stück kommt auf ein eigenes A4-Blatt, danach werden die Blätter beschnitten und wieder zu einem Poster zusammengeklebt.",
+        "Word, Paint oder der „Posterdruck“ mancher Druckertreiber können das nur grob: Meist fehlt eine Überlappung zum Kleben, und niemand sagt Ihnen, welches Blatt wohin gehört. WidePosterMaker baut das komplette Raster für Sie. Jedes Blatt bekommt Schnittmarken, einen Kleberand rechts und unten, Passkreuze (+) und eine Koordinate wie A1, A2 oder B1, die zur Übersichtskarte auf Seite 1 passt. So lässt sich auch ein Poster auf mehrere Blätter drucken, ohne dass man beim Zusammensetzen rätseln muss."
+      ],
+      "listHeading": "In fünf Schritten vom Foto zum Wandposter",
+      "listType": "ol",
+      "list": [
+        "Bild auswählen: JPEG, PNG, WebP, SVG, GIF, BMP oder ein PDF.",
+        "Größe festlegen: unter „Größe über“ entweder „Blätter breit“ oder eine genaue „Poster-Breite“ in cm.",
+        "Raster in der Vorschau prüfen und leere Blätter (z. B. reinen Himmel) per Klick überspringen.",
+        "„Druckfertiges PDF laden“ und mit 100 % bzw. „Tatsächliche Größe“ drucken – nicht „An Seite anpassen“.",
+        "Oberen und linken Rand abschneiden, an den Kleberändern kleben und die Passkreuze übereinanderlegen."
+      ]
+    },
+    {
+      "heading": "Rechenbeispiel: ein Handyfoto mit 12 Megapixeln",
+      "paragraphs": [
+        "Ein typisches Smartphone-Foto hat 4032 × 3024 Pixel. Mit „3 Blätter breit“ auf DIN A4 legt das Tool die Blätter quer und erzeugt ein Raster von 3 × 4 = 12 Blättern. Das fertige Bild misst etwa 84 × 63 cm und hat noch rund 122 DPI – scharf genug für ein Wandfoto, das man aus einem Meter Abstand betrachtet.",
+        "Bei 4 Blättern Breite werden es 20 Blätter und etwa 112 × 84 cm, die Auflösung sinkt aber auf rund 92 DPI. Auf US Letter ergeben 3 Blätter Breite ein Raster von 3 × 3 = 9 Blättern und etwa 78 × 58 cm. Vorschau und Zusammenfassung („Seitenraster“, „Endformat“, „Druckqualität“) aktualisieren sich sofort, sodass Sie Blattzahl und DPI kennen, bevor Sie ein einziges Blatt bedrucken."
+      ]
+    },
+    {
+      "heading": "Wie groß darf das Bild werden, bevor es unscharf wirkt?",
+      "paragraphs": [
+        "Entscheidend ist die Pixelzahl des Bildes, nicht die Zahl der Blätter. Teilen Sie die Bildbreite in Pixeln durch die Posterbreite in Zoll (1 Zoll = 2,54 cm), dann erhalten Sie die DPI. Ab etwa 150 DPI wirkt das Bild auch aus der Nähe scharf, 90–150 DPI reichen an der Wand, unter etwa 90 DPI werden einzelne Pixel sichtbar. WidePosterMaker zeigt diese Schätzung für jede Größe an und warnt, wenn sie zu niedrig wird.",
+        "Die übliche Falle sind Screenshots und Bilder aus dem Internet: Ein Bild mit 1920 × 1080 Pixeln, 3 A4-Blätter breit gedruckt, kommt nur noch auf etwa 58 DPI. Drucken Sie es kleiner oder verwenden Sie die Originaldatei in voller Auflösung. Vektordateien (SVG oder ein PDF aus einem Grafikprogramm) kennen diese Grenze nicht und bleiben in jeder Größe scharf."
+      ],
+      "table": {
+        "headers": [
+          "Bildbreite",
+          "60 cm breit",
+          "84 cm breit",
+          "112 cm breit"
+        ],
+        "rows": [
+          [
+            "6000 px (24-MP-Kamera)",
+            "254 DPI",
+            "181 DPI",
+            "136 DPI"
+          ],
+          [
+            "4032 px (Handyfoto)",
+            "171 DPI",
+            "122 DPI",
+            "92 DPI"
+          ],
+          [
+            "3000 px",
+            "127 DPI",
+            "91 DPI",
+            "68 DPI"
+          ],
+          [
+            "1920 px (Full-HD-Screenshot)",
+            "81 DPI",
+            "58 DPI",
+            "44 DPI"
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Häufige Fehler beim Posterdruck zu Hause",
+      "list": [
+        "„An Seite anpassen“ im Druckdialog: Jedes Blatt wird ein paar Prozent kleiner gedruckt, und die Kacheln passen nicht mehr aneinander.",
+        "Randlos-Druck im Druckertreiber eingeschaltet: Viele Tintenstrahler vergrößern das Bild dafür leicht – lassen Sie die Option aus.",
+        "Fotos aus Messengern oder sozialen Netzwerken: Sie sind oft stark verkleinert. Nehmen Sie das Original vom Handy oder der Kamera.",
+        "Alle Blätter auf einmal drucken: Drucken Sie erst Seite 1 und messen Sie das 50-mm-Lineal nach, dann den Rest."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Ist das wirklich kostenlos und ohne Wasserzeichen?",
+      "a": "Ja. Es gibt kein Konto, kein Wasserzeichen und keinen kostenpflichtigen Export. Das PDF entsteht auf Ihrem eigenen Gerät, das Ergebnis in voller Auflösung gehört Ihnen."
+    },
+    {
+      "q": "Wird mein Foto irgendwo hochgeladen?",
+      "a": "Nein. Das Bild wird in Ihrem Browser-Tab gelesen und verarbeitet, das PDF wird auf Ihrem Gerät erzeugt. Öffnen Sie beim Export den Netzwerk-Tab der Entwicklertools: Es werden keine Dateidaten gesendet."
+    },
+    {
+      "q": "Warum haben die gedruckten Blätter weiße Ränder?",
+      "a": "Die meisten Heimdrucker können nicht bis zur Papierkante drucken. Das Tool lässt deshalb einen Druckrand frei (5 mm bei A4, 6 mm bei Letter) und wiederholt einen Streifen des Bildes als Kleberand. Nach dem Beschneiden fehlt an den Nähten nichts."
+    },
+    {
+      "q": "Welche Druckeinstellung ist am wichtigsten?",
+      "a": "Die Skalierung. Wählen Sie im Druckdialog 100 % oder „Tatsächliche Größe“. „An Seite anpassen“ verkleinert jedes Blatt etwas, und die Kacheln passen nicht mehr zusammen."
+    },
+    {
+      "q": "Kann ich nur einen Teil des Rasters drucken?",
+      "a": "Ja. Klicken oder tippen Sie in der Vorschau auf ein Blatt, um es zu überspringen – praktisch bei leerem Himmel oder einfarbigem Hintergrund. Übersprungene Blätter fehlen im PDF und sind auf der Übersichtskarte schraffiert."
+    },
+    {
+      "q": "Geht das nicht auch mit Word oder dem Druckertreiber?",
+      "a": "Manche Druckertreiber haben eine Option „Poster“ (meist 2 × 2, 3 × 3 oder 4 × 4 Blätter). Sie druckt aber direkt, oft ohne Klebelaschen und ohne frei wählbare Größe in Zentimetern. Hier bekommen Sie ein PDF, das Sie vorher prüfen und auf jedem Gerät drucken können."
+    }
+  ],
+  "related": [
+    "split-image-into-pages",
+    "a0-a1-a2-poster-on-a4",
+    "how-to-glue-a-tiled-poster"
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "slug": "print-large-image-on-multiple-pages",
+  "route": "/pl/print-large-image-on-multiple-pages/",
+  "template": "tool",
+  "navLabel": "Duży obraz",
+  "breadcrumbTitle": "Duży obraz na kilku kartkach",
+  "title": "Jak wydrukować duży obraz na kilku kartkach A4 — za darmo",
+  "description": "Wydrukuj duże zdjęcie lub grafikę na kilku kartkach A4 albo Letter w domowej drukarce. Bez wysyłania pliku i znaku wodnego, ze znacznikami cięcia.",
+  "h1": "Jak wydrukować duży obraz na kilku kartkach A4",
+  "lead": "Jak wydrukować duży obraz na kilku kartkach A4 bez drukarni? Wczytaj zdjęcie, rysunek albo zrzut ekranu, ustal, na ile kartek ma mieć szerokość, i pobierz jeden PDF, który rozłoży obraz na kilka arkuszy A4 lub US Letter. Wszystko dzieje się w Twojej przeglądarce — plik nie jest nigdzie wysyłany.",
+  "presets": {
+    "paper": "auto",
+    "units": "auto",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "chips": [
+    {
+      "label": "2 kartki szerokości",
+      "query": "cols=2"
+    },
+    {
+      "label": "3 kartki szerokości",
+      "query": "cols=3"
+    },
+    {
+      "label": "4 kartki szerokości",
+      "query": "cols=4"
+    },
+    {
+      "label": "60 cm szerokości",
+      "query": "units=cm&width=60"
+    },
+    {
+      "label": "90 cm szerokości",
+      "query": "units=cm&width=90"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Duży obraz na kilku kartkach A4 — jak to działa",
+      "paragraphs": [
+        "Domowa drukarka kończy się na formacie A4, ale żeby powiesić na ścianie duże zdjęcie, nie trzeba od razu szukać punktu ksero z ploterem. Wystarczy tzw. kafelkowanie: obraz jest powiększany i dzielony na siatkę kawałków wielkości kartki, każdy drukuje się osobno, a potem arkusze przycina się i skleja w całość.",
+        "Word, Paint czy sterownik drukarki potrafią zrobić coś podobnego, ale zwykle bez zakładki na klej i bez oznaczeń, która kartka gdzie pasuje. WidePosterMaker przygotowuje całą siatkę za Ciebie: każda strona ma znaczniki cięcia, pasek zakładki do klejenia wzdłuż prawej i dolnej krawędzi, krzyżyki pasowania (+) oraz oznaczenie typu A1, A2, B1 zgodne z mapą montażu na stronie 1."
+      ],
+      "listHeading": "Od zdjęcia do plakatu w pięciu krokach",
+      "listType": "ol",
+      "list": [
+        "Wybierz obraz (JPEG, PNG, WebP, SVG, GIF, BMP) albo plik PDF.",
+        "Ustal rozmiar: w polu „Rozmiar według” wybierz „Kartek na szerokość” albo podaj dokładną szerokość plakatu w centymetrach.",
+        "Sprawdź siatkę na podglądzie i kliknij pustą kartkę, jeśli chcesz ją pominąć.",
+        "Pobierz PDF i drukuj w skali 100% („Rzeczywisty rozmiar”), a nie z opcją „Dopasuj do strony”.",
+        "Przytnij górny i lewy margines, posmaruj klejem zakładki i dopasuj krawędzie do krzyżyków."
+      ]
+    },
+    {
+      "heading": "Przykład: zdjęcie z telefonu 12 Mpx",
+      "paragraphs": [
+        "Typowe zdjęcie z telefonu ma 4032 × 3024 piksele. Przy szerokości 3 kartek A4 narzędzie układa kartki poziomo i tworzy siatkę 3 × 4, czyli 12 arkuszy. Gotowy obraz ma ok. 84 × 63 cm i zachowuje mniej więcej 122 DPI — wystarczająco ostro jak na zdjęcie oglądane na ścianie z odległości metra.",
+        "Przy 4 kartkach szerokości wychodzi 20 arkuszy i ok. 112 × 84 cm, ale rozdzielczość spada do ok. 92 DPI. Na papierze US Letter 3 kartki szerokości dają siatkę 3 × 3, czyli 9 arkuszy, i ok. 78 × 58 cm. Podgląd i podsumowanie zmieniają się na bieżąco, więc liczbę kartek i DPI widzisz jeszcze przed drukiem."
+      ]
+    },
+    {
+      "heading": "Jak duży może być obraz, zanim zrobi się nieostry?",
+      "paragraphs": [
+        "Granicę wyznacza liczba pikseli w pliku, a nie liczba kartek. DPI to szerokość obrazu w pikselach podzielona przez szerokość plakatu w calach (1 cal = 2,54 cm). Od ok. 150 DPI wydruk jest ostry nawet z bliska, 90–150 DPI w zupełności wystarcza na ścianę, a poniżej ok. 90 DPI zaczynają być widoczne piksele. WidePosterMaker pokazuje tę wartość w polu „Jakość druku” dla każdego rozmiaru i ostrzega, gdy robi się za niska.",
+        "Najczęstsza pułapka to zrzuty ekranu i obrazki z internetu: grafika 1920 × 1080 wydrukowana na szerokość 3 kartek A4 ma tylko ok. 58 DPI. Zmniejsz wtedy plakat albo poszukaj oryginalnego pliku w pełnej rozdzielczości. Pliki wektorowe (SVG albo PDF wyeksportowany z programu graficznego) nie mają tego ograniczenia i pozostają ostre w każdym rozmiarze."
+      ]
+    },
+    {
+      "heading": "Ustawienia drukarki, które naprawdę mają znaczenie",
+      "list": [
+        "Skala 100% / „Rzeczywisty rozmiar” — każda inna opcja zmniejsza arkusze i kafelki przestają do siebie pasować.",
+        "Druk jednostronny — przy włączonym druku dwustronnym połowa kafelków trafi na odwrotną stronę kartek.",
+        "Zwykły papier 80 g/m² wystarczy; matowy 100–120 g/m² mniej faluje przy klejeniu.",
+        "Najpierw wydrukuj samą stronę 1 i zmierz linijkę 50 mm na mapie montażu — dopiero potem resztę."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Czy to naprawdę za darmo i bez znaku wodnego?",
+      "a": "Tak. Nie ma konta, znaku wodnego ani płatnego eksportu. PDF powstaje na Twoim urządzeniu, więc wynik w pełnej rozdzielczości należy do Ciebie."
+    },
+    {
+      "q": "Czy moje zdjęcie jest gdzieś wysyłane?",
+      "a": "Nie. Obraz jest wczytywany i przetwarzany w karcie przeglądarki, a PDF powstaje na Twoim urządzeniu. Możesz to sprawdzić w zakładce Network (Sieć) narzędzi deweloperskich podczas eksportu — żadne dane pliku nie wychodzą na zewnątrz."
+    },
+    {
+      "q": "Dlaczego wydrukowane kartki mają białe marginesy?",
+      "a": "Większość domowych drukarek nie drukuje do samej krawędzi. Narzędzie zostawia margines drukarki (5 mm na A4, 6 mm na Letter) i powtarza pasek obrazu jako zakładkę do klejenia, więc po odcięciu marginesów na łączeniach niczego nie brakuje."
+    },
+    {
+      "q": "Które ustawienie drukarki jest najważniejsze?",
+      "a": "Skala. W oknie drukowania wybierz 100% lub „Rzeczywisty rozmiar”. Opcja „Dopasuj do strony” lekko zmniejsza każdą kartkę i kafelki przestają się zgadzać."
+    },
+    {
+      "q": "Czy mogę wydrukować tylko część siatki?",
+      "a": "Tak. Kliknij lub dotknij kartkę na podglądzie, żeby ją pominąć — przydaje się przy jednolitym niebie albo tle. Pominięte kartki nie trafiają do PDF-u, a na mapie montażu są zakreskowane."
+    }
+  ],
+  "related": [
+    "split-image-into-pages",
+    "a0-a1-a2-poster-on-a4",
+    "how-to-glue-a-tiled-poster"
+  ]
+}

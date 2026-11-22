@@ -19,7 +19,22 @@
     {
       "heading": "Natywne przycinanie wektorowe zamiast zrzutów ekranu",
       "paragraphs": [
-        "WidePosterMaker osadza stronę PDF jeden raz jako wektorowy Form XObject i wycina osobne okna dla każdej kartki A4, uwzględniając CropBox oraz obrót strony (/Rotate)."
+        "Część internetowych narzędzi do dzielenia PDF-ów najpierw zamienia stronę na obraz PNG o niskiej rozdzielczości. Cienkie linie techniczne, rzuty mieszkań i drobne opisy stają się wtedy rozmyte, a rysunek 500 KB potrafi urosnąć do pliku 40 MB.",
+        "WidePosterMaker osadza stronę PDF jeden raz jako wektorowy Form XObject i wycina osobne okna dla każdej kartki A4, uwzględniając CropBox oraz obrót strony (/Rotate). Czcionki, krzywe i linie z programów CAD pozostają ostre przy każdym powiększeniu."
+      ],
+      "listHeading": "Co obsługuje podział PDF",
+      "list": [
+        "Wybór strony w wielostronicowym PDF-ie przyciskami „Poprzednia” i „Następna”.",
+        "Automatyczne uwzględnianie CropBox i obrotu strony (0°, 90°, 180°, 270°).",
+        "Tryb „Skala 1:1 (%)” odczytuje rzeczywiste wymiary strony PDF — do planów i wykrojów 1:1.",
+        "Jeśli PDF jest zaszyfrowany lub nietypowy, narzędzie renderuje go lokalnie w wysokiej rozdzielczości."
+      ]
+    },
+    {
+      "heading": "Najlepsze ustawienia dla dużych PDF-ów",
+      "paragraphs": [
+        "Jeśli z PDF-u A0 lub A1 potrzebujesz dokładnych wymiarów 1:1, przełącz „Rozmiar według” na „Skala 1:1 (%)” i wpisz 100. „Margines drukarki” zostaw na 5 mm (albo minimalnym marginesie Twojej drukarki), a „Zakładkę klejenia” na 10 mm, żeby łączenia nie rozjeżdżały się między rzędami.",
+        "W skali 100% plan A1 zajmie 12 kartek A4, a A0 — 21. Liczbę kartek sprawdzisz w polu „Siatka kartek” jeszcze przed pobraniem pliku."
       ]
     }
   ],
@@ -31,6 +46,19 @@
     {
       "q": "Jak wybrać konkretną stronę z wielostronicowego PDF?",
       "a": "Po wczytaniu pliku nad podglądem pojawią się przyciski Poprzednia i Następna do przełączania stron."
+    },
+    {
+      "q": "Dlaczego podzielony PDF drukuje się trochę mniejszy?",
+      "a": "W oknie drukowania wyłącz „Dopasuj” albo „Zmniejsz zbyt duże strony” i wybierz „Rzeczywisty rozmiar” lub skalę 100%. Wynik sprawdzisz linijką 50 mm / 2 cale na stronie 1."
+    },
+    {
+      "q": "Co z zaszyfrowanymi PDF-ami?",
+      "a": "Niezaszyfrowane pliki są dzielone wektorowo. Jeśli PDF ma ograniczenia, ale da się go odczytać, narzędzie automatycznie przełącza się na lokalne renderowanie w wysokiej rozdzielczości i informuje o tym."
     }
+  ],
+  "related": [
+    "print-pdf-on-multiple-pages",
+    "a0-a1-a2-poster-on-a4",
+    "sewing-pattern-tiler"
   ]
 }

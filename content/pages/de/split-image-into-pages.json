@@ -1,0 +1,134 @@
+{
+  "slug": "split-image-into-pages",
+  "route": "/de/split-image-into-pages/",
+  "template": "tool",
+  "navLabel": "Bild aufteilen",
+  "breadcrumbTitle": "Bild auf A4-Seiten aufteilen",
+  "title": "Bild auf mehrere A4-Seiten aufteilen – kostenlos, ohne Upload",
+  "description": "Ein Bild auf 4, 9, 16 oder mehr DIN-A4-Seiten aufteilen und als großes Poster drucken. Spalten wählen, PDF laden – kostenlos, ohne Upload, mit Kleberand.",
+  "h1": "Bild auf mehrere A4-Seiten aufteilen",
+  "lead": "Mit diesem Werkzeug können Sie ein Bild auf mehrere A4-Seiten aufteilen – als 2 × 2, 3 × 3, 4 × 4 oder beliebiges Raster – und erhalten ein einziges druckfertiges PDF. Sie wählen nur die Zahl der Spalten; die Reihen ergeben sich aus dem Seitenverhältnis Ihres Bildes.",
+  "presets": {
+    "paper": "auto",
+    "units": "auto",
+    "mode": "sheets-width",
+    "value": 2,
+    "map": true
+  },
+  "chips": [
+    {
+      "label": "2 Spalten",
+      "query": "cols=2"
+    },
+    {
+      "label": "3 Spalten",
+      "query": "cols=3"
+    },
+    {
+      "label": "4 Spalten",
+      "query": "cols=4"
+    },
+    {
+      "label": "5 Spalten",
+      "query": "cols=5"
+    },
+    {
+      "label": "3 Reihen",
+      "query": "rows=3"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Spalten, Reihen und wie viele Seiten herauskommen",
+      "paragraphs": [
+        "Sie legen fest, wie viele Blätter breit das Bild werden soll. Die Zahl der Reihen berechnet das Tool aus den Proportionen des Bildes, damit nichts verzerrt wird. Möchten Sie lieber die Höhe vorgeben, stellen Sie „Größe über“ auf „Blätter hoch“.",
+        "Die Ausrichtung wählt das Tool automatisch: Ein Querformat-Bild wird auf quer liegende Blätter gedruckt, ein Hochformat-Bild auf hochkant stehende. Deshalb bedeutet dasselbe „2 Spalten“ bei einem Bild 4 Blätter und bei einem anderen 6. Die Tabelle zeigt ein Hochformat-Foto mit 3000 × 4000 Pixeln auf DIN A4."
+      ],
+      "table": {
+        "headers": [
+          "Spalten",
+          "Hochformat-Bild 3000 × 4000 px auf A4",
+          "Endformat",
+          "ca. DPI"
+        ],
+        "rows": [
+          [
+            "2",
+            "2 × 2 = 4 Blätter",
+            "39 × 52 cm",
+            "195"
+          ],
+          [
+            "3",
+            "3 × 3 = 9 Blätter",
+            "58 × 77 cm",
+            "131"
+          ],
+          [
+            "4",
+            "4 × 4 = 16 Blätter",
+            "77 × 103 cm",
+            "99"
+          ],
+          [
+            "5",
+            "5 × 5 = 25 Blätter",
+            "96 × 128 cm",
+            "79"
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Bild auf mehrere A4-Seiten aufteilen: Warum 2 Spalten nicht immer 2 × 2 sind",
+      "paragraphs": [
+        "Jedes Blatt verliert ein paar Millimeter an den Druckrand, und benachbarte Blätter überlappen sich um 10 mm, damit Sie etwas zum Kleben haben. Ein Hochformat-Foto im Verhältnis 3:4, auf A4 in 2 Spalten geteilt, ergibt 2 × 2 Blätter. Ein Querformat-Foto im Verhältnis 4:3 mit 2 Spalten wird auf quer liegende Blätter gedruckt und braucht 2 × 3 = 6 Blätter für etwa 56 × 42 cm.",
+        "Brauchen Sie ein exaktes Raster wie 3 × 3, schneiden Sie das Bild vorher auf das passende Seitenverhältnis zu. Oder probieren Sie „Blätter hoch“ und vergleichen Sie beide Ergebnisse in der Zusammenfassung."
+      ]
+    },
+    {
+      "heading": "Welches Raster für welchen Zweck?",
+      "list": [
+        "2 Spalten (etwa 39 × 52 cm): für Bürotür, Kinderzimmer oder ein Geburtstagsplakat – kommt mit fast jedem Foto aus.",
+        "3 Spalten (etwa 58 × 77 cm): das klassische Wandposter, ungefähr so groß wie ein A1-Plakat.",
+        "4 Spalten (etwa 77 × 103 cm): für große Wände; das Bild sollte mindestens 3000 Pixel breit sein.",
+        "5 Spalten und mehr: nur mit sehr hochauflösenden Fotos oder Vektorgrafiken, sonst werden Pixel sichtbar.",
+        "A3 statt A4: Haben Sie einen A3-Drucker, stellen Sie das „Papierformat“ um – es werden weniger Blätter und weniger Nähte."
+      ]
+    },
+    {
+      "heading": "Die Teile wieder zusammensetzen",
+      "paragraphs": [
+        "Jedes Blatt trägt im Rand seine Koordinate (A1, A2 … B1, B2) und kleine Pfeile, die seine Nachbarn nennen. Seite 1 des PDFs ist eine Übersichtskarte mit dem ganzen Raster und einem 50-mm-/2-Zoll-Lineal, mit dem Sie prüfen, dass der Drucker nichts verkleinert hat.",
+        "Schneiden Sie bei jedem Blatt den oberen und linken Rand ab, lassen Sie die Kleberänder rechts und unten stehen und arbeiten Sie sich Reihe für Reihe ab A1 vor. Unsere Klebeanleitung zeigt jeden Schritt mit Skizzen."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Kann ich ein Bild auf genau 4 Seiten aufteilen?",
+      "a": "Wählen Sie 2 Spalten. Ein Hochformat-Bild ergibt ein Raster von 2 × 2 = 4 Seiten; ein Querformat-Bild braucht unter Umständen 6, weil es auf quer liegende Blätter gedruckt wird. Die Vorschau zeigt das genaue Raster vor dem Download."
+    },
+    {
+      "q": "Wie teile ich ein Bild in 9 Teile (3 × 3)?",
+      "a": "Wählen Sie 3 Spalten. Bei einem Hochformat-Foto im Verhältnis 3:4 entsteht auf A4 ein 3 × 3-Raster. Hat Ihr Bild andere Proportionen, schneiden Sie es vorher passend zu oder stellen Sie zusätzlich „3 Reihen“ ein und vergleichen Sie."
+    },
+    {
+      "q": "Verliert das Bild beim Aufteilen an Qualität?",
+      "a": "Nein. Das Originalbild wird nur einmal in voller Auflösung im PDF eingebettet, und jede Seite zeigt ihren Ausschnitt davon. Die einzige Grenze ist die Pixelzahl Ihrer Datei – sie erscheint als DPI in der Zusammenfassung."
+    },
+    {
+      "q": "Kann ich ein PNG mit transparentem Hintergrund aufteilen?",
+      "a": "Ja. Transparente Bereiche bleiben weißes Papier. Seiten, die komplett leer wären, überspringen Sie mit einem Klick in der Vorschau."
+    },
+    {
+      "q": "Funktioniert das auch auf dem Handy?",
+      "a": "Ja. Wählen Sie ein Foto aus der Galerie, stellen Sie die Spalten ein und speichern Sie das PDF. Drucken können Sie es später am Computer oder im Copyshop."
+    }
+  ],
+  "related": [
+    "print-large-image-on-multiple-pages",
+    "a4-poster-maker",
+    "how-to-glue-a-tiled-poster"
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "slug": "split-image-into-pages",
+  "route": "/pl/split-image-into-pages/",
+  "template": "tool",
+  "navLabel": "Podział obrazu",
+  "breadcrumbTitle": "Podział obrazu na kartki A4",
+  "title": "Jak podzielić obraz na kartki A4 do druku — bez wysyłania",
+  "description": "Podziel obraz na 4, 9, 16 lub więcej kartek A4 albo Letter i wydrukuj go jako duży plakat. Za darmo, bez wysyłania pliku, ze znacznikami cięcia.",
+  "h1": "Jak podzielić obraz na kartki A4",
+  "lead": "Chcesz podzielić obraz na kartki A4 — 2 × 2, 3 × 3, 4 × 4 albo w innej siatce — i dostać jeden PDF gotowy do druku? Wybierz liczbę kolumn, a liczba rzędów wyniknie sama z proporcji obrazu. Działa też z papierem US Letter.",
+  "presets": {
+    "paper": "auto",
+    "units": "auto",
+    "mode": "sheets-width",
+    "value": 2,
+    "map": true
+  },
+  "chips": [
+    {
+      "label": "2 kolumny",
+      "query": "cols=2"
+    },
+    {
+      "label": "3 kolumny",
+      "query": "cols=3"
+    },
+    {
+      "label": "4 kolumny",
+      "query": "cols=4"
+    },
+    {
+      "label": "5 kolumn",
+      "query": "cols=5"
+    },
+    {
+      "label": "3 rzędy",
+      "query": "rows=3"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Kolumny, rzędy i ile kartek wyjdzie",
+      "paragraphs": [
+        "To Ty decydujesz, na ile kartek szerokości ma być obraz. Liczba rzędów jest liczona z proporcji pliku, więc obraz nigdy nie zostaje rozciągnięty. Wolisz pilnować wysokości? Przełącz „Rozmiar według” na „Kartek na wysokość”.",
+        "Orientację narzędzie dobiera samo: obraz poziomy drukuje na kartkach ułożonych poziomo, pionowy — na pionowych. Dlatego te same „2 kolumny” mogą oznaczać 4 kartki dla jednego obrazu i 6 dla innego. Tabela pokazuje pionowe zdjęcie 3000 × 4000 px na papierze A4:"
+      ],
+      "table": {
+        "headers": [
+          "Kolumny",
+          "Obraz pionowy 3000 × 4000 px na A4",
+          "Gotowy rozmiar",
+          "Ok. DPI"
+        ],
+        "rows": [
+          [
+            "2",
+            "2 × 2 = 4 kartki",
+            "39 × 52 cm",
+            "195"
+          ],
+          [
+            "3",
+            "3 × 3 = 9 kartek",
+            "58 × 77 cm",
+            "131"
+          ],
+          [
+            "4",
+            "4 × 4 = 16 kartek",
+            "77 × 103 cm",
+            "99"
+          ],
+          [
+            "5",
+            "5 × 5 = 25 kartek",
+            "96 × 128 cm",
+            "79"
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Dlaczego podział na 2 kolumny to nie zawsze 2 × 2",
+      "paragraphs": [
+        "Każda kartka traci kilka milimetrów na margines drukarki, a sąsiednie arkusze zachodzą na siebie o 10 mm, żeby było na czym kleić. Pionowe zdjęcie 3:4 podzielone na 2 kolumny A4 daje siatkę 2 × 2. Poziome zdjęcie 4:3 na 2 kolumny drukuje się na kartkach poziomych i potrzebuje 2 × 3 = 6 kartek, a gotowy obraz ma ok. 56 × 42 cm.",
+        "Jeśli zależy Ci na konkretnej siatce, np. dokładnie 3 × 3, najpierw przytnij obraz do pasujących proporcji albo przełącz na „Kartek na wysokość” i porównaj oba wyniki w podsumowaniu."
+      ]
+    },
+    {
+      "heading": "Na ile kartek A4 podzielić obraz?",
+      "paragraphs": [
+        "Liczba kolumn to w praktyce wybór między rozmiarem a ostrością. Dla zdjęcia 3000 × 4000 px z tabeli wyżej:"
+      ],
+      "list": [
+        "2 × 2 (4 kartki) — mały plakat ok. 39 × 52 cm, np. na drzwi pokoju albo tablicę korkową.",
+        "3 × 3 (9 kartek) — ok. 58 × 77 cm, szerokość zbliżona do formatu A1, wciąż ponad 130 DPI.",
+        "4 × 4 (16 kartek) — ok. 77 × 103 cm na ścianę w salonie albo w klasie; ok. 99 DPI, czyli dobrze z odległości metra.",
+        "5 × 5 (25 kartek) i więcej — mapy, plansze, dekoracje na imprezę; DPI spada poniżej 80, więc lepiej mieć plik w wyższej rozdzielczości."
+      ]
+    },
+    {
+      "heading": "Jak złożyć podzielone kartki z powrotem",
+      "paragraphs": [
+        "Każda kartka ma na marginesie swoje oznaczenie w siatce (A1, A2 … B1, B2) i małe strzałki z nazwami sąsiednich kartek. Strona 1 PDF-u to mapa montażu z całą siatką i linijką 50 mm / 2 cale, na której sprawdzisz, czy drukarka nie zmniejszyła wydruku.",
+        "Przytnij górną i lewą krawędź każdej kartki, zostaw prawy i dolny pasek do klejenia i układaj rząd po rzędzie, zaczynając od A1. Szczegóły z rysunkami znajdziesz w poradniku o klejeniu plakatu."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Czy mogę podzielić obraz na dokładnie 4 kartki?",
+      "a": "Wybierz 2 kolumny. Obraz pionowy da siatkę 2 × 2, czyli 4 kartki; poziomy może potrzebować 6, bo drukuje się na kartkach poziomych. Dokładną siatkę widzisz na podglądzie przed pobraniem."
+    },
+    {
+      "q": "Czy podział obniża jakość obrazu?",
+      "a": "Nie. Oryginalny obraz jest osadzany w PDF-ie tylko raz, w pełnej rozdzielczości, a każda strona pokazuje swój fragment. Jedyne ograniczenie to liczba pikseli pliku, widoczna jako DPI w podsumowaniu."
+    },
+    {
+      "q": "Czy da się podzielić PNG z przezroczystym tłem?",
+      "a": "Tak. Przezroczyste obszary drukują się jako biały papier. Kartki, które byłyby całkiem puste, pominiesz jednym kliknięciem na podglądzie."
+    },
+    {
+      "q": "Czy to działa na telefonie?",
+      "a": "Tak. Wybierz zdjęcie z galerii, ustaw kolumny i zapisz PDF. Wydrukujesz go później z komputera albo zaniesiesz do punktu ksero."
+    },
+    {
+      "q": "Czy nie wystarczy podzielić obrazu w Paincie albo Wordzie?",
+      "a": "Da się, ale z wysiłkiem: trzeba ręcznie kadrować fragmenty albo liczyć na skalowanie sterownika, a żaden z tych programów nie doda zakładek do klejenia ani oznaczeń kartek. Tutaj wybierasz liczbę kolumn, a resztę narzędzie robi samo."
+    }
+  ],
+  "related": [
+    "print-large-image-on-multiple-pages",
+    "a4-poster-maker",
+    "how-to-glue-a-tiled-poster"
+  ]
+}

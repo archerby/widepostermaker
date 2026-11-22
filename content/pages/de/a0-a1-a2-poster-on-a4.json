@@ -1,0 +1,113 @@
+{
+  "slug": "a0-a1-a2-poster-on-a4",
+  "route": "/de/a0-a1-a2-poster-on-a4/",
+  "template": "tool",
+  "navLabel": "A0–A2 auf A4",
+  "breadcrumbTitle": "A0-, A1-, A2-Poster auf A4",
+  "title": "A1-Poster auf A4 drucken (auch A0, A2) – wie viele Blätter?",
+  "description": "Wie viele DIN-A4-Blätter braucht ein A0-, A1-, A2- oder A3-Poster? Exakte Blattzahlen plus kostenloses Tool, das Ihr Poster in Originalgröße aufteilt.",
+  "h1": "A1-Poster auf A4 drucken – auch A0 und A2",
+  "lead": "Sie wollen ein A1-Poster auf A4 drucken – in voller Größe von 59,4 × 84,1 cm – oder ein A0- bzw. A2-Plakat auf einem ganz normalen Heimdrucker? Laden Sie Ihr Bild oder PDF, wählen Sie das Posterformat, und das Tool berechnet das Raster inklusive Druckrand und Kleberand.",
+  "presets": {
+    "paper": "a4",
+    "units": "mm",
+    "mode": "size-width",
+    "value": 594,
+    "map": true
+  },
+  "chips": [
+    {
+      "label": "A0-Breite (84,1 cm)",
+      "query": "units=mm&width=841"
+    },
+    {
+      "label": "A1-Breite (59,4 cm)",
+      "query": "units=mm&width=594"
+    },
+    {
+      "label": "A2-Breite (42 cm)",
+      "query": "units=mm&width=420"
+    },
+    {
+      "label": "A3-Breite (29,7 cm)",
+      "query": "units=mm&width=297"
+    },
+    {
+      "label": "PDF in 100 %",
+      "query": "scale=100"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Wie viele A4-Blätter für ein A0-, A1-, A2- oder A3-Poster?",
+      "paragraphs": [
+        "Auf dem Papier ist die Rechnung einfach: A1 sind zwei A2 oder acht A4. In der Praxis druckt ein Heimdrucker aber nicht bis zur Kante, und die Blätter brauchen eine Überlappung zum Kleben. Jedes A4-Blatt deckt deshalb nur etwa 19 × 27,7 cm des Posters ab. Die Tabelle ist mit genau derselben Geometrie berechnet, die auch das Tool verwendet."
+      ],
+      "autoTable": {
+        "posters": [
+          "a0",
+          "a1",
+          "a2",
+          "a3"
+        ],
+        "papers": [
+          "a4",
+          "letter",
+          "a3"
+        ]
+      }
+    },
+    {
+      "heading": "Rechenbeispiel: A1-Poster auf A4 drucken",
+      "paragraphs": [
+        "Ein A1-Poster misst 594 × 841 mm. Bei 5 mm Druckrand bedruckt ein hochkant stehendes A4-Blatt eine Fläche von 200 × 287 mm; abzüglich 10 mm Kleberand rückt jedes Blatt 190 mm nach rechts und 277 mm nach unten vor. Vier Spalten (4 × 190 + 10 = 770 mm) decken die Breite von 594 mm ab, drei Reihen (3 × 277 + 10 = 841 mm) die Höhe: ein Raster von 4 × 3 = 12 Blättern. Im Querformat bräuchte dasselbe Poster 15 Blätter, darum wählt „Auto“ das Hochformat.",
+        "Ein A2-Poster braucht 8 A4-Blätter, ein A0-Poster 21. Mit einem A3-Drucker sinken die Zahlen auf 4, 6 und 9 Blätter für A2, A1 und A0 – stellen Sie dazu einfach das „Papierformat“ auf A3."
+      ]
+    },
+    {
+      "heading": "Exaktes DIN-Format oder „ungefähr so groß“?",
+      "paragraphs": [
+        "Liegt Ihr Poster bereits als A1- oder A0-PDF vor – ein wissenschaftliches Poster, ein Bauplan, eine Landkarte –, nehmen Sie „PDF in 100 %“: Die Seite wird in ihrer echten physischen Größe gedruckt, und Vektorgrafiken bleiben scharf. Bei einem Foto oder einem Bild mit anderen Proportionen setzen die A-Format-Knöpfe nur die Posterbreite; die Höhe folgt dem Seitenverhältnis des Bildes. Das Ergebnis ist dann so breit wie A1, aber nicht unbedingt exakt A1.",
+        "Drucken Sie zuerst eine Testseite und messen Sie das 50-mm-Lineal auf der Übersichtskarte nach. Misst es genau 50 mm, stimmt der Maßstab auf allen Blättern."
+      ]
+    },
+    {
+      "heading": "Schnittmuster und Pläne in A0 auf A4 drucken und zusammenkleben",
+      "paragraphs": [
+        "Viele Schnittmuster und Baupläne kommen als A0-Datei für den Copyshop. Zu Hause wird daraus ein Raster von 3 × 7 = 21 A4-Blättern (bei A3-Papier 3 × 3 = 9). Weil Schnittmuster selten die ganze Fläche füllen, lohnt es sich, leere Blätter in der Vorschau anzuklicken und wegzulassen.",
+        "Beim Zusammenkleben hilft die Übersichtskarte auf Seite 1: Sie zeigt, welches Blatt neben welchem liegt, und übersprungene Blätter sind schraffiert. Mehr zum maßgenauen 1:1-Druck finden Sie auf unserer Seite für Schnittmuster."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Wie viele A4-Blätter braucht ein A1-Poster?",
+      "a": "Rechnerisch 8, mit Druckrand und 10 mm Kleberand aber 12 Blätter in einem Raster von 4 × 3. Auf US Letter sind es 15."
+    },
+    {
+      "q": "Wie viele A4-Blätter braucht ein A0-Poster?",
+      "a": "21 Blätter (ein Raster von 3 × 7 im Querformat) bei 5 mm Druckrand und 10 mm Kleberand. Mit einem A3-Drucker sind es 9."
+    },
+    {
+      "q": "Wie viele A4-Blätter braucht ein A2-Poster?",
+      "a": "8 Blätter in einem Raster von 2 × 4, quer liegend. Auf A3-Papier reichen 4 Blätter."
+    },
+    {
+      "q": "Wie groß sind A0, A1, A2 und A3 in Zentimetern?",
+      "a": "A0 misst 84,1 × 118,9 cm, A1 59,4 × 84,1 cm, A2 42 × 59,4 cm und A3 29,7 × 42 cm. Jedes Format ist genau halb so groß wie das vorherige."
+    },
+    {
+      "q": "Kann ich die Zahl der Blätter verringern?",
+      "a": "Verkleinern Sie unter „Weitere Einstellungen“ den Kleberand oder – wenn Ihr Drucker das kann – den Druckrand, oder lassen Sie leere Blätter weg. Nutzen Sie nicht „An Seite anpassen“ im Druckdialog, denn das verändert den Maßstab."
+    },
+    {
+      "q": "Ist das gedruckte Poster genau A1 groß?",
+      "a": "Bei einem PDF in 100 % ja – die Kacheln sitzen millimetergenau. Prüfen Sie nach dem Druck das 50-mm-Kontrolllineal; Drucker, die heimlich verkleinern, verraten sich dort sofort."
+    }
+  ],
+  "related": [
+    "print-pdf-on-multiple-pages",
+    "sewing-pattern-tiler",
+    "a4-poster-maker"
+  ]
+}

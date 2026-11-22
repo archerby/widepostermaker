@@ -19,7 +19,27 @@
     {
       "heading": "Recorte PDF vectorial en lugar de capturas borrosas",
       "paragraphs": [
-        "Muchas webs convierten el PDF en una imagen rasterizada antes de cortarlo, pixelando planos y textos pequeños. WidePosterMaker incrusta la página PDF una sola vez como Form XObject y aplica recortes vectoriales exactos para cada hoja."
+        "Muchas webs convierten el PDF en una imagen rasterizada antes de cortarlo, pixelando planos y textos pequeños. WidePosterMaker incrusta la página PDF una sola vez como Form XObject y aplica recortes vectoriales exactos para cada hoja.",
+        "El resultado: las cotas de un plano, la letra pequeña de un póster científico o las líneas finas de un mapa se imprimen en cada hoja tan nítidas como en el original, y el PDF descargado sigue siendo ligero porque la página no se copia entera en cada hoja."
+      ]
+    },
+    {
+      "heading": "Cuántas hojas ocupa un plano A0 o A1",
+      "paragraphs": [
+        "A tamaño real, un plano A0 (84,1 × 118,9 cm) ocupa 21 hojas A4, 25 en tamaño Carta o 9 en A3. Un A1 (59,4 × 84,1 cm) ocupa 12 hojas A4 o 15 Carta.",
+        "Esta página arranca con «Hojas de ancho» para ampliar o reducir libremente. Si necesitas la medida exacta del PDF, cambia «Calcular por» a «Escala real (%)» y deja el valor en 100."
+      ]
+    },
+    {
+      "heading": "Errores frecuentes al dividir un PDF",
+      "paragraphs": [
+        "Antes de imprimir decenas de hojas, revisa estos puntos:"
+      ],
+      "list": [
+        "Exportar el plano a JPG antes de dividirlo: pierdes la nitidez vectorial.",
+        "Imprimir con «Ajustar a página»: la escala del plano deja de ser correcta.",
+        "Usar un PDF cifrado: la herramienta lo convierte en imagen de alta resolución y te avisa; si tienes la versión sin cifrar, úsala.",
+        "Dividir la página equivocada de un PDF multipágina: mira el contador «Pág. 1 / N» encima de la vista previa."
       ]
     }
   ],
@@ -31,6 +51,19 @@
     {
       "q": "¿Funciona con PDFs de varias páginas?",
       "a": "Sí, verás botones Anterior y Siguiente sobre la vista previa para elegir la página exacta que deseas ampliar."
+    },
+    {
+      "q": "¿En qué papel puedo imprimir las hojas?",
+      "a": "En A4, US Letter (tamaño Carta), A3 o US Legal. Al cambiar el papel, el margen y el solape se ajustan a sus valores habituales."
+    },
+    {
+      "q": "¿Se sube mi PDF a algún servidor?",
+      "a": "No. El PDF se lee y se divide dentro de tu navegador; ningún dato del archivo sale de tu dispositivo."
     }
+  ],
+  "related": [
+    "print-pdf-on-multiple-pages",
+    "a0-a1-a2-poster-on-a4",
+    "sewing-pattern-tiler"
   ]
 }

@@ -19,19 +19,31 @@
     {
       "heading": "Krok 1: Wydrukuj stronę 1 i zmierz pasek 50 mm",
       "paragraphs": [
-        "Zanim wydrukujesz wszystkie arkusze, wydrukuj tylko pierwszą stronę i zmierz linijką odcinek 50 mm. Jeśli jest krótszy, w oknie druku zmień skalę z 'Dopasuj' na 'Rozmiar rzeczywisty (100%)'."
+        "Każdy PDF z WidePosterMaker zaczyna się od mapy montażu z miniaturą siatki (A1, A2, B1…) oraz paskami kontrolnymi 50 mm i 2 cale.",
+        "Zanim zużyjesz 12 czy 20 kartek, wydrukuj tylko pierwszą stronę i zmierz linijką odcinek 50 mm. Jeśli wychodzi krótszy, np. 47 mm, przeglądarka PDF zastosowała dopasowanie do obszaru drukowania — w oknie druku zmień skalę na „Rzeczywisty rozmiar” (100%)."
       ]
     },
     {
       "heading": "Krok 2: Odetnij tylko górny i lewy margines",
       "paragraphs": [
-        "Nie obcinaj wszystkich czterech boków — zostaw prawe i dolne przerywane zakładki, a na sąsiednich kartkach zetnij wyłącznie górny oraz lewy biały margines po znacznikach cięcia."
+        "Nie obcinaj wszystkich czterech boków — zostaw prawe i dolne przerywane zakładki, a na sąsiednich kartkach zetnij wyłącznie górny oraz lewy biały margines po znacznikach cięcia. Zakładki są oznaczone przerywaną linią i strzałkami z nazwą sąsiedniej kartki."
+      ],
+      "list": [
+        "Pierwsza kolumna (A1, B1, C1): lewą krawędź przytnij równo do brzegu plakatu, jeśli wieszasz go bez ramy; prawą zakładkę zostaw.",
+        "Kartki wewnętrzne (A2, B2 itd.): odetnij górny i lewy biały margines dokładnie przez narożne znaczniki cięcia.",
+        "Ostatnia kolumna i dolny rząd: nadmiar zewnętrznych marginesów obetnij przed montażem albo po nim."
       ]
     },
     {
       "heading": "Krok 3: Klej rzędami po krzyżykach (+)",
       "paragraphs": [
         "Najpierw sklej całe poziome rzędy (A1 + A2 + A3), a potem połącz gotowe rzędy w pionie. Zwykły klej w sztyfcie lub cienka taśma dwustronna nie marszczą papieru."
+      ],
+      "listHeading": "Przydatne triki",
+      "list": [
+        "Tnij metalową linijką i nożykiem (albo gilotyną), a nie nożyczkami — łączenia będą idealnie proste.",
+        "Przy ciemnych grafikach przyłóż dwie kartki do okna lub lampy — krzyżyki (+) od razu pokażą, czy leżą równo.",
+        "Sklejone łączenia dociśnij ciężką książką na ok. 10 minut przed powieszeniem lub oprawieniem."
       ]
     }
   ],
@@ -39,6 +51,19 @@
     {
       "q": "Jaki klej najlepiej sprawdza się do łączenia kartek A4?",
       "a": "Suchy klej w sztyfcie albo cienka taśma dwustronna — nie moczą papieru i nie powodują falowania na złączach."
+    },
+    {
+      "q": "Dlaczego zakładki są tylko z prawej strony i od dołu?",
+      "a": "Jednostronne zakładki wymuszają stały kierunek nakładania (od lewej do prawej, z góry na dół) i o połowę skracają przycinanie w porównaniu z marginesami z czterech stron."
+    },
+    {
+      "q": "Jak szeroką zakładkę ustawić?",
+      "a": "10 mm sprawdza się przy większości plakatów i wykrojów. Przy bardzo dużych banerach ściennych daj 15 mm, a 5 mm — gdy zależy Ci na maksymalnym polu druku na kartce. Ustawisz to w „Więcej ustawień” → „Zakładka klejenia (mm)”."
     }
+  ],
+  "related": [
+    "print-large-image-on-multiple-pages",
+    "split-image-into-pages",
+    "a0-a1-a2-poster-on-a4"
   ]
 }

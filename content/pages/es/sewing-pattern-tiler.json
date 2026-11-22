@@ -21,6 +21,32 @@
       "paragraphs": [
         "Una reducción automática del 3% al imprimir arruina tallas y márgenes de costura. En modo Escala 100%, WidePosterMaker lee las dimensiones reales en puntos del PDF A0 y genera los mosaicos A4/Carta sin deformación, con barra de calibración de 50 mm y 2 pulgadas en la página 1."
       ]
+    },
+    {
+      "heading": "Cómo imprimir un patrón A0 en hojas A4 paso a paso",
+      "paragraphs": [
+        "Un patrón A0 (84,1 × 118,9 cm) ocupa 21 hojas A4 o 25 en tamaño Carta; con impresora A3, 9. Si omites las hojas vacías de las esquinas suelen ser menos."
+      ],
+      "listType": "ol",
+      "list": [
+        "Carga el PDF del patrón; si tiene varias páginas, elige la del patrón A0 con Anterior y Siguiente.",
+        "Deja «Escala real (%)» en 100 y elige A4 o US Letter en «Tamaño de papel».",
+        "Toca en la vista previa las hojas vacías para omitirlas.",
+        "Imprime solo la página 1 y mide la barra de 50 mm o la regla de 2 pulgadas.",
+        "Si la medida es correcta, imprime el resto, recorta arriba y a la izquierda y pega siguiendo las cruces (+)."
+      ]
+    },
+    {
+      "heading": "Errores que estropean un patrón",
+      "paragraphs": [
+        "En costura, unos milímetros de diferencia cambian la talla. Evita estos fallos:"
+      ],
+      "list": [
+        "Imprimir con la escala predeterminada del visor: muchos ajustan la página al papel sin avisar.",
+        "No medir: una reducción del 2–3 % no se ve a simple vista, pero sí en una prenda.",
+        "Olvidar el cuadrado de prueba del propio patrón: si lo trae, mídelo también después de imprimir.",
+        "Pegar sin alinear las cruces: un desfase de 1–2 mm por unión se acumula a lo largo de varias hojas."
+      ]
     }
   ],
   "faqs": [
@@ -31,6 +57,19 @@
     {
       "q": "¿Puedo saltar páginas en blanco de las esquinas?",
       "a": "Sí, haz clic en las casillas vacías de la vista previa para excluirlas del PDF descargado."
+    },
+    {
+      "q": "¿Sirve para imprimir patrones en tamaño Carta?",
+      "a": "Sí. Elige US Letter en «Tamaño de papel»; el margen pasa a 6 mm y el solape a 12 mm. Un patrón A0 ocupa entonces 25 hojas."
+    },
+    {
+      "q": "¿Las líneas y tallas del patrón se ven nítidas?",
+      "a": "Sí. Los PDF vectoriales se recortan sin convertirlos en imagen, así que las líneas finas y los textos pequeños se mantienen nítidos en cada hoja."
     }
+  ],
+  "related": [
+    "a0-a1-a2-poster-on-a4",
+    "print-pdf-on-multiple-pages",
+    "how-to-glue-a-tiled-poster"
   ]
 }

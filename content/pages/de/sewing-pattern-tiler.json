@@ -22,6 +22,22 @@
         "Bei A0-Schnittmustern darf der PDF-Reader keinesfalls verkleinern. WidePosterMaker liest die physische Punktgröße der A0-Datei direkt aus und übernimmt sie 1:1 bei 100% auf DIN-A4-Blätter.",
         "Drucken Sie zuerst nur Seite 1 (Übersichtskarte) und messen Sie das 50-mm-Lineal nach. Erst wenn es exakt 50 mm misst, drucken Sie die übrigen Seiten."
       ]
+    },
+    {
+      "heading": "Schnittmuster A0 auf A4 drucken und zusammenkleben",
+      "paragraphs": [
+        "Ein A0-Schnittmuster (84,1 × 118,9 cm) ergibt bei 100 % auf DIN A4 ein Raster von 3 × 7 = 21 Blättern, auf A3 sind es 3 × 3 = 9. Da Schnittteile die Fläche selten ganz ausfüllen, können Sie leere Kacheln in der Vorschau anklicken und weglassen – sie erscheinen auf der Übersichtskarte schraffiert.",
+        "Zum Zusammenkleben schneiden Sie bei jedem Blatt nur den oberen und linken Rand ab, legen es auf den Kleberand des Nachbarblatts und richten es an den Passkreuzen (+) aus. Kleben Sie zuerst die Reihen, dann die Reihen untereinander."
+      ]
+    },
+    {
+      "heading": "Typische Fehler beim Schnittmuster-Druck",
+      "list": [
+        "„An Seite anpassen“ statt „Tatsächliche Größe“: Das Muster wird einige Prozent kleiner, das Kleidungsstück passt nicht.",
+        "Testquadrat nicht gemessen: Prüfen Sie das 50-mm-Lineal auf Seite 1 und, falls vorhanden, das Testquadrat des Schnittmusters.",
+        "Druckertreiber auf US Letter: Bei A4-Papier verschieben sich dann die Kacheln.",
+        "Blätter verwechselt: Die Koordinaten A1, A2, B1 … auf jedem Blatt und die Übersichtskarte zeigen die Reihenfolge."
+      ]
     }
   ],
   "faqs": [
@@ -32,6 +48,19 @@
     {
       "q": "Wie spare ich Papier bei leeren Ecken im Schnittmuster?",
       "a": "Klicken Sie leere Kacheln in der Vorschau einfach an, um sie vor dem PDF-Export auszuschließen."
+    },
+    {
+      "q": "Wie viele A4-Seiten hat ein A0-Schnittmuster?",
+      "a": "Bei 100 % und den Standardwerten (5 mm Druckrand, 10 mm Kleberand) sind es 21 Blätter in einem Raster von 3 × 7. Leere Blätter können Sie weglassen."
+    },
+    {
+      "q": "Kann ich ein A0-Schnittmuster auch auf A3 drucken?",
+      "a": "Ja. Stellen Sie das „Papierformat“ auf A3; dann sind es 9 Blätter in einem Raster von 3 × 3, also deutlich weniger Klebenähte."
     }
+  ],
+  "related": [
+    "a0-a1-a2-poster-on-a4",
+    "print-pdf-on-multiple-pages",
+    "how-to-glue-a-tiled-poster"
   ]
 }

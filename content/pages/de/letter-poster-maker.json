@@ -19,7 +19,36 @@
     {
       "heading": "US-Formate 18×24 und 24×36 Zoll exakt drucken",
       "paragraphs": [
-        "Stellen Sie die Größenermittlung auf Poster-Breite und Einheit Zoll (in), um amerikanische Postergrößen wie 18×24 oder 24×36 in direkt ohne Millimeter-Umrechnung vorzubereiten."
+        "Stellen Sie „Größe über“ auf „Poster-Breite“ und die Einheit auf Zoll (in), um amerikanische Postergrößen wie 18×24 oder 24×36 in direkt ohne Umrechnung in Millimeter vorzubereiten.",
+        "Bei US Letter rechnet das Tool standardmäßig mit 6 mm Druckrand und 12 mm Kleberand. Die Tabelle zeigt, wie viele Letter- und Legal-Blätter die üblichen US-Formate brauchen – berechnet mit derselben Geometrie wie das Tool."
+      ],
+      "autoTable": {
+        "posters": [
+          "in16x20",
+          "in18x24",
+          "in24x36",
+          "in36x48"
+        ],
+        "papers": [
+          "letter",
+          "legal"
+        ]
+      }
+    },
+    {
+      "heading": "Wann brauchen Sie in Deutschland US Letter?",
+      "paragraphs": [
+        "Im deutschsprachigen Raum ist DIN A4 der Standard. US Letter (215,9 × 279,4 mm) ist etwas breiter und kürzer. Sinnvoll ist die Einstellung, wenn Sie für jemanden in den USA oder Kanada drucken, wenn Sie Papier im Letter-Format haben oder wenn eine Vorlage ausdrücklich für Letter angelegt ist.",
+        "Ein amerikanisches Schnittmuster müssen Sie aber nicht auf Letter drucken: Wählen Sie einfach A4 als „Papierformat“ und lassen Sie den Maßstab bei 100 %. Das Tool kachelt die Vorlage dann in echter Größe auf Ihre A4-Blätter."
+      ]
+    },
+    {
+      "heading": "Druckrand prüfen, bevor Sie drucken",
+      "list": [
+        "Papierformat im Druckertreiber und im Tool müssen übereinstimmen – Letter mit Letter, A4 mit A4.",
+        "Im Druckdialog „Tatsächliche Größe“ bzw. 100 % wählen.",
+        "Seite 1 zuerst drucken und das 2-Zoll- bzw. 50-mm-Lineal nachmessen.",
+        "Schneidet Ihr Drucker Ränder ab, den „Druckrand (mm)“ unter „Weitere Einstellungen“ erhöhen."
       ]
     }
   ],
@@ -27,6 +56,19 @@
     {
       "q": "Enthält die Übersichtskarte auch ein Zoll-Lineal?",
       "a": "Ja, Seite 1 druckt sowohl eine exakte 50-mm-Skala als auch ein exaktes 2,0-Zoll-Lineal zur Kontrolle."
+    },
+    {
+      "q": "Wie viele Letter-Blätter braucht ein 24×36-Zoll-Poster?",
+      "a": "15 Blätter in einem Raster von 3 × 5 bei 6 mm Druckrand und 12 mm Kleberand. Auf Legal-Papier sind es 10, auf A4 ebenfalls 15."
+    },
+    {
+      "q": "Kann ich eine Letter-Vorlage auf A4 drucken?",
+      "a": "Ja. Wählen Sie A4 als „Papierformat“; bei 100 % bleibt die Vorlage maßstabsgetreu, nur die Aufteilung auf die Blätter ändert sich."
     }
+  ],
+  "related": [
+    "print-large-image-on-multiple-pages",
+    "split-image-into-pages",
+    "print-pdf-on-multiple-pages"
   ]
 }

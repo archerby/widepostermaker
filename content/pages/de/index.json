@@ -25,7 +25,7 @@
       "listHeading": "So funktioniert es in drei Schritten",
       "listType": "ol",
       "list": [
-        "PNG, JPEG, WebP, SVG oder PDF per Drag-and-drop laden oder aus der Zwischenablage einfügen.",
+        "PNG, JPEG, WebP, SVG, GIF, BMP oder PDF per Drag-and-drop laden oder aus der Zwischenablage einfügen.",
         "Papierformat (A4, A3, Letter), automatische Ausrichtung, Blattanzahl oder Wunschmaße in cm festlegen.",
         "Druckfertiges PDF herunterladen, bei 100% Originalgröße drucken, Ränder schneiden und an den (+)-Kreuzen kleben."
       ]
@@ -33,17 +33,30 @@
     {
       "heading": "Wie viele DIN-A4-Blätter braucht ein großes Poster?",
       "paragraphs": [
-        "Richtwerte bei 5 mm Druckrand und 10 mm Klebelasche (Ausrichtung auf Auto optimiert den Papierverbrauch):"
+        "Rechnerisch passen acht A4-Blätter auf ein A1-Poster. Weil Heimdrucker aber nicht bis zur Kante drucken und die Blätter zum Kleben überlappen müssen, deckt jedes A4-Blatt nur etwa 19 × 27,7 cm ab. Die Tabelle ist mit derselben Geometrie berechnet wie das Tool selbst; die Ausrichtung „Auto“ wählt jeweils die Variante mit den wenigsten Blättern."
       ],
-      "table": {
-        "headers": ["Posterformat", "Maße (cm)", "DIN A4 Hochformat", "DIN A4 Querformat"],
-        "rows": [
-          ["DIN A2 Poster", "42,0 × 59,4 cm", "2×2 (4 Blätter)", "2×3 (6 Blätter)"],
-          ["DIN A1 Poster", "59,4 × 84,1 cm", "3×3 (9 Blätter)", "3×4 (12 Blätter)"],
-          ["60 × 90 cm Kino-Poster", "60,0 × 90,0 cm", "4×4 (16 Blätter)", "3×5 (15 Blätter)"],
-          ["DIN A0 Plan / Schnittmuster", "84,1 × 118,9 cm", "5×5 (25 Blätter)", "4×6 (24 Blätter)"]
+      "autoTable": {
+        "posters": [
+          "a2",
+          "a1",
+          "in24x36",
+          "a0"
+        ],
+        "papers": [
+          "a4",
+          "letter"
         ]
       }
+    },
+    {
+      "heading": "Typische Fehler – und wie Sie sie vermeiden",
+      "list": [
+        "„An Seite anpassen“ im Druckdialog: Jedes Blatt schrumpft um einige Prozent, die Kacheln passen nicht mehr. Immer „Tatsächliche Größe“ bzw. 100 % wählen.",
+        "Zu kleine Bilddatei: Ein Screenshot mit 1920 Pixeln Breite wirkt über drei Blätter verteilt grob. Achten Sie auf die Anzeige „Druckqualität“.",
+        "Druckertreiber auf US Letter statt A4: Dann verschieben sich die Schnittmarken. Papierformat im Treiber und im Tool abgleichen.",
+        "Kleberand abgeschnitten: Nur den oberen und linken Rand entfernen, rechts und unten bleibt die Klebelasche stehen.",
+        "Sofort alles drucken: Erst Seite 1 drucken und das 50-mm-Lineal nachmessen, dann den Rest."
+      ]
     }
   ],
   "faqs": [
@@ -58,6 +71,19 @@
     {
       "q": "Kann ich leere Randblätter vom Druck ausschließen?",
       "a": "Ja. Klicken Sie in der Vorschau einfach auf ein beliebiges Blatt (z. B. A3 oder C1), um es beim PDF-Export zu überspringen."
+    },
+    {
+      "q": "Wie viele A4-Blätter brauche ich für ein A1-Poster?",
+      "a": "12 Blätter in einem Raster von 4 × 3 bei 5 mm Druckrand und 10 mm Kleberand. Ein A2-Poster braucht 8, ein A0-Poster 21 Blätter."
+    },
+    {
+      "q": "Welche Dateiformate kann ich verwenden?",
+      "a": "PNG, JPEG, WebP, SVG, GIF, BMP und PDF, auch mehrseitige PDFs. Fotos sollten möglichst in Originalauflösung vorliegen."
     }
+  ],
+  "related": [
+    "print-large-image-on-multiple-pages",
+    "split-image-into-pages",
+    "a0-a1-a2-poster-on-a4"
   ]
 }

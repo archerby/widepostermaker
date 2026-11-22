@@ -1,0 +1,115 @@
+{
+  "slug": "print-large-image-on-multiple-pages",
+  "route": "/es/print-large-image-on-multiple-pages/",
+  "template": "tool",
+  "navLabel": "Imagen grande",
+  "breadcrumbTitle": "Imprimir imagen grande en varias hojas",
+  "title": "Imprimir imagen grande en varias hojas — gratis y sin subirla",
+  "description": "Imprime una foto o un dibujo grande en varias hojas A4 o tamaño Carta con tu impresora de casa. Gratis, sin marca de agua y sin subir nada.",
+  "h1": "Imprimir una imagen grande en varias hojas",
+  "lead": "Para imprimir una imagen grande en varias hojas basta con tu impresora de casa: carga la foto, el dibujo o la captura, elige cuántas hojas de ancho quieres y descarga un único PDF que reparte la imagen en hojas A4 o tamaño Carta. Todo ocurre en tu navegador: la imagen no se sube a ningún servidor.",
+  "presets": {
+    "paper": "auto",
+    "units": "auto",
+    "mode": "sheets-width",
+    "value": 3,
+    "map": true
+  },
+  "chips": [
+    {
+      "label": "2 hojas de ancho",
+      "query": "cols=2"
+    },
+    {
+      "label": "3 hojas de ancho",
+      "query": "cols=3"
+    },
+    {
+      "label": "4 hojas de ancho",
+      "query": "cols=4"
+    },
+    {
+      "label": "60 cm de ancho",
+      "query": "units=cm&width=60"
+    },
+    {
+      "label": "90 cm de ancho",
+      "query": "units=cm&width=90"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Cómo imprimir una imagen grande en varias hojas A4 o Carta",
+      "paragraphs": [
+        "Las impresoras domésticas llegan como mucho a A4 o a tamaño Carta, pero eso no te obliga a ir a la copistería para tener una foto grande en la pared. La técnica se llama impresión en mosaico: la imagen se amplía y se corta en una cuadrícula de trozos del tamaño de una hoja; cada trozo se imprime por separado y después se recorta y se pega.",
+        "Word, Paint o el propio controlador de la impresora pueden hacer algo parecido, pero casi nunca dejan un solape para el pegamento ni indican qué hoja va en cada sitio. WidePosterMaker monta la cuadrícula completa: cada hoja lleva marcas de corte, una franja de pegado en el borde derecho e inferior, cruces (+) de alineación y una etiqueta (A1, A2, B1…) que coincide con el mapa de montaje de la página 1."
+      ],
+      "listHeading": "De la foto al póster en cinco pasos",
+      "listType": "ol",
+      "list": [
+        "Elige la imagen (JPEG, PNG, WebP, SVG o GIF) o un PDF.",
+        "En «Calcular por», indica las hojas de ancho o un ancho exacto en centímetros.",
+        "Revisa la cuadrícula en la vista previa y toca las hojas en blanco que quieras omitir.",
+        "Descarga el PDF e imprímelo al 100 % o en «Tamaño real», nunca con «Ajustar a página».",
+        "Recorta los márgenes superior e izquierdo, pega sobre las franjas de solape y haz coincidir las cruces."
+      ]
+    },
+    {
+      "heading": "Ejemplo real: una foto de móvil de 12 megapíxeles",
+      "paragraphs": [
+        "Una foto típica de móvil mide 4032 × 3024 píxeles. Si la imprimes con 3 hojas A4 de ancho, la herramienta coloca las hojas en horizontal y genera una cuadrícula de 3 × 4 = 12 hojas. El póster mide unos 84 × 63 cm y conserva alrededor de 122 DPI: nitidez de sobra para una foto que se mira desde un metro.",
+        "Con 4 hojas de ancho pasas a 20 hojas y unos 112 × 84 cm, pero la resolución baja a unos 92 DPI. En tamaño Carta, 3 hojas de ancho dan una cuadrícula de 3 × 3 = 9 hojas y unos 78 × 58 cm. La vista previa y el resumen (Cuadrícula, Tamaño final, Calidad) se actualizan al instante, así que ves el número de hojas y los DPI antes de gastar tinta."
+      ]
+    },
+    {
+      "heading": "¿Hasta qué tamaño puedo ampliar sin que se vea borrosa?",
+      "paragraphs": [
+        "El límite lo pone la cantidad de píxeles de la imagen, no el número de hojas. Divide el ancho en píxeles entre el ancho del póster en pulgadas (1 pulgada = 2,54 cm) y obtendrás los DPI. Con 150 DPI o más se ve nítida incluso de cerca; entre 90 y 150 DPI queda bien en una pared; por debajo de 90 DPI empiezan a notarse los píxeles. La herramienta calcula esta estimación para cada tamaño que pruebas y te avisa cuando se queda corta.",
+        "La trampa habitual son las capturas de pantalla y las imágenes descargadas de internet: una imagen de 1920 × 1080 impresa con 3 hojas A4 de ancho se queda en unos 58 DPI. Hazla más pequeña o busca el archivo original a resolución completa. Los archivos vectoriales (SVG, o un PDF exportado desde un programa de diseño) no tienen ese límite y siguen nítidos a cualquier tamaño."
+      ]
+    },
+    {
+      "heading": "Errores frecuentes al imprimir una foto en varias hojas",
+      "paragraphs": [
+        "Casi todos los pósters que no encajan se deben a uno de estos fallos:"
+      ],
+      "list": [
+        "Imprimir con «Ajustar a página»: cada hoja sale un poco reducida y las piezas ya no coinciden.",
+        "Recortar los cuatro bordes de cada hoja: la franja derecha e inferior es justo la zona donde va el pegamento.",
+        "Usar la copia que te llegó por WhatsApp o la que bajaste de una red social en vez de la foto original: tiene muchos menos píxeles.",
+        "Cambiar de papel o de calidad de impresión a mitad del trabajo: el color varía de una hoja a otra."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿De verdad es gratis y sin marca de agua?",
+      "a": "Sí. No hay cuenta, ni marca de agua, ni exportación de pago. El PDF se genera en tu propio dispositivo y el resultado a resolución completa es tuyo."
+    },
+    {
+      "q": "¿Se sube mi foto a algún sitio?",
+      "a": "No. La imagen se lee y se procesa dentro de la pestaña del navegador y el PDF se crea en tu dispositivo. Si abres la pestaña Red de las herramientas del navegador mientras exportas, verás que no se envía ningún dato del archivo."
+    },
+    {
+      "q": "¿Por qué las hojas impresas tienen bordes blancos?",
+      "a": "Casi ninguna impresora doméstica imprime hasta el borde del papel. La herramienta deja un margen de impresora (5 mm en A4, 6 mm en Carta) y repite una franja de la imagen como solape de pegado, así que al recortar los bordes no falta nada en las uniones."
+    },
+    {
+      "q": "¿Qué ajuste de la impresora es el más importante?",
+      "a": "La escala. Elige 100 % o «Tamaño real» en el cuadro de impresión. «Ajustar a página» encoge cada hoja un poco y las piezas dejan de encajar."
+    },
+    {
+      "q": "¿Puedo imprimir solo una parte de la cuadrícula?",
+      "a": "Sí. Toca o haz clic en una hoja de la vista previa para omitirla, algo útil en zonas de cielo o de fondo liso. Las hojas omitidas no entran en el PDF y aparecen rayadas en el mapa de montaje."
+    },
+    {
+      "q": "¿Puedo hacerlo desde el móvil?",
+      "a": "Sí. Elige la foto de la galería, ajusta las hojas de ancho y guarda el PDF. Puedes imprimirlo después desde el ordenador o llevarlo a una copistería."
+    }
+  ],
+  "related": [
+    "split-image-into-pages",
+    "a0-a1-a2-poster-on-a4",
+    "how-to-glue-a-tiled-poster"
+  ]
+}

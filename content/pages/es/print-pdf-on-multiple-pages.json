@@ -1,0 +1,100 @@
+{
+  "slug": "print-pdf-on-multiple-pages",
+  "route": "/es/print-pdf-on-multiple-pages/",
+  "template": "tool",
+  "navLabel": "Imprimir PDF",
+  "breadcrumbTitle": "Imprimir PDF en varias hojas",
+  "title": "Imprimir PDF en varias hojas a tamaño real — gratis online",
+  "description": "Imprime una página PDF grande —póster, plano o mapa— en varias hojas A4 o tamaño Carta al 100 %. Gratis, en el navegador y con vectores nítidos.",
+  "h1": "Imprimir un PDF en varias hojas",
+  "lead": "Imprimir un PDF en varias hojas es la forma de llevar un póster A1, un plano o un mapa a tamaño real con una impresora A4 o tamaño Carta. Carga el PDF, déjalo al 100 % y descarga un PDF en mosaico que reparte la página en todas las hojas necesarias, sin subir nada y sin Adobe Acrobat.",
+  "presets": {
+    "paper": "auto",
+    "units": "auto",
+    "mode": "scale",
+    "value": 100,
+    "map": true
+  },
+  "chips": [
+    {
+      "label": "Tamaño real (100 %)",
+      "query": "scale=100"
+    },
+    {
+      "label": "Mitad (50 %)",
+      "query": "scale=50"
+    },
+    {
+      "label": "2 hojas de ancho",
+      "query": "cols=2"
+    },
+    {
+      "label": "En tamaño Carta",
+      "query": "paper=letter&scale=100"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Imprimir un PDF grande en una impresora pequeña",
+      "paragraphs": [
+        "Una página PDF tiene un tamaño físico: un póster A1 mide 594 × 841 mm y un plano de arquitectura puede ser A0. Al mandarlo a una impresora A4, lo normal es que toda la página se reduzca a una sola hoja. Para conservar el tamaño real hay que repartirla en varias hojas: es lo que se llama impresión en mosaico o en póster.",
+        "WidePosterMaker toma la página del PDF, la coloca al 100 % (o a la escala que elijas en «Escala real (%)») y la corta en una cuadrícula de hojas A4, US Letter (Carta), A3 o Legal. Cada hoja lleva marcas de corte, solape de pegado, cruces de alineación y su posición en la cuadrícula; la página 1 es un mapa de montaje con regla de calibración."
+      ]
+    },
+    {
+      "heading": "La opción «Póster» de Adobe Reader frente a esta herramienta",
+      "paragraphs": [
+        "Adobe Acrobat Reader tiene un modo «Póster» en su cuadro de impresión, y funciona si tienes Reader instalado y el controlador de tu impresora colabora. Pero imprime directamente: no obtienes un archivo que puedas revisar o reutilizar, y la ayuda para el montaje se limita a pequeñas marcas y etiquetas.",
+        "Aquí obtienes un PDF normal que puedes previsualizar, enviar a otra persona o imprimir desde cualquier dispositivo, incluido un móvil o un Mac, donde Vista Previa no tiene opción de mosaico. El contenido vectorial se copia como vector, no como imagen, así que los textos y las líneas finas se mantienen nítidos."
+      ],
+      "listHeading": "Qué obtienes",
+      "list": [
+        "Funciona en cualquier navegador moderno en Windows, macOS, Linux, Android e iOS.",
+        "PDF de varias páginas: elige la página que quieres ampliar con los botones Anterior y Siguiente.",
+        "Los PDF cifrados o poco habituales se convierten en una imagen de alta resolución, con un aviso.",
+        "Nada se sube: el PDF no sale de tu dispositivo."
+      ]
+    },
+    {
+      "heading": "Ejemplo: un póster A1 en PDF",
+      "paragraphs": [
+        "Carga un PDF A1 al 100 % sobre papel A4 y el resumen muestra una cuadrícula de 4 × 3 = 12 hojas; en tamaño Carta son 15. Cambia al 50 % y el mismo póster pasa a 2 × 2 = 4 hojas A4, útil como prueba rápida antes de imprimir el tamaño completo.",
+        "Cuando se abra el cuadro de impresión, elige 100 % o «Tamaño real». Después mide la regla de 50 mm de la página 1: si mide 50 mm, todo el póster está a escala real."
+      ]
+    },
+    {
+      "heading": "Imprimir un plano en varias hojas sin perder la escala",
+      "paragraphs": [
+        "Los planos de obra, de reforma o de una parcela suelen venir en A1 o A0 y dibujados a escala (1:50, 1:100). Si los imprimes al 100 %, la escala del dibujo se conserva y puedes medir directamente sobre el papel. Un plano A0 ocupa 21 hojas A4 o 25 en tamaño Carta; un A1, 12 o 15.",
+        "Si solo necesitas una copia de consulta, prueba «Escala real (%)» al 50 %: el A1 cabe en 4 hojas A4, pero la escala del plano se reduce a la mitad (un 1:100 pasa a ser 1:200). Anótalo en la copia para que nadie mida sobre ella con la escala original."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿Cómo imprimo un PDF en varias hojas sin Adobe?",
+      "a": "Carga el PDF aquí, deja el tamaño al 100 % y descarga el PDF en mosaico. Imprímelo con cualquier visor de PDF en «Tamaño real»: cada hoja ya es una página independiente."
+    },
+    {
+      "q": "¿Puedo elegir qué página de un PDF de varias páginas se divide?",
+      "a": "Sí. Usa los botones Anterior y Siguiente encima de la vista previa; la cuadrícula y el número de hojas se actualizan para esa página."
+    },
+    {
+      "q": "¿Los textos y las líneas del PDF se ven nítidos?",
+      "a": "Sí en los PDF vectoriales normales: la página se incrusta como contenido vectorial y se recorta por hoja, sin convertirla en imagen. Los archivos cifrados se convierten en una imagen de alta resolución y la herramienta te avisa cuando ocurre."
+    },
+    {
+      "q": "¿Por qué mi PDF impreso sale más pequeño de lo esperado?",
+      "a": "Casi siempre por una opción del visor de PDF que ajusta o reduce las páginas al papel. Elige «Tamaño real» o 100 % y comprueba la regla de 50 mm de la página 1."
+    },
+    {
+      "q": "¿En qué se diferencia de la página Dividir PDF?",
+      "a": "Es el mismo motor. Esta página está pensada para imprimir un PDF a su tamaño real; la página Dividir PDF explica con más detalle la división vectorial de dibujos grandes."
+    }
+  ],
+  "related": [
+    "pdf-poster-splitter",
+    "a0-a1-a2-poster-on-a4",
+    "sewing-pattern-tiler"
+  ]
+}

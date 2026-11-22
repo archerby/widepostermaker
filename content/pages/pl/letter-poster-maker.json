@@ -4,10 +4,10 @@
   "template": "tool",
   "navLabel": "US Letter",
   "breadcrumbTitle": "Plakat US Letter",
-  "title": "Dzielenie plakatu na arkusze US Letter (8.5×11 cali)",
-  "description": "Podziel obrazy i PDF na arkusze US Letter (8.5×11 in) lub Legal. Wymiary w calach, znaczniki cięcia i linijka 2-calowa.",
+  "title": "Dzielenie plakatu na arkusze US Letter (8,5×11 cala)",
+  "description": "Podziel obrazy i PDF-y na arkusze US Letter (8,5×11 in) lub Legal. Wymiary w calach, znaczniki cięcia, zakładki do klejenia i linijka 2-calowa.",
   "h1": "Generator plakatów na papier US Letter (8,5 × 11 in)",
-  "lead": "Ustawienia pod amerykański papier US Letter (215,9 × 279,4 mm) i cale — idealne do plakatów 18×24 oraz 24×36 cali.",
+  "lead": "Ustawienia pod amerykański papier US Letter (215,9 × 279,4 mm) i cale — przydatne przy plakatach 18 × 24 i 24 × 36 cali oraz amerykańskich wykrojach i szablonach.",
   "presets": {
     "paper": "letter",
     "units": "in",
@@ -19,14 +19,51 @@
     {
       "heading": "Wydrukuj plakaty 18×24 i 24×36 cali na zwykłym Letter",
       "paragraphs": [
-        "Wybierz tryb Szerokość plakatu i jednostkę cale (in), aby bezpośrednio ustawić wymiary amerykańskich plakatów i wykrojów."
+        "Papier US Letter (8,5 × 11 cala) spotkasz w Polsce głównie w drukarkach przywiezionych z USA lub Kanady oraz przy amerykańskich wzorach opisanych w calach. Wybierz w „Rozmiar według” tryb „Szerokość plakatu” i jednostkę „Cale (in)”, aby wpisać dokładnie 18, 24 czy 36 cali bez przeliczania na milimetry.",
+        "W menu „Format papieru” jest też US Legal (8,5 × 14 cala) — dłuższy arkusz oznacza mniej poziomych łączeń przy wysokich plakatach i banerach. Tabela pokazuje liczbę kartek dla typowych amerykańskich formatów:"
+      ],
+      "autoTable": {
+        "posters": [
+          "in16x20",
+          "in18x24",
+          "in24x36",
+          "in36x48"
+        ],
+        "papers": [
+          "letter",
+          "legal"
+        ]
+      }
+    },
+    {
+      "heading": "Sprawdź margines drukarki przed wydrukiem",
+      "paragraphs": [
+        "Większość drukarek atramentowych i laserowych nie drukuje ok. 5–6 mm (0,2–0,25 cala) przy każdej krawędzi. Domyślne 6 mm marginesu i 12 mm zakładki (ok. 0,5 cala) dają wygodny pasek na klej i chronią przed brakami na łączeniach. Jeśli drukarka ucina więcej, zwiększ „Margines drukarki” w „Więcej ustawień”.",
+        "Uważaj też, żeby nie pomylić papieru: jeśli w podajniku leży A4, a PDF ma strony Letter (lub odwrotnie), sterownik zwykle skaluje wydruk i kafelki przestają do siebie pasować. Ustaw w narzędziu ten sam format, który faktycznie masz w drukarce, i drukuj w skali 100%."
       ]
     }
   ],
   "faqs": [
     {
+      "q": "Ile kartek Letter potrzeba na plakat 24 × 36 cali?",
+      "a": "Przy marginesie 6 mm i zakładce 12 mm — 15 kartek w siatce 3 × 5. Na papierze Legal wystarczy 10."
+    },
+    {
       "q": "Czy Mapa montażu ma także podziałkę w calach?",
-      "a": "Tak, strona 1 zawiera zarówno linijkę 50 mm, jak i dokładną skalę 2,0 cale."
+      "a": "Tak, strona 1 zawiera zarówno linijkę 50 mm, jak i dokładną 2-calową linijkę z podziałką co pół cala."
+    },
+    {
+      "q": "Czy mogę przełączać się między US Letter a US Legal?",
+      "a": "Tak, w każdej chwili w menu „Format papieru”; siatka i liczba kartek przeliczą się od razu."
+    },
+    {
+      "q": "Czy jest limit wielkości pliku?",
+      "a": "Przeglądarka bezpiecznie obsłuży pliki do 100 MB i obrazy do 16 384 px na boku (ok. 64 Mpx). Obraz jest osadzany w PDF-ie tylko raz, więc nawet duże pliki eksportują się szybko."
     }
+  ],
+  "related": [
+    "print-large-image-on-multiple-pages",
+    "split-image-into-pages",
+    "print-pdf-on-multiple-pages"
   ]
 }

@@ -45,7 +45,7 @@
   "faqs": [
     {
       "q": "How many 8.5×11 sheets does a 24×36 poster take?",
-      "a": "Accounting for a 6 mm (~0.24 in) printer margin and 12 mm (~0.47 in) glue overlap, a 24 × 36 inch poster takes 3×4 (12 sheets) or 4×4 (16 sheets) depending on orientation."
+      "a": "Accounting for a 6 mm (~0.24 in) printer margin and 12 mm (~0.47 in) glue overlap, a 24 × 36 inch poster takes a 3 × 5 grid of 15 Letter sheets (10 on US Legal). Auto orientation picks the layout with the fewest sheets."
     },
     {
       "q": "Does the Assembly Map include an inch ruler too?",

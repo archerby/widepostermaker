@@ -19,7 +19,23 @@
     {
       "heading": "Dlaczego dokładna skala 100% jest kluczowa dla wykrojów A0",
       "paragraphs": [
-        "Włączenie dopasowania do strony w drukarce potrafi zmniejszyć wykrój o kilka procent i zepsuć rozmiar ubrania. WidePosterMaker czyta fizyczne wymiary PDF A0 w punktach (72 pt = 25,4 mm) i drukuje je bez skalowania z paskiem kontrolnym 50 mm na stronie 1."
+        "Włączenie dopasowania do strony w drukarce potrafi zmniejszyć wykrój o kilka procent i zepsuć rozmiar ubrania. WidePosterMaker czyta fizyczne wymiary PDF A0 w punktach (72 pt = 25,4 mm) i drukuje je bez skalowania z paskiem kontrolnym 50 mm na stronie 1.",
+        "Każdy eksport zaczyna się od strony 1 z mapą montażu i wektorowymi paskami kontrolnymi 50 mm i 2 cale. Wydrukuj najpierw tylko ją, przyłóż linijkę i upewnij się, że skala się zgadza — dopiero potem drukuj cały wykrój."
+      ],
+      "listHeading": "Jak wydrukować wykrój A0 na A4",
+      "listType": "ol",
+      "list": [
+        "Wczytaj wykrój PDF A0 (jeśli plik ma kilka arkuszy, wybierz właściwy przyciskami „Poprzednia” / „Następna”).",
+        "Sprawdź, czy „Rozmiar według” jest ustawiony na „Skala 1:1 (%)” = 100, i wybierz papier A4 lub US Letter.",
+        "Kliknij puste kafelki w narożnikach podglądu, żeby nie drukować pustych kartek.",
+        "W Adobe Readerze, Chrome albo Podglądzie wybierz „Rzeczywisty rozmiar” (100%) i zmierz linijkę 50 mm na stronie 1."
+      ]
+    },
+    {
+      "heading": "Drobne oznaczenia wykroju zostają ostre",
+      "paragraphs": [
+        "Strona PDF jest osadzana i przycinana jako wektorowy Form XObject, więc znaczniki nacięć, przerywane linie szwów, strzałki kierunku nitki i maleńkie oznaczenia rozmiarów pozostają wyraźne w pełnej rozdzielczości drukarki.",
+        "Wykrój A0 w skali 100% zajmuje 21 kartek A4 — zwykle kilka z nich w narożnikach jest pustych i można je pominąć jednym kliknięciem."
       ]
     }
   ],
@@ -31,6 +47,19 @@
     {
       "q": "Jak pominąć puste kartki w narożnikach wykroju?",
       "a": "Kliknij puste kafelki na podglądzie przed kliknięciem Pobierz PDF."
+    },
+    {
+      "q": "Czy mogę zmienić skalę wykroju, np. na 95% albo 105%?",
+      "a": "Tak — w trybie „Skala 1:1 (%)” zamiast 100 wpisz potrzebną wartość procentową."
+    },
+    {
+      "q": "Jaka zakładka sprawdza się przy wykrojach?",
+      "a": "10 mm (ok. 3/8 cala) wystarcza, żeby skleić kartki A4 lub Letter klejem w sztyfcie albo taśmą papierową bez pogrubiania łączeń."
     }
+  ],
+  "related": [
+    "a0-a1-a2-poster-on-a4",
+    "print-pdf-on-multiple-pages",
+    "how-to-glue-a-tiled-poster"
   ]
 }

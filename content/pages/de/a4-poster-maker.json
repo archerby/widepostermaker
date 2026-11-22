@@ -19,18 +19,60 @@
     {
       "heading": "A2, A1 und A0 sauber auf DIN A4 aufteilen",
       "paragraphs": [
-        "Da alle DIN-Formate dem Seitenverhältnis 1:√2 folgen, lässt sich jedes Großformat harmonisch in DIN-A4-Kacheln zerlegen. Mit 5 mm Druckrand und 10 mm Kleberand bleibt genug Platz für unbedruckbare Druckerränder und präzise Verklebung."
+        "Da alle DIN-Formate dem Seitenverhältnis 1:√2 folgen, lässt sich jedes Großformat gut in DIN-A4-Kacheln zerlegen. Mit 5 mm Druckrand und 10 mm Kleberand bleibt genug Platz für den unbedruckbaren Rand des Druckers und eine saubere Verklebung.",
+        "Genau deshalb reichen für ein A1-Poster nicht die theoretischen acht Blätter: Jedes A4-Blatt deckt netto nur 19 × 27,7 cm ab. Die Tabelle zeigt die tatsächlich benötigten Blätter, berechnet mit derselben Geometrie wie das Tool."
+      ],
+      "autoTable": {
+        "posters": [
+          "a3",
+          "a2",
+          "a1",
+          "a0"
+        ],
+        "papers": [
+          "a4",
+          "a3"
+        ]
+      }
+    },
+    {
+      "heading": "Auflösung in Zentimetern: wie scharf wird das Poster?",
+      "paragraphs": [
+        "Druckqualität wird in DPI gemessen, also Pixel pro Zoll (2,54 cm). Ab etwa 150 DPI wirkt ein Poster auch aus der Nähe scharf, 90–150 DPI reichen an der Wand, unter etwa 90 DPI werden Pixel sichtbar. Umgerechnet sind 150 DPI rund 59 Pixel pro Zentimeter.",
+        "Für ein 59,4 cm breites A1-Poster mit 150 DPI braucht das Bild also etwa 3500 Pixel Breite. Ein Handyfoto mit 4032 Pixeln schafft das; ein Screenshot mit 1920 Pixeln liegt bei A1-Breite nur bei rund 82 DPI. Das Tool zeigt den Wert unter „Druckqualität“ an, bevor Sie drucken."
+      ]
+    },
+    {
+      "heading": "Druckertipps für DIN A4",
+      "list": [
+        "Im Druckdialog „Tatsächliche Größe“ bzw. 100 % wählen, niemals „An Seite anpassen“.",
+        "Papierformat im Druckertreiber auf A4 stellen – manche Treiber stehen ab Werk auf US Letter.",
+        "Randlos-Druck ausschalten; er vergrößert das Bild bei vielen Tintenstrahlern leicht.",
+        "Druckt Ihr Gerät näher an die Kante, können Sie den „Druckrand (mm)“ unter „Weitere Einstellungen“ verkleinern und so Blätter sparen."
       ]
     }
   ],
   "faqs": [
     {
       "q": "Wie groß ist ein 3×3 DIN-A4-Poster?",
-      "a": "Mit 5 mm Rand und 10 mm Überlappung deckt jede A4-Seite 190 × 277 mm netto ab — ein 3×3-Raster ergibt rund 58 × 85 cm (etwa DIN A1)."
+      "a": "Mit 5 mm Rand und 10 mm Überlappung deckt jede hochkant stehende A4-Seite netto 190 × 277 mm ab – ein 3×3-Raster ergibt 58,0 × 84,1 cm. Das ist knapp schmaler als DIN A1 (59,4 cm), weshalb A1 selbst 4 × 3 = 12 Blätter braucht."
+    },
+    {
+      "q": "Wie viele A4-Blätter braucht ein A2- oder A0-Poster?",
+      "a": "Ein A2-Poster braucht 8 Blätter (2 × 4, quer liegend), ein A0-Poster 21 Blätter (3 × 7). Mit einem A3-Drucker sind es 4 bzw. 9 Blätter."
     },
     {
       "q": "Welches Papier eignet sich am besten?",
       "a": "Normales 80-g-Papier funktioniert problemlos; für besonders glatte Nähte an der Wand empfiehlt sich 100–120 g/m² Mattpapier."
+    },
+    {
+      "q": "Kann ich statt der Blattanzahl eine Größe in Zentimetern eingeben?",
+      "a": "Ja. Stellen Sie „Größe über“ auf „Poster-Breite“ oder „Poster-Höhe“ und geben Sie den Wert in cm ein. Das Tool berechnet das Raster dann selbst."
     }
+  ],
+  "related": [
+    "a0-a1-a2-poster-on-a4",
+    "split-image-into-pages",
+    "print-large-image-on-multiple-pages"
   ]
 }

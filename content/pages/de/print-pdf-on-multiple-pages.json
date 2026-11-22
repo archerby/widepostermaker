@@ -1,0 +1,107 @@
+{
+  "slug": "print-pdf-on-multiple-pages",
+  "route": "/de/print-pdf-on-multiple-pages/",
+  "template": "tool",
+  "navLabel": "PDF drucken",
+  "breadcrumbTitle": "PDF auf mehrere Seiten drucken",
+  "title": "PDF auf mehrere Seiten verteilt drucken – kostenlos, online",
+  "description": "Eine große PDF-Seite in 100 % auf mehrere A4-Blätter verteilt drucken – ohne Acrobat, ohne Upload. Vektoren bleiben scharf, mit Schnittmarken.",
+  "h1": "PDF auf mehrere Seiten verteilt drucken",
+  "lead": "Sie möchten ein PDF auf mehrere Seiten verteilt drucken – etwa ein A1-Poster, einen Plan oder eine Landkarte –, haben aber nur einen A4-Drucker? Laden Sie das PDF, lassen Sie es bei 100 % und laden Sie ein gekacheltes PDF herunter, das die Seite auf so viele Blätter verteilt wie nötig. Ohne Upload und ohne Adobe Acrobat.",
+  "presets": {
+    "paper": "auto",
+    "units": "auto",
+    "mode": "scale",
+    "value": 100,
+    "map": true
+  },
+  "chips": [
+    {
+      "label": "Originalgröße (100 %)",
+      "query": "scale=100"
+    },
+    {
+      "label": "Halbe Größe (50 %)",
+      "query": "scale=50"
+    },
+    {
+      "label": "2 Blätter breit",
+      "query": "cols=2"
+    },
+    {
+      "label": "Auf A3-Papier",
+      "query": "paper=a3&scale=100"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Großes PDF, kleiner Drucker",
+      "paragraphs": [
+        "Eine PDF-Seite hat eine physische Größe: Ein A1-Poster misst 594 × 841 mm, ein Architekturplan oft A0. Schickt man so eine Datei an einen A4-Drucker, wird normalerweise die ganze Seite auf ein Blatt verkleinert. Soll die echte Größe erhalten bleiben, muss die Seite auf mehrere Blätter verteilt werden – das nennt man Poster- oder Kacheldruck.",
+        "WidePosterMaker nimmt die PDF-Seite, setzt sie auf 100 % (oder einen beliebigen anderen Maßstab) und zerlegt sie in ein Raster aus A4-, A3-, US-Letter- oder Legal-Blättern. Jedes Blatt bekommt Schnittmarken, einen Kleberand, Passkreuze und seine Rasterposition, und Seite 1 ist eine Übersichtskarte mit Kontrolllineal."
+      ]
+    },
+    {
+      "heading": "Posterdruck im Adobe Reader oder dieses Tool?",
+      "paragraphs": [
+        "Der Adobe Acrobat Reader hat im Druckdialog die Option „Poster“. Sie funktioniert, wenn der Reader installiert ist und der Druckertreiber mitspielt. Allerdings druckt sie direkt: Sie bekommen keine Datei, die Sie prüfen oder wiederverwenden können, und die Montagehilfe beschränkt sich auf kleine Schnittmarken und Beschriftungen.",
+        "Hier erhalten Sie ein normales PDF, das Sie vorab ansehen, weiterschicken oder auf jedem Gerät drucken können – auch auf dem Handy oder am Mac, wo die Vorschau-App keine Kachelfunktion hat. Vektorinhalte werden als Vektoren übernommen und nicht in ein Bild umgewandelt; Text und feine Linien bleiben scharf."
+      ],
+      "listHeading": "Das bekommen Sie",
+      "list": [
+        "Läuft in jedem aktuellen Browser unter Windows, macOS, Linux, Android und iOS.",
+        "Mehrseitige PDFs: Mit „Zurück“ und „Weiter“ wählen Sie die Seite, die gekachelt werden soll.",
+        "Verschlüsselte oder ungewöhnliche PDFs werden stattdessen hochauflösend gerendert – mit Hinweis.",
+        "Nichts wird hochgeladen – das PDF verlässt Ihr Gerät nicht."
+      ]
+    },
+    {
+      "heading": "Rechenbeispiel: ein A1-PDF",
+      "paragraphs": [
+        "Laden Sie ein A1-PDF in 100 % auf A4-Papier, zeigt die Zusammenfassung ein Raster von 4 × 3 = 12 Blättern; auf US Letter sind es 15, auf A3 nur 6. Stellen Sie 50 % ein, wird aus demselben Poster ein Raster von 2 × 2 = 4 A4-Blättern – praktisch für einen schnellen Probedruck, bevor Sie die volle Größe drucken.",
+        "Wählen Sie im Druckdialog 100 % oder „Tatsächliche Größe“. Messen Sie nach dem Druck das 50-mm-Lineal auf Seite 1: Sind es genau 50 mm, hat das ganze Poster den richtigen Maßstab."
+      ]
+    },
+    {
+      "heading": "PDF auf mehrere Seiten verteilt drucken: die richtigen Druckeinstellungen",
+      "list": [
+        "Skalierung: „Tatsächliche Größe“ oder 100 %. „An Seite anpassen“ oder „Übergroße Seiten verkleinern“ ausschalten.",
+        "Nicht verwechseln: „Mehrere Seiten pro Blatt“ macht das Gegenteil – es verkleinert mehrere Seiten auf ein Blatt.",
+        "Papierformat im Treiber prüfen: Steht er auf US Letter, obwohl A4 eingelegt ist, verschiebt sich jedes Blatt.",
+        "Beidseitigen Druck (Duplex) ausschalten – jede Kachel gehört auf ein eigenes Blatt.",
+        "Bei sehr vielen Blättern erst Seite 1 drucken und das Lineal prüfen, dann den Rest."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Wie drucke ich ein PDF ohne Adobe auf mehrere Seiten?",
+      "a": "Laden Sie das PDF hier, lassen Sie die Größe bei 100 % und laden Sie das gekachelte PDF herunter. Drucken Sie es mit einem beliebigen PDF-Programm in „Tatsächlicher Größe“ – jedes Blatt ist bereits eine eigene Seite."
+    },
+    {
+      "q": "Warum druckt mein Drucker das ganze PDF verkleinert auf eine Seite?",
+      "a": "Weil der Druckdialog die Seite auf das eingelegte Papier anpasst. Um die echte Größe zu behalten, muss die Seite vorher in Kacheln zerlegt werden – genau das erledigt dieses Tool."
+    },
+    {
+      "q": "Kann ich bei einem mehrseitigen PDF die Seite auswählen?",
+      "a": "Ja. Mit den Schaltflächen „Zurück“ und „Weiter“ über der Vorschau wählen Sie die Seite; Raster und Blattzahl werden für diese Seite neu berechnet."
+    },
+    {
+      "q": "Bleiben Text und Linien in meinem PDF scharf?",
+      "a": "Bei normalen Vektor-PDFs ja: Die Seite wird als Vektorinhalt eingebettet und pro Blatt beschnitten, nicht in ein Bild umgewandelt. Verschlüsselte Dateien werden stattdessen hochauflösend gerendert, und das Tool weist Sie darauf hin."
+    },
+    {
+      "q": "Kann ich ein A0-Schnittmuster auf A4 drucken?",
+      "a": "Ja. Bei 100 % entsteht ein Raster von 3 × 7 = 21 A4-Blättern; leere Blätter können Sie in der Vorschau weglassen. Die Seite für Schnittmuster erklärt den maßgenauen 1:1-Druck im Detail."
+    },
+    {
+      "q": "Was ist der Unterschied zur Seite PDF-Poster-Teiler?",
+      "a": "Es ist derselbe Motor. Diese Seite ist auf das Drucken eines PDFs in Originalgröße eingestellt; der PDF-Poster-Teiler erklärt das Vektor-Teilen großer Zeichnungen ausführlicher."
+    }
+  ],
+  "related": [
+    "pdf-poster-splitter",
+    "a0-a1-a2-poster-on-a4",
+    "sewing-pattern-tiler"
+  ]
+}

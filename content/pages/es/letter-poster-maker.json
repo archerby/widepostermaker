@@ -19,14 +19,59 @@
     {
       "heading": "Imprime carteles 18×24 y 24×36 pulgadas en papel Carta",
       "paragraphs": [
-        "Selecciona Ancho del póster y pulgadas (in) para fijar dimensiones exactas sin conversiones manuales a milímetros."
+        "Selecciona «Ancho del póster» en «Calcular por» y «Pulgadas (in)» en «Unidades» para fijar medidas exactas de 18, 24 o 36 pulgadas sin convertir a milímetros.",
+        "El papel tamaño Carta (8,5 × 11 in, 215,9 × 279,4 mm) es el estándar en Estados Unidos, México y buena parte de Latinoamérica. En el selector también tienes US Legal (8,5 × 14 in), que en pósters altos suele reducir el número de hojas.",
+        "Con 6 mm de margen y 12 mm de solape, un póster de 16 × 20 in ocupa 6 hojas Carta, uno de 18 × 24 in 8, uno de 24 × 36 in 15 y uno de 36 × 48 in 25. En Legal: 6, 6, 10 y 20."
+      ],
+      "autoTable": {
+        "posters": [
+          "in16x20",
+          "in18x24",
+          "in24x36",
+          "in36x48"
+        ],
+        "papers": [
+          "letter",
+          "legal"
+        ]
+      }
+    },
+    {
+      "heading": "Comprueba el margen de tu impresora",
+      "paragraphs": [
+        "La mayoría de impresoras de inyección y láser no imprimen los 5–6 mm (0,2–0,25 in) más cercanos a cada borde. Con «Margen impresora (mm)» en 6 y «Solape de pegado (mm)» en 12 (casi media pulgada) tienes pestañas de pegado generosas y no se pierde nada de la imagen en las uniones.",
+        "Si tu impresora imprime más cerca del borde, puedes bajar el margen en «Más ajustes» y ahorrar alguna hoja en pósters grandes."
+      ]
+    },
+    {
+      "heading": "Errores frecuentes con papel tamaño Carta",
+      "paragraphs": [
+        "Estos fallos son los que más descuadran un póster en hojas Carta:"
+      ],
+      "list": [
+        "Generar el PDF en A4 y cargar papel Carta: la impresora reescala o recorta y las hojas no encajan.",
+        "Imprimir con «Ajustar a página»: comprueba siempre la regla de 2 pulgadas de la página 1.",
+        "Confundir Carta y Legal en la bandeja: elige en la herramienta el mismo papel que vas a cargar."
       ]
     }
   ],
   "faqs": [
     {
       "q": "¿Cuántas hojas Carta lleva un póster de 24×36 pulgadas?",
-      "a": "Con margen de 6 mm y solape de 12 mm, un cartel de 24×36 pulgadas usa entre 12 (3×4) y 16 (4×4) hojas tamaño Carta."
+      "a": "Con 6 mm de margen y 12 mm de solape, un cartel de 24 × 36 pulgadas ocupa 15 hojas tamaño Carta (3 × 5). En US Legal bastan 10 (2 × 5)."
+    },
+    {
+      "q": "¿El mapa de montaje trae regla en pulgadas?",
+      "a": "Sí. La página 1 imprime una barra exacta de 50 mm y una regla de 2 pulgadas con marcas cada media pulgada, para comprobar la escala con cualquier regla."
+    },
+    {
+      "q": "¿Puedo cambiar entre Carta y Legal?",
+      "a": "Sí. En «Tamaño de papel» eliges US Letter (8,5 × 11 in) o US Legal (8,5 × 14 in) cuando quieras, y la cuadrícula se recalcula al instante."
     }
+  ],
+  "related": [
+    "print-large-image-on-multiple-pages",
+    "split-image-into-pages",
+    "print-pdf-on-multiple-pages"
   ]
 }

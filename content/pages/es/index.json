@@ -33,17 +33,39 @@
     {
       "heading": "Cuántas hojas A4 necesita cada tamaño de póster",
       "paragraphs": [
-        "Estimación práctica con 5 mm de margen de impresora y 10 mm de solape para pegado:"
+        "La tabla se calcula con la misma geometría que usa la herramienta: 5 mm de margen de impresora y 10 mm de solape en A4; 6 mm y 12 mm en tamaño Carta. Un A2 ocupa 8 hojas A4, un A1 12 y un A0 21; en Carta, 8, 15 y 25. El clásico cartel de cine de 24 × 36 pulgadas (61 × 91 cm) sale en 15 hojas en ambos papeles."
       ],
-      "table": {
-        "headers": ["Tamaño de póster", "Medidas (cm)", "Hojas A4 (Vertical)", "Hojas A4 (Horizontal)"],
-        "rows": [
-          ["Póster A2", "42,0 × 59,4 cm", "2×2 (4 hojas)", "2×3 (6 hojas)"],
-          ["Póster A1", "59,4 × 84,1 cm", "3×3 (9 hojas)", "3×4 (12 hojas)"],
-          ["Cartel cine 60 × 90 cm", "60,0 × 90,0 cm", "4×4 (16 hojas)", "3×5 (15 hojas)"],
-          ["Plano / Patrón A0", "84,1 × 118,9 cm", "5×5 (25 hojas)", "4×6 (24 hojas)"]
+      "autoTable": {
+        "posters": [
+          "a2",
+          "a1",
+          "in24x36",
+          "a0"
+        ],
+        "papers": [
+          "a4",
+          "letter"
         ]
       }
+    },
+    {
+      "heading": "¿Qué resolución necesita la imagen?",
+      "paragraphs": [
+        "Al ampliar una imagen no se crean píxeles nuevos: los que hay se reparten sobre más superficie. Por eso la herramienta muestra en el resumen una estimación de Calidad en DPI para el tamaño elegido. Con 150 DPI o más la impresión se ve nítida incluso de cerca; entre 90 y 150 DPI queda bien en una pared; por debajo de 90 DPI se notan los píxeles.",
+        "Una foto de móvil de 12 megapíxeles da para un póster de unos 84 × 63 cm (12 hojas A4) con buena nitidez. Una captura de pantalla de 1920 × 1080 conviene dejarla bastante más pequeña. Los SVG y los PDF vectoriales no tienen ese límite."
+      ]
+    },
+    {
+      "heading": "Errores frecuentes al imprimir un póster en hojas A4",
+      "paragraphs": [
+        "Si las piezas no encajan, casi siempre es por uno de estos motivos:"
+      ],
+      "list": [
+        "Imprimir con «Ajustar a página» en lugar de 100 % / «Tamaño real»: cada hoja sale algo reducida.",
+        "Elegir en la herramienta A4 y cargar papel Carta en la impresora (o al revés).",
+        "Recortar los cuatro bordes: las franjas derecha e inferior son la zona de pegado.",
+        "No medir la regla de 50 mm de la página 1 antes de imprimir el resto."
+      ]
     }
   ],
   "faqs": [
@@ -58,6 +80,19 @@
     {
       "q": "¿Puedo omitir las hojas blancas que no necesito imprimir?",
       "a": "Sí, haz clic directamente sobre cualquier hoja en la vista previa para excluirla antes de descargar el PDF."
+    },
+    {
+      "q": "¿Es gratis? ¿Lleva marca de agua?",
+      "a": "Es gratis, sin cuenta y sin marca de agua. No hay versión de pago: el PDF completo se genera en tu dispositivo."
+    },
+    {
+      "q": "¿Qué archivos puedo convertir en póster?",
+      "a": "Imágenes PNG, JPEG, WebP, SVG y GIF, y archivos PDF de una o varias páginas. En un PDF multipágina eliges la página con los botones Anterior y Siguiente."
     }
+  ],
+  "related": [
+    "print-large-image-on-multiple-pages",
+    "split-image-into-pages",
+    "a0-a1-a2-poster-on-a4"
   ]
 }

@@ -41,7 +41,7 @@
     {
       "heading": "How many A4 sheets for an A0, A1, A2 or A3 poster?",
       "paragraphs": [
-        "On paper, the arithmetic looks simple: A1 is four A2s, which is eight A4s. In practice a home printer cannot print to the edge, and the sheets need an overlap to be glued, so each A4 covers only about 19 × 27.7 cm of the poster. The table below is calculated with exactly the same geometry the tool uses."
+        "On paper, the arithmetic looks simple: A1 is two A2s, four A3s, or eight A4s. In practice a home printer cannot print to the edge, and the sheets need an overlap to be glued, so each A4 covers only about 19 × 27.7 cm of the poster. The table below is calculated with exactly the same geometry the tool uses."
       ],
       "autoTable": {
         "posters": [

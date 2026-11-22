@@ -98,7 +98,7 @@ def render_auto_table(spec: dict, i18n: dict) -> str:
     return "\n".join(parts)
 
 
-def render_chips(chips: list[dict], i18n: dict) -> str:
+def render_chips(chips: list[dict], i18n: dict, route: str) -> str:
     if not chips:
         return ""
     links: list[str] = []
@@ -106,7 +106,7 @@ def render_chips(chips: list[dict], i18n: dict) -> str:
         query = chip["query"]
         if not CHIP_QUERY_RE.match(query) or any(kv.split("=")[0] not in CHIP_KEYS for kv in query.split("&")):
             raise ValueError(f"Invalid chip query: {query!r}")
-        links.append(f'    <a class="chip" href="?{esc(query)}" data-preset="{esc(query)}">{esc(chip["label"])}</a>')
+        links.append(f'    <a class="chip" href="{esc(route)}?{esc(query)}" rel="nofollow" data-preset="{esc(query)}">{esc(chip["label"])}</a>')
     return f'  <div class="chips" aria-label="{esc(i18n["chipsLabel"])}">\n' + "\n".join(links) + "\n  </div>"
 
 
@@ -586,7 +586,7 @@ def main() -> None:
                 "UI_PRINT_DIRECT": esc(ui["printDirect"]),
                 "TRUST_CARDS": render_trust_cards(ui["trust"]),
                 "BODY_SECTIONS": render_sections(page.get("sections", []), i18n),
-                "CHIPS": render_chips(page.get("chips", []), i18n),
+                "CHIPS": render_chips(page.get("chips", []), i18n, page["route"]),
                 "RELATED": render_related(page.get("related", []), pages_by_loc[loc], i18n),
                 "UI_FAQ_HEADING": esc(ui["faqHeading"]),
                 "FAQ_ITEMS": render_faqs(page.get("faqs", [])),

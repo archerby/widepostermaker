@@ -25,7 +25,7 @@
       "listHeading": "Jak to działa w trzech krokach",
       "listType": "ol",
       "list": [
-        "Przeciągnij lub wklej ze schowka plik PNG, JPEG, WebP, SVG lub PDF.",
+        "Przeciągnij lub wklej ze schowka plik PNG, JPEG, WebP, SVG, GIF, BMP albo PDF (w wielostronicowym PDF-ie wybierzesz dowolną stronę).",
         "Wybierz papier A4 lub Letter, automatyczną orientację, liczbę kartek lub szerokość w cm.",
         "Pobierz gotowy PDF, wydrukuj w skali 100%, odetnij górny i lewy margines i sklej według krzyżyków (+)."
       ]
@@ -33,23 +33,38 @@
     {
       "heading": "Ile kartek A4 potrzeba na popularne formaty plakatów",
       "paragraphs": [
-        "Orientacyjna liczba arkuszy przy marginesie drukarki 5 mm i zakładce klejenia 10 mm:"
+        "Ta ściągawka przyda się przy planowaniu dekoracji, plansz do klasy czy banerów na imprezę. Liczby są wyliczone tą samą geometrią, której używa narzędzie — z marginesem drukarki i zakładką do klejenia — więc tyle kartek naprawdę wydrukujesz. Plakat A1 to 12 kartek A4, a nie 8, jak sugerowałby sam podział formatu."
       ],
-      "table": {
-        "headers": ["Format plakatu", "Wymiary (cm)", "Kartki A4 (pion)", "Kartki A4 (poziom)"],
-        "rows": [
-          ["Plakat A2", "42,0 × 59,4 cm", "2×2 (4 kartki)", "2×3 (6 kartek)"],
-          ["Plakat A1", "59,4 × 84,1 cm", "3×3 (9 kartek)", "3×4 (12 kartek)"],
-          ["Plakat kinowy 60 × 90 cm", "60,0 × 90,0 cm", "4×4 (16 kartek)", "3×5 (15 kartek)"],
-          ["Plan / Wykrój A0", "84,1 × 118,9 cm", "5×5 (25 kartek)", "4×6 (24 kartki)"]
+      "autoTable": {
+        "posters": [
+          "a2",
+          "a1",
+          "in24x36",
+          "a0"
+        ],
+        "papers": [
+          "a4",
+          "letter"
         ]
       }
+    },
+    {
+      "heading": "Drukowanie plakatu na kilku kartkach A4 — najczęstsze błędy",
+      "paragraphs": [
+        "Prawie każdy nieudany plakat z kartek ma jedną z tych czterech przyczyn. Wszystkich łatwo uniknąć, jeśli przed drukiem całości wydrukujesz stronę 1 i zmierzysz linijkę 50 mm na mapie montażu."
+      ],
+      "list": [
+        "Skala „Dopasuj do strony” zamiast 100% — kafelki są o kilka procent mniejsze i nie zejdą się na łączeniach.",
+        "Obcinanie wszystkich czterech krawędzi — prawa i dolna zakładka mają zostać, to na nie nakłada się klej.",
+        "Za mała rozdzielczość — zrzut ekranu 1920 px rozciągnięty na metr szerokości wyjdzie w kratkę; patrz na wskaźnik „Jakość druku”.",
+        "Klej w płynie — moczy papier i marszczy łączenia; lepszy sztyft albo cienka taśma dwustronna."
+      ]
     }
   ],
   "faqs": [
     {
       "q": "Czy moje zdjęcia lub pliki PDF są wysyłane na serwer?",
-      "a": "Nie. Pliki są przetwarzane lokalnie w przeglądarce i nigdy nie są wysyłane. Bez cookies; liczone są tylko anonimowe odwiedziny bez cookies."
+      "a": "Nie. Pliki są przetwarzane lokalnie w przeglądarce i nigdy nie są wysyłane. Strona nie używa cookies — liczone są wyłącznie anonimowe odwiedziny."
     },
     {
       "q": "Dlaczego lepiej pobrać wygenerowany PDF niż drukować stronę WWW?",
@@ -58,6 +73,19 @@
     {
       "q": "Czy mogę pominąć puste kartki w narożnikach?",
       "a": "Tak — kliknij dowolną komórkę bezpośrednio na podglądzie siatki, aby wykluczyć ją z wydruku."
+    },
+    {
+      "q": "Jak działają zakładki do klejenia i krzyżyki (+)?",
+      "a": "Każda kartka w środku siatki ma pasek zakładki wzdłuż prawej i dolnej krawędzi, oznaczony przerywaną linią i krzyżykami w narożnikach. Na sąsiedniej kartce odcinasz górny i lewy margines i przykładasz czystą krawędź dokładnie do krzyżyków."
+    },
+    {
+      "q": "Ile kartek A4 potrzeba na plakat A1?",
+      "a": "12 kartek w siatce 4 × 3 przy marginesie 5 mm i zakładce 10 mm. Plakat A2 to 8 kartek, a A0 — 21."
     }
+  ],
+  "related": [
+    "print-large-image-on-multiple-pages",
+    "split-image-into-pages",
+    "a0-a1-a2-poster-on-a4"
   ]
 }

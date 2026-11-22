@@ -1,0 +1,109 @@
+{
+  "slug": "a0-a1-a2-poster-on-a4",
+  "route": "/pl/a0-a1-a2-poster-on-a4/",
+  "template": "tool",
+  "navLabel": "A0–A2 na A4",
+  "breadcrumbTitle": "Plakat A0, A1, A2 na A4",
+  "title": "Plakat A1, A0 lub A2 na kartkach A4 — ile kartek potrzeba?",
+  "description": "Ile kartek A4 lub Letter potrzeba na plakat A0, A1, A2 albo A3? Dokładne liczby z marginesem i zakładką oraz darmowe narzędzie do druku w pełnym rozmiarze.",
+  "h1": "Plakat A1, A0 i A2 na kartkach A4",
+  "lead": "Plakat A1 na kartkach A4 (59,4 × 84,1 cm) — a także A0 czy A2 — wydrukujesz w pełnym rozmiarze na zwykłej drukarce A4 lub US Letter. Wczytaj obraz albo PDF, wybierz format, a narzędzie policzy siatkę razem z marginesami i zakładką do klejenia.",
+  "presets": {
+    "paper": "a4",
+    "units": "mm",
+    "mode": "size-width",
+    "value": 594,
+    "map": true
+  },
+  "chips": [
+    {
+      "label": "Szerokość A0 (84,1 cm)",
+      "query": "units=mm&width=841"
+    },
+    {
+      "label": "Szerokość A1 (59,4 cm)",
+      "query": "units=mm&width=594"
+    },
+    {
+      "label": "Szerokość A2 (42 cm)",
+      "query": "units=mm&width=420"
+    },
+    {
+      "label": "Szerokość A3 (29,7 cm)",
+      "query": "units=mm&width=297"
+    },
+    {
+      "label": "PDF w skali 100%",
+      "query": "scale=100"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Ile kartek A4 na plakat A0, A1, A2 i A3?",
+      "paragraphs": [
+        "Na papierze rachunek wygląda prosto: A1 to dwa arkusze A2, czyli osiem kartek A4. W praktyce domowa drukarka nie drukuje do krawędzi, a kartki muszą na siebie zachodzić, żeby dało się je skleić — każda kartka A4 pokrywa więc tylko ok. 19 × 27,7 cm plakatu. Poniższa tabela jest liczona dokładnie tą samą geometrią, której używa narzędzie."
+      ],
+      "autoTable": {
+        "posters": [
+          "a0",
+          "a1",
+          "a2",
+          "a3"
+        ],
+        "papers": [
+          "a4",
+          "letter",
+          "a3"
+        ]
+      }
+    },
+    {
+      "heading": "Przykład: plakat A1 na kartkach A4 krok po kroku",
+      "paragraphs": [
+        "Plakat A1 ma 594 × 841 mm. Przy marginesie drukarki 5 mm pionowa kartka A4 drukuje pole 200 × 287 mm, a po odjęciu 10 mm zakładki każda kolejna kartka przesuwa się o 190 mm w poziomie i 277 mm w pionie. Trzy kolumny dałyby tylko 580 mm, więc potrzebne są cztery (4 × 190 + 10 = 770 mm), a trzy rzędy (3 × 277 + 10 = 841 mm) pokrywają wysokość co do milimetra: siatka 4 × 3, czyli 12 kartek. Ten sam plakat na kartkach poziomych wymagałby 15, dlatego tryb Auto wybiera pion.",
+        "Plakat A2 potrzebuje 8 kartek A4, a A0 — 21. Jeśli masz drukarkę A3, wystarczy odpowiednio 4, 6 i 9 arkuszy na A2, A1 i A0."
+      ]
+    },
+    {
+      "heading": "Plakat A3 na drukarce A4",
+      "paragraphs": [
+        "Teoretycznie A3 to dwie kartki A4, ale po odjęciu marginesów drukarki pojedyncza kartka nie pokrywa pełnych 29,7 cm szerokości A3. Dlatego plakat A3 na drukarce A4 to w praktyce siatka 2 × 2, czyli 4 kartki — z wygodnym zapasem na klejenie.",
+        "To dobry sposób na pierwszą próbę przed większym formatem: zużywasz mało papieru, a od razu widać, czy drukarka trzyma skalę i jak wygląda łączenie kartek."
+      ]
+    },
+    {
+      "heading": "Dokładny format A czy „mniej więcej tak duży”?",
+      "paragraphs": [
+        "Jeśli PDF ma już format A1 lub A0 — plakat naukowy, plan, mapa — użyj przycisku „PDF w skali 100%”: strona zostanie wydrukowana w rzeczywistym rozmiarze, a grafika wektorowa pozostanie ostra. Dla zdjęcia albo obrazu o innych proporcjach przyciski formatów ustawiają szerokość plakatu; wysokość wynika z proporcji obrazu, więc wynik ma szerokość A1, ale niekoniecznie dokładnie format A1.",
+        "Najpierw wydrukuj stronę próbną i zmierz linijkę 50 mm na mapie montażu. Jeśli ma 50 mm, każda kartka jest w prawdziwej skali."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Ile kartek A4 potrzeba na plakat A1?",
+      "a": "Teoretycznie 8, ale z marginesem drukarki i 10 mm zakładki do klejenia potrzeba 12 kartek w siatce 4 × 3. Na US Letter — 15."
+    },
+    {
+      "q": "Ile kartek A4 potrzeba na plakat A0?",
+      "a": "21 kartek (siatka 3 × 7 w orientacji poziomej) przy marginesie 5 mm i zakładce 10 mm. Na drukarce A3 — 9 arkuszy."
+    },
+    {
+      "q": "Ile kartek A4 na plakat A2?",
+      "a": "8 kartek w siatce 2 × 4 na kartkach poziomych, a nie 4, jak wynikałoby z samego podziału formatu."
+    },
+    {
+      "q": "Czy mogę zmniejszyć liczbę kartek?",
+      "a": "Zmniejsz zakładkę klejenia albo margines drukarki w „Więcej ustawień”, jeśli drukarka na to pozwala, albo pomiń puste kartki na podglądzie. Nie używaj „Dopasuj do strony” w oknie drukowania — to zmienia skalę."
+    },
+    {
+      "q": "Czy wydrukowany plakat ma dokładnie format A1?",
+      "a": "Dla PDF-u drukowanego w skali 100% — tak, kafelki są rozmieszczone co do milimetra. Po wydruku sprawdź linijkę kontrolną 50 mm; drukarka, która po cichu zmniejsza strony, od razu się zdradzi."
+    }
+  ],
+  "related": [
+    "print-pdf-on-multiple-pages",
+    "sewing-pattern-tiler",
+    "a4-poster-maker"
+  ]
+}

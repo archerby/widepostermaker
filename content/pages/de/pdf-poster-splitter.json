@@ -22,6 +22,19 @@
         "Viele Online-Tools wandeln Ihr PDF zuerst in ein niedrig aufgelöstes Bild um — feine Linien werden treppenstufig und Dateigrößen explodieren.",
         "WidePosterMaker bettet Ihre PDF-Seite genau einmal als Vektor-Form-XObject ein und setzt pro A4-Blatt einen exakten PDF-Clip-Rahmen. CropBox und Seitenrotation (/Rotate) werden automatisch berücksichtigt."
       ]
+    },
+    {
+      "heading": "Die besten Einstellungen für große PDFs",
+      "paragraphs": [
+        "Für Pläne, Karten und Poster, die bereits im richtigen Format vorliegen, stellen Sie „Größe über“ auf „Originalmaßstab (%)“ und den Wert auf 100. Dann wird die Seite in ihrer echten Größe gekachelt: Ein A1-Plan ergibt auf A4 ein Raster von 4 × 3 = 12 Blättern, ein A0-Plan 21 Blätter."
+      ],
+      "list": [
+        "Maßstab 100 % für maßgenaue Pläne, 50 % für einen schnellen Probedruck.",
+        "Mehrseitige Dokumente: mit „Zurück“ und „Weiter“ die richtige Seite wählen.",
+        "Leere Randbereiche in der Vorschau anklicken, um Papier zu sparen.",
+        "A3-Drucker vorhanden? „Papierformat“ auf A3 stellen – ein A0-Plan braucht dann nur 9 Blätter.",
+        "Im Druckdialog „Tatsächliche Größe“ wählen und das 50-mm-Lineal auf Seite 1 prüfen."
+      ]
     }
   ],
   "faqs": [
@@ -32,6 +45,23 @@
     {
       "q": "Wie wähle ich bei mehrseitigen PDFs eine bestimmte Seite aus?",
       "a": "Über die Schaltflächen Zurück/Weiter direkt über der Vorschau wählen Sie die gewünschte Seite vor dem Export aus."
+    },
+    {
+      "q": "Was passiert mit verschlüsselten PDFs?",
+      "a": "Verschlüsselte oder ungewöhnlich aufgebaute PDFs können nicht als Vektor beschnitten werden. Das Tool rendert die Seite dann in hoher Auflösung als Bild und zeigt einen Hinweis an."
+    },
+    {
+      "q": "Wie viele A4-Blätter braucht ein A1-Plan in Originalgröße?",
+      "a": "12 Blätter in einem Raster von 4 × 3 bei 5 mm Druckrand und 10 mm Kleberand. Ein A0-Plan braucht 21 Blätter, auf A3-Papier 9."
+    },
+    {
+      "q": "Wird mein PDF hochgeladen?",
+      "a": "Nein. Die Datei wird ausschließlich in Ihrem Browser gelesen und geteilt; das fertige PDF entsteht auf Ihrem Gerät."
     }
+  ],
+  "related": [
+    "print-pdf-on-multiple-pages",
+    "a0-a1-a2-poster-on-a4",
+    "sewing-pattern-tiler"
   ]
 }

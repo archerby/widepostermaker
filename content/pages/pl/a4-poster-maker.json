@@ -7,7 +7,7 @@
   "title": "Drukowanie dużego plakatu na kilku kartkach A4 (210×297 mm)",
   "description": "Ustawione domyślnie pod papier A4 (210×297 mm) i centymetry: dziel zdjęcia i PDF-y na siatki 2×2, 3×3 lub wymiary A2/A1/A0.",
   "h1": "Tworzenie plakatu na kartkach A4 (210 × 297 mm)",
-  "lead": "Preset dla metrycznego formatu A4 i centymetrów. Automatycznie dobiera orientację pionową lub poziomą, by zużyć jak najmniej papieru.",
+  "lead": "Ustawienia gotowe pod papier A4 i centymetry — do drukowania plakatu na kilku kartkach A4 ze zdjęcia, rysunku albo PDF-u. Orientację pionową lub poziomą narzędzie dobiera samo, tak by zużyć jak najmniej kartek.",
   "presets": {
     "paper": "a4",
     "units": "cm",
@@ -17,16 +17,61 @@
   },
   "sections": [
     {
-      "heading": "Idealne formaty A2, A1 i A0 ze zwykłego papieru A4",
+      "heading": "Plakaty A2, A1 i A0 ze zwykłych kartek A4",
       "paragraphs": [
-        "Domyślny margines 5 mm oraz zakładka klejenia 10 mm dają 190 × 277 mm użytecznego kroku na każdym arkuszu A4 i chronią przed ucięciem obrazu na brzegach drukarki."
+        "Formaty serii A mają te same proporcje 1:√2, więc kartki A4 dobrze układają się w plakat A2, A1 czy A0 — tryb „Auto (Najmniej kartek)” sam wybiera ułożenie, przy którym zostaje najmniej zbędnych pasków.",
+        "Domyślny margines drukarki 5 mm i zakładka klejenia 10 mm dają 190 × 277 mm użytecznego kroku na każdej pionowej kartce A4 i chronią przed ucięciem obrazu przy krawędziach. Dlatego plakat A1 to 12 kartek, a nie 8 — tabela poniżej pokazuje dokładne liczby, policzone tak samo jak w narzędziu."
+      ],
+      "autoTable": {
+        "posters": [
+          "a3",
+          "a2",
+          "a1",
+          "a0"
+        ],
+        "papers": [
+          "a4",
+          "a3"
+        ]
+      }
+    },
+    {
+      "heading": "Ostrość zdjęcia a liczba kartek",
+      "paragraphs": [
+        "Gdy zmieniasz liczbę kartek, narzędzie na bieżąco pokazuje szacowane DPI w polu „Jakość druku”. Od 150 DPI wydruk jest ostry nawet z bliska, 90–150 DPI wystarcza na plakat oglądany na ścianie z 1–2 metrów, a poniżej 90 DPI widać już piksele. Przykład: zdjęcie z telefonu o szerokości 4032 px rozciągnięte na 59,4 cm (szerokość A1) ma ok. 172 DPI."
+      ]
+    },
+    {
+      "heading": "Ustawienia drukarki dla kartek A4",
+      "list": [
+        "Skala 100% („Rzeczywisty rozmiar”) — nigdy „Dopasuj do strony”.",
+        "Papier 80 g/m² wystarczy; matowy 100–120 g/m² leży płaściej na sklejonych łączeniach.",
+        "„Margines drukarki” ustaw na 0 mm w „Więcej ustawień” tylko wtedy, gdy drukarka naprawdę drukuje do krawędzi A4.",
+        "„Zakładkę klejenia” zostaw na 10 mm — mniejsza oszczędza papier, ale łączenie jest słabsze."
       ]
     }
   ],
   "faqs": [
     {
       "q": "Jak duży jest plakat z siatki 3×3 kartek A4?",
-      "a": "Przy marginesie 5 mm i zakładce 10 mm daje około 58 × 85 cm — czyli niemal format A1."
+      "a": "Przy marginesie 5 mm i zakładce 10 mm każda pionowa kartka A4 przesuwa się o 190 mm w poziomie i 277 mm w pionie, więc siatka 3 × 3 daje ok. 58 × 84 cm — prawie dokładnie format A1 (59,4 × 84,1 cm). Pełny A1 wymaga już siatki 4 × 3, czyli 12 kartek."
+    },
+    {
+      "q": "Wybrać kartki pionowe czy poziome?",
+      "a": "Zostaw „Orientacja” na „Auto (Najmniej kartek)”. Narzędzie liczy obie siatki i wybiera tę, która zużywa mniej kartek."
+    },
+    {
+      "q": "Czy da się drukować na A4 bez marginesów?",
+      "a": "Tak, ustaw margines drukarki na 0 mm, jeśli Twoja drukarka obsługuje druk bez marginesów na A4. Zakładkę 5–10 mm i tak warto zostawić, żeby łączenia były mocne."
+    },
+    {
+      "q": "Jaki papier wybrać do plakatu z kartek A4?",
+      "a": "Zwykły papier biurowy 80 g/m² w zupełności wystarczy, a matowy 100–120 g/m² mniej faluje przy klejeniu."
     }
+  ],
+  "related": [
+    "a0-a1-a2-poster-on-a4",
+    "split-image-into-pages",
+    "print-large-image-on-multiple-pages"
   ]
 }
